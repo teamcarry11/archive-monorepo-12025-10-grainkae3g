@@ -7,9 +7,11 @@
 ## 🌾 Welcome to the Grain Network
 
 This is the **monomega grainspace** - a unified repository containing 14 teams, each aligned with:
-- **Vedic Astrology** (12 zodiac + 2 hidden)
-- **Marseilles Tarot** (Tomberg + Jodorowsky)
+- **Vedic Astrology** (12 zodiac + 2 nodes: Rahu/Ketu)
+- **Marseilles Tarot** (Valentin Tomberg + Alejandro Jodorowsky)
 - **Hermetic Principles** (As above, so below)
+- **Christian Wisdom** (Newman, Hopkins, Irenaeus - "Cor ad cor loquitur")
+- **Fashion Systems** (LVMH portfolio model, Tom Ford minimalism, postmodern futurism)
 
 **Current grainbranch**: See repository description for live grainURL →
 
@@ -27,7 +29,7 @@ This is the **monomega grainspace** - a unified repository containing 14 teams, 
 - **team02** - Taurus ♉ / II. The High Priestess - *grainvault, secrets*
 - **team06** - Virgo ♍ / VI. The Lovers - *grainenvvars, grainzsh, clojure-s6, clojure-sixos* 💕
 - **team10** - Capricorn ♑ / X. The Wheel - *graintime, grainbranch, grainsource-vegan*
-- **team14** - Cetus 🐋 / XIV. Temperance - *Grounding & descent*
+- **team14** - Ketu (South Node) / XIV. Temperance - *GrainOS, Redox, Android, descent to hardware*
 
 ### **AIR LEAGUE** (Connection)
 - **team03** - Gemini ♊ / III. The Empress - *grainnetwork, communication*
