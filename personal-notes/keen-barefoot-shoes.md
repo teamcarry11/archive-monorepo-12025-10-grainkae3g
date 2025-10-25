@@ -44,10 +44,16 @@
 
 **Work composite wide**:
 - Safety toe (composite/carbon, not steel)
-- Wide fit available
+- Wide fit available (E, EE widths)
 - Work boot category
 - Protection + natural movement
 - ESD versions for electronic work
+
+**Width Options**:
+- E width (wide)
+- EE width (extra wide)
+- 3EE width (triple extra wide)
+- Accommodates natural foot spread
 
 **Existing company**:
 - Already established (not startup)
