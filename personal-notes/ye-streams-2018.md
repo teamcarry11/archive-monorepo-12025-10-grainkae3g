@@ -76,12 +76,28 @@ The Hanged Man hangs upside down, seeing streams where others see steps.
 
 ---
 
+## Watching Again (15:02)
+
+Still finding wisdom in this interview. Ye's depth is infinite.
+
+**The interview that keeps giving**:
+- Streams (31:23)
+- Hughes/Ford/Disney/Jobs pattern (research method)
+- More wisdom to come...
+
+**This interview = Foundation for understanding Ye's synthesis approach**
+
+---
+
 **now == next + 1** 🌾🌊💕
 
 ---
 
-*Noted at 13:25 PDT, October 25, 12025*  
-*Watching: Ye / Charlamagne Interview*  
+*First noted: 13:25 PDT, October 25, 12025*  
+*Watched again: 15:02 PDT*  
+*Video: Ye / Charlamagne Interview 2018*  
+*Link: https://youtu.be/zxwfDlhJIpw*  
 *Insight: Streams > Units*  
-*Application: grainflow, teamflow12, The Hanged Man's transcendent flow*
+*Application: grainflow, teamflow12, The Hanged Man's transcendent flow*  
+*Pattern: Multiple viewings reveal deeper layers*
 
