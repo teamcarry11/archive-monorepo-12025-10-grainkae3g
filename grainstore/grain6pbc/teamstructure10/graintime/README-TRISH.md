@@ -114,7 +114,7 @@ Hey there, beautiful soul! Welcome to Graintime - where we dance with the stars 
 | House | Time | The Magic | Keywords |
 |-------|------|-----------|----------|
 | **1st** | Sunrise | Identity, Self | Appearance, personality, the mask you wear |
-| **12th** | Late Night | Subconscious | Dreams, spirituality, the hidden self |
+| **12th** | Morning | Subconscious | Dreams, spirituality, the hidden self |
 | **11th** | Morning | Community | Friends, aspirations, your tribe |
 | **10th** | Noon | Career, Status | Reputation, achievements, your legacy |
 | **9th** | Afternoon | Philosophy | Higher learning, travel, your worldview |

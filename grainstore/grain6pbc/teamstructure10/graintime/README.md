@@ -137,7 +137,7 @@ Graintime is the Grain Network's revolutionary timestamp system that combines:
 | House | Time | Meaning | Keywords |
 |-------|------|---------|----------|
 | **1st** | Sunrise | Identity, Self | Appearance, personality |
-| **12th** | Late Night | Subconscious | Dreams, spirituality |
+| **12th** | Morning | Subconscious | Dreams, spirituality |
 | **11th** | Morning | Community | Friends, aspirations |
 | **10th** | Noon | Career, Status | Reputation, achievements |
 | **9th** | Afternoon | Philosophy | Higher learning, travel |
