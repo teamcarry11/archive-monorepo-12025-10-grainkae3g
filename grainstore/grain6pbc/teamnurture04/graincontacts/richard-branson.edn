@@ -1,0 +1,80 @@
+{:display-name "Richard Branson"
+ :full-name "Sir Richard Charles Nicholas Branson"
+ :company "Virgin Group"
+ :role "Founder, Entrepreneur, Investor"
+ 
+ :vegan-interest
+ {:status "Flexitarian/Reducetarian (strong advocate, not strict vegan)"
+  :motivation ["Environmental impact" "Climate change" "Health" "Animal welfare"]
+  :public-actions
+  ["Veganuary 2018 participation"
+   "Quit beef in 2014 (environmental reasons)"
+   "Predicts no animal killing for food in 30 years"
+   "Clean/plant-based meat will become norm"]
+  
+  :investments
+  [{:company "Memphis Meats (UPSIDE Foods)"
+    :type "Cultivated/lab-grown meat"
+    :co-investors ["Bill Gates" "Tyson Foods"]}
+   {:company "Beyond Meat"
+    :type "Plant-based meat alternatives"
+    :via "Virgin Group"}
+   {:company "Impossible Foods"
+    :type "Plant-based meat alternatives"
+    :via "Virgin Group"}
+   {:company "JUST, Inc. (Hampton Creek)"
+    :type "Plant-based egg alternatives"}
+   {:company "Good Food Institute"
+    :type "Non-profit promoting alternatives"
+    :role "Supporter"}]
+  
+  :quotes
+  ["I believe that in 30 years or so we will no longer need to kill any animals and that all meat will either be clean or plant-based, taste the same and also be much healthier for everyone."
+   "Livestock farming is a major contributor to greenhouse gas emissions"
+   "Shifting to plant-based diets is crucial for combating climate change"]
+  
+  :virgin-group-actions
+  ["Virgin Atlantic offers vegan meals"
+   "Promotes plant-based options across businesses"
+   "Blog posts on plant-based living"]}
+ 
+ :business-philosophy
+ {:vertical-integration "Virgin Group spans airlines, space, health, finance"
+  :brand-building "Strong Virgin brand across industries"
+  :innovation-focus "Early adopter of new technologies"
+  :sustainability "Environmental focus drives investments"}
+ 
+ :grain-network-alignment
+ {:environmental true
+  :vegan-friendly true
+  :innovation-investor true
+  :sustainability-focused true
+  :vertical-integration true
+  :brand-building true}
+ 
+ :ai-research-summary
+ {:date "12025-10-25"
+  :models ["Deepseek" "Grok" "Claude Sonnet 4.5" "Meta" "Gemini" "Qwen"]
+  :consensus
+  ["Not strictly vegan, but strong advocate"
+   "Environmental/climate motivation primary"
+   "Major investor in alt-protein sector"
+   "Participated in Veganuary 2018"
+   "Quit beef 2014"
+   "Predicts 30-year timeline for no animal killing"
+   "Backs Memphis Meats, Beyond Meat, Impossible, JUST"]
+  :all-models-agree "Branson is key figure in plant-based/alt-protein movement"}
+ 
+ :grainglobal-potential
+ {:multi-industry "Virgin spans many sectors (airlines, space, health)"
+  :global-reach "International presence"
+  :investment-arm "Could fund Grain Network initiatives"
+  :brand-power "Virgin brand recognition"
+  :sustainability-mission "Aligns with grain philosophy"
+  :partnership-potential "grainglobal could model Virgin's structure"}
+ 
+ :links
+ {:company "https://www.virgin.com/"
+  :wikipedia "https://en.wikipedia.org/wiki/Richard_Branson"
+  :blog "https://www.virgin.com/branson-family/richard-branson-blog"}}
+
