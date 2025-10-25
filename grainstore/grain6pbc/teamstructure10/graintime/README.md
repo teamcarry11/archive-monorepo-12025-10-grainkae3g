@@ -123,7 +123,7 @@ Graintime is the Grain Network's revolutionary timestamp system that combines:
 - More descriptive than 3-character codes
 - "pisc" instead of "pis" (Pisces)
 - "capr" instead of "cap" (Capricorn)
-- Maintains 70-character graintime limit
+- Maintains 76-character graintime limit
 
 ### **3. Solar House Clock System**
 
@@ -133,21 +133,21 @@ Graintime is the Grain Network's revolutionary timestamp system that combines:
 - Sunset = 7th House, Midnight = 4th House
 - Counterclockwise progression: 1→12→11→10→9→8→7→6→5→4→3→2→1
 
-**House Meanings:**
+**House Meanings (Counterclockwise Order):**
 | House | Time | Meaning | Keywords |
 |-------|------|---------|----------|
 | **1st** | Sunrise | Identity, Self | Appearance, personality |
-| **2nd** | Morning | Resources, Values | Money, possessions |
-| **3rd** | Morning | Communication | Siblings, short trips |
-| **4th** | Midnight | Home, Roots | Family, foundation |
-| **5th** | Night | Creativity, Children | Romance, hobbies |
-| **6th** | Night | Health, Service | Work, daily routines |
-| **7th** | Sunset | Relationships | Marriage, partnerships |
-| **8th** | Afternoon | Transformation | Death, rebirth, shared resources |
-| **9th** | Afternoon | Philosophy | Higher learning, travel |
+| **12th** | Late Night | Subconscious | Dreams, spirituality |
+| **11th** | Morning | Community | Friends, aspirations |
 | **10th** | Noon | Career, Status | Reputation, achievements |
-| **11th** | Afternoon | Community | Friends, aspirations |
-| **12th** | Morning | Subconscious | Dreams, spirituality |
+| **9th** | Afternoon | Philosophy | Higher learning, travel |
+| **8th** | Afternoon | Transformation | Death, rebirth, shared resources |
+| **7th** | Sunset | Relationships | Marriage, partnerships |
+| **6th** | Evening | Health, Service | Work, daily routines |
+| **5th** | Evening | Creativity, Children | Romance, hobbies |
+| **4th** | Midnight | Home, Roots | Family, foundation |
+| **3rd** | Late Night | Communication | Siblings, short trips |
+| **2nd** | Late Night | Resources, Values | Money, possessions |
 
 ### **4. Ascendant Calculation**
 
@@ -415,7 +415,7 @@ bb test-formatting
 - **House Systems**: Different approaches to house division
 
 #### **Technical Implementation**
-- **Fixed-Width Formatting**: Consistent 70-character output
+- **Fixed-Width Formatting**: Consistent 76-character output
 - **Abbreviation Systems**: Space-efficient encoding
 - **Validation**: Comprehensive testing framework
 - **Error Handling**: Graceful fallbacks and recovery
@@ -613,7 +613,7 @@ bb test-integration
 #### **Length Validation**
 ```clojure
 (defn validate-graintime-length
-  "Validate graintime length (must be exactly 70 characters)"
+  "Validate graintime length (must be exactly 76 characters)"
   [graintime]
   (let [length (count graintime)]
     {:valid (= length 70)
@@ -810,7 +810,7 @@ SOFTWARE.
 #### **Phase 1: Foundation** (Current)
 - ✅ **Core graintime system** with tropical zodiac
 - ✅ **Non-interactive setup** for scripting
-- ✅ **Fixed-width formatting** with 70-character limit
+- ✅ **Fixed-width formatting** with 76-character limit
 - ✅ **Comprehensive testing** framework
 
 #### **Phase 2: Enhancement** (Next 6 months)

@@ -110,21 +110,21 @@ Hey there, beautiful soul! Welcome to Graintime - where we dance with the stars 
 - Sunset = 7th House (relationships) - when you connect with others
 - Midnight = 4th House (home, roots) - when you return to your foundation
 
-**The Cosmic House Meanings:**
+**The Cosmic House Meanings (Counterclockwise!):**
 | House | Time | The Magic | Keywords |
 |-------|------|-----------|----------|
 | **1st** | Sunrise | Identity, Self | Appearance, personality, the mask you wear |
-| **2nd** | Morning | Resources, Values | Money, possessions, what you treasure |
-| **3rd** | Morning | Communication | Siblings, short trips, how you express yourself |
-| **4th** | Midnight | Home, Roots | Family, foundation, where you feel safe |
-| **5th** | Night | Creativity, Children | Romance, hobbies, your inner child |
-| **6th** | Night | Health, Service | Work, daily routines, how you serve |
-| **7th** | Sunset | Relationships | Marriage, partnerships, the other |
-| **8th** | Afternoon | Transformation | Death, rebirth, shared resources, the phoenix |
-| **9th** | Afternoon | Philosophy | Higher learning, travel, your worldview |
+| **12th** | Late Night | Subconscious | Dreams, spirituality, the hidden self |
+| **11th** | Morning | Community | Friends, aspirations, your tribe |
 | **10th** | Noon | Career, Status | Reputation, achievements, your legacy |
-| **11th** | Afternoon | Community | Friends, aspirations, your tribe |
-| **12th** | Morning | Subconscious | Dreams, spirituality, the hidden self |
+| **9th** | Afternoon | Philosophy | Higher learning, travel, your worldview |
+| **8th** | Afternoon | Transformation | Death, rebirth, shared resources, the phoenix |
+| **7th** | Sunset | Relationships | Marriage, partnerships, the other |
+| **6th** | Evening | Health, Service | Work, daily routines, how you serve |
+| **5th** | Evening | Creativity, Children | Romance, hobbies, your inner child |
+| **4th** | Midnight | Home, Roots | Family, foundation, where you feel safe |
+| **3rd** | Late Night | Communication | Siblings, short trips, how you express yourself |
+| **2nd** | Late Night | Resources, Values | Money, possessions, what you treasure |
 
 ### **4. Ascendant Calculation - The Rising Star**
 

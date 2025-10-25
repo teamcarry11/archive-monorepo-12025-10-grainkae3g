@@ -4,7 +4,7 @@
 
 ## Overview
 
-All graintimes are formatted to exactly **70 characters** with fixed-width fields that align perfectly when stacked vertically.
+All graintimes are formatted to exactly **76 characters** with fixed-width fields that align perfectly when stacked vertically.
 
 ## Field Structure
 
@@ -110,7 +110,7 @@ pis  (Pisces)
 
 ### Comprehensive Testing
 - **Total combinations**: 3,888 (27 nakshatras × 12 zodiacs × 12 houses)
-- **All combinations**: Exactly 70 characters
+- **All combinations**: Exactly 76 characters
 - **Pass rate**: 100%
 - **Min/Max length**: 70 chars (no variation)
 
