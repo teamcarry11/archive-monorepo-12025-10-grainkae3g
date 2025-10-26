@@ -128,7 +128,8 @@
 
 **chartcourse goal**: Help everyone own their work
 - Developers own code (boot-from-scratch, fork everything)
-- Artists own masters (graintalent, smart contracts)
+- Artists own masters (graintalent, s
+mart contracts)
 - Farmers own land (support Helen's model, tech for sovereignty)
 
 ---
