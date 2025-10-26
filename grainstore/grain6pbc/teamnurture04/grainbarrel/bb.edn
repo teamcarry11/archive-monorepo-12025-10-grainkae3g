@@ -2,20 +2,27 @@
  :deps {}
  
  :tasks
- {;; Build task for CI/CD
-  qb-now
-  {:doc "Quick build - generate grainsite content"
-   :task (do
-           (println "🌾 grainbarrel: Building grainsite content...")
-           (println "✅ Content build complete (placeholder)")
-           (println "📊 Ready for SvelteKit build"))}
+ {:requires ([babashka.process :refer [shell]])
   
-  ;; Future tasks
-  qb-fast
-  {:doc "Fast incremental build"
-   :task (println "Fast build placeholder")}
+  ;; Build task for CI/CD - delegates to qb-now
+  qb-now
+  {:doc "Quick build - generate grainsite content (delegates to grain6pbc/qb-now)"
+   :task (do
+           (println "🌾 grainbarrel (team04): Delegating to qb-now...")
+           (shell "bb" "../qb-now/scripts/qb-now.bb"))}
+  
+  ;; GB aliases (grainbarrel = team04, qb → gb migration)
+  gb-now
+  {:doc "GB NOW - Same as qb-now (team04 grainbarrel)"
+   :task (shell "bb" "../qb-now/scripts/qb-now.bb")}
+  
+  gb-fast
+  {:doc "GB FAST - Fast incremental build"
+   :task (do
+           (println "🌾 gb-fast: Fast incremental build")
+           (shell "bb" "../qb-now/scripts/qb-now.bb" "--fast"))}
   
   flow
-  {:doc "Complete build + deploy flow"
-   :task (println "Flow placeholder")}}}
+  {:doc "Complete build + deploy flow (delegates to teamfire01/grainbarrel)"
+   :task (shell {:dir "../../teamfire01/grainbarrel"} "bb" "flow" (or (first *command-line-args*) "chore: grainbarrel team04 flow"))}}}
 
