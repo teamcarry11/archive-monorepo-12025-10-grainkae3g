@@ -1,548 +1,571 @@
-# Grainzsh: Grain Network Zsh Configuration
+# grainzsh - The λ Prompt Shell Environment
 
-**Minimalist Zsh configuration with Grain Network integration**
+**teamprecision06 (Virgo ♍ / VI. The Lovers)**  
+*Fall/Winter Collection - Shell Protection, Elegant Warmth*
 
-> *"Every command is a grain of productivity"*  
-> *"λ - The lambda prompt: simple, clean, functional"*
-
-Grainzsh provides a clean, fast, and productive Zsh configuration system with template/personal split, Grain Network tool integration, and minimal dependencies.
+💕 "Choose your shell with love. The λ prompt guides you home." 💕
 
 ---
 
-## 🌾 **PHILOSOPHY**
+## The Vision
 
-### **Minimalism First**
-- Clean `λ` prompt (lambda - functional programming inspiration)
-- Fast startup time
-- No heavy frameworks (no Oh-My-Zsh, Prezto, etc.)
-- Pure Zsh with carefully chosen enhancements
+**grainzsh** is your **shell sanctuary** - dark, warm, sophisticated.
 
-### **Template/Personal Split**
-- **Template**: Shared defaults for all Grain Network users
-- **Personal**: Individual customizations and preferences
-- **Local Control**: Users decide what to override
-- **Global Intent**: Best practices shared openly
+Like Chanel's Fall/Winter collection - protective, elegant, timeless - `grainzsh` wraps your terminal in loving precision.
 
-### **Grain Network Integration**
-- Aliases for `gb` (Grainbarrel) commands
-- Quick navigation to grainstore modules
-- Session document helpers
-- Display and system management shortcuts
+**The λ (lambda) prompt**: Functional. Pure. Mathematical. Beautiful.
 
 ---
 
-## 📦 **INSTALLATION**
+## The Four Sacred Choices (team06)
 
-### **Option 1: Template Only (Recommended for new users)**
-
-```bash
-# Clone grainzsh
-git clone https://github.com/grainpbc/grainzsh.git ~/.config/grainzsh
-
-# Create symlink to template
-ln -sf ~/.config/grainzsh/template/.zshrc ~/.zshrc
-
-# Reload
-source ~/.zshrc
+```
+Spring/Summer → grainenvvars (fresh environment, growth configuration)
+Fall/Winter  → grainzsh (shell protection, λ prompt elegance)  ← YOU ARE HERE
+Haute Couture → clojure-s6 (bespoke supervision)
+Prêt-à-Porter → clojure-sixos (ready-to-wear OS)
 ```
 
-### **Option 2: With Personal Config (For kae3g and others with existing configs)**
-
-```bash
-# Clone grainzsh with submodules
-git clone --recurse-submodules https://github.com/grainpbc/grainzsh.git ~/.config/grainzsh
-
-# Create symlink to your personal config
-ln -sf ~/.config/grainzsh/personal/kae3g/.zshrc ~/.zshrc
-
-# Reload
-source ~/.zshrc
-```
-
-### **Option 3: Add to Grainstore (Development)**
-
-```bash
-# From grainkae3g repository
-cd ~/kae3g/grainkae3g/grainstore/grainzsh
-
-# Template config
-ln -sf $PWD/template/.zshrc ~/.zshrc
-
-# Or personal config (for kae3g)
-ln -sf $PWD/personal/kae3g/.zshrc ~/.zshrc
-
-# Reload
-source ~/.zshrc
-```
+**grainzsh is choice #2**: The shell. Your daily interface. Choose how you interact.
 
 ---
 
-## 🎨 **FEATURES**
+## Philosophy
 
-### **1. Minimalist Lambda Prompt**
-```
-λ pwd
-/home/kae3g/grainkae3g
-λ 
-```
+### **The λ Prompt**
 
-Clean, simple, functional. No clutter.
-
-### **2. Grain Network Aliases**
-
-#### **Build System**
-```bash
-gb                    # Grainbarrel command
-gb grainstore:validate # Validate all modules
-gb grainstore:stats   # Show statistics
-gb grainstore:list    # List modules
+```zsh
+λ
 ```
 
-#### **Git Shortcuts**
-```bash
-g                     # git
-gs                    # git status
-ga .                  # git add .
-gc -m "message"       # git commit
-gp                    # git push
-gl                    # git log (pretty)
-gco main              # git checkout main
-```
+**Why lambda (λ)?**
+- **Functional programming**: Clojure, Lisp, mathematics
+- **Purity**: Lambda calculus, function as first-class
+- **Minimalism**: One character, maximum meaning
+- **Elegance**: "Hello, λ world!" - the greeting of choice
 
-#### **Grain Workflows**
-```bash
-grain-flow            # bb flow (dual deploy)
-grain-pseudo          # bb pseudo (update docs)
-grain-deploy          # bb deploy
-```
+### **Fall/Winter Metaphor**
 
-#### **Navigation**
-```bash
-cdg                   # cd ~/kae3g/grainkae3g
-cdstore               # cd grainstore
-cddocs                # cd docs
-grain <module>        # cd to specific module
-```
+**Fall**: Warmth, protection, shell as shelter  
+**Winter**: Dark theme, cozy terminal, intimate computing  
+**Protection**: zsh guards your workflow  
+**Elegance**: Sophisticated, mature, refined
 
-### **3. Helpful Functions**
+### **Chanel's Wisdom Applied**
 
-#### **Module Navigation**
-```bash
-λ grain grainbarrel
-# Navigates to grainstore/grainbarrel
+1. **"Fashion fades, style is eternal"**
+   - Themes change, λ prompt endures
+   - Temporary aliases, permanent philosophy
 
-λ grain-find display
-# Finds all modules matching "display"
-```
+2. **"The best things in life are free"**
+   - Open source zsh, free productivity
+   - But demands care (expensive attention)
 
-#### **Session Management**
-```bash
-λ grain-session
-# Creates timestamped session document
-```
-
-### **4. Smart History**
-- 10,000 command history
-- No duplicates
-- Shared across all terminals
-- Persistent
-
-### **5. Intelligent Completion**
-- Case-insensitive
-- Colored output
-- Fast and responsive
+3. **"In order to be irreplaceable, one must always be different"**
+   - λ prompt (unique)
+   - grainzsh config (distinctive)
 
 ---
 
-## 🔧 **CUSTOMIZATION**
+## Features
 
-### **Template/Personal Split Pattern**
-
-**Template** (`template/.zshrc`):
-- Shared aliases and functions
-- Grain Network integrations
-- Standard configurations
-- Best practices
-
-**Personal** (`personal/USERNAME/.zshrc` or `personal/.zshrc`):
-- Individual preferences
-- Machine-specific settings
-- Private aliases
-- Custom functions
-
-### **Create Your Personal Config**
-
-```bash
-# Copy template as starting point
-cp ~/.config/grainzsh/template/.zshrc ~/.config/grainzsh/personal/.zshrc
-
-# Edit with your preferences
-nano ~/.config/grainzsh/personal/.zshrc
-
-# Update template to source personal
-# (Template already includes personal sourcing logic)
+### **The λ Prompt**
+```zsh
+λ git status
+λ bb graintime
+λ gt  # Interactive graintime
+λ cd grainstore/grain6pbc/teamprecision06
+λ
 ```
 
-### **Personal Config Example**
+Clean. Functional. Perfect.
 
-```bash
-# personal/.zshrc - Your customizations
+### **Cursor Red Theme Aligned**
+```zsh
+# Dark background, green accents (21e8 hacker aesthetic)
+# Cursor Red theme inspiration
+# Minimal, focused, productive
+```
 
-# Override prompt if desired
-# PROMPT='🌾 λ '
+### **Babashka Optimized**
+```zsh
+# Aliases for common grain commands
+alias gb='bb grainbarrel'
+alias gt='bb graintime'
+alias gf='bb grainflow'
+alias gs='bb grainsync'
 
-# Add your own aliases
-alias myproject='cd ~/projects/myproject'
-alias deploy-prod='./scripts/deploy-production.sh'
+# Quick navigation
+alias grain='cd ~/grain'
+alias g6='cd ~/grain/grain6pbc'
+alias g10='cd ~/grain/teamstructure10'
+alias g06='cd ~/grain/teamprecision06'
+```
 
-# Machine-specific settings
-export MY_API_KEY='...'
+### **Git Integration**
+```zsh
+# Show current branch in prompt (optional)
+# λ (main) 
+# λ (team06-envvars)
 
-# Personal functions
-work() {
-    cd ~/work
-    tmux attach -t work || tmux new -s work
-}
+# Or stay pure:
+# λ
+```
+
+### **Minimal Dependencies**
+```zsh
+# Just zsh. No oh-my-zsh bloat.
+# No powerlevel10k complexity.
+# Pure. Simple. Fast.
 ```
 
 ---
 
-## 📚 **GRAIN NETWORK INTEGRATION**
+## Installation
 
-### **Grainbarrel Tasks**
-All `gb` commands work seamlessly:
+### **1. Install zsh** (if not already)
 ```bash
-λ gb --version
-Grainbarrel v1.0.0
-
-λ gb tasks
-Available tasks:
-  grainstore:validate
-  grainstore:stats
-  grainstore:list
-  ...
-```
-
-### **Quick Module Access**
-```bash
-λ grain grainbarrel
-~/kae3g/grainkae3g/grainstore/grainbarrel
-
-λ grain-find daemon
-grainstore/graindaemon
-```
-
-### **Session Workflow**
-```bash
-λ grain-session
-# Creates: docs/SESSION-2025-10-22--1900.md
-# Opens in editor
-```
-
----
-
-## 🎓 **FOR EDUCATORS**
-
-### **Teaching Template/Personal Split**
-
-Grainzsh is perfect for teaching version control and configuration management:
-
-1. **Template** = Classroom standard configuration
-2. **Personal** = Each student's customizations
-3. **Symlinks** = Understanding file system organization
-4. **Git Submodules** = Advanced collaboration patterns
-
-### **Lesson Plan**
-
-**Lesson 1**: Shell Basics and Prompt Customization
-- Understanding `.zshrc`
-- The lambda (`λ`) prompt philosophy
-- Basic aliases
-
-**Lesson 2**: Template/Personal Split Pattern
-- Separating shared vs. individual configs
-- Symlink creation and management
-- Git for configuration tracking
-
-**Lesson 3**: Grain Network Integration
-- `gb` command integration
-- Module navigation
-- Workflow automation
-
-**Lesson 4**: Personal Productivity
-- Creating custom aliases
-- Writing shell functions
-- History management
-
----
-
-## 🔗 **PERSONAL CONFIGURATIONS**
-
-### **kae3g's Config**
-- **Repository**: https://github.com/kae3g/kae3g-zsh-config
-- **Style**: Minimal lambda prompt
-- **Philosophy**: "Timid customization, gentle automation, maternal guidance"
-- **Features**: Pure minimalism, maximum speed, no bloat
-
-Referenced in grainzsh as: `personal/kae3g/`
-
-### **Add Your Own**
-
-To add your personal config as a submodule:
-
-```bash
-cd ~/kae3g/grainkae3g/grainstore/grainzsh
-git submodule add https://github.com/YOUR-USERNAME/YOUR-zsh-config.git personal/YOUR-USERNAME
-git commit -m "Add YOUR-USERNAME personal zsh config"
-```
-
----
-
-## 🚀 **SYSTEM-WIDE SETUP (Ubuntu 24.04 LTS)**
-
-### **Set as Default Shell**
-
-```bash
-# Install Zsh (if not already installed)
+# Ubuntu/Debian
 sudo apt install zsh
 
-# Set Zsh as default shell
-chsh -s $(which zsh)
+# Alpine (musl)
+apk add zsh
 
-# Logout and login for changes to take effect
+# Make default shell
+chsh -s $(which zsh)
 ```
 
-### **Install Grainzsh System-Wide**
-
+### **2. Install grainzsh**
 ```bash
-# Clone to config directory
-git clone --recurse-submodules https://github.com/grainpbc/grainzsh.git ~/.config/grainzsh
+# Clone template repo
+git clone https://github.com/grain6pbc/grainzsh.git ~/.grainzsh
 
-# Choose template or personal config
-ln -sf ~/.config/grainzsh/template/.zshrc ~/.zshrc
+# Link config
+ln -s ~/.grainzsh/zshrc ~/.zshrc
 
-# Or use your personal config
-ln -sf ~/.config/grainzsh/personal/kae3g/.zshrc ~/.zshrc
-
-# Reload shell
+# Reload
 source ~/.zshrc
 ```
 
-### **Verify Installation**
+### **3. See the λ**
+```zsh
+λ
+```
+
+Perfect.
+
+---
+
+## Configuration
+
+### **~/.zshrc** (minimal)
+
+```zsh
+# grainzsh - Fall/Winter Shell Configuration
+# teamprecision06 (Virgo / The Lovers)
+# "Choose your shell with love"
+
+# --------------------
+# THE λ PROMPT
+# --------------------
+PROMPT='λ '
+RPROMPT=''  # Clean right side
+
+# --------------------
+# HISTORY
+# --------------------
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+
+# --------------------
+# COMPLETION
+# --------------------
+autoload -Uz compinit
+compinit
+
+# Case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# --------------------
+# GRAIN ALIASES
+# --------------------
+# Babashka grain commands
+alias gb='bb grainbarrel'
+alias gt='bb graintime'
+alias gf='bb grainflow'
+alias gs='bb grainsync'
+alias gc='bb grainchart'
+
+# Navigation
+alias grain='cd ~/kae3g/grainkae3g'
+alias g6='cd ~/kae3g/grainkae3g/grainstore/grain6pbc'
+alias g10='cd ~/kae3g/grainkae3g/grainstore/grain6pbc/teamstructure10'
+alias g06='cd ~/kae3g/grainkae3g/grainstore/grain6pbc/teamprecision06'
+alias g14='cd ~/kae3g/grainkae3g/grainstore/grain6pbc/teamdescend14'
+
+# Git shortcuts (optional)
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git log --oneline'
+
+# --------------------
+# ENVIRONMENT
+# --------------------
+# Load grainenvvars if present
+[[ -f .env ]] && source .env
+
+# Set EDITOR
+export EDITOR=cursor
+
+# Add local bin to PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+# --------------------
+# GREETING (optional)
+# --------------------
+echo "λ grainzsh loaded (Fall/Winter)"
+echo "teamprecision06 - Choose your shell with love 💕"
+```
+
+---
+
+## The λ Philosophy
+
+### **Why Lambda?**
+
+#### **1. Functional Programming**
+```clojure
+; Lambda in Clojure
+(map (fn [x] (* x 2)) [1 2 3])
+; => (2 4 6)
+
+; Anonymous function
+#(* % 2)
+
+; The λ represents: function as value
+```
+
+#### **2. Lambda Calculus**
+```
+λx.x         ; Identity function
+λx.λy.x      ; Constant function  
+λf.λx.f(f x) ; Application
+
+; Alonzo Church, 1930s
+; Foundation of all computation
+```
+
+#### **3. Minimalism**
+```zsh
+λ  # One character
+#  # Two characters (typical shell)
+$  # One character (bash default)
+>  # One character (PowerShell)
+
+# λ wins on:
+# - Meaning (functional, mathematical)
+# - Aesthetics (elegant, sophisticated)
+# - Philosophy (Grain Network values)
+```
+
+---
+
+## Fall/Winter Aesthetic
+
+### **Dark Theme** 🌙
+```zsh
+# Terminal: Dark background
+# Text: Light (white/green)
+# Accent: 21e8 hacker green
+# Cursor: Steady block
+
+# Aligned with Cursor Red theme
+# Professional, focused, mature
+```
+
+### **Warmth in Code**
+```zsh
+# Not cold minimalism (sterile)
+# Warm minimalism (intentional)
+
+# Every alias chosen with care
+# Every path optimized for flow
+# Every prompt character meaningful
+
+# Fall/Winter: Cozy, protective, home
+```
+
+### **Trish's Voice** 💕
+
+"OMG the λ prompt is like your FAVORITE cozy sweater! 🧥
+
+It's not flashy - it's SOPHISTICATED! Like a little black dress for your terminal! 💕
+
+- **Dark theme** = Warm winter night by the fire 🔥
+- **λ symbol** = Math chic (nerdy elegant!) 📐✨
+- **Minimal config** = Capsule wardrobe (essentials only!) 👗
+- **Grain aliases** = Your signature accessories 💍
+
+You're not just using a shell, honey - you're CURATING an experience! And just like Chanel said, you're removing everything unnecessary until only STYLE remains! 🌙💕"
+
+---
+
+## Integration with Team06
+
+### **The Four Choices in Action**
+
+```zsh
+# Terminal session example:
+
+# 1. Load environment (Spring/Summer - grainenvvars)
+λ source .env
+λ echo $DATABASE_URL
+postgresql://localhost/graindb
+
+# 2. Use shell (Fall/Winter - grainzsh)
+λ gt  # graintime interactive
+λ gb flow "commit message"  # grainbarrel flow
+
+# 3. Manage services (Haute Couture - clojure-s6)
+λ s6-svscan /etc/s6/services
+
+# 4. Boot OS (Prêt-à-Porter - clojure-sixos)
+# GrainOS with all integrated
+```
+
+**Each choice complements the others** 💕
+
+---
+
+## Specifications
+
+### **Required Features**
+
+```clojure
+(s/def ::prompt (s/and string? #(= "λ " %)))
+(s/def ::history-size (s/and int? #(>= % 10000)))
+(s/def ::completion boolean?)
+(s/def ::grain-aliases map?)
+
+(s/def ::grainzsh-config
+  (s/keys :req-un [::prompt ::history-size ::completion ::grain-aliases]))
+```
+
+### **Optional Enhancements**
+
+```zsh
+# Git branch in prompt (if desired)
+# λ (main)
+# λ (team06-zsh)
+
+# Or stay pure:
+# λ
+
+# Personal preference - The Lovers choose!
+```
+
+---
+
+## Advanced Configuration
+
+### **Multi-Location graintime**
+
+```zsh
+# Aliases for different locations
+alias gt-sf='gt --location san-rafael'
+alias gt-kyoto='gt --location kyoto'
+alias gt-barcelona='gt --location barcelona'
+alias gt-london='gt --location london'
+
+# Interactive (detects current timezone)
+alias gt='gt --interactive'
+```
+
+### **Team-Specific Shells**
+
+```zsh
+# Different prompts for different teams
+case $GRAIN_TEAM in
+  teamprecision06)
+    PROMPT='λ '  # Lambda for precision
+    ;;
+  teamstructure10)
+    PROMPT='⚙️  '  # Gear for structure
+    ;;
+  teamflow12)
+    PROMPT='🌊 '  # Wave for flow
+    ;;
+  *)
+    PROMPT='🌾 '  # Grain for all
+    ;;
+esac
+```
+
+### **Grainbranch in Prompt**
+
+```zsh
+# Show current grainbranch
+function grain_branch() {
+  git branch 2>/dev/null | grep '^*' | sed 's/* //'
+}
+
+# Optional fancy prompt
+PROMPT='λ $(grain_branch) '
+
+# Example:
+# λ commerce-network---12025-10-25--1144-PDT--moon-jyeshtha-----asc-canc21-sun-11h--teamprecision10
+```
+
+---
+
+## Boot-from-Scratch Philosophy
+
+### **Zero External Dependencies**
+
+```zsh
+# No oh-my-zsh
+# No powerlevel10k
+# No antigen/zinit/zplug
+
+# Just:
+1. zsh (built-in)
+2. Our config (~/.zshrc)
+3. That's it
+
+# Sovereign. Simple. Fast.
+```
+
+### **Forkable and Improvable**
 
 ```bash
-λ echo $SHELL
-/usr/bin/zsh
+# Fork to grain6pbc
+git clone https://github.com/grain6pbc/grainzsh.git
 
-λ which gb
-/home/kae3g/.local/bin/gb
+# Improve
+# - Add more grain aliases
+# - Optimize completion
+# - Create team-specific prompts
 
-λ gb --version
-Grainbarrel v1.0.0
+# Contribute upstream
+# Share with zsh community
+```
 
-λ echo "Grainzsh is working!"
-Grainzsh is working!
+---
+
+## Vedic-Tarot-Hermetic-Christian-Fashion Integration
+
+### **Vedic**: Cosmic shell
+- Use graintime in prompt
+- Different prompts for different nakshatras
+- Shell aligned with cosmic time
+
+### **Tarot**: The Lovers (VI)
+- Choose λ or $ or > (sacred choice)
+- Choose dark or light theme (two paths)
+- Shell as union of human and machine
+
+### **Hermetic**: As above, so below
+- Terminal mirrors mind (clear prompt = clear thought)
+- Aliases mirror intentions (what you do often)
+
+### **Christian**: "Cor ad cor loquitur"
+- Shell speaks to user's heart
+- λ prompt says: "I understand functional programming"
+- Minimalism says: "I value your focus"
+
+### **Fashion**: Chanel Fall/Winter
+- Dark, warm, sophisticated
+- Timeless elegance (λ never goes out of style)
+- The little black dress of shells
+
+---
+
+## Examples
+
+### **Basic Session**
+```zsh
+λ cd ~/kae3g/grainkae3g
+λ gt
+12025-10-25--1630-PDT--moon-jyeshtha-----asc-canc21-sun-11h--teamprecision06
+λ gb flow "Deploy grainzsh README"
+✅ Build complete
+✅ Commit: Deploy grainzsh README
+✅ Push to GitHub
+✅ Push to Codeberg
+✅ Deploy to Pages
+🌾 now == next + 1
+λ
+```
+
+### **Multi-Chain Development**
+```zsh
+λ source .env.multi-chain
+λ echo $ICP_CANISTER_ID
+rrkah-fqaaa-aaaaa-aaaaq-cai
+λ echo $HEDERA_NETWORK
+testnet
+λ echo $SOLANA_NETWORK
+devnet
+λ bb test-multi-chain
+✅ ICP connected
+✅ Hedera connected
+✅ Solana connected
+🌾 Multi-chain ready
+λ
+```
+
+### **Grainbranch Creation**
+```zsh
+λ gt
+12025-10-25--1630-PDT--moon-jyeshtha-----asc-canc21-sun-11h--teamprecision06
+λ git checkout -b deploy-grainzsh---12025-10-25--1630-PDT--moon-jyeshtha-----asc-canc21-sun-11h--teamprecision06
+λ git add -A
+λ git commit -m "Deploy grainzsh Fall/Winter collection"
+λ git push origin deploy-grainzsh---12025-10-25--1630-PDT--moon-jyeshtha-----asc-canc21-sun-11h--teamprecision06
 λ
 ```
 
 ---
 
-## 📖 **BABASHKA TASKS**
+## The Lovers' Wisdom
 
-### **bb.edn Configuration**
+*"Your shell is your daily companion.*  
+*Your prompt is your constant guide.*  
+*Your aliases are your workflow.*  
+*Your config is your philosophy.*
 
-```clojure
-{:tasks
- {:requires ([clojure.string :as str])
-  
-  install
-  {:doc "Install grainzsh system-wide"
-   :task (shell "ln" "-sf" 
-                (str (System/getProperty "user.dir") "/template/.zshrc")
-                (str (System/getenv "HOME") "/.zshrc"))}
-  
-  install-personal
-  {:doc "Install personal config for current user"
-   :task (shell "ln" "-sf"
-                (str (System/getProperty "user.dir") "/personal/" (System/getenv "USER") "/.zshrc")
-                (str (System/getenv "HOME") "/.zshrc"))}
-  
-  check
-  {:doc "Check grainzsh installation"
-   :task (shell "zsh" "-c" "source ~/.zshrc && echo 'Grainzsh OK'")}}}
-```
+*Choose λ for function.*  
+*Choose dark for focus.*  
+*Choose minimal for clarity.*  
+*Choose grain for sovereignty.*
 
-### **Usage**
-
-```bash
-# Install template
-gb zsh:install
-
-# Install personal config
-gb zsh:install-personal
-
-# Check installation
-gb zsh:check
-```
+*grainzsh: Where shell meets soul.*  
+*Fall/Winter: Dark, warm, home."* 💕🌙
 
 ---
 
-## 🌾 **TEMPLATE/PERSONAL WORKFLOW**
+## Links
 
-### **As a Template User**
-1. Use template as-is for standard Grain Network experience
-2. Source template in your own `.zshrc` and add customizations
-3. Benefit from updates when template improves
-
-### **As a Personal Config Maintainer**
-1. Keep your config in separate repo (like kae3g-zsh-config)
-2. Add as submodule to grainzsh/personal/
-3. Symlink directly to your config
-4. Update template independently
-
-### **As a Template Contributor**
-1. Propose improvements to template
-2. Share useful aliases and functions
-3. Document best practices
-4. Help others learn
+- **grainSOURCE**: https://github.com/grain6pbc/grainzsh
+- **grainSITE**: https://grain6pbc.github.io/grainzsh/
+- **team06**: https://github.com/grain6pbc/teamprecision06
+- **Synthesis**: See VEDIC-TAROT-HERMETIC-CHRISTIAN-SYNTHESIS.md
 
 ---
 
-## 🎯 **DESIGN DECISIONS**
+**teamprecision06 (Virgo ♍ / VI. The Lovers)**  
+**Fall/Winter Collection - Shell Environment**
 
-### **Why Lambda (λ) Prompt?**
-- **Minimal**: No clutter, maximum focus
-- **Fast**: Instant rendering, no slow plugins
-- **Functional**: Honors functional programming heritage
-- **Universal**: Recognizable across programming communities
-- **Timeless**: Won't look dated in 10 years
-
-### **Why No Oh-My-Zsh?**
-- **Speed**: Frameworks add 100ms+ startup time
-- **Simplicity**: Understanding what your config does
-- **Control**: Know exactly what's running
-- **Learning**: Better for educational purposes
-
-### **Why Template/Personal Split?**
-- **Collaboration**: Share best practices
-- **Sovereignty**: Keep personal preferences
-- **Updates**: Improve template without breaking personal configs
-- **Education**: Teach configuration management patterns
+🌾 **now == next + 1** 💕🌙
 
 ---
 
-## 📝 **CONTRIBUTING**
-
-### **Improve the Template**
-- Propose new aliases or functions
-- Suggest better default configurations
-- Add educational comments
-- Improve documentation
-
-### **Share Your Personal Config**
-- Add as submodule in `personal/YOUR-USERNAME/`
-- Document your unique customizations
-- Inspire others with your workflow
-
-### **Report Issues**
-- Template not working on your system?
-- Alias conflicts?
-- Documentation unclear?
-- Let us know!
-
----
-
-## 🔗 **RELATED PROJECTS**
-
-- **[kae3g-zsh-config](https://github.com/kae3g/kae3g-zsh-config)**: kae3g's minimal personal config
-- **[Grainbarrel](https://github.com/grainpbc/grainbarrel)**: Grain Network build system
-- **[Grainsource-GNOME](https://github.com/grainpbc/grainsource-gnome)**: GNOME configuration
-- **[Grainsource-Sway](https://github.com/grainpbc/grainsource-sway)**: Sway configuration archive
-
----
-
-## 📊 **PERFORMANCE**
-
-### **Startup Time**
-- **Template**: ~50ms (blazing fast)
-- **With Personal**: ~70ms (still very fast)
-- **Oh-My-Zsh**: ~300-500ms (for comparison)
-
-### **Memory Usage**
-- **Minimal**: ~10MB per shell instance
-- **No plugins**: No background processes
-- **Clean**: No zombie processes
-
----
-
-## 🌍 **CROSS-PLATFORM**
-
-### **Tested On**
-- ✅ Ubuntu 24.04 LTS (Framework 16)
-- ✅ Ubuntu 22.04 LTS
-- ✅ Debian 12
-- ✅ macOS (with minor adjustments)
-
-### **Dependencies**
-- Zsh 5.8+
-- Git
-- Babashka (for `gb` commands)
-- Standard Unix tools (ls, cd, etc.)
-
----
-
-## 💭 **INSPIRATION**
-
-Grainzsh is inspired by:
-- **kae3g's timid config**: Minimal, loving, sovereign
-- **Lambda calculus**: Functional programming elegance
-- **Grain Network values**: Open, sustainable, educational
-- **Unix philosophy**: Do one thing well
-
----
-
-## 📚 **LEARN MORE**
-
-### **Zsh Resources**
-- [Zsh Documentation](https://zsh.sourceforge.io/Doc/)
-- [Zsh Guide](https://zsh.sourceforge.io/Guide/)
-- [Arch Wiki: Zsh](https://wiki.archlinux.org/title/Zsh)
-
-### **Grain Network**
-- [Grain Network](https://github.com/grainpbc)
-- [Grainbarrel Build System](https://github.com/grainpbc/grainbarrel)
-- [Grainstore Modules](https://github.com/grainpbc/grainstore)
-
----
-
-## 🤝 **COMMUNITY**
-
-Share your Grainzsh setup:
-- Post your personal config as inspiration
-- Share useful aliases and functions
-- Help others optimize their workflow
-- Teach shell productivity
-
----
-
-## 📄 **LICENSE**
-
-MIT License - Use freely, share openly, customize boldly
-
----
-
-## 🌾 **GRAIN NETWORK**
-
-Part of the [Grain Network](https://github.com/grainpbc) - Global Renewable technology for a sustainable future.
-
-**"From granules to grains to THE WHOLE GRAIN"**
-
-Every command, every alias, every function - a grain of productivity building toward THE WHOLE GRAIN of digital sovereignty and sustainable computing.
-
----
-
-*Made with 💛 by the Grain Network community*  
-*Inspired by kae3g's timid zsh config and lambda calculus*
-
-🌾 **λ - Simple. Clean. Functional.** 🌾
-
+*"Fashion fades, style is eternal." - Coco Chanel*  
+*"λx.x" - Alonzo Church (Identity)*  
+*"Choose your shell with love." - The Lovers*

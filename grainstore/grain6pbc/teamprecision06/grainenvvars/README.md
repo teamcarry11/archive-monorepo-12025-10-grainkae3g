@@ -1,799 +1,500 @@
-# Grainenvvars: Secure Environment Variables Management
+# grainenvvars - Environment Variables with Loving Precision
 
-**Template/Personal Split • 1Password Integration • Zero Secrets in Git**
+**teamprecision06 (Virgo ♍ / VI. The Lovers)**  
+*Spring/Summer Collection - Fresh Configuration, Growth Environment*
 
-> *"Local Control, Global Intent - Your secrets stay yours"*  
-> *"Never commit keys, always document patterns"*
-
-Grainenvvars provides secure, standardized environment variable management for the Grain Network ecosystem with template/personal split, 1Password CLI integration, and educational best practices.
+💕 "Choose your environment with love. Every variable is a sacred choice." 💕
 
 ---
 
-## 🔒 **SECURITY PHILOSOPHY**
+## The Vision
 
-### **Core Principles**
-1. **Never Commit Secrets** - API keys, tokens, passwords NEVER go in git
-2. **Template/Personal Split** - Share patterns, not values
-3. **1Password Integration** - Secrets stored in encrypted vault
-4. **Local Control** - Each user manages their own secrets
-5. **Education First** - Teach secure practices, not just tools
+**grainenvvars** brings **precision** and **care** to environment variable management.
 
-### **What Goes Where**
-
-**Template** (committed to git):
-- Variable names and descriptions
-- Example values (fake/placeholder)
-- Documentation and best practices
-- Loading scripts and utilities
-
-**Personal** (NEVER committed):
-- Real API keys and tokens
-- Personal credentials
-- Machine-specific values
-- Private configuration
+Like Chanel's Spring/Summer collection - fresh, light, perfectly tailored - `grainenvvars` makes configuration elegant, secure, and joyful.
 
 ---
 
-## 📦 **INSTALLATION**
+## The Four Sacred Choices (team06)
 
-### **Step 1: Clone Grainenvvars**
-
-```bash
-# Clone to grainstore
-cd ~/kae3g/grainkae3g/grainstore
-git clone https://github.com/grainpbc/grainenvvars.git
-
-# Or as part of grainstore
-cd ~/kae3g/grainkae3g
-gb grainstore:sync
+```
+Spring/Summer → grainenvvars (fresh environment, growth configuration)
+Fall/Winter  → grainzsh (shell protection, λ prompt elegance)
+Haute Couture → clojure-s6 (bespoke supervision)
+Prêt-à-Porter → clojure-sixos (ready-to-wear OS)
 ```
 
-### **Step 2: Create Personal Config**
-
-```bash
-cd grainstore/grainenvvars
-
-# Copy template as starting point
-cp template/.env.example personal/.env
-
-# Edit with your real values
-nano personal/.env
-
-# Make sure personal/.env is in .gitignore
-```
-
-### **Step 3: Source in Shell**
-
-Add to your `.zshrc` or `.bashrc`:
-
-```bash
-# Load Grain Network environment variables
-if [ -f "$HOME/kae3g/grainkae3g/grainstore/grainenvvars/personal/.env" ]; then
-    export $(cat "$HOME/kae3g/grainkae3g/grainstore/grainenvvars/personal/.env" | grep -v '^#' | xargs)
-fi
-```
+**grainenvvars is choice #1**: The foundation. Choose your environment, choose your growth.
 
 ---
 
-## 🔐 **1PASSWORD INTEGRATION**
+## Philosophy
 
-### **Why 1Password?**
-- Industry-standard password manager
-- CLI available on all platforms
-- Encrypted vault storage
-- Audit trails and access logs
-- Team sharing capabilities
+### **The Lovers (VI) Teaching**
 
-### **Setup 1Password CLI**
+Every environment variable is a **choice**:
+- Development vs Production (choosing reality)
+- Secrets vs Public (choosing disclosure)
+- Local vs Remote (choosing location)
+- Now vs Later (choosing time)
 
+**Precision is discriminating love**: Choose the right value, for the right context, at the right time.
+
+### **Chanel's Wisdom Applied**
+
+1. **"Simplicity is the keynote of all true elegance"**
+   - Minimal .env files
+   - Clear variable names
+   - No redundancy
+
+2. **"Before you leave the house, look in the mirror and remove one accessory"**
+   - Remove unnecessary variables
+   - Clean environment
+   - Essential only
+
+3. **"A girl should be two things: classy and fabulous"**
+   - Variables should be two things: secure and clear
+
+---
+
+## Features
+
+### **Secure by Design**
 ```bash
-# Install 1Password CLI
-# Ubuntu/Debian:
-curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
-    sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] \
-    https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" | \
-    sudo tee /etc/apt/sources.list.d/1password.list
-sudo apt update && sudo apt install 1password-cli
-
-# Sign in
-op signin
+# Never commit secrets
+.env          # Local only (in .gitignore)
+.env.example  # Template (committed to git)
+.env.test     # Test values (safe to commit)
 ```
 
-### **Store Secrets in 1Password**
-
+### **Multi-Environment Support**
 ```bash
-# Create a Grain Network vault (optional)
-op vault create "Grain Network"
+# Development
+export GRAIN_ENV=development
+source .env.development
 
-# Add API keys
-op item create --category=login \
-    --title="OpenAI API Key" \
-    --vault="Grain Network" \
-    password="sk-..."
+# Production
+export GRAIN_ENV=production
+source .env.production
 
-op item create --category=login \
-    --title="Anthropic API Key" \
-    --vault="Grain Network" \
-    password="sk-ant-..."
-
-# For crypto wallets
-op item create --category=login \
-    --title="Phantom Wallet Seed" \
-    --vault="Grain Network" \
-    password="your-seed-phrase"
+# Testing
+export GRAIN_ENV=test
+source .env.test
 ```
 
-### **Load from 1Password**
+### **Validation & Type Checking**
+```clojure
+(ns grainenvvars.core
+  (:require [clojure.spec.alpha :as s]))
 
-Create `personal/load-from-1password.sh`:
+(s/def ::port (s/and int? #(< 0 % 65536)))
+(s/def ::url (s/and string? #(re-matches #"https?://.*" %)))
+(s/def ::api-key (s/and string? #(= 32 (count %))))
 
-```bash
-#!/bin/bash
-# Load environment variables from 1Password
-
-# OpenAI API Key
-export OPENAI_API_KEY=$(op item get "OpenAI API Key" --fields password)
-
-# Anthropic API Key
-export ANTHROPIC_API_KEY=$(op item get "Anthropic API Key" --fields password)
-
-# ICP Principal
-export ICP_PRINCIPAL=$(op item get "ICP Principal" --fields password)
-
-# Solana Wallet
-export SOLANA_PRIVATE_KEY=$(op item get "Solana Private Key" --fields password)
-
-# GitHub Token
-export GITHUB_TOKEN=$(op item get "GitHub Personal Access Token" --fields password)
-
-echo "✅ Environment variables loaded from 1Password"
+(defn validate-env
+  "Validate environment variables against specs"
+  [env-map]
+  (and (s/valid? ::port (:port env-map))
+       (s/valid? ::url (:api-url env-map))
+       (s/valid? ::api-key (:api-key env-map))))
 ```
 
-Source in your shell:
-
+### **Template Generation**
 ```bash
-# Add to personal/.zshrc
-if [ -f "$GRAINSTORE/grainenvvars/personal/load-from-1password.sh" ]; then
-    source "$GRAINSTORE/grainenvvars/personal/load-from-1password.sh"
-fi
+# Generate .env.example from current .env
+grain envvars generate-template
+
+# Creates .env.example with placeholder values:
+# API_KEY=your-api-key-here
+# DATABASE_URL=postgresql://localhost/dbname
+# PORT=3000
+```
+
+### **Encryption for Secrets**
+```bash
+# Encrypt sensitive .env file
+grain envvars encrypt .env > .env.encrypted
+
+# Decrypt when needed
+grain envvars decrypt .env.encrypted > .env
 ```
 
 ---
 
-## 📋 **TEMPLATE VARIABLES**
+## Usage
 
-### **template/.env.example**
+### **Basic Setup**
 
+1. **Create `.env` file**:
 ```bash
-# ============================================================================
-# GRAINENVVARS TEMPLATE
-# ============================================================================
-# Copy to personal/.env and fill in your real values
-# NEVER commit personal/.env to git!
-# ============================================================================
+# .env (local, never committed)
+DATABASE_URL=postgresql://localhost/graindb
+API_KEY=your_secret_api_key_here_32_characters_long
+PORT=3000
+GRAIN_ENV=development
+```
 
-# ----------------------------------------------------------------------------
-# AI & LLM APIs
-# ----------------------------------------------------------------------------
+2. **Create `.env.example` template**:
+```bash
+# .env.example (committed to git, no secrets)
+DATABASE_URL=postgresql://localhost/dbname
+API_KEY=your-api-key-here
+PORT=3000
+GRAIN_ENV=development
+```
 
-# OpenAI API Key
-# Get from: https://platform.openai.com/api-keys
-OPENAI_API_KEY=sk-proj-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+3. **Add to `.gitignore`**:
+```bash
+# .gitignore
+.env
+.env.local
+.env.*.local
+```
 
-# Anthropic API Key (Claude)
-# Get from: https://console.anthropic.com/
-ANTHROPIC_API_KEY=sk-ant-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+4. **Load in your app**:
+```clojure
+(ns myapp.core
+  (:require [grainenvvars.core :as env]))
 
-# ----------------------------------------------------------------------------
-# Blockchain & Crypto
-# ----------------------------------------------------------------------------
+(env/load!)  ; Loads .env file
 
-# Internet Computer (ICP/DFINITY) Principal
-# Generate with: dfx identity get-principal
-ICP_PRINCIPAL=xxxxx-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx-xxx
-
-# Solana Wallet Address
-# Get from: Phantom wallet or solana-keygen
-SOLANA_WALLET_ADDRESS=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-# Phantom Wallet (NEVER store private keys in env vars - use 1Password!)
-# PHANTOM_SEED_PHRASE=STORED_IN_1PASSWORD_ONLY
-
-# ----------------------------------------------------------------------------
-# Git & Version Control
-# ----------------------------------------------------------------------------
-
-# GitHub Personal Access Token
-# Generate: https://github.com/settings/tokens
-GITHUB_TOKEN=ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-# Codeberg Token
-# Generate: https://codeberg.org/user/settings/applications
-CODEBERG_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-# ----------------------------------------------------------------------------
-# Google Services
-# ----------------------------------------------------------------------------
-
-# Google Drive API Credentials
-# Get from: https://console.cloud.google.com/
-GOOGLE_CLIENT_ID=XXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=GOCSPX-XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-GOOGLE_REFRESH_TOKEN=STORED_IN_1PASSWORD
-
-# ----------------------------------------------------------------------------
-# Grain Network Services
-# ----------------------------------------------------------------------------
-
-# Grainweb Daemon Port
-GRAINWEB_PORT=8080
-
-# Grainmusic API
-GRAINMUSIC_API_URL=http://localhost:3000
-
-# Graindrive Sync Path
-GRAINDRIVE_SYNC_PATH=$HOME/GrainDrive
-
-# ----------------------------------------------------------------------------
-# Development & Testing
-# ----------------------------------------------------------------------------
-
-# Development mode flag
-GRAIN_DEV_MODE=true
-
-# Test mode flag
-GRAIN_TEST_MODE=false
-
-# Debug logging
-GRAIN_DEBUG=false
-
-# ============================================================================
-# END TEMPLATE
-# ============================================================================
+(def db-url (env/get :database-url))
+(def api-key (env/get :api-key))
+(def port (env/get :port))
 ```
 
 ---
 
-## 🛡️ **SECURITY BEST PRACTICES**
+## The Spring/Summer Metaphor
 
-### **DO**
-✅ Use 1Password or similar password manager  
-✅ Keep personal/.env in .gitignore  
-✅ Rotate keys regularly (every 90 days)  
-✅ Use environment-specific keys (dev/staging/prod)  
-✅ Document what each variable does  
-✅ Use principle of least privilege  
-✅ Audit access logs regularly  
+### **Why Spring/Summer?**
 
-### **DON'T**
-❌ Commit secrets to git (even private repos)  
-❌ Share API keys in chat/email  
-❌ Use same keys across multiple projects  
-❌ Store private keys in environment variables  
-❌ Leave debug mode on in production  
-❌ Share 1Password vault passwords  
+**Spring**: Renewal, fresh start, new configuration  
+**Summer**: Growth, expansion, environment flourishing  
+**Fresh**: Clean .env files, no cruft  
+**Light**: Minimal configuration, maximum clarity  
+**Configurable**: Like spring weather - changeable, adaptable
 
-### **Crypto Wallet Security**
-- **NEVER** store seed phrases in environment variables
-- **NEVER** commit private keys to git
-- **USE** 1Password for seed phrase storage
-- **USE** hardware wallets for significant holdings
-- **USE** separate wallets for dev/testing vs. real funds
+### **Trish's Voice** 💕
+
+"OMG this .env file is like a PERFECT spring garden! 🌸
+
+Every variable is a little seed you plant! 💚
+
+- `DATABASE_URL` = the soil (foundation) 🌱
+- `API_KEY` = the sunshine (access to growth) ☀️
+- `PORT` = the water (flow of connections) 💧
+- `GRAIN_ENV` = the season (what's growing now) 🌾
+
+You're not just setting variables, honey - you're CULTIVATING an environment! And just like Coco Chanel removing one accessory, you're keeping it CLEAN and ELEGANT! ✨💕"
 
 ---
 
-## 📝 **USAGE PATTERNS**
+## Integration with Team06
 
-### **Basic Usage**
+### **The Four Choices Work Together**
 
 ```bash
-# Check if variable is set
-λ echo $OPENAI_API_KEY
-sk-proj-...
+# 1. grainenvvars: Choose your environment (Spring/Summer)
+export DATABASE_URL=postgresql://localhost/graindb
+export GRAIN_ENV=development
 
-# Use in scripts
-λ curl https://api.openai.com/v1/chat/completions \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    ...
+# 2. grainzsh: Choose your shell (Fall/Winter)
+source ~/.zshrc  # λ prompt, elegant, protective
+
+# 3. clojure-s6: Choose what runs (Haute Couture)
+s6-svscan /etc/s6/services  # Bespoke supervision
+
+# 4. clojure-sixos: Choose your OS (Prêt-à-Porter)
+# GrainOS with all of the above integrated
 ```
 
-### **In Babashka Scripts**
+**Each choice builds on the last**: Environment → Shell → Services → OS
+
+**All choices made with love** 💕
+
+---
+
+## Specifications
+
+### **Variable Naming Convention**
+
+```bash
+# ✅ GOOD (Clear, uppercase, underscores)
+DATABASE_URL
+API_KEY
+GRAIN_ENV
+MAX_CONNECTIONS
+
+# ❌ BAD (Mixed case, unclear)
+databaseUrl
+apikey
+env
+maxConn
+```
+
+### **Required Variables** (Specs)
 
 ```clojure
-(ns my-script
-  (:require [babashka.process :refer [shell]]))
+(s/def ::database-url string?)
+(s/def ::api-key (s/and string? #(>= (count %) 16)))
+(s/def ::port (s/and int? #(< 1023 % 65536)))
+(s/def ::grain-env #{:development :production :test})
 
-;; Access environment variables
-(def openai-key (System/getenv "OPENAI_API_KEY"))
-
-;; Use in API calls
-(when openai-key
-  (println "OpenAI API configured"))
+(s/def ::env-config
+  (s/keys :req-un [::database-url ::api-key ::port ::grain-env]))
 ```
 
-### **In Systemd Services**
+### **Validation on Load**
 
-```ini
-[Service]
-EnvironmentFile=/home/kae3g/kae3g/grainkae3g/grainstore/grainenvvars/personal/.env
-ExecStart=/usr/local/bin/my-service
-```
-
----
-
-## 🔄 **TEMPLATE/PERSONAL WORKFLOW**
-
-### **Template Updates**
-When template adds new variables:
-
-```bash
-# Pull latest template
-cd ~/kae3g/grainkae3g/grainstore/grainenvvars
-git pull
-
-# Check what's new
-diff template/.env.example personal/.env
-
-# Add new variables to personal/.env
-nano personal/.env
-```
-
-### **Personal Config Management**
-
-```bash
-# Backup personal config (encrypted)
-op document create personal/.env --title="Grainenvvars Personal Config" --vault="Grain Network"
-
-# Restore from backup
-op document get "Grainenvvars Personal Config" --vault="Grain Network" > personal/.env
-
-# Sync to new machine
-# 1. Install 1Password CLI
-# 2. Sign in: op signin
-# 3. Pull config: op document get "Grainenvvars Personal Config" > personal/.env
+```clojure
+(defn load!
+  "Load and validate environment variables"
+  []
+  (let [env (load-dotenv-file ".env")
+        validated (s/conform ::env-config env)]
+    (if (s/invalid? validated)
+      (throw (ex-info "Invalid environment configuration"
+                      {:errors (s/explain-data ::env-config env)}))
+      validated)))
 ```
 
 ---
 
-## 🎓 **EDUCATIONAL USE**
+## Security Best Practices
 
-### **Teaching Environment Variables**
-
-**Lesson**: Environment Variables and Security
-
-**Topics**:
-1. What are environment variables?
-2. Why use them instead of hardcoding?
-3. Security implications
-4. Template/personal split pattern
-5. Password manager integration
-
-**Lab Exercise**:
+### **1. Never Commit Secrets**
 ```bash
-# 1. Students copy template
-cp template/.env.example personal/.env
+# .gitignore (critical!)
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+```
 
-# 2. Students use placeholder values (not real keys!)
-OPENAI_API_KEY=sk-test-FAKE-KEY-FOR-LEARNING-ONLY
+### **2. Use .env.example Templates**
+```bash
+# Committed to git, safe
+API_KEY=your-api-key-here
+DATABASE_URL=postgresql://localhost/dbname
+```
 
-# 3. Students write script that uses env vars
-# 4. Learn about .gitignore and security
-# 5. Understand 1Password workflow
+### **3. Rotate Keys Regularly**
+```bash
+# Monthly rotation
+grain envvars rotate-keys --env production
+```
+
+### **4. Encrypt Sensitive Configs**
+```bash
+# For production deployment
+grain envvars encrypt .env.production > .env.production.encrypted
+scp .env.production.encrypted server:/app/
+# On server:
+grain envvars decrypt .env.production.encrypted > .env
 ```
 
 ---
 
-## 🔧 **ADVANCED FEATURES**
+## Multi-Chain Configuration Example
 
-### **Environment-Specific Configs**
-
-```bash
-# personal/.env.development
-GRAIN_ENV=development
-OPENAI_API_KEY=sk-proj-dev-...
-GRAINWEB_PORT=8080
-
-# personal/.env.production
-GRAIN_ENV=production
-OPENAI_API_KEY=sk-proj-prod-...
-GRAINWEB_PORT=443
-
-# Load based on environment
-if [ "$GRAIN_ENV" = "production" ]; then
-    source personal/.env.production
-else
-    source personal/.env.development
-fi
-```
-
-### **Secret Validation**
+### **ICP + Hedera + Solana**
 
 ```bash
-# Check required variables are set
-required_vars=(
-    "OPENAI_API_KEY"
-    "GITHUB_TOKEN"
-    "ICP_PRINCIPAL"
-)
+# .env.multi-chain
+# ICP (Internet Computer)
+ICP_CANISTER_ID=rrkah-fqaaa-aaaaa-aaaaq-cai
+ICP_NETWORK=ic
+ICP_IDENTITY=default
 
-for var in "${required_vars[@]}"; do
-    if [ -z "${!var}" ]; then
-        echo "❌ Missing required variable: $var"
-        exit 1
-    fi
-done
-```
+# Hedera (Hashgraph for B2B)
+HEDERA_ACCOUNT_ID=0.0.123456
+HEDERA_PRIVATE_KEY=302e020100300506032b6570...
+HEDERA_NETWORK=testnet
 
-### **Automatic 1Password Loading**
-
-```bash
-# personal/.zshrc addition
-# Automatically load from 1Password on shell start
-if command -v op &> /dev/null; then
-    eval $(op signin)
-    source "$GRAINSTORE/grainenvvars/personal/load-from-1password.sh" 2>/dev/null
-fi
-```
-
----
-
-## 📦 **GRAINZSH INTEGRATION**
-
-Update `grainzsh` to automatically load `grainenvvars`:
-
-```bash
-# In grainzsh/template/.zshrc, add:
-
-# ----------------------------------------------------------------------------
-# GRAIN ENVIRONMENT VARIABLES
-# ----------------------------------------------------------------------------
-
-# Load from personal .env file
-GRAIN_ENV_FILE="$GRAINSTORE/grainenvvars/personal/.env"
-if [ -f "$GRAIN_ENV_FILE" ]; then
-    export $(cat "$GRAIN_ENV_FILE" | grep -v '^#' | xargs)
-fi
-
-# Or load from 1Password
-GRAIN_1PASS_LOADER="$GRAINSTORE/grainenvvars/personal/load-from-1password.sh"
-if [ -f "$GRAIN_1PASS_LOADER" ]; then
-    source "$GRAIN_1PASS_LOADER"
-fi
-```
-
----
-
-## 🌾 **GRAIN NETWORK VARIABLES**
-
-### **Standard Variables**
-
-All Grain Network tools recognize these variables:
-
-```bash
-# Core paths
-GRAIN_HOME=$HOME/kae3g/grainkae3g
-GRAINSTORE=$GRAIN_HOME/grainstore
-
-# Build system
-GRAIN_BUILD_TOOL=gb
-GRAIN_VERBOSE=false
-
-# Display
-GRAIN_DISPLAY_SCALE=1.0
-GRAIN_NIGHT_LIGHT_TEMP=2000
-
-# Network
-GRAIN_WIFI_PRIMARY=Starlink
-GRAIN_WIFI_FALLBACK=TMobile
-
-# Development
-GRAIN_DEV_MODE=true
-GRAIN_LOG_LEVEL=info
-```
-
-### **Service-Specific Variables**
-
-```bash
-# Grainweb
-GRAINWEB_PORT=8080
-GRAINWEB_HOST=localhost
-GRAINWEB_DATA_DIR=$HOME/.local/share/grainweb
-
-# Grainmusic
-GRAINMUSIC_API_KEY=STORED_IN_1PASSWORD
-GRAINMUSIC_LIBRARY_PATH=$HOME/Music/Grainmusic
-
-# Graindrive
-GRAINDRIVE_SYNC_ENABLED=true
-GRAINDRIVE_AUTO_BACKUP=true
-```
-
----
-
-## 🔑 **SUPPORTED SERVICES**
-
-### **AI & LLM**
-- OpenAI (GPT-4, GPT-3.5)
-- Anthropic (Claude)
-- Cursor AI
-- Local LLMs (Ollama, etc.)
-
-### **Blockchain**
-- Internet Computer (ICP/DFINITY)
-- Solana
-- Ethereum (future)
-- Urbit (ship identity)
-
-### **Cloud Services**
-- Google Drive
-- GitHub
-- Codeberg
-- AWS/GCP (future)
-
-### **Development**
-- Git credentials
-- SSH keys (referenced, not stored)
-- API tokens
-- Database connections
-
----
-
-## 🎯 **EXAMPLE CONFIGURATIONS**
-
-### **Developer Setup**
-
-```bash
-# personal/.env - Developer configuration
-
-# AI Development
-OPENAI_API_KEY=sk-proj-dev-...
-ANTHROPIC_API_KEY=sk-ant-dev-...
-
-# Git
-GITHUB_TOKEN=ghp_dev_...
-GIT_AUTHOR_NAME="Your Name"
-GIT_AUTHOR_EMAIL="you@example.com"
+# Solana (L2 Micropayments)
+SOLANA_RPC_URL=https://api.devnet.solana.com
+SOLANA_WALLET_ADDRESS=7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU
+SOLANA_NETWORK=devnet
 
 # Grain Network
-GRAIN_DEV_MODE=true
-GRAIN_DEBUG=true
-GRAINWEB_PORT=8080
+GRAIN_ENV=development
+GRAIN_TEAM=teamprecision06
+GRAIN_MODE=trish  # 💕
+```
+
+### **Loading Multi-Chain Config**
+
+```clojure
+(defn load-multi-chain-config!
+  "Load multi-chain environment configuration"
+  []
+  (env/load!)
+  {:icp {:canister-id (env/get :icp-canister-id)
+         :network (env/get :icp-network)
+         :identity (env/get :icp-identity)}
+   :hedera {:account-id (env/get :hedera-account-id)
+            :network (env/get :hedera-network)}
+   :solana {:rpc-url (env/get :solana-rpc-url)
+            :wallet (env/get :solana-wallet-address)
+            :network (env/get :solana-network)}
+   :grain {:env (env/get :grain-env)
+           :team (env/get :grain-team)
+           :mode (env/get :grain-mode)}})
+```
+
+---
+
+## Boot-from-Scratch Philosophy
+
+### **grainenvvars is Sovereign**
+
+```bash
+# No external dependencies for core functionality
+# Pure Clojure, no npm packages, no pip install
+
+# Just:
+1. Create .env file
+2. Load it
+3. Use it
+
+# That's it. Simple. Elegant. Sovereign.
+```
+
+### **Forkable and Improvable**
+
+```bash
+# Fork to grain6pbc
+git clone https://github.com/grain6pbc/grainenvvars.git
+
+# Improve
+# - Add better encryption
+# - Add cloud sync (secure)
+# - Add team-based access control
+
+# Contribute upstream
+# Professional PRs to Clojure ecosystem
+```
+
+---
+
+## Vedic-Tarot-Hermetic-Christian-Fashion Integration
+
+### **Vedic**: Precision timing
+- Load different .env files for different moon phases
+- Development during waxing moon (growth)
+- Production deploy during full moon (completion)
+
+### **Tarot**: The Lovers (VI)
+- Every variable is a choice
+- Choose development or production (two paths)
+- Union of intention (code) and execution (environment)
+
+### **Hermetic**: As above, so below
+- Local .env mirrors production .env (correspondence)
+- What works locally works remotely (reflection)
+
+### **Christian**: "Cor ad cor loquitur" (Heart to heart)
+- Clear variable names speak to developer's heart
+- Configuration as communication
+- Love in precision
+
+### **Fashion**: Chanel Spring/Summer
+- Fresh, light, elegant
+- Remove one accessory (minimal vars)
+- Timeless simplicity
+
+---
+
+## Installation
+
+```bash
+# Clone template repo
+git clone https://github.com/grain6pbc/grainenvvars.git
+cd grainenvvars
+
+# Include in your project
+# Option 1: Git submodule
+git submodule add https://github.com/grain6pbc/grainenvvars.git lib/grainenvvars
+
+# Option 2: Copy to your project
+cp -r grainenvvars/* myproject/lib/grainenvvars/
+
+# Option 3: Add to deps.edn
+{:deps {grainenvvars {:git/url "https://github.com/grain6pbc/grainenvvars"
+                      :sha "..."}}}
+```
+
+---
+
+## Examples
+
+### **Development Setup**
+```bash
+# .env.development
+DATABASE_URL=postgresql://localhost/graindb_dev
+API_KEY=sk_test_development_key
+PORT=3000
+GRAIN_ENV=development
+LOG_LEVEL=debug
 ```
 
 ### **Production Setup**
-
 ```bash
-# personal/.env.production
+# .env.production (encrypted!)
+DATABASE_URL=postgresql://prod-server/graindb
+API_KEY=sk_live_production_key_32chars
+PORT=443
+GRAIN_ENV=production
+LOG_LEVEL=info
+```
 
-# AI Production
-OPENAI_API_KEY=LOAD_FROM_1PASSWORD
-ANTHROPIC_API_KEY=LOAD_FROM_1PASSWORD
-
-# Git
-GITHUB_TOKEN=LOAD_FROM_1PASSWORD
-
-# Grain Network
-GRAIN_DEV_MODE=false
-GRAIN_DEBUG=false
-GRAINWEB_PORT=443
+### **Test Setup**
+```bash
+# .env.test
+DATABASE_URL=postgresql://localhost/graindb_test
+API_KEY=sk_test_testing_key
+PORT=3001
+GRAIN_ENV=test
+LOG_LEVEL=debug
 ```
 
 ---
 
-## 🔄 **ROTATION & MAINTENANCE**
+## The Lovers' Wisdom
 
-### **Key Rotation Schedule**
+*"Every variable you set is a choice you make.*  
+*Every environment you configure is a reality you create.*  
+*Every secret you protect is a trust you honor.*  
+*Every template you share is a gift you give.*
 
-```bash
-# Rotate every 90 days
-OPENAI_API_KEY_CREATED=2025-01-22
-OPENAI_API_KEY_EXPIRES=2025-04-22
+*Choose your development with care.*  
+*Choose your production with wisdom.*  
+*Choose your variables with love.*  
+*Choose your environment with precision.*
 
-# Set calendar reminders
-# Use bb script to check expiration
-gb envvars:check-expiration
-```
-
-### **Audit Script**
-
-```bash
-#!/bin/bash
-# scripts/audit-env-vars.sh
-
-echo "🔍 Auditing environment variables..."
-
-# Check for common secrets accidentally exposed
-if git log --all --oneline | grep -E "(API_KEY|TOKEN|SECRET|PASSWORD)"; then
-    echo "⚠️  WARNING: Possible secrets in git history!"
-fi
-
-# Verify .gitignore
-if ! grep -q "personal/.env" .gitignore; then
-    echo "❌ ERROR: personal/.env not in .gitignore!"
-fi
-
-echo "✅ Audit complete"
-```
+*grainenvvars: Where configuration meets contemplation.*  
+*Spring/Summer: Fresh, light, perfectly chosen."* 💕🌸
 
 ---
 
-## 🎓 **TEACHING MATERIALS**
+## Links
 
-### **High School Lesson: Environment Variables & Security**
-
-**Learning Objectives**:
-1. Understand what environment variables are
-2. Learn why secrets shouldn't be in code
-3. Practice template/personal split pattern
-4. Use password managers securely
-
-**Activities**:
-1. Create fake API key and use it
-2. Learn about .gitignore
-3. Understand security risks
-4. Set up personal config
-
-**Assessment**:
-- Can student explain why secrets shouldn't be committed?
-- Can student create .env file correctly?
-- Does student understand template/personal split?
+- **grainSOURCE**: https://github.com/grain6pbc/grainenvvars
+- **grainSITE**: https://grain6pbc.github.io/grainenvvars/
+- **team06**: https://github.com/grain6pbc/teamprecision06
+- **Synthesis**: See VEDIC-TAROT-HERMETIC-CHRISTIAN-SYNTHESIS.md
 
 ---
 
-## 📊 **VARIABLES REFERENCE**
+**teamprecision06 (Virgo ♍ / VI. The Lovers)**  
+**Spring/Summer Collection - Environment Variables**
 
-### **AI Services**
-
-| Variable | Service | Where to Get | Required |
-|----------|---------|--------------|----------|
-| `OPENAI_API_KEY` | OpenAI GPT | https://platform.openai.com/api-keys | Yes (if using OpenAI) |
-| `ANTHROPIC_API_KEY` | Claude | https://console.anthropic.com/ | Yes (if using Claude) |
-| `CURSOR_API_KEY` | Cursor AI | Cursor settings | Optional |
-
-### **Blockchain**
-
-| Variable | Service | Where to Get | Required |
-|----------|---------|--------------|----------|
-| `ICP_PRINCIPAL` | Internet Computer | `dfx identity get-principal` | Yes (for ICP) |
-| `SOLANA_WALLET_ADDRESS` | Solana | Phantom wallet | Yes (for Solana) |
-| `URBIT_SHIP` | Urbit | Your ship name | Optional |
-
-### **Development**
-
-| Variable | Purpose | Example | Required |
-|----------|---------|---------|----------|
-| `GITHUB_TOKEN` | GitHub API | `ghp_...` | Yes (for automation) |
-| `CODEBERG_TOKEN` | Codeberg API | Token | Optional |
-| `GRAIN_DEV_MODE` | Development mode | `true`/`false` | No |
+🌾 **now == next + 1** 💕🌸
 
 ---
 
-## 🔐 **SECURITY CHECKLIST**
-
-### **Initial Setup**
-- [ ] Install 1Password or similar password manager
-- [ ] Create Grain Network vault
-- [ ] Copy template/.env.example to personal/.env
-- [ ] Add personal/.env to .gitignore
-- [ ] Verify .gitignore works (`git status` shows no secrets)
-
-### **Adding New Secrets**
-- [ ] Add to template/.env.example with placeholder
-- [ ] Add to personal/.env with real value
-- [ ] Add to 1Password vault
-- [ ] Document in README
-- [ ] Test loading in fresh shell
-
-### **Regular Maintenance**
-- [ ] Rotate keys every 90 days
-- [ ] Audit git history for leaked secrets
-- [ ] Update 1Password backup
-- [ ] Review access permissions
-- [ ] Check for unused variables
-
----
-
-## 🚨 **INCIDENT RESPONSE**
-
-### **If You Accidentally Commit a Secret**
-
-```bash
-# 1. IMMEDIATELY rotate the compromised key
-# 2. Remove from git history
-git filter-branch --force --index-filter \
-    "git rm --cached --ignore-unmatch personal/.env" \
-    --prune-empty --tag-name-filter cat -- --all
-
-# 3. Force push (use with EXTREME caution)
-# Only do this if you understand the implications
-git push --force --all
-
-# 4. Inform security team if applicable
-# 5. Monitor for unauthorized usage
-```
-
-### **Prevention Tools**
-
-```bash
-# Install git-secrets
-brew install git-secrets  # macOS
-sudo apt install git-secrets  # Ubuntu
-
-# Configure
-git secrets --install
-git secrets --register-aws
-git secrets --add 'sk-[a-zA-Z0-9]{32,}'  # OpenAI pattern
-```
-
----
-
-## 🌐 **CROSS-PLATFORM SUPPORT**
-
-### **Ubuntu 24.04 LTS (Primary)**
-- Full support
-- Systemd integration
-- GNOME integration
-
-### **macOS**
-- Full support
-- LaunchAgents integration
-- 1Password native app
-
-### **Other Linux**
-- Template works universally
-- Adjust paths as needed
-
----
-
-## 🔗 **INTEGRATION WITH OTHER MODULES**
-
-### **Grainzsh**
-Automatically loads grainenvvars in shell config
-
-### **Graindaemon**
-Services can use EnvironmentFile directive
-
-### **Grainbarrel**
-Tasks can access environment variables
-
-### **Grainweb/Grainmusic**
-Services use env vars for API configuration
-
----
-
-## 🌾 **GRAIN NETWORK ECOSYSTEM**
-
-Grainenvvars is part of the larger Grain Network ecosystem:
-
-- **[Grainzsh](https://github.com/grainpbc/grainzsh)**: Shell configuration
-- **[Grainbarrel](https://github.com/grainpbc/grainbarrel)**: Build system
-- **[Graindaemon](https://github.com/grainpbc/graindaemon)**: Service management
-- **[Grainstore](https://github.com/grainpbc/grainstore)**: Module ecosystem
-
----
-
-## 📄 **LICENSE**
-
-MIT License - Use freely, but **never share your personal values**
-
----
-
-## 🌾 **CLOSING THOUGHTS**
-
-Security is not just technical - it's a practice, a culture, a way of thinking. 
-
-We build Grainenvvars to:
-- **Teach** good security practices
-- **Enable** secure development
-- **Protect** user privacy and sovereignty
-- **Empower** developers at all levels
-
-Your secrets are yours. Your sovereignty is real. Your security matters.
-
----
-
-*"Local Control, Global Intent - Your keys, your power, your choice"* 🔒🌾
-
-**Part of the Grain Network** - Global Renewable technology for a sustainable future
-
+*"Simplicity is the keynote of all true elegance." - Coco Chanel*  
+*"Cor ad cor loquitur." - Cardinal Newman*  
+*"Choose wisely." - The Lovers*
