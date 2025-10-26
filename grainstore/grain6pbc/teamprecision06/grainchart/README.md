@@ -70,10 +70,21 @@ Chart multi-layer commerce flows:
 ## Module Structure
 
 ### Template Side (grain6pbc/teamprecision06/grainchart/)
-- **CHART-YOUR-VM.md** - Virtualization visualization ✨
-- **INTER-TEAM-COMMERCE.md** - Multi-layer commerce flows ✨
+
+**Vision Documents** (Complete Grain Network):
+- **GRAIN-NETWORK-COMPLETE-VISION.md** (827 lines) - Everything unified ✨
+- **VEDIC-TAROT-HERMETIC-CHRISTIAN-SYNTHESIS.md** (587 lines) - Fivefold wisdom ✨
+- **LVMH-INSPIRED-ARCHITECTURE.md** (700+ lines) - 14 teams as luxury brands ✨
+- **CHART-COURSE-INDEX.md** (569 lines) - Navigation for all docs ✨
+
+**Specific Charts**:
+- **CHART-YOUR-VM.md** - Virtualization visualization
+- **INTER-TEAM-COMMERCE.md** - Multi-layer commerce flows
+
+**Core**:
 - **README.md** - This file (course overview)
-- **Future**: Chart generators, monitoring tools
+
+**Future**: Chart generators, monitoring tools, team interviews
 
 ### Personal Side (teamprecision06/grainteamprecision06chart/)
 - **Implementation** - Your specific charts and courses
