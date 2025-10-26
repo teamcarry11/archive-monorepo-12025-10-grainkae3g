@@ -47,6 +47,17 @@
  {:github "https://github.com/kae3g"
   :codeberg "https://codeberg.org/kae3g"
   :nostr "https://primal.net/e/nevent1qqs97mk4r9ne5u5hmp73k5npy70sr73fnyjdezm7xgf50u4ycnsudkchta5jt"}
+
+ :alternate-identities
+ {:email-alts ["akirobloom@gmail.com"]
+  :instagram-alts ["bu778rf1y_research" "xykld2"]
+  :notes "Previous identity: xykld2 → bu778rf1y_research (changed Nov 12, 2023)"}
+
+ :chartcourse
+ {:domains ["chartcourse.io" "chartcourse.net" "chartcourse.org"]
+  :organization "chartcourse-io"
+  :purchased "2025-10-25"
+  :cost-annual 93}
  
  :created "12025-10-25"
  :graintime "12025-10-25--0912-PDT--moon-jyeshtha-----asc-gemi02-sun-12h--teamstructure10"}
