@@ -1,0 +1,10 @@
+# Gitattributes for grainkae3g
+# Exclude reference/research code from language statistics
+
+# Urbit/Hoon source code (reference material, not authored)
+*.hoon linguist-vendored
+grainstore/urbit-source/** linguist-vendored
+grainstore/kae3g/grainkae3g-12025-10/grainstore/docs/urbit-source/** linguist-vendored
+
+# Show actual project languages (Clojure, TypeScript, Rust, Nix, etc.)
+
