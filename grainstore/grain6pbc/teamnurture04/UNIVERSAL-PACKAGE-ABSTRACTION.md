@@ -31,6 +31,27 @@ grainbarrel (Cargo crate)
 
 ---
 
+## Grain Packages to Deploy
+
+**Priority 1** (Core tooling):
+1. **grainbarrel** - Build automation and deployment pipeline
+2. **graintime** - Vedic astrology timestamp generator
+3. **grainorder** - Universal alphabetical ordering system (team13)
+
+**Priority 2** (Development tools):
+4. **graincursor** - Sovereign code editor (Redox OS target)
+5. **grainp2p** - P2P networking daemon (IPFS + Urbit)
+6. **graincrypto** - Multi-chain transaction manager (ICP, Hedera, Solana)
+
+**Priority 3** (Infrastructure):
+7. **grainsync** - Multi-repo git sync daemon
+8. **grainwatch** - File system observer daemon
+9. **grainbackup** - Encrypted backup to IPFS
+
+**All packages**: Use Universal Package Abstraction (one source → all formats)
+
+---
+
 ## Architecture: The Three Layers
 
 ### **Layer 1: Core Runtime (musl + s6)**
