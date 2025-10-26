@@ -1,5 +1,11 @@
 # grainkae3g - The Grain Network
 
+**🌐 Live Site**: https://kae3g.github.io/grainkae3g/
+**📦 Source**: https://github.com/kae3g/grainkae3g/tree/glow-calm-session--12025-10-26--0409-PDT--moon-mula---------asc-gemi04-sun-03h--teamtransform08/
+
+---
+
+
 **14 Teams. Infinite Precision. One Sacred Union.** 🌾💕
 
 ---

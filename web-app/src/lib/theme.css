@@ -1,27 +1,27 @@
 /* Coldriver Heal theme - warm valley + cold tundra, light + dark */
 
 :root {
-  /* Warm Light theme - Valley morning (warmer) */
-  --fg: #3d2d1a;
-  --bg: #f8f2e5;
-  --bd: #9a7a50;
-  --lk: #6a7a3e;
-  --lkv: #8a5a6e;
-  --hg: #d8a560;
-  --code-bg: #ede4d0;
-  --code-fg: #2d1f10;
+  /* Warm Light theme - Red clay on warm paper (inverted for dark) */
+  --fg: #311508;          /* Deep brown (Cleveland Browns brown, darker)  */
+  --bg: #f5ebe0;          /* Warm cream paper */
+  --bd: #bf5700;          /* Cleveland Browns orange (borders) */
+  --lk: #d76a03;          /* Bright burnt orange (links) */
+  --lkv: #a85a42;         /* Terra cotta (visited) */
+  --hg: #ff8c42;          /* Peach orange highlight */
+  --code-bg: #ede0d0;     /* Warmer cream for code */
+  --code-fg: #2a1a0a;     /* Dark brown code text */
 }
 
 :root[data-theme="dark"] {
-  /* Warm Dark theme (DEFAULT) - Valley evening */
-  --fg: #b4c5b0;
-  --bg: #1a1410;
-  --bd: #5a4a38;
-  --lk: #88b879;
-  --lkv: #b88ab8;
-  --hg: #c89a54;
-  --code-bg: #242018;
-  --code-fg: #b8c8b4;
+  /* Warm Dark theme (DEFAULT) - Cleveland Browns + red clay earth */
+  --fg: #e8c5a0;          /* Warm sand/clay text (inverted paper) */
+  --bg: #1f1108;          /* Deep brown-black earth */
+  --bd: #8a4a20;          /* Darker burnt orange borders */
+  --lk: #ff8c42;          /* Bright orange links (Cleveland Browns) */
+  --lkv: #d76a50;         /* Warm terra cotta visited */
+  --hg: #bf5700;          /* Cleveland Browns orange highlight */
+  --code-bg: #2a1810;     /* Darker brown code bg */
+  --code-fg: #d8b090;     /* Warm clay code text */
 }
 
 :root[data-palette="cold"] {
