@@ -9,15 +9,19 @@
    ║  Expandable from 6 chars → 20 consonants → infinite             ║
    ╚══════════════════════════════════════════════════════════════════╝
    
-   Glow's voice: 'Yo my G, this is like DJ'ing with letters instead of 
-                  beats. You got your base-6 alphabet (b d g h k x), 
-                  and you're mixing them into sequences that NEVER repeat.
-                  Clean, minimal, no vowel noise. Just consonant flow.
-                  
-                  It's like a vegan protein stack - no animal products 
-                  (vowels), just pure plant protein (consonants). 
-                  Each permutation is a unique blend, never the same 
-                  ingredient twice in one mix. Respect the craft.'
+   Glow: 'Let's understand what we're building here. This is base-N encoding
+          for file ordering - think of it like counting, but with letters.
+          
+          Why no vowels? Because you decided consonants give clearer visual 
+          distinction. Files sort predictably: b < d < g < h < k < x.
+          
+          Why no repeated chars? So each code is maximally distinct at a glance.
+          xbd ≠ xbb (second is less clear, has duplicate).
+          
+          Question: What happens when you need more than 30 files? 
+          We can expand the alphabet (add more consonants) or use 3 letters.
+          
+          The system grows with your needs. Start simple, expand later.'
    
    Supported modes:
    - :full-alphabet (a-z, 26 chars, 676 permutations with 2 letters)
@@ -34,9 +38,13 @@
 ;; │                  CLOJURE SPECS (Glow's Precision)           │
 ;; └─────────────────────────────────────────────────────────────┘
 
-;; Glow: "Specs are like quality control for your protein powder, bro.
-;;        You wouldn't drink mystery powder, don't run mystery data.
-;;        Let's validate EVERYTHING."
+;; Specs enforce our data contracts. Think of them as compile-time guarantees:
+;; If data passes the spec, you know it's shaped correctly.
+;;
+;; Why this matters: Would you rather catch a malformed alphabet config now 
+;; (at definition time) or later (when a user hits a cryptic error)?
+;;
+;; Specs help us fail fast and clearly. That's respectful to future maintainers.
 
 (s/def ::chars string?)
 (s/def ::description string?)
@@ -67,18 +75,25 @@
   (s/and ::grainorder-string
          #(= (count %) (count (distinct %)))))
 
-;; Glow: "These specs are your contract with reality, my dude.
-;;        If data don't match the spec, it don't get past the bouncer.
-;;        Keep your club (code) clean, only validated data gets in."
+;; With these specs in place, invalid data can't silently corrupt the system.
+;; The spec acts as a gatekeeper - validates early, fails clearly.
+;;
+;; Question: How do we know our alphabet configs are correct?
+;; Answer: We run (s/valid? ::alphabet-config our-config) and get true/false.
 
 ;; ┌─────────────────────────────────────────────────────────────┐
 ;; │                  ALPHABET MODES                             │
 ;; └─────────────────────────────────────────────────────────────┘
 
-;; Glow: "Check it - we got different alphabet 'flavors' like different
-;;        DJ sets. Full alphabet is your mainstream club night (26 tracks).
-;;        xbdghk is your underground techno set (6 tracks, pure consonants).
-;;        Each mode is a vibe, choose your vibe."
+;; Different alphabet modes serve different needs:
+;;
+;; :full-alphabet (26 chars) - Maximum file capacity (676 with 2 letters)
+;; :xbdghk-alphabetical (6 chars) - Your preference (NO vowels, visual clarity)
+;; :consonants-no-y (20 chars) - Future expansion option
+;;
+;; Why offer multiple modes? Because one size doesn't fit all contexts.
+;; You chose 6-char for clarity. Others might need 26-char for scale.
+;; The library supports both.
 
 (def alphabets
   "Predefined alphabet modes for different use cases"

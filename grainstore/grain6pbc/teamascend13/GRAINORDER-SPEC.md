@@ -326,20 +326,20 @@ grainstore/grain6pbc/teamascend13/grainorder/
 
 **14 files**, custom order:
 ```
-xaa - Team14
-xbc - Team12
-xbd - Team06
-xbg - Team08
-xbh - Team04
-xbk - Team10
-xdb - Team02
-xdc - Team03
-xdg - Team11
-xdk - Team07
-xgb - Team09
-xgd - Team05
-xgh - Team01
-xhb - Team13
+xbd - Team14
+xbg - Team12
+xbh - Team06
+xbk - Team08
+xdb - Team04
+xdg - Team10
+xdh - Team02
+xdk - Team03
+xgb - Team11
+xgd - Team07
+xgh - Team09
+xgk - Team05
+xhb - Team01
+xhd - Team13
 ```
 
 ---

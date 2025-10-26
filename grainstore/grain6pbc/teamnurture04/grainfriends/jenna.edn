@@ -1,0 +1,22 @@
+{:id "jenna"
+ :type :friend
+ :name "Jenna"
+ :status :active
+ 
+ :platforms
+ {:happycow "jenna"  ; HappyCow username
+  :discord "jenna"}  ; Discord username (exact handle unknown)
+ 
+ :discovered "2025-10-26"
+ :context "Friend on HappyCow and Discord"
+ 
+ :shared-interests
+ ["vegan food"
+  "restaurant discovery"
+  "community"]
+ 
+ :notes "Friend from HappyCow vegan community and Discord.
+         Part of kae3g's vegan network.
+         HappyCow cow profile picture reaction: 'OMG 🥺 THE COW 🥺'
+         Shows enthusiasm for vegan branding/aesthetics."}
+

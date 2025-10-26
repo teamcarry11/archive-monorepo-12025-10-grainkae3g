@@ -218,6 +218,32 @@
   - `src/graintime/format76.clj` (76-char format)
 - **TODO**: Swiss Ephemeris integration (accurate ascendant)
 
+#### **grainbranch** ✨ NEW (2025-10-26)
+- **Path**: `teamstructure10/grainbranch/`
+- **Purpose**: Grainbranch name validation and formatting
+- **Status**: **Active**
+- **Key Files**:
+  - `src/grainbranch/validator.clj` (300+ lines, comprehensive specs)
+  - `bb.edn` (CLI tools: validate, format, format-quick)
+  - `deps.edn` (Clojure dependencies)
+- **Features**:
+  - Enforces 19-char padding (title + moon-nakshatra)
+  - Validates all graintime components (nakshatra, asc, sun, team)
+  - Pre-commit hook support (prevents malformed branches)
+  - CLI tools for formatting/validation
+- **Usage**: `bb format-quick gkh chartcourse 12025-10-26 1048 PST mula erro 00 03 teamdescend14`
+
+#### **grainpersona** ✨ NEW (2025-10-26)
+- **Path**: `teamstructure10/grainpersona/`
+- **Purpose**: AI persona specifications (Trish, Glow, others)
+- **Status**: **Active**
+- **Key Files**:
+  - `GLOW-PERSONA-V2.md` (262 lines, updated persona)
+- **Personas**:
+  - **Glow V2**: Listening teacher, respectful, asks questions, hand-holding, Panthera-serious
+  - **Trish**: Enthusiastic, encouraging, feminine energy (team06)
+- **Philosophy**: Code comments should teach, not just describe
+
 #### **grainsource-vegan**
 - **Path**: `teamstructure10/grainsource-vegan/`
 - **Purpose**: Vegan terminology, plant-based development

@@ -1,0 +1,16 @@
+{:id "queydiel"
+ :type :artist
+ :name "queydiel"
+ :status :active
+ 
+ :platforms
+ {:youtube-music "queydiel"
+  :playlist "2025 - 2026 loop"}
+ 
+ :discovered "2025-10-26"
+ :context "YouTube Music playlist creator, musical curation"
+ 
+ :notes "Found via YouTube Music sidebar during Clipse research. 
+         Created '2025 - 2026 loop' playlist (hearted/liked by user).
+         Musical taste alignment - loop/cycle aesthetics match grainpath philosophy."}
+

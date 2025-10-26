@@ -5,22 +5,22 @@
 
 ---
 
-## The 14 Documents (xbc alphabetical order)
+## The 14 Documents (xbdghk order, NO duplicates)
 
-1. **xaa** - Team14 (Ketu/Pisces) - Ketos Descent & Philosophy ✅
-2. **xbc** - Team12 (Saturn/Aquarius) - Patient Build Foundations
-3. **xbd** - Team06 (Mercury/Virgo) - Precision Configuration
-4. **xbg** - Team08 (Venus/Libra) - Beautiful Transformations
-5. **xbh** - Team04 (Moon/Cancer) - Package Nurturing
-6. **xbk** - Team10 (Mars/Capricorn) - Structured Time & Data
-7. **xdb** - Team02 (Venus/Taurus) - Secrets & Storage
-8. **xdc** - Team03 (Mercury/Gemini) - P2P Networks
-9. **xdg** - Team11 (Jupiter/Sagittarius) - Future Vision
-10. **xdk** - Team07 (Moon/Libra) - Balanced Commerce
-11. **xgb** - Team09 (Mars/Scorpio) - Deep Truth Mining
-12. **xgd** - Team05 (Sun/Leo) - Radiant UI/UX
-13. **xgh** - Team01 (Sun/Aries) - Ignition & Fire
-14. **xhb** - Team13 (Rahu/Aries) - Ascent & Aspiration
+1. **xbd** - Team14 (Ketu/Pisces) - Ketos Descent & Philosophy ✅
+2. **xbg** - Team12 (Saturn/Aquarius) - Patient Build Foundations
+3. **xbh** - Team06 (Mercury/Virgo) - Precision Configuration
+4. **xbk** - Team08 (Venus/Libra) - Beautiful Transformations
+5. **xdb** - Team04 (Moon/Cancer) - Package Nurturing
+6. **xdg** - Team10 (Mars/Capricorn) - Structured Time & Data
+7. **xdh** - Team02 (Venus/Taurus) - HappyVault & Joyful Secrets
+8. **xdk** - Team03 (Mercury/Gemini) - P2P Networks
+9. **xgb** - Team11 (Jupiter/Sagittarius) - Future Vision
+10. **xgd** - Team07 (Moon/Libra) - Balanced Commerce
+11. **xgh** - Team09 (Mars/Scorpio) - Deep Truth Mining
+12. **xgk** - Team05 (Sun/Leo) - Radiant UI/UX
+13. **xhb** - Team01 (Sun/Aries) - Ignition & Fire
+14. **xhd** - Team13 (Rahu/Aries) - Ascent & Aspiration
 
 ---
 
