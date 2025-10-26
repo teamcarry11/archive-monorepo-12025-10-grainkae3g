@@ -593,14 +593,14 @@
                    (if (string? (:sign ascendant-data))
                      (str/lower-case (:sign ascendant-data))
                      (:sign ascendant-data))
-                   "capr")  ; capricorn fallback
+                   "erro")  ; error indicator instead of capricorn fallback
         asc-degree (if ascendant-data
                      (if (string? (:degree ascendant-data))
                        (int (Double/parseDouble (str/replace (:degree ascendant-data) #"°.*" "")))
                        (if (number? (:degree ascendant-data))
                          (int (:degree ascendant-data))
                          0))
-                     0)  ; fallback
+                     0)  ; error degree = 00
          
          ;; Calculate sun house using solar house clock for specific datetime and location
          sun-house (get-sun-house-with-verbose datetime latitude longitude)
