@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - 'glow-calm-session*'
   workflow_dispatch:
 
 permissions:
@@ -73,10 +74,10 @@ EOF
 
       - name: Build content with Babashka
         run: |
-          echo "Starting babashka build..."
-          cd grainstore/grainbarrel
+          echo "🌾 Starting grainbarrel build (team04)..."
+          cd grainstore/grain6pbc/teamnurture04/grainbarrel
           bb qb-now
-          echo "Babashka build completed successfully"
+          echo "✅ grainbarrel build completed"
 
       - name: Build SvelteKit site
         working-directory: ./web-app

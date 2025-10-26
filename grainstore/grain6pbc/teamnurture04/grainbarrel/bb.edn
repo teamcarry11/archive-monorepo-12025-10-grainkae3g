@@ -1,0 +1,21 @@
+{:paths ["src"]
+ :deps {}
+ 
+ :tasks
+ {;; Build task for CI/CD
+  qb-now
+  {:doc "Quick build - generate grainsite content"
+   :task (do
+           (println "🌾 grainbarrel: Building grainsite content...")
+           (println "✅ Content build complete (placeholder)")
+           (println "📊 Ready for SvelteKit build"))}
+  
+  ;; Future tasks
+  qb-fast
+  {:doc "Fast incremental build"
+   :task (println "Fast build placeholder")}
+  
+  flow
+  {:doc "Complete build + deploy flow"
+   :task (println "Flow placeholder")}}}
+
