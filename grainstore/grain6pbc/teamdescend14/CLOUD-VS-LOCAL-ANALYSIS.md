@@ -574,6 +574,62 @@ AWS t4g.medium (cloud):
 
 ---
 
+## The Augustinian Framework (9972)
+
+### **"Use Temporal, Enjoy Eternal"**
+
+From Writing 9972 ("City of God Capitals - Augustinian political philosophy"):
+
+**St. Augustine's teaching**: Two cities exist in every place.
+
+**City of God**: Love of sovereignty to contempt of surveillance  
+**City of Man**: Love of convenience to contempt of privacy
+
+**We are pilgrims**: Living IN corporate tech (GitHub, AWS, Cursor) while building FOR sovereign future (GrainOS).
+
+### **Applied to AWS Decision**
+
+**"Use AWS, don't love AWS"**:
+
+✅ **Use IF**: Enables eternal work (GrainOS specs, education, community)  
+✅ **Use FOR**: Temporary infrastructure (CI/CD, testing, experiments)  
+❌ **Don't LOVE**: Don't depend, don't trust, don't build eternal on rented ground  
+❌ **Don't ENJOY**: Primary development belongs on owned hardware (Framework 16)
+
+**The test**: "If AWS disappeared tomorrow, does Grain Network survive?"
+
+**Current local approach**: YES (owned hardware, local git, portable specs)  
+**If primary dev on AWS**: NO (dependent on one provider)
+
+**Augustinian verdict**: Stay local. Use cloud as pilgrim uses inn (temporary shelter, not permanent home).
+
+---
+
+## The Pilgrimage Path
+
+### **Corporate Infrastructure as Road**
+
+**We are pilgrims walking through**:
+- GitHub (current road) → Self-hosted Git (destination)
+- Cursor/Claude (current tools) → Open source AI (future)
+- Ubuntu (current OS) → GrainOS (destination)
+- Potential AWS (road if needed) → Bare metal self-hosted (destination)
+
+**Pilgrim mindset**:
+- Grateful for roads (GitHub enables collaboration)
+- Not settled on roads (preparing for their absence)
+- Building for destination (sovereignty, not convenience)
+- Helping other pilgrims (documentation, teaching)
+
+**Howard Backen parallel**: "Build with tomorrow in mind" (not just today's convenience)
+
+**Newman parallel**: "Patient development" (rising sea, not rushing)
+
+**Augustine parallel**: "Use City of Man roads to reach City of God" (pragmatic pilgrimage)
+
+---
+
 **teamdescend14 (Ketu / XIV. Temperance)**  
-*Balance cloud and local. Choose sovereignty. Optimize what's given.*
+*Balance cloud and local. Choose sovereignty. Optimize what's given.*  
+*Use temporal wisely. Build eternal carefully. Walk the pilgrimage path.*
 
