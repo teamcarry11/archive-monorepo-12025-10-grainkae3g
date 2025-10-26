@@ -45,34 +45,85 @@
 
 ---
 
-## Current Implementation (7-character subset)
+## Current Implementation (6-character subset)
 
-**Characters used**: `a, b, c, d, g, h, k`
+**Characters used**: `b, d, g, h, k, x`
 
-**Why these 7?**:
-- **Diverse consonants + vowels** (a = vowel, b/c/d/g/h/k = consonants)
-- **Easy to type** (no q, x, z complexity)
-- **Visually distinct** (no confusing i/l, o/0)
+**Why these 6?**:
+- **NO vowels** (a, e, i, o, u excluded - user preference)
+- **NO y** (excluded - user preference)
+- **Consonants only** (clear, distinct, no ambiguity)
+- **Easy to type** (common consonants)
+- **Visually distinct** (no confusing characters)
 
-**Ordering**:
+**Design decision**: 
+- Can expand later to full consonants (20 chars: `bcdfghjklmnpqrstvwxz`)
+- Start with 6-char subset for simplicity
+- User decides which consonants to add over time
+
+**Ordering** (with `x` prefix for Ketos Vision Synthesis):
 ```
-xaa  (1)
-xbc  (2)
-xbd  (3)
-xbg  (4)
-xbh  (5)
-xbk  (6)
-xdb  (7)
-xdc  (8)
-xdg  (9)
-xdk  (10)
-xgb  (11)
-xgd  (12)
-xgh  (13)
-xhb  (14)
+xbd  (0)   ← NO repeated consonants
+xbg  (1)
+xbh  (2)
+xbk  (3)
+xbx  (4)
+xdb  (5)
+xdg  (6)
+xdh  (7)
+xdk  (8)
+xdx  (9)
+xgb  (10)
+xgd  (11)
+xgh  (12)
+xgk  (13)
+xgx  (14)
+xhb  (15)
+xhd  (16)
+xhg  (17)
+xhk  (18)
+xhx  (19)
+xkb  (20)
+xkd  (21)
+xkg  (22)
+xkh  (23)
+xkx  (24)
+xbk  (25)
+...
 ```
 
-**Total possible**: 7² = **49 files** with 2-letter suffix
+**Rule**: **NO repeated consonants** in the same string
+- ❌ `xbb`, `xdd`, `xgg`, `xhh`, `xkk`, `xxx` (rejected)
+- ✅ `xbd`, `xbg`, `xdh`, `xgk` (valid - all different consonants)
+
+**Total possible**: 6 × 5 = **30 combinations** with 2-letter suffix (first char can be any of 6, second char must be different, so 5 choices)
+
+**For chartcourse ordering** (use `g` prefix, REVERSE order to show recent first):
+```
+gkx  (chartcourse 0 - most recent, appears FIRST)  ← Reverse xbdghk order
+gkh  (chartcourse 1 - Ketos Vision Session 2025-10-26) ✅
+gkg  (chartcourse 2)
+gkd  (chartcourse 3)
+gkb  (chartcourse 4)
+ghx  (chartcourse 5)
+ghk  (chartcourse 6)
+ghg  (chartcourse 7)
+ghd  (chartcourse 8)
+ghb  (chartcourse 9)
+ggx  (chartcourse 10)
+...
+gbd  (chartcourse 29 - oldest, appears LAST)
+```
+
+**Why reverse?**
+- Most recent chartcourse = highest in alphabet = appears FIRST in file listings
+- `gkx` > `gkh` > `gkg` > ... > `gbd` (descending alphabetically)
+- New sessions start at `gkx` and work backwards
+- When you hit `gbd` (lowest), cycle back to `gkx`
+
+**Alphabetical sort**: 
+- `g` < `x` → chartcourses appear before Ketos synthesis docs ✅
+- `gkx` > `gbd` → recent chartcourses appear before old ones ✅
 
 ---
 

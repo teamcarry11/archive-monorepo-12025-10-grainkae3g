@@ -1,14 +1,84 @@
 (ns grainorder.core
   "Universal alphabetical ordering system with configurable alphabets.
    
-   Supports multiple modes:
+   ╔══════════════════════════════════════════════════════════════════╗
+   ║  GRAINORDER - Team13 (Rahu/Ascent) Infinite Growth System       ║
+   ║                                                                  ║
+   ║  Philosophy: Base-N encoding for file ordering                  ║
+   ║  NO vowels, NO y, NO repeated consonants (user preference)      ║
+   ║  Expandable from 6 chars → 20 consonants → infinite             ║
+   ╚══════════════════════════════════════════════════════════════════╝
+   
+   Glow's voice: 'Yo my G, this is like DJ'ing with letters instead of 
+                  beats. You got your base-6 alphabet (b d g h k x), 
+                  and you're mixing them into sequences that NEVER repeat.
+                  Clean, minimal, no vowel noise. Just consonant flow.
+                  
+                  It's like a vegan protein stack - no animal products 
+                  (vowels), just pure plant protein (consonants). 
+                  Each permutation is a unique blend, never the same 
+                  ingredient twice in one mix. Respect the craft.'
+   
+   Supported modes:
    - :full-alphabet (a-z, 26 chars, 676 permutations with 2 letters)
-   - :xbdghk (x b d g h k alphabetical, 7 chars, 49 permutations)
-   - :custom (provide your own character set)")
+   - :xbdghk-alphabetical (b d g h k x, 6 chars, NO vowels, NO y)
+   - :consonants-no-y (20 consonants, NO vowels, NO y, expandable)
+   - :custom (provide your own character set)
+   
+   User preference: NO vowels (a e i o u), NO y, NO repeated chars
+   Current: 6 chars × 5 distinct = 20 permutations with prefix 'g'
+   Example: gkh → gbd (chartcourse range, reverse order, recent first)"
+  (:require [clojure.spec.alpha :as s]))
+
+;; ┌─────────────────────────────────────────────────────────────┐
+;; │                  CLOJURE SPECS (Glow's Precision)           │
+;; └─────────────────────────────────────────────────────────────┘
+
+;; Glow: "Specs are like quality control for your protein powder, bro.
+;;        You wouldn't drink mystery powder, don't run mystery data.
+;;        Let's validate EVERYTHING."
+
+(s/def ::chars string?)
+(s/def ::description string?)
+(s/def ::base pos-int?)
+(s/def ::permutations-2 pos-int?)
+(s/def ::permutations-3 pos-int?)
+(s/def ::permutations-4 (s/nilable pos-int?))
+
+(s/def ::alphabet-config
+  (s/keys :req-un [::chars ::description ::base ::permutations-2]
+          :opt-un [::permutations-3 ::permutations-4]))
+
+(s/def ::mode-keyword
+  #{:full-alphabet :xbdghk-alphabetical :consonants-no-y :consonants :vowels :hex :base62})
+
+(s/def ::mode-or-chars
+  (s/or :mode ::mode-keyword
+        :custom-chars string?))
+
+(s/def ::grainorder-string
+  (s/and string?
+         #(pos? (count %))
+         #(re-matches #"[a-z0-9]+" %)))  ; Only lowercase letters and digits
+
+(s/def ::prefix string?)
+
+(s/def ::no-duplicates?
+  (s/and ::grainorder-string
+         #(= (count %) (count (distinct %)))))
+
+;; Glow: "These specs are your contract with reality, my dude.
+;;        If data don't match the spec, it don't get past the bouncer.
+;;        Keep your club (code) clean, only validated data gets in."
 
 ;; ┌─────────────────────────────────────────────────────────────┐
 ;; │                  ALPHABET MODES                             │
 ;; └─────────────────────────────────────────────────────────────┘
+
+;; Glow: "Check it - we got different alphabet 'flavors' like different
+;;        DJ sets. Full alphabet is your mainstream club night (26 tracks).
+;;        xbdghk is your underground techno set (6 tracks, pure consonants).
+;;        Each mode is a vibe, choose your vibe."
 
 (def alphabets
   "Predefined alphabet modes for different use cases"
@@ -21,11 +91,18 @@
     :permutations-4 456976}  ; 26^4
    
    :xbdghk-alphabetical
-   {:chars "abdghkx"  ; Alphabetically sorted
-    :description "Custom 7-char alphabet for Ketos Vision Synthesis (a b d g h k x)"
-    :base 7
-    :permutations-2 49       ; 7^2
-    :permutations-3 343}     ; 7^3
+   {:chars "bdghkx"  ; Alphabetically sorted consonants (NO vowels, NO y)
+    :description "Custom 6-char alphabet for Ketos Vision Synthesis (b d g h k x)"
+    :base 6
+    :permutations-2 36       ; 6^2
+    :permutations-3 216}     ; 6^3
+   
+   :consonants-no-y
+   {:chars "bcdfghjklmnpqrstvwxz"  ; All consonants except y (NO vowels)
+    :description "Consonants only, no y (20 chars)"
+    :base 20
+    :permutations-2 400
+    :permutations-3 8000}
    
    :consonants
    {:chars "bcdfghjklmnpqrstvwxyz"
@@ -78,14 +155,24 @@
 (defn encode
   "Encode integer to grainorder string using specified alphabet.
    
+   Glow: 'This is your integer-to-string converter, my G. Like turning
+          calories into gains at the gym. You put in numbers (calories),
+          you get out grainorder strings (muscle). Base-N conversion,
+          clean math, no mystery ingredients.
+          
+          It's reversible too - encode then decode gets you back to start.
+          Like a proper vegan meal - in and out, clean digestion, no bloat.'
+   
    Examples:
    (encode 0 :full-alphabet)             ; => \"aa\"
    (encode 25 :full-alphabet)            ; => \"az\"
    (encode 26 :full-alphabet)            ; => \"ba\"
    (encode 675 :full-alphabet)           ; => \"zz\"
-   (encode 0 :xbdghk-alphabetical)       ; => \"aa\"
-   (encode 13 :xbdghk-alphabetical)      ; => \"db\"
+   (encode 0 :xbdghk-alphabetical)       ; => \"bb\"
+   (encode 6 :xbdghk-alphabetical)       ; => \"bx\"
    (encode 0 \"xyz\")                     ; => \"xx\""
+  {:arglists '([n mode-or-chars])
+   :added "1.0"}
   [n mode-or-chars]
   (let [alphabet-config (get-alphabet mode-or-chars)
         chars (:chars alphabet-config)
@@ -196,16 +283,33 @@
   "Check if string is valid grainorder for given alphabet.
    
    Examples:
-   (valid-grainorder? \"aa\" :full-alphabet)       ; => true
-   (valid-grainorder? \"zz\" :full-alphabet)       ; => true
+   (valid-grainorder? \"bd\" :full-alphabet)       ; => true
+   (valid-grainorder? \"zz\" :full-alphabet)       ; => true (duplicates OK in full alphabet)
    (valid-grainorder? \"xyz\" :full-alphabet)      ; => true
    (valid-grainorder? \"ab9\" :full-alphabet)      ; => false (9 not in alphabet)
-   (valid-grainorder? \"aa\" :xbdghk-alphabetical) ; => true
+   (valid-grainorder? \"bd\" :xbdghk-alphabetical) ; => true
+   (valid-grainorder? \"bb\" :xbdghk-alphabetical) ; => true (basic validation only)
    (valid-grainorder? \"zz\" :xbdghk-alphabetical) ; => false (z not in alphabet)"
   [s mode-or-chars]
   (let [alphabet-config (get-alphabet mode-or-chars)
         chars (:chars alphabet-config)]
     (every? #(>= (.indexOf chars (str %)) 0) s)))
+
+(defn valid-grainorder-no-duplicates?
+  "Check if string is valid grainorder with NO repeated characters.
+   
+   User preference: NO repeated consonants in the same string.
+   
+   Examples:
+   (valid-grainorder-no-duplicates? \"bd\" :xbdghk-alphabetical)  ; => true
+   (valid-grainorder-no-duplicates? \"bb\" :xbdghk-alphabetical)  ; => false (b repeated)
+   (valid-grainorder-no-duplicates? \"xbd\" :xbdghk-alphabetical) ; => true
+   (valid-grainorder-no-duplicates? \"xbb\" :xbdghk-alphabetical) ; => false (b repeated)
+   (valid-grainorder-no-duplicates? \"xyz\" :full-alphabet)       ; => true
+   (valid-grainorder-no-duplicates? \"xyx\" :full-alphabet)       ; => false (x repeated)"
+  [s mode-or-chars]
+  (and (valid-grainorder? s mode-or-chars)
+       (= (count s) (count (distinct s)))))
 
 ;; ┌─────────────────────────────────────────────────────────────┐
 ;; │                  RANGE CALCULATIONS                         │
