@@ -1,25 +1,26 @@
-# grainsteel: The Steel Scripting Vault
+# grainsteel: Flow State Scripting
 
-**Team**: 02 (teamvault02 - Taurus ♉ / II. The High Priestess)  
-**Authored by**: 14 (teamdescend14 - Ketu ☋ / XIV. Temperance)  
+**Team**: 12 (teamflow12 - Pisces ♓ / Water Element 🌊)  
+**Authored by**: 14 (teamdescend14 - Ketu ☋ / Air Element 💨)  
 **Language**: Steel (Rust-based Scheme, R5RS compliant)
 
 ## What is grainsteel?
 
-**grainsteel** is the home of ALL Steel scripting in the Grain Network. This is where the **stable foundation** lives - the validators, build tools, and automation scripts that power everything else.
+**grainsteel** is the home of ALL Steel scripting in the Grain Network. Like water flowing through Rust - adaptive, powerful, effortless.
 
-Like steel forged in fire, these scripts are designed to **endure**. They're not trendy. They're not flashy. They're **permanent tools** that will run on mantraOS in 2030 and beyond.
+These scripts are designed to feel **effortless** while being incredibly powerful. Like Katara mastering waterbending: fluid, responsive, flowing with rather than against.
 
-## Why Team 02 (teamvault02)?
+## Why Team 12 (teamflow12)?
 
-**Taurus ♉ Energy**: Earth, stability, permanence, enduring value  
-**High Priestess Energy**: Sacred knowledge, hidden wisdom, the vault of mysteries
+**Pisces ♓ Energy**: Water element, flow state, dissolution of boundaries  
+**Avatar Vibes**: Like waterbending - adapting to any container, powerful yet gentle
 
-Steel scripting embodies both:
-- **Taurus**: Tools built to last, like Helen Atthowe's hand-forged garden implements
-- **High Priestess**: Code as sacred knowledge, validated and protected in the vault
+Steel scripting embodies this:
+- **Flow**: Code flows naturally, Lisp's code-as-data dissolves rigid boundaries
+- **Adaptation**: Same scripts run on Ubuntu, Alpine, Redox OS (like water finding its path)
+- **Perspective shift**: The Hanged Man sees upside-down (Lisp's different syntax reveals new truths)
 
-The vault protects. The vault endures. Steel strengthens the vault.
+Water flows. Steel strengthens the flow. The current carries us forward.
 
 ## Why Steel?
 
@@ -155,19 +156,19 @@ Not bright. Not flashy. **Warm. Stable. Eternal.**
 
 ## Philosophy
 
-Team 02 guards the vault. Steel strengthens the vault.
+Team 12 flows with Steel. Water meets metal. Adaptation meets strength.
 
-We chose Steel because it will **last**. When frameworks fade and languages fragment, Steel will remain - a Scheme dialect on Rust foundations, actively maintained by a dedicated community.
+We chose Steel because it **flows naturally**. When you write Steel, you're not fighting syntax - you're flowing with it. Like waterbending: observing, adapting, moving with the current.
 
-Like Helen Atthowe's heirloom seeds. Like Da Vinci's preserved notebooks. Like tools forged to outlive their maker.
+Like Helen Atthowe working with soil cycles (not against them). Like Da Vinci sketching water's flow patterns. Like Aang learning all four elements through their natural movements.
 
-**Steel is our forever-language.** The vault protects it. The High Priestess blesses it.
+**Steel is our flow-language.** The water carries it. The air lifts it. The current moves us forward.
 
 ---
 
 **Copyright**: © 2025 kae3g (kj3x39, @risc.love)  
-**Team**: 02 (teamvault02 - Taurus ♉ / II. The High Priestess)  
-**Authored by**: 14 (teamdescend14 - Ketu ☋ / XIV. Temperance)
+**Team**: 12 (teamflow12 - Pisces ♓ / Water Element 🌊)  
+**Authored by**: 14 (teamdescend14 - Ketu ☋ / Air Element 💨)
 
-now == next + 1 🦀🌾
+now == next + 1 🌊🦀🌾
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env steel
 
 ;; graincard width validator (Steel - pure Rust Scheme)
-;; team: 02 (teamvault02 - taurus ♉ / ii. the high priestess)
+;; team: 12 (teamflow12 - pisces ♓ / xii. the hanged man)
 ;; authored by: 14 (teamdescend14 - ketu ☋ / xiv. temperance)
 ;; checks that all grain box lines are exactly 80 display characters
 ;; unicode-aware display width calculation

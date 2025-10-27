@@ -1,7 +1,7 @@
 #!/usr/bin/env steel
 
 ;; grainbranch-readme-sync.scm - Steel version
-;; team: 02 (teamvault02 - taurus ♉ / ii. the high priestess)
+;; team: 12 (teamflow12 - pisces ♓ / xii. the hanged man)
 ;; authored by: 14 (teamdescend14 - ketu ☋ / xiv. temperance)
 ;; 
 ;; Syncs the current grainbranch README to root README (symlink)
