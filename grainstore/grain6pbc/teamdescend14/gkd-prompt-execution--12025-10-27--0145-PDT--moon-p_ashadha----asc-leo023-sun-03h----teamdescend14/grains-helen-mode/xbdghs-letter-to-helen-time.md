@@ -30,13 +30,13 @@
 │ astrology), and which of 12 daily houses the sun occupied.                   │
 │                                                                              │
 │ a graintime looks like this:                                                 │
-│ 12025-10-27--0145-PDT--moon-mula--asc-arie05-sun-08h                        │
+│ 12025-10-27--0145-PDT--moon-p_ashadha------asc-arie05-sun-08h                        │
 │                                                                              │
 │ breaking it down the way you might explain a planting record:               │
 │   12025-10-27: october 27, 2025 (the date)                                  │
 │   0145: 1:45 am (the local time)                                             │
 │   PDT: pacific daylight time (my forest here in california)                 │
-│   moon-mula: moon in mula nakshatra (destruction before creation)           │
+│   moon-p_ashadha----: moon in mula nakshatra (destruction before creation)           │
 │   asc-arie05: aries rising at 5 degrees (pioneering, initiating)            │
 │   sun-08h: sun in 8th house (transformation, late night work)               │
 │                                                                              │

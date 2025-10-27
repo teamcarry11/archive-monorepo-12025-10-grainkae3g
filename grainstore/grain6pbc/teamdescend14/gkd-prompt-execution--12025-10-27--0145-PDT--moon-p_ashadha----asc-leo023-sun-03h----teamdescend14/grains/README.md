@@ -1,7 +1,7 @@
 # grainscripts - Ember Harvest 🎃
 
 **Author**: kae3g (kj3x39, @risc.love)  
-**Grainbranch**: `gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14`  
+**Grainbranch**: `gkd-prompt-execution--12025-10-26--1700-PDT--moon-p_ashadha--------------asc-arie05-sun-08h--teamdescend14`  
 **Live Site**: https://kae3g.github.io/grainkae3g/  
 **Total Possible Cards**: 1,235,520 (6-char codes from `xbdghjklmnsvz` alphabet)
 
@@ -84,7 +84,7 @@ Or write manually following the spec in [xbdghl](xbdghl-graincard-format-spec.md
 
 ## 🌍 Where These Cards Live
 
-**GitHub**: https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainbook-scripts
+**GitHub**: https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-p_ashadha--------------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-p_ashadha--------------asc-arie05-sun-08h--teamdescend14/grainbook-scripts
 
 **GitHub Pages**: https://kae3g.github.io/grainkae3g/
 

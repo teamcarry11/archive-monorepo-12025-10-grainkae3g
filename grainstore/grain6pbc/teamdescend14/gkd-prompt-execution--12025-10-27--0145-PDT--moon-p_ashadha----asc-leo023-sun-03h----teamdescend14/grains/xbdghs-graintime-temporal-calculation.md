@@ -28,13 +28,13 @@
 │   6. Sun House (diurnal house position, 1-12)                               │
 │                                                                              │
 │ EXAMPLE GRAINTIME:                                                           │
-│ 12025-10-26--1700-PDT--moon-mula--asc-arie05-sun-08h                        │
+│ 12025-10-26--1700-PDT--moon-p_ashadha------asc-arie05-sun-08h                        │
 │                                                                              │
 │ Breaking it down:                                                            │
 │   12025-10-26  → October 26, 2025 (12025 = year 2025 in calendar reform)   │
 │   1700         → 5:00 PM (17:00 in 24-hour time)                            │
 │   PDT          → Pacific Daylight Time (UTC-7)                              │
-│   moon-mula    → Moon in Mula nakshatra (Vedic: destruction→creation)       │
+│   moon-p_ashadha----    → Moon in Mula nakshatra (Vedic: destruction→creation)       │
 │   asc-arie05   → Ascendant Aries 5° (pioneering, initiating)               │
 │   sun-08h      → Sun in 8th house (transformation, depth, power)            │
 │                                                                              │
@@ -77,7 +77,7 @@
 │   $ gt --tz "PDT"               # Timezone                                  │
 │                                                                              │
 │ Output: Full grainbranch name like:                                          │
-│   gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula--asc-arie05...    │
+│   gkd-prompt-execution--12025-10-26--1700-PDT--moon-p_ashadha------asc-arie05...    │
 │                                                                              │
 │ WHY THIS MATTERS:                                                            │
 │                                                                              │
@@ -95,7 +95,7 @@
 │                                                                              │
 │ From forest to city, meltdown to capital, every grainbranch carries its     │
 │ temporal DNA. The graintime isn't decoration - it's MEMORY. When you read   │
-│ "moon-mula--asc-arie05-sun-08h", you're reading the MOMENT. Mula destroys   │
+│ "moon-p_ashadha------asc-arie05-sun-08h", you're reading the MOMENT. Mula destroys   │
 │ before creating. Aries initiates. 8th house transforms.                      │
 │                                                                              │
 │ DOES THIS MAKE SENSE?                                                        │
