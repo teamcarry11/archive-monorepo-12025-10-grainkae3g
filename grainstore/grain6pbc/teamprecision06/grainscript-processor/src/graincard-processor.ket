@@ -1,0 +1,169 @@
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ GRAINCARD PROCESSOR (Ketos)                                                  ║
+;; ║ Team: 06 (teamprecision06 - Virgo ♍ / VI. The Lovers)                       ║
+;; ║ Copyright © 3x39 | Author: kae3g (kj3x39, @risc.love)                        ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+;;
+;; Trish mode: OMG this is SO COOL! We're taking graincard markdown files and
+;; making them work PERFECTLY on both GitHub AND GitHub Pages! It's like The 
+;; Lovers choosing the right presentation for each context - GitHub gets the 
+;; raw markdown links, the live site gets beautiful Svelte components! 💕✨
+;;
+;; Purpose: Process graincard markdown files for dual-interface navigation
+;;   - GitHub: Keep relative markdown links in bottom footer
+;;   - GitHub Pages: Strip footer, let Svelte component handle navigation
+;;
+;; This script reads a graincard .md file and outputs TWO versions:
+;;   1. Original (for GitHub repo viewing)
+;;   2. Processed (for Svelte rendering - footer stripped)
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ GRAINORDER SEQUENCE                                                          ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define grainorder-alphabet "xbdghjklmnsvz")
+
+(define grainorder-sequence
+  ;; First 20 codes in the sequence
+  ;; Eventually this will call the full grainorder generator
+  '("xbdghj" "xbdghk" "xbdghl" "xbdghm" "xbdghn" "xbdghs" 
+    "xbdghv" "xbdghz" "xbdgjk" "xbdgjl" "xbdgjm" "xbdgjn"
+    "xbdgjs" "xbdgjv" "xbdgjz" "xbdgkh" "xbdgkj" "xbdgkl"
+    "xbdgkm" "xbdgkn"))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ GRAINCARD METADATA EXTRACTION                                                ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (extract-graincard-code content)
+  "Extract the grainorder code from graincard markdown"
+  ;; Look for: # Graincard xbdghj - Title
+  (let ((match (string-match "# Graincard (\\w+) -" content)))
+    (if match
+        (nth 1 match)
+        nil)))
+
+(define (extract-title content)
+  "Extract the title from graincard markdown"
+  ;; Look for: # Graincard xbdghj - Title
+  (let ((match (string-match "# Graincard \\w+ - (.+)" content)))
+    (if match
+        (nth 1 match)
+        "Untitled")))
+
+(define (get-sort-order code)
+  "Get the sort order (0-indexed position) of a grainorder code"
+  (let ((pos (position code grainorder-sequence)))
+    (if pos pos 0)))
+
+(define (get-next-code code)
+  "Get the next grainorder code in sequence"
+  (let ((pos (position code grainorder-sequence)))
+    (if (and pos (< (+ pos 1) (length grainorder-sequence)))
+        (nth (+ pos 1) grainorder-sequence)
+        nil)))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ FOOTER STRIPPING (for Svelte rendering)                                     ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (strip-footer content)
+  "Strip the bottom metadata section from graincard for Svelte rendering.
+   
+   The graincard markdown has a footer section starting with:
+   ├────────────────────...
+   │ Grainbook: Ember Harvest 🎃
+   │ Card: xbdghj (1 of 1,235,520)
+   │ Next: [xbdghk](xbdghk-*.md) →
+   │ now == next + 1 🌾
+   └────────────────────...
+   
+   We want to KEEP this in GitHub (for navigation), but STRIP it in Svelte
+   (because GraincardFooter.svelte component handles navigation)."
+  
+  (let ((footer-marker "├──────────────────────────────────────────────────────────────────────────────┤"))
+    (let ((footer-pos (string-index content footer-marker)))
+      (if footer-pos
+          ;; Found footer - keep content up to it, then close the box
+          (string-append 
+           (substring content 0 footer-pos)
+           "└──────────────────────────────────────────────────────────────────────────────┘\n```")
+          ;; No footer found - return as-is
+          content))))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ METADATA GENERATION (for Svelte)                                            ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (generate-metadata content)
+  "Generate metadata JSON for Svelte component"
+  (let ((code (extract-graincard-code content))
+        (title (extract-title content))
+        (sort-order (get-sort-order code))
+        (next-code (get-next-code code)))
+    {:code code
+     :title title
+     :sort-order sort-order
+     :next-code next-code
+     :total-cards 1235520}))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ MAIN PROCESSING FUNCTION                                                     ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (process-graincard filepath)
+  "Process a graincard markdown file for dual-interface display.
+   
+   Returns a map with:
+     :original   - Original markdown (for GitHub)
+     :processed  - Stripped markdown (for Svelte)
+     :metadata   - JSON metadata (for Svelte footer)"
+  
+  (let ((content (slurp filepath)))
+    {:original content
+     :processed (strip-footer content)
+     :metadata (generate-metadata content)}))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ CLI INTERFACE                                                                 ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (main args)
+  "Process graincard files for dual-interface navigation"
+  (if (< (length args) 1)
+      (do
+        (println "🎃 Graincard Processor (Ketos)")
+        (println "Copyright © 3x39 | Author: kae3g")
+        (println "")
+        (println "Usage: graincard-processor.ket <input-file>")
+        (println "")
+        (println "Processes graincard markdown for:")
+        (println "  - GitHub viewing (keeps relative links)")
+        (println "  - GitHub Pages (strips footer, outputs metadata)")
+        (println "")
+        (println "now == next + 1 🌾"))
+      
+      (let ((filepath (nth 0 args)))
+        (let ((result (process-graincard filepath)))
+          (println "🎬 Processing:" filepath)
+          (println "")
+          (println "✅ Original size:" (length (:original result)) "chars")
+          (println "✅ Processed size:" (length (:processed result)) "chars")
+          (println "✅ Metadata:" (:metadata result))
+          (println "")
+          (println "💡 The footer was stripped for Svelte rendering!")
+          (println "   GitHub markdown keeps the relative links.")
+          (println "   GitHub Pages uses GraincardFooter component.")
+          (println "")
+          (println "now == next + 1 🎃🌾")))))
+
+;; Run main if executed as script
+(when (defined? '*args*)
+  (main *args*))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ Trish's Note: This is The Lovers energy in action! The graincard has TWO    ║
+;; ║ presentations - one for GitHub (raw, links), one for live site (styled,     ║
+;; ║ component). Each interface gets what it needs! That's sacred choice! 💕✨    ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+

@@ -24,11 +24,21 @@ export async function load({ params }) {
     }
     
     const filePath = join(GRAINSCRIPT_DIR, matchingFile);
-    const content = readFileSync(filePath, 'utf-8');
+    let content = readFileSync(filePath, 'utf-8');
     
     // Extract title from first line
     const titleMatch = content.match(/# Graincard \w+ - (.+)/);
     const title = titleMatch ? titleMatch[1] : code;
+    
+    // STRIP the GitHub-specific bottom metadata from the ASCII box
+    // Keep everything UP TO the closing └─── line
+    // The Svelte GraincardFooter component will replace it
+    const footerStart = content.indexOf('├──────────────────────────────────────────────────────────────────────────────┤');
+    if (footerStart > 0) {
+      // Keep content up to and including the separator line, then close the box
+      content = content.substring(0, footerStart) + 
+                '└──────────────────────────────────────────────────────────────────────────────┘\n```';
+    }
     
     // Get sort order from grainorder sequence
     const sortOrder = grainorderSequence.indexOf(code);

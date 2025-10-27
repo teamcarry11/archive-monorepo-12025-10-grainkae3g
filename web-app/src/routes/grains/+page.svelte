@@ -3,12 +3,12 @@
 </script>
 
 <svelte:head>
-  <title>grainscript - Ember Harvest 🎃</title>
+  <title>grains - Ember Harvest 🎃</title>
 </svelte:head>
 
-<div class="grainscript-header">
-  <h1>grainscript</h1>
-  <p class="tagline">80×110 monospace teaching cards • 1,235,520 total</p>
+<div class="grains-header">
+  <h1>grains</h1>
+  <p class="tagline">Written in <strong>grainscript</strong> • 80×110 monospace • 1,235,520 total</p>
   <p class="github-link">
     <a href="https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainscript" 
        target="_blank" 

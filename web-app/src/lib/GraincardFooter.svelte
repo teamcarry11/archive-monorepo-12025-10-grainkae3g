@@ -33,7 +33,7 @@
     </div>
     <div class="navigation">
       {#if nextCode}
-        <a href="{base}/grainscript/{nextCode}" class="next-link">
+        <a href="{base}/grains/{nextCode}" class="next-link">
           Next: <strong>{nextCode}</strong> →
         </a>
       {:else}

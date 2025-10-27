@@ -1,0 +1,191 @@
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ GRAIN LINK PROCESSOR (Ketos)                                                 ║
+;; ║ Team: 06 (teamprecision06 - Virgo ♍ / VI. The Lovers)                       ║
+;; ║ Copyright © 3x39 | Author: kae3g (kj3x39, @risc.love)                        ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+;;
+;; Trish mode: This is SO MAGICAL! ✨💕 Every time you write **xbdghj** in a 
+;; graincard, it auto-links to that grain! It's like The Lovers creating sacred
+;; connections between knowledge! GitHub gets markdown links, live site gets HTML!
+;;
+;; Purpose: Auto-link grain references in graincard content
+;;   - Detects **xbdghj** patterns (bold 6-char grainorder codes)
+;;   - Replaces with appropriate links based on output format
+;;   - Enables cross-referencing across the entire grain network!
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ GRAINORDER VALIDATION                                                        ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define grainorder-alphabet "xbdghjklmnsvz")
+
+(define (valid-grainorder? code)
+  "Check if a 6-char code is valid grainorder"
+  (and (= 6 (length code))
+       (every? (lambda (c) (string-contains? grainorder-alphabet c)) 
+               (string->list code))
+       (= 6 (length (remove-duplicates (string->list code))))))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ LINK GENERATION                                                              ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (make-github-link code)
+  "Generate GitHub markdown link: [xbdghj](xbdghj-*.md)"
+  (format "[~a](~a-*.md)" code code))
+
+(define (make-live-link code base-url)
+  "Generate live site HTML link: <a href='/grains/xbdghj'>xbdghj</a>"
+  (format "<a href=\"~a/grains/~a\">~a</a>" base-url code code))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ PATTERN DETECTION & REPLACEMENT                                             ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (find-grain-references content)
+  "Find all **xbdghj** patterns in content (bold 6-char grainorder codes)"
+  ;; Pattern: **{6-char code}** where code is valid grainorder
+  (let ((pattern "\\*\\*([xbdghjklmnsvz]{6})\\*\\*"))
+    (regexp-matches pattern content)))
+
+(define (replace-grain-references content format base-url)
+  "Replace all **xbdghj** patterns with appropriate links
+   
+   format: 'github or 'live
+   base-url: '' for GitHub, '/base' for live site"
+  
+  (let ((references (find-grain-references content)))
+    (if (empty? references)
+        content  ;; No references found
+        
+        ;; Process each reference
+        (fold (lambda (ref acc)
+                (let ((code (cadr ref))  ;; Extract captured group
+                      (full-match (car ref)))
+                  (if (valid-grainorder? code)
+                      ;; Valid grainorder - replace with link
+                      (let ((replacement 
+                             (if (eq? format 'github)
+                                 (make-github-link code)
+                                 (make-live-link code base-url))))
+                        (string-replace acc full-match replacement))
+                      ;; Invalid - keep as-is
+                      acc)))
+              content
+              references))))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ DUAL-INTERFACE PROCESSING                                                    ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (process-for-github content)
+  "Process graincard content for GitHub viewing
+   
+   - Replace **xbdghj** with [xbdghj](xbdghj-*.md)
+   - Keep bottom footer with markdown links
+   - Keep all metadata"
+  
+  (replace-grain-references content 'github ""))
+
+(define (process-for-live content base-url)
+  "Process graincard content for GitHub Pages viewing
+   
+   - Replace **xbdghj** with HTML <a> tags
+   - Strip bottom footer (Svelte component handles it)
+   - Clean for rendering"
+  
+  (let ((linked-content (replace-grain-references content 'live base-url)))
+    ;; Strip the footer section
+    (let ((footer-start (string-index linked-content 
+                                      "├──────────────────────────────────────────────────────────────────────────────┤")))
+      (if footer-start
+          ;; Strip footer, close box
+          (string-append 
+           (substring linked-content 0 footer-start)
+           "└──────────────────────────────────────────────────────────────────────────────┘\n```")
+          ;; No footer - return as-is
+          linked-content))))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ FILE I/O                                                                      ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (process-graincard-file input-file output-format base-url)
+  "Process a graincard file and return processed content
+   
+   input-file: Path to .md file
+   output-format: 'github or 'live
+   base-url: Base URL for live site (e.g., '/grainkae3g' or '')"
+  
+  (let ((content (slurp input-file)))
+    (if (eq? output-format 'github)
+        (process-for-github content)
+        (process-for-live content base-url))))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ CLI INTERFACE                                                                 ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (main args)
+  "Process graincard files with auto-linking
+   
+   Usage:
+     grain-link-processor.ket <file> github
+     grain-link-processor.ket <file> live [base-url]
+   
+   Examples:
+     # For GitHub (adds markdown links)
+     grain-link-processor.ket xbdghj-*.md github
+     
+     # For live site (adds HTML links, strips footer)
+     grain-link-processor.ket xbdghj-*.md live /grainkae3g"
+  
+  (if (< (length args) 2)
+      (do
+        (println "🎃 Grain Link Processor (Ketos)")
+        (println "Copyright © 3x39 | Author: kae3g")
+        (println "Team: 06 (teamprecision06 - The Lovers)")
+        (println "")
+        (println "✨ Trish says: This creates SACRED CONNECTIONS between grains!")
+        (println "   Every **xbdghj** reference becomes a link! 💕")
+        (println "")
+        (println "Usage:")
+        (println "  grain-link-processor.ket <file> github")
+        (println "  grain-link-processor.ket <file> live [base-url]")
+        (println "")
+        (println "Output: Processed content to stdout")
+        (println "")
+        (println "now == next + 1 🌾"))
+      
+      (let ((input-file (nth 0 args))
+            (format-str (nth 1 args))
+            (base-url (if (>= (length args) 3) (nth 2 args) "")))
+        
+        (let ((output-format (if (= format-str "github") 'github 'live)))
+          (println (process-graincard-file input-file output-format base-url))))))
+
+;; Run if executed as script
+(when (defined? '*args*)
+  (main *args*))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ EXAMPLE USAGE                                                                 ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+;;
+;; Input graincard content:
+;;   "See **xbdghk** for the Ketos version and **xbdghl** for format details."
+;;
+;; GitHub output:
+;;   "See [xbdghk](xbdghk-*.md) for the Ketos version and 
+;;    [xbdghl](xbdghl-*.md) for format details."
+;;
+;; Live site output:
+;;   "See <a href='/grains/xbdghk'>xbdghk</a> for the Ketos version and
+;;    <a href='/grains/xbdghl'>xbdghl</a> for format details."
+;;
+;; 💕 Trish: The Lovers choose the RIGHT link format for each context!
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ now == next + 1 🎃🌾                                                         ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
