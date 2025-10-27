@@ -1,261 +1,277 @@
-;; ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
-;; grainsearch: functional text processing for grain ecosystem
-;; ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
-
+;; ∿∿∿ GRAINSEARCH: FUNCTIONAL SEARCH UTILITY ∿∿∿
 ;; team: 07 (teambalance07 - libra ♎ / vii. the chariot)
 ;; authored by: 14 (teamdescend14 - ketu ☋ / xiv. temperance)
-;; description: pattern matching and field extraction for grain files
-;;              purely functional composition inspired by strong types
-;;              balances simplicity with power (libra equilibrium)
+;; description: composable search utility for grain processing
+;;              purely functional, strongly typed, extensible
+;;              balancing power with simplicity
 
-;; ╭─────────────────────────────────────────────────────────────────────────╮
-;; │ TYPE SIGNATURES (expressed as comments, enforced through validation)    │
-;; ╰─────────────────────────────────────────────────────────────────────────╯
+;; ╭─────────────────────────────────────────────────────────────────╮
+;; │ TYPE SYSTEM (inspired by algebraic types, not named explicitly) │
+;; ╰─────────────────────────────────────────────────────────────────╯
 
-;; line :: string
-;; field :: string  
-;; pattern :: (or regex-string predicate-fn transform-fn)
-;; match-result :: {matched? bool, value any, captures [string]}
-;; search-result :: {line string, line-num int, fields [field], matched? bool}
-;; aggregation :: {count int, unique-values #{any}, stats {min max sum}}
+;; search-result :: { :file str, :line-number int, :content str, :fields [str] }
+;; search-config :: { :pattern (str -> bool), :field-sep str, :aggregate? bool }
+;; pattern-type  :: union { :regex str | :predicate (str -> bool) | :function (str -> any) }
+;; aggregate     :: { :count int, :unique #{str}, :sum num, :mean num }
 
-;; ╭─────────────────────────────────────────────────────────────────────────╮
-;; │ CORE DATA STRUCTURES                                                    │
-;; ╰─────────────────────────────────────────────────────────────────────────╯
+;; ╭──────────────────────────────────────╮
+;; │ CORE DATA CONSTRUCTORS (pure values) │
+;; ╰──────────────────────────────────────╯
 
-(defun make-match-result (matched? value captures)
-  "construct match result record"
-  {:matched? matched?
-   :value value
-   :captures captures})
+(defun make-search-result (file line-num content)
+  "construct a search result record"
+  {:file file
+   :line-number line-num
+   :content content
+   :fields []
+   :matched? false})
 
-(defun make-search-result (line line-num fields matched?)
-  "construct search result record"
-  {:line line
-   :line-num line-num
-   :fields fields
-   :matched? matched?})
+(defun make-config (pattern field-sep aggregate?)
+  "construct a search configuration record"
+  {:pattern pattern
+   :field-sep (if (nil? field-sep) " " field-sep)
+   :aggregate? aggregate?
+   :case-sensitive? true
+   :multiline? false})
 
-(defun make-aggregation (count unique-values stats)
-  "construct aggregation record"
-  {:count count
-   :unique-values unique-values
-   :stats stats})
+(defun make-aggregate ()
+  "construct an empty aggregation record"
+  {:count 0
+   :unique #{}
+   :sum 0.0
+   :values []})
 
-;; ╭─────────────────────────────────────────────────────────────────────────╮
-;; │ PATTERN MATCHING FUNCTIONS                                              │
-;; ╰─────────────────────────────────────────────────────────────────────────╯
+;; ╭────────────────────────────────────────╮
+;; │ PATTERN MATCHING (polymorphic dispatch) │
+;; ╰────────────────────────────────────────╯
 
-(defun match-regex (pattern-str line)
-  "match regex pattern against line, return match-result"
-  (let ((result (regex-match pattern-str line)))
-    (if result
-        (make-match-result true (first result) result)
-        (make-match-result false nil '()))))
-
-(defun match-predicate (pred-fn line)
-  "apply predicate function to line, return match-result"
-  (let ((result (pred-fn line)))
-    (make-match-result result line '())))
-
-(defun match-transform (transform-fn line)
-  "apply transformation function to line, return match-result"
-  (let ((result (transform-fn line)))
-    (make-match-result (not (nil? result)) result '())))
-
-(defun match-line (pattern line)
-  "polymorphic pattern matching: handles regex, predicates, transforms"
+(defun pattern-match? (pattern-spec line)
+  "polymorphic pattern matcher - dispatches based on pattern type
+   pattern-spec can be:
+   - string (literal substring match)
+   - (hash-map :regex str) (regex pattern)
+   - (hash-map :pred fn) (predicate function)
+   - function (direct application)"
   (cond
-    ((string? pattern) (match-regex pattern line))
-    ((function? pattern) (match-predicate pattern line))
-    (else (make-match-result false nil '()))))
+    ;; string literal
+    ((string? pattern-spec)
+     (string-contains? line pattern-spec))
+    
+    ;; regex pattern
+    ((and (hash-map? pattern-spec) (get :regex pattern-spec))
+     (regex-matches? (get :regex pattern-spec) line))
+    
+    ;; predicate function
+    ((and (hash-map? pattern-spec) (get :pred pattern-spec))
+     ((get :pred pattern-spec) line))
+    
+    ;; direct function application
+    ((function? pattern-spec)
+     (pattern-spec line))
+    
+    ;; fallback: false
+    (else false)))
 
-;; ╭─────────────────────────────────────────────────────────────────────────╮
-;; │ FIELD EXTRACTION                                                        │
-;; ╰─────────────────────────────────────────────────────────────────────────╯
+;; ╭──────────────────────────────────────╮
+;; │ FIELD EXTRACTION (columnar splitting) │
+;; ╰──────────────────────────────────────╯
 
-(defun split-fields (delimiter line)
-  "split line into fields by delimiter (default: whitespace)"
-  (if (nil? delimiter)
-      (string-split line #"\s+")
-      (string-split line delimiter)))
+(defun extract-fields (line separator)
+  "split line into fields using separator
+   returns vector of trimmed field strings"
+  (if (string? separator)
+      (map string-trim (string-split line separator))
+      (list line)))
 
-(defun extract-field (field-spec line)
-  "extract field from line by index or name
-   field-spec: int (column index) | regex (capture group)"
-  (cond
-    ((int? field-spec)
-     (let ((fields (split-fields nil line)))
-       (if (< field-spec (length fields))
-           (nth fields field-spec)
-           nil)))
-    ((string? field-spec)
-     (let ((match (match-regex field-spec line)))
-       (if (:matched? match)
-           (:value match)
-           nil)))
-    (else nil)))
+(defun get-field (fields n)
+  "safely get nth field (1-indexed like awk)
+   returns empty string if field doesn't exist"
+  (if (and (> n 0) (<= n (length fields)))
+      (nth fields (- n 1))
+      ""))
 
-(defun extract-fields (field-specs line)
-  "extract multiple fields from line, return list of field values"
-  (map (lambda (spec) (extract-field spec line)) field-specs))
+(defun field-selector (n)
+  "create a function that extracts nth field
+   returns a closure for functional composition"
+  (lambda (line separator)
+    (let ((fields (extract-fields line separator)))
+      (get-field fields n))))
 
-;; ╭─────────────────────────────────────────────────────────────────────────╮
-;; │ AGGREGATION FUNCTIONS                                                   │
-;; ╰─────────────────────────────────────────────────────────────────────────╯
+;; ╭──────────────────────────────────────────╮
+;; │ AGGREGATION (fold/reduce operations)     │
+;; ╰──────────────────────────────────────────╯
 
-(defun count-matches (results)
-  "count total matching lines"
-  (length (filter :matched? results)))
+(defun aggregate-line (agg line field-num separator)
+  "fold a line into aggregation state
+   updates count, unique set, sum, and values list"
+  (let* ((fields (extract-fields line separator))
+         (field-value (get-field fields field-num))
+         (numeric-value (string->number field-value)))
+    {:count (+ (:count agg) 1)
+     :unique (set-add (:unique agg) field-value)
+     :sum (if numeric-value
+              (+ (:sum agg) numeric-value)
+              (:sum agg))
+     :values (cons field-value (:values agg))}))
 
-(defun unique-values (results field-index)
-  "extract unique values from specific field across all results"
-  (let ((field-values (map (lambda (r)
-                             (nth (:fields r) field-index))
-                           (filter :matched? results))))
-    (into #{} field-values)))
+(defun finalize-aggregate (agg)
+  "compute final statistics from aggregation state"
+  (let ((count (:count agg)))
+    (assoc agg :mean
+           (if (> count 0)
+               (/ (:sum agg) count)
+               0.0))))
 
-(defun compute-stats (results field-index)
-  "compute min/max/sum for numeric field"
-  (let* ((field-values (map (lambda (r)
-                              (string->number (nth (:fields r) field-index)))
-                            (filter :matched? results)))
-         (numbers (filter number? field-values)))
-    (if (empty? numbers)
-        {:min nil :max nil :sum nil :avg nil}
-        {:min (apply min numbers)
-         :max (apply max numbers)
-         :sum (apply + numbers)
-         :avg (/ (apply + numbers) (length numbers))})))
+;; ╭──────────────────────────────────────────╮
+;; │ GRAIN-SPECIFIC PATTERNS (domain knowledge)│
+;; ╰──────────────────────────────────────────╯
 
-;; ╭─────────────────────────────────────────────────────────────────────────╮
-;; │ GRAIN-SPECIFIC PATTERNS                                                 │
-;; ╰─────────────────────────────────────────────────────────────────────────╯
+(defun graintime-pattern ()
+  "pattern matching graintime format (76 chars)
+   example: 12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-03h----teamdescend14"
+  {:regex "^[0-9]{5}-[0-9]{2}-[0-9]{2}--[0-9]{4}-[A-Z]{3}--moon-[a-z_]+-+asc-[a-z]{4}[0-9]{3}-sun-[0-9]{2}h-+"})
 
-(defun grain-graintime? (line)
-  "predicate: does line contain graintime timestamp?"
-  (not (nil? (regex-match "\\d{5}-\\d{2}-\\d{2}--\\d{4}-[A-Z]{3}" line))))
+(defun graincode-pattern ()
+  "pattern matching 6-character grain codes
+   alphabet: xbdghjklmnsvz (no repeats)"
+  {:regex "^[xbdghjklmnsvz]{6}$"})
 
-(defun grain-code? (line)
-  "predicate: does line contain 6-char grain code?"
-  (not (nil? (regex-match "\\b[xbdghjklmnsvz]{6}\\b" line))))
+(defun grain-box-pattern ()
+  "pattern matching grain ASCII box borders"
+  {:pred (lambda (line)
+          (or (string-starts-with? line "┌──")
+              (string-starts-with? line "├──")
+              (string-starts-with? line "└──")
+              (string-starts-with? line "│ ")))})
 
-(defun grain-box-border? (line)
-  "predicate: is this an ASCII box border line?"
-  (or (string-starts-with? line "┌")
-      (string-starts-with? line "├")
-      (string-starts-with? line "└")
-      (string-starts-with? line "│")))
+;; ╭───────────────────────────────────────────╮
+;; │ MAIN SEARCH ENGINE (pipeline composition) │
+;; ╰───────────────────────────────────────────╯
 
-(defun extract-graintime (line)
-  "extract graintime string from line"
-  (let ((match (regex-match "\\d{5}-\\d{2}-\\d{2}--\\d{4}-[A-Z]{3}--moon-[a-z_]+--asc-[a-z]{4}\\d{2}-sun-\\d{2}h--team[a-z]+\\d{2}" line)))
-    (if match (first match) nil)))
+(defun search-lines (lines pattern-spec config)
+  "search through lines using pattern, return matching results
+   purely functional - no side effects"
+  (let ((separator (:field-sep config)))
+    (filter (lambda (result)
+              (:matched? result))
+            (map-indexed
+             (lambda (idx line)
+               (let ((matched? (pattern-match? pattern-spec line)))
+                 (if matched?
+                     (assoc (make-search-result "stdin" (+ idx 1) line)
+                            :matched? true
+                            :fields (extract-fields line separator))
+                     (make-search-result "stdin" (+ idx 1) line))))
+             lines))))
 
-(defun extract-grain-code (line)
-  "extract 6-char grain code from line"
-  (let ((match (regex-match "\\b([xbdghjklmnsvz]{6})\\b" line)))
-    (if match (second match) nil)))
+(defun search-file (filepath pattern-spec config)
+  "search a file, return matching results
+   handles file I/O at boundary"
+  (let* ((file-contents (slurp filepath))
+         (lines (string-split file-contents "\n"))
+         (separator (:field-sep config)))
+    (map (lambda (result)
+           (assoc result :file filepath))
+         (search-lines lines pattern-spec config))))
 
-;; ╭─────────────────────────────────────────────────────────────────────────╮
-;; │ MAIN SEARCH PIPELINE                                                    │
-;; ╰─────────────────────────────────────────────────────────────────────────╯
+(defun search-files (filepaths pattern-spec config)
+  "search multiple files, return combined results
+   composition of search-file over list"
+  (mapcat (lambda (filepath)
+            (search-file filepath pattern-spec config))
+          filepaths))
 
-(defun search-lines (pattern field-specs lines)
-  "search lines with pattern, extract fields, return results
-   this is the main composition point - pure data transformation"
-  (map-indexed
-   (lambda (idx line)
-     (let* ((match (match-line pattern line))
-            (matched? (:matched? match))
-            (fields (if matched?
-                        (extract-fields field-specs line)
-                        '())))
-       (make-search-result line (+ idx 1) fields matched?)))
-   lines))
+;; ╭────────────────────────────────────────╮
+;; │ OUTPUT FORMATTING (presentation layer) │
+;; ╰────────────────────────────────────────╯
 
-(defun search-file (pattern field-specs filepath)
-  "search file with pattern, return results"
-  (let ((lines (string-split-lines (slurp filepath))))
-    (search-lines pattern field-specs lines)))
+(defun format-result (result show-line-numbers? show-file?)
+  "format a search result for display
+   pure function: result -> string"
+  (let ((file-prefix (if show-file? 
+                         (str (:file result) ":")
+                         ""))
+        (line-prefix (if show-line-numbers?
+                         (str (:line-number result) ":")
+                         "")))
+    (str file-prefix line-prefix (:content result))))
 
-(defun filter-results (results)
-  "filter to only matched results"
-  (filter :matched? results))
+(defun format-aggregate (agg field-name)
+  "format aggregation statistics for display"
+  (str "count: " (:count agg) "\n"
+       "unique: " (set-size (:unique agg)) "\n"
+       "sum: " (:sum agg) "\n"
+       "mean: " (:mean agg)))
 
-(defun aggregate-results (results field-index agg-type)
-  "aggregate results by type: 'count | 'unique | 'stats"
-  (case agg-type
-    ('count (make-aggregation (count-matches results) #{} {}))
-    ('unique (make-aggregation 
-              (count-matches results)
-              (unique-values results field-index)
-              {}))
-    ('stats (make-aggregation
-             (count-matches results)
-             #{}
-             (compute-stats results field-index)))
-    (else (make-aggregation 0 #{} {}))))
+;; ╭──────────────────────────────────────╮
+;; │ CLI INTERFACE (command-line boundary) │
+;; ╰──────────────────────────────────────╯
 
-;; ╭─────────────────────────────────────────────────────────────────────────╮
-;; │ COMPOSITION HELPERS                                                     │
-;; ╰─────────────────────────────────────────────────────────────────────────╯
+(defun parse-args (args)
+  "parse command-line arguments into config
+   returns {:pattern, :files, :options}"
+  (let ((pattern (first args))
+        (files (rest args)))
+    {:pattern pattern
+     :files (if (empty? files) ["stdin"] files)
+     :field-sep " "
+     :aggregate? false
+     :show-line-numbers? true
+     :show-files? (> (length files) 1)}))
 
-(defun compose-patterns (patterns)
-  "compose multiple patterns with AND logic"
-  (lambda (line)
-    (every? (lambda (p) (:matched? (match-line p line)))
-            patterns)))
+(defun main (args)
+  "main entry point for grainsearch CLI
+   handles argument parsing, search execution, output"
+  (let* ((config (parse-args args))
+         (pattern-spec (:pattern config))
+         (files (:files config))
+         (results (if (= (first files) "stdin")
+                      (search-lines (read-stdin-lines) pattern-spec config)
+                      (search-files files pattern-spec config))))
+    
+    ;; output results (I/O boundary)
+    (doseq [result results]
+      (println (format-result result
+                              (:show-line-numbers? config)
+                              (:show-files? config))))
+    
+    ;; return exit code
+    (if (empty? results) 1 0)))
 
-(defun or-patterns (patterns)
-  "compose multiple patterns with OR logic"
-  (lambda (line)
-    (some? (lambda (p) (:matched? (match-line p line)))
-           patterns)))
+;; ╭───────────────────────────────────────────╮
+;; │ UTILITY FUNCTIONS (helpers and combinators)│
+;; ╰───────────────────────────────────────────╯
 
-(defun pipe (initial-value & fns)
-  "thread value through sequence of functions (pipeline operator)"
-  (reduce (lambda (acc f) (f acc))
-          initial-value
+(defun compose (f g)
+  "function composition: (f ∘ g)(x) = f(g(x))"
+  (lambda (x) (f (g x))))
+
+(defun pipe (&rest fns)
+  "pipeline composition: (pipe f g h)(x) = h(g(f(x)))"
+  (reduce (lambda (acc fn)
+            (lambda (x) (fn (acc x))))
+          (lambda (x) x)
           fns))
 
-;; ╭─────────────────────────────────────────────────────────────────────────╮
-;; │ EXAMPLE USAGE PATTERNS                                                  │
-;; ╰─────────────────────────────────────────────────────────────────────────╯
+(defun partial (f &rest args)
+  "partial application of function"
+  (lambda (&rest more-args)
+    (apply f (concat args more-args))))
 
-;; find all graintime strings in file:
-;; (search-file grain-graintime? '(0) "path/to/file.md")
+;; ╭─────────────────────────────────────────╮
+;; │ EXAMPLE USAGE (documentation by example) │
+;; ╰─────────────────────────────────────────╯
 
-;; extract grain codes from all matching lines:
-;; (->> (search-file grain-code? '() "path/to/file.md")
-;;      (filter-results)
-;;      (map (lambda (r) (extract-grain-code (:line r)))))
+;; search for graintimes in files:
+;; (search-files ["file1.md" "file2.md"] (graintime-pattern) (make-config nil " " false))
 
-;; count lines containing both graintime AND grain code:
-;; (let ((pattern (compose-patterns (list grain-graintime? grain-code?))))
-;;   (count-matches (search-file pattern '() "path/to/file.md")))
+;; extract second field from results:
+;; (map (compose (partial get-field 2) (partial extract-fields " ")) matching-lines)
 
-;; aggregate unique nakshatra values from graintimes:
-;; (let* ((results (search-file grain-graintime? '(0) "path/to/file.md"))
-;;        (nakshatras (map (lambda (r)
-;;                          (let ((gt (extract-graintime (:line r))))
-;;                            (regex-match "moon-([a-z_]+)" gt)))
-;;                        (filter-results results))))
-;;   (into #{} (map second nakshatras)))
+;; count unique values in field 3:
+;; (reduce (partial aggregate-line 3 " ") (make-aggregate) matching-lines)
 
-;; ╭─────────────────────────────────────────────────────────────────────────╮
-;; │ PHILOSOPHY: BALANCE THROUGH COMPOSITION                                 │
-;; ╰─────────────────────────────────────────────────────────────────────────╯
-
-;; grainsearch embodies team 07 libra balance:
-;;   - simple primitives (match, extract, aggregate)
-;;   - powerful composition (pipe, compose, or)
-;;   - clear data structures (records, not hidden state)
-;;   - pure functions (no side effects except IO)
-;;   - strong contracts (type signatures in comments)
-;;
-;; inspired by functional traditions without dogma. use what serves.
-;; balanced movement forward - neither too simple nor too complex.
-;; the chariot: opposing forces (simplicity/power) harnessed toward victory.
+;; find all grain box borders:
+;; (search-lines input-lines (grain-box-pattern) (make-config nil " " false))
 
 ;; now == next + 1 ⚖️ 🌾
