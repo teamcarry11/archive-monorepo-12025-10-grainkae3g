@@ -4,7 +4,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│ GRAINCARD xbdghl                          Card 3 of 2 (Format Spec)          │
+│ GRAINCARD xbdghl                                              grain 3 of 1.2M │
 │ Spec: Graincard 80×110 Format                                                │
 │ Purpose: Define the canonical graincard structure                            │
 │ Author: kae3g (kj3x39, @risc.love)                                           │
