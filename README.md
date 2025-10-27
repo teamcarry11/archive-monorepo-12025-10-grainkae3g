@@ -1,1 +1,1 @@
-grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-03h----teamdescend10/grains/xbdghj-grainbranch-readme-sync-ketos.md
+grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-03h----teamdescend14/grains/xbdghj-grainbranch-readme-sync-ketos.md
