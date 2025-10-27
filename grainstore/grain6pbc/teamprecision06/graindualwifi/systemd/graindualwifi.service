@@ -1,0 +1,32 @@
+[Unit]
+Description=Grain Dual-Wifi Failover Daemon (Starlink + Cellular)
+Documentation=https://github.com/kae3g/grainkae3g/tree/main/grainstore/grain6pbc/teamprecision06/graindualwifi
+After=network-online.target NetworkManager.service
+Wants=network-online.target
+Requires=NetworkManager.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/graindualwifi
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Run as root (needed for nmcli network changes)
+User=root
+
+# Environment
+Environment=RUST_LOG=info
+Environment=GRAINDUALWIFI_CONFIG=/etc/graindualwifi/config.edn
+
+# Hardening (The Lovers precision ♍)
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Logging
+SyslogIdentifier=graindualwifi
+
+[Install]
+WantedBy=multi-user.target
+

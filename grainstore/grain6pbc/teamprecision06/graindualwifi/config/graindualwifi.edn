@@ -1,0 +1,60 @@
+{;; Primary Connection (Starlink)
+ :primary
+ {:interface "wlp1s0"
+  :name "Starlink"
+  :gateway "192.168.1.1"
+  :metric 100
+  :description "Satellite internet (fast but weather-dependent)"}
+ 
+ ;; Secondary Connection (Cellular)
+ :secondary
+ {:interface "wlp2s0"
+  :name "Cellular"
+  :gateway "192.168.2.1"
+  :metric 200
+  :description "Mobile hotspot (slower but reliable)"}
+ 
+ ;; Health Check Configuration
+ :health-check
+ {:test-hosts ["1.1.1.1"        ; Cloudflare DNS
+               "8.8.8.8"        ; Google DNS
+               "github.com"]    ; Real-world test
+  
+  :ping-timeout 1000            ; 1 second
+  :curl-timeout 5000            ; 5 seconds
+  :max-retries 2                ; Try twice per check
+  }
+ 
+ ;; Timing Configuration
+ :timing
+ {:check-interval-stable 10000       ; 10 seconds when stable
+  :check-interval-failover 2000      ; 2 seconds during transition
+  :check-interval-secondary 30000    ; 30 seconds when on secondary
+  
+  :failover-min-time 30000           ; Minimum 30 seconds on secondary
+  :failure-threshold 3               ; 3 consecutive failures = failover
+  :success-threshold 3}              ; 3 consecutive successes = failback
+ 
+ ;; Logging Configuration
+ :logging
+ {:log-file "/var/log/graindualwifi.log"
+  :log-level "info"              ; debug, info, warn, error
+  :log-transitions true          ; Log every failover/failback
+  :log-health-checks false}      ; Don't spam logs with every health check
+ 
+ ;; Notifications (future)
+ :notifications
+ {:enabled false
+  :methods []                    ; ["email", "webhook", "desktop"]
+  :on-failover true
+  :on-failback true
+  :on-both-down true}
+ 
+ ;; VI. The Lovers ♍ - Choose wisely, bless both paths
+ :philosophy
+ {:primary-blessing "Sky internet (Starlink) - fast, requires clear view"
+  :secondary-blessing "Earth internet (cellular) - stable, always there"
+  :union "Together they create always-on connectivity"
+  :discrimination "Health checks choose the working path"
+  :precision "3 checks minimum - no hasty decisions"}}
+

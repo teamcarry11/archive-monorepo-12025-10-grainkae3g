@@ -78,53 +78,50 @@
 (defn calculate-ascendant-placidus
   "Calculate ascendant using Placidus house system
   
-  This is the most commonly used house system in Western astrology.
-  It's more complex than Equal House but more accurate.
+  Formula from Future Point India / standard astrology references:
+  tan(ASC) = (cos(LST + 90°) - tan(ε) × tan(φ)) / sin(LST + 90°)
   
-  The Placidus formula requires:
-  1. LST (Local Sidereal Time)
-  2. Latitude
-  3. Obliquity of ecliptic
+  Where:
+  - LST = Local Sidereal Time (in degrees)
+  - ε = Obliquity of ecliptic (~23.44°)
+  - φ = Latitude
   
-  Steps:
-  1. Calculate MC from RAMC (LST × 15°)
-  2. Calculate ASC from MC using latitude-dependent formula"
+  This accounts for Earth's axial tilt and observer's position."
   [lst-hours latitude obliquity-deg]
   (let [obliquity-rad (Math/toRadians obliquity-deg)
         lat-rad (Math/toRadians latitude)
         
-        ;; RAMC = Right Ascension of MC = LST in degrees
-        ramc-deg (* lst-hours 15.0)
+        ;; Convert LST to degrees
+        lst-deg (* lst-hours 15.0)
         
-        ;; Calculate MC (Midheaven)
-        mc-deg (calculate-mc-from-ramc ramc-deg obliquity-rad)
+        ;; LST + 90°
+        lst-plus-90-deg (+ lst-deg 90.0)
+        lst-plus-90-rad (Math/toRadians lst-plus-90-deg)
         
-        ;; Calculate Ascendant from MC
-        ;; Formula from Jean Meeus, \"Astronomical Algorithms\"
-        ;; tan(ASC) = -cos(MC) / (cos(obliquity) × sin(MC) + sin(obliquity) × tan(latitude))
+        ;; Calculate ascendant using the formula from web search
+        ;; tan(ASC) = (cos(LST + 90°) - tan(ε) × tan(φ)) / sin(LST + 90°)
         
-        ;; But we need to be careful about which quadrant
-        ;; The ascendant is always 90° "behind" (earlier in rise time) than MC
+        numerator (- (Math/cos lst-plus-90-rad)
+                    (* (Math/tan obliquity-rad) (Math/tan lat-rad)))
+        denominator (Math/sin lst-plus-90-rad)
         
-        ;; Alternative simpler formula for Placidus:
-        ;; For latitude φ and MC:
-        ;; ASC ≈ atan2(-sin(MC), cos(obliquity)×cos(MC) + sin(obliquity)×tan(latitude))
+        ;; Use atan to get the angle, then atan2 for proper quadrant
+        ;; Actually, let's use atan2 directly for robustness
+        asc-rad (Math/atan2 numerator denominator)
+        asc-deg-raw (Math/toDegrees asc-rad)
         
-        mc-rad (Math/toRadians mc-deg)
+        ;; Normalize to 0-360° range
+        asc-deg (mod (+ asc-deg-raw 360) 360.0)
         
-        ;; Using the proper Placidus formula
-        asc-y (- (Math/sin mc-rad))
-        asc-x (+ (* (Math/cos obliquity-rad) (Math/cos mc-rad))
-                 (* (Math/sin obliquity-rad) (Math/tan lat-rad)))
-        
-        asc-rad (Math/atan2 asc-y asc-x)
-        asc-deg (mod (Math/toDegrees asc-rad) 360.0)]
+        ;; Also calculate MC for reference
+        ramc-deg lst-deg
+        mc-deg (calculate-mc-from-ramc ramc-deg obliquity-rad)]
     
     {:longitude asc-deg
      :mc mc-deg
      :ramc ramc-deg
-     :method :placidus
-     :formula "Placidus with latitude correction"}))
+     :method :placidus-future-point
+     :formula "tan(ASC) = (cos(LST+90°) - tan(ε)×tan(φ)) / sin(LST+90°)"}))
 
 ;; =============================================================================
 ;; TESTING / COMPARISON

@@ -1,0 +1,297 @@
+;; graindualwifi.ket - Dual-wifi failover daemon
+;; Team 06 - Precision (Virgo ♍ / VI. The Lovers)
+;; 
+;; The Lovers teach: Choose wisely between two paths
+;; Both paths are blessed, use the one that works NOW
+
+;; =============================================================================
+;; CONFIGURATION
+;; =============================================================================
+
+(define config
+  {:primary-interface "wlp1s0"
+   :primary-name "Starlink"
+   :secondary-interface "wlp2s0"
+   :secondary-name "Cellular"
+   :check-interval 10
+   :failure-threshold 3
+   :success-threshold 3})
+
+;; =============================================================================
+;; SYSTEM COMMANDS (via Rust FFI)
+;; =============================================================================
+
+(define (run-command cmd)
+  "Run shell command and return output
+   TODO: Implement via Rust FFI"
+  (println (concat "Would run: " cmd))
+  {:success true :output ""})
+
+(define (check-interface-up? iface)
+  "Check if network interface is UP"
+  (let ((result (run-command (concat "ip link show " iface))))
+    (if (:success result)
+      (string-contains? (:output result) "state UP")
+      false)))
+
+(define (ping-host iface host)
+  "Ping host through specific interface"
+  (let ((cmd (concat "ping -I " iface " -c 1 -W 1 " host)))
+    (run-command cmd)))
+
+(define (check-gateway iface gateway)
+  "Check if gateway is reachable"
+  (:success (ping-host iface gateway)))
+
+(define (check-internet iface test-hosts)
+  "Check if internet is reachable through interface
+   Returns true if ANY test host responds"
+  (if (empty? test-hosts)
+    false
+    (or (let ((host (first test-hosts))
+              (cmd (concat "curl --interface " iface 
+                          " --max-time 5 --silent --head " host)))
+          (:success (run-command cmd)))
+        (check-internet iface (rest test-hosts)))))
+
+;; =============================================================================
+;; HEALTH CHECKS (The Lovers' Discrimination)
+;; =============================================================================
+
+(define (health-check iface gateway test-hosts)
+  "Three-level health check with The Lovers' discernment
+   
+   Level 1: Is the interface UP? (physical layer)
+   Level 2: Can we reach the gateway? (network layer)
+   Level 3: Can we reach the internet? (application layer)
+   
+   All three must pass for health check to succeed."
+  
+  (let ((interface-up (check-interface-up? iface)))
+    (if (not interface-up)
+      ;; Early return: interface is down
+      {:healthy false
+       :level :interface
+       :message (concat iface " is DOWN")}
+      
+      ;; Interface is up, check gateway
+      (let ((gateway-ok (check-gateway iface gateway)))
+        (if (not gateway-ok)
+          {:healthy false
+           :level :gateway
+           :message (concat "Cannot reach gateway " gateway)}
+          
+          ;; Gateway is reachable, check internet
+          (let ((internet-ok (check-internet iface test-hosts)))
+            (if internet-ok
+              {:healthy true
+               :level :internet
+               :message (concat iface " is HEALTHY ✅")}
+              {:healthy false
+               :level :internet
+               :message "Cannot reach internet"})))))))
+
+;; =============================================================================
+;; NETWORK SWITCHING (The Lovers' Choice)
+;; =============================================================================
+
+(define (switch-to-connection! iface name)
+  "Switch active connection to specified interface
+   
+   The Lovers choose: Activate the blessed path that works."
+  
+  (println (concat "💕 Switching to " name " (" iface ")..."))
+  
+  ;; TODO: Implement actual nmcli commands via Rust FFI
+  ;; For now, just log what we would do
+  (println (concat "   Would run: nmcli connection up " name))
+  
+  (println (concat "✅ Now using: " name))
+  {:success true
+   :active-interface iface
+   :active-name name
+   :timestamp (current-time)})
+
+(define (failover-to-secondary! config)
+  "Fail over to secondary connection"
+  (switch-to-connection! 
+    (:secondary-interface config)
+    (:secondary-name config)))
+
+(define (failback-to-primary! config)
+  "Fail back to primary connection"
+  (switch-to-connection!
+    (:primary-interface config)
+    (:primary-name config)))
+
+;; =============================================================================
+;; STATE MACHINE (The Lovers' Union)
+;; =============================================================================
+
+(define (update-state state health-primary health-secondary config)
+  "Update state based on health checks
+   
+   The state machine chooses between two paths:
+   - PRIMARY_HEALTHY: Using Starlink (preferred)
+   - SECONDARY_ACTIVE: Using Cellular (backup)
+   
+   Transitions require 3 consecutive checks (precision, not haste)."
+  
+  (cond
+    ;; Currently on PRIMARY
+    ((= (:active state) :primary)
+     (if (:healthy health-primary)
+       ;; Primary still healthy, reset failure counter
+       (assoc state :primary-failures 0)
+       
+       ;; Primary unhealthy, increment failure counter
+       (let ((failures (+ (:primary-failures state) 1)))
+         (if (>= failures (:failure-threshold config))
+           ;; Threshold reached: FAIL OVER
+           (do
+             (println "⚠️  PRIMARY FAILED (3 consecutive checks)")
+             (failover-to-secondary! config)
+             {:active :secondary
+              :primary-failures 0
+              :primary-successes 0
+              :failover-time (current-time)})
+           
+           ;; Not yet at threshold, increment counter
+           (do
+             (println (concat "⚠️  Primary check failed (" failures "/" 
+                             (:failure-threshold config) ")"))
+             (assoc state :primary-failures failures))))))
+    
+    ;; Currently on SECONDARY
+    ((= (:active state) :secondary)
+     (if (:healthy health-primary)
+       ;; Primary recovered, increment success counter
+       (let ((successes (+ (:primary-successes state) 1))
+             (time-on-secondary (- (current-time) (:failover-time state))))
+         
+         (if (and (>= successes (:success-threshold config))
+                  (>= time-on-secondary 30))  ; Minimum 30 seconds
+           ;; Threshold reached: FAIL BACK
+           (do
+             (println "✅ PRIMARY RECOVERED (3 consecutive checks)")
+             (failback-to-primary! config)
+             {:active :primary
+              :primary-failures 0
+              :primary-successes 0
+              :failover-time 0})
+           
+           ;; Not yet at threshold or too soon
+           (do
+             (println (concat "✅ Primary recovering (" successes "/" 
+                             (:success-threshold config) ")"))
+             (assoc state :primary-successes successes))))
+       
+       ;; Primary still unhealthy, reset success counter
+       (assoc state :primary-successes 0)))
+    
+    ;; Unknown state (shouldn't happen)
+    (else
+      (do
+        (println "⚠️  Unknown state, resetting to primary")
+        {:active :primary
+         :primary-failures 0
+         :primary-successes 0
+         :failover-time 0}))))
+
+;; =============================================================================
+;; MAIN LOOP (The Lovers' Eternal Watch)
+;; =============================================================================
+
+(define (monitor-loop config state)
+  "Main monitoring loop - runs forever
+   
+   The Lovers watch over both paths eternally,
+   choosing the blessed one that works in THIS moment."
+  
+  ;; Perform health checks
+  (let ((health-primary 
+          (health-check 
+            (:primary-interface config)
+            "192.168.1.1"  ; TODO: Get from config
+            ["1.1.1.1" "github.com"]))
+        
+        (health-secondary
+          (health-check
+            (:secondary-interface config)
+            "192.168.2.1"  ; TODO: Get from config
+            ["1.1.1.1" "github.com"])))
+    
+    ;; Log current status
+    (when (= 0 (mod (current-time) 60))  ; Every 60 seconds
+      (println "")
+      (println "💕 STATUS:")
+      (println (concat "   Active: " (if (= (:active state) :primary)
+                                       (:primary-name config)
+                                       (:secondary-name config))))
+      (println (concat "   Primary: " (:message health-primary)))
+      (println (concat "   Secondary: " (:message health-secondary)))
+      (println ""))
+    
+    ;; Update state based on health
+    (let ((new-state (update-state state health-primary health-secondary config)))
+      
+      ;; Sleep for check interval
+      (sleep (* (:check-interval config) 1000))  ; Convert to milliseconds
+      
+      ;; Recurse with new state (infinite loop)
+      (monitor-loop config new-state))))
+
+;; =============================================================================
+;; ENTRY POINT
+;; =============================================================================
+
+(define (main)
+  "Main entry point called from Rust
+   
+   The Lovers begin their eternal watch over the two paths."
+  
+  (println "")
+  (println "🌾 graindualwifi - Dual-Wifi Failover Daemon")
+  (println "   Team 06 - Precision (Virgo ♍ / VI. The Lovers)")
+  (println "")
+  (println "✨ The Lovers teach:")
+  (println "   Two paths lie before us (Starlink + Cellular)")
+  (println "   Choose wisely, with love and discrimination")
+  (println "   Both paths are blessed, use what works NOW")
+  (println "")
+  
+  ;; Initialize state
+  (let ((initial-state
+          {:active :primary
+           :primary-failures 0
+           :primary-successes 0
+           :failover-time 0}))
+    
+    (println "💕 Starting eternal watch...")
+    (println "   Primary: Starlink (sky path, fast, weather-dependent)")
+    (println "   Secondary: Cellular (earth path, stable, always there)")
+    (println "")
+    
+    ;; Start the eternal loop
+    (monitor-loop config initial-state)))
+
+;; =============================================================================
+;; HELPER FUNCTIONS (pending Rust FFI)
+;; =============================================================================
+
+(define (current-time)
+  "Get current Unix timestamp in seconds
+   TODO: Implement via Rust FFI"
+  0)
+
+(define (sleep milliseconds)
+  "Sleep for specified milliseconds
+   TODO: Implement via Rust FFI"
+  (println (concat "Sleeping " milliseconds "ms...")))
+
+(define (string-contains? haystack needle)
+  "Check if string contains substring
+   TODO: Implement in Ketos standard library"
+  true)
+
+;; 🌾 now == next + 1

@@ -1,0 +1,31 @@
+[package]
+name = "graindualwifi"
+version = "0.1.0"
+edition = "2021"
+authors = ["kae3g <akirobloom@gmail.com>"]
+description = "Dual-wifi failover daemon (Starlink + cellular) for forest internet"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/kae3g/grainkae3g"
+
+[dependencies]
+ketos = "0.12"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# For reading EDN config files
+edn-rs = "0.17"
+
+# For logging
+env_logger = "0.11"
+log = "0.4"
+
+# For system commands (nmcli, ip, ping)
+tokio = { version = "1", features = ["full"] }
+
+[profile.release]
+opt-level = "z"      # Optimize for size
+lto = true           # Link-time optimization
+codegen-units = 1    # Better optimization
+strip = true         # Strip symbols
+
