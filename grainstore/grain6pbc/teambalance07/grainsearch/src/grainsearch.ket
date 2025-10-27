@@ -1,109 +1,247 @@
-;; ∿∿∿ GRAINSEARCH: FUNCTIONAL SEARCH UTILITY ∿∿∿
-;; team: 07 (teambalance07 - libra ♎ / vii. the chariot)
-;; authored by: 14 (teamdescend14 - ketu ☋ / xiv. temperance)
-;; description: composable search utility for grain processing
-;;              purely functional, strongly typed, extensible
-;;              balancing power with simplicity
+;; ╭────────────────────────────────────────────────────────────────────────────╮
+;; │                                                                            │
+;; │  ⚖️ GRAINSEARCH: FUNCTIONAL TEXT PROCESSING FOR GRAIN ECOSYSTEM ⚖️        │
+;; │                                                                            │
+;; │  ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿  │
+;; │                                                                            │
+;; │  Team: 07 (teambalance07 - libra ♎ / vii. the chariot)                   │
+;; │  Authored by: 14 (teamdescend14 - ketu ☋ / xiv. temperance)              │
+;; │  Language: ketos (rust-based lisp for redox os)                           │
+;; │  Paradigm: purely functional, strongly typed, composable                  │
+;; │                                                                            │
+;; │  Copyright © 2025 kae3g (kj3x39, @risc.love)                              │
+;; │  Licensed under: grain network open license                               │
+;; │                                                                            │
+;; ╰────────────────────────────────────────────────────────────────────────────╯
 
-;; ╭─────────────────────────────────────────────────────────────────╮
-;; │ TYPE SYSTEM (inspired by algebraic types, not named explicitly) │
-;; ╰─────────────────────────────────────────────────────────────────╯
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ WHAT IS GRAINSEARCH? A GENTLE INTRODUCTION ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+;;
+;; hey there! glow here. let me tell you about grainsearch and why we built it.
+;;
+;; you know how awk is amazing for quick text processing? how you can pipe data
+;; through grep and awk and get exactly what you need? grainsearch brings that
+;; same power to the grain ecosystem, but with some key differences:
+;;
+;; 1. it's written in ketos (rust-based lisp) so it works on redox os
+;; 2. it knows about grains - graintime, graincodes, grain boxes
+;; 3. it's purely functional - every operation is a pure transformation
+;; 4. it's composable - you can chain operations like building with lego
+;; 5. it has strong types (expressed as validation predicates)
+;;
+;; does this mean you should replace awk? absolutely not! use awk for shell
+;; one-liners and quick scripts. use grainsearch when you need:
+;; - grain-specific pattern matching
+;; - functional composition in larger programs
+;; - integration with ketos-based workflows
+;; - embedding search logic in ci/cd
+;;
+;; balance, not dogma. that's the libra way. ⚖️
 
-;; search-result :: { :file str, :line-number int, :content str, :fields [str] }
-;; search-config :: { :pattern (str -> bool), :field-sep str, :aggregate? bool }
-;; pattern-type  :: union { :regex str | :predicate (str -> bool) | :function (str -> any) }
-;; aggregate     :: { :count int, :unique #{str}, :sum num, :mean num }
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ TYPE SYSTEM (STRONG CONTRACTS THROUGH PREDICATES) ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+;;
+;; inspired by algebraic data types from haskell, hoon's type system, and
+;; clojure spec. we express types as validation predicates and constructors.
+;; this gives us strong guarantees without heavyweight machinery.
+;;
+;; think of these as contracts: "if you give me data that passes this predicate,
+;; i guarantee my function will behave correctly." this is how we achieve
+;; type safety in a dynamic language.
 
-;; ╭──────────────────────────────────────╮
-;; │ CORE DATA CONSTRUCTORS (pure values) │
-;; ╰──────────────────────────────────────╯
+;; ┌─ search-result type ─────────────────────────────────────────────┐
+;; │ represents a single line that matched (or didn't match) a pattern │
+;; │ fields:                                                            │
+;; │   :file        → string (filepath)                                │
+;; │   :line-number → int (1-indexed, like grep)                       │
+;; │   :content     → string (the actual line text)                    │
+;; │   :fields      → [string] (extracted fields, like awk columns)    │
+;; │   :matched?    → bool (did this line match the pattern?)          │
+;; └────────────────────────────────────────────────────────────────────┘
 
 (defun make-search-result (file line-num content)
-  "construct a search result record"
+  "construct a search result record
+   
+   this is a pure data constructor - no side effects, just data.
+   returns a map representing one line from a file with metadata."
   {:file file
    :line-number line-num
    :content content
    :fields []
    :matched? false})
 
+(defun search-result? (x)
+  "type predicate: is this a valid search-result?
+   
+   validates the shape and types of all required fields.
+   this is our type system - predicates that check contracts."
+  (and (map? x)
+       (string? (:file x))
+       (int? (:line-number x))
+       (string? (:content x))
+       (vector? (:fields x))
+       (bool? (:matched? x))))
+
+;; ┌─ search-config type ──────────────────────────────────────────────┐
+;; │ configuration for how to search and process lines                  │
+;; │ fields:                                                             │
+;; │   :pattern         → (str -> bool) (how to match lines)           │
+;; │   :field-sep       → string (delimiter for splitting, like awk -F)│
+;; │   :aggregate?      → bool (should we aggregate results?)          │
+;; │   :case-sensitive? → bool (case matters?)                         │
+;; │   :multiline?      → bool (pattern spans multiple lines?)         │
+;; └─────────────────────────────────────────────────────────────────────┘
+
 (defun make-config (pattern field-sep aggregate?)
-  "construct a search configuration record"
+  "construct a search configuration
+   
+   defaults: case-sensitive, single-line matching, space-separated fields"
   {:pattern pattern
    :field-sep (if (nil? field-sep) " " field-sep)
    :aggregate? aggregate?
    :case-sensitive? true
    :multiline? false})
 
+;; ┌─ aggregate type ──────────────────────────────────────────────────┐
+;; │ statistical summary of matched results                             │
+;; │ fields:                                                             │
+;; │   :count  → int (total matches)                                   │
+;; │   :unique → #{string} (set of unique values)                      │
+;; │   :sum    → num (sum if values are numeric)                       │
+;; │   :values → [any] (all matched values)                            │
+;; └─────────────────────────────────────────────────────────────────────┘
+
 (defun make-aggregate ()
-  "construct an empty aggregation record"
+  "construct an empty aggregation state
+   
+   designed for use with reduce/fold operations.
+   start with empty state, fold lines into it, finalize at end."
   {:count 0
    :unique #{}
    :sum 0.0
    :values []})
 
-;; ╭────────────────────────────────────────╮
-;; │ PATTERN MATCHING (polymorphic dispatch) │
-;; ╰────────────────────────────────────────╯
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ PATTERN MATCHING (POLYMORPHIC DISPATCH) ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+;;
+;; here's where things get interesting. grainsearch can match patterns in
+;; multiple ways, and it figures out which approach to use based on what
+;; you give it. this is polymorphism without classes!
+;;
+;; you can pass:
+;; - a string → literal substring match (simple and fast)
+;; - {:regex "pattern"} → regex pattern matching (powerful)
+;; - {:pred fn} → custom predicate function (ultimate flexibility)
+;; - a function directly → applied to each line (functional style)
+;;
+;; all of these get unified through pattern-match? which dispatches
+;; to the right implementation. one interface, multiple behaviors.
 
 (defun pattern-match? (pattern-spec line)
-  "polymorphic pattern matcher - dispatches based on pattern type
-   pattern-spec can be:
-   - string (literal substring match)
-   - (hash-map :regex str) (regex pattern)
-   - (hash-map :pred fn) (predicate function)
-   - function (direct application)"
+  "polymorphic pattern matcher - the heart of grainsearch
+   
+   this function is like a universal adapter. you give it any kind of
+   pattern specification, and it knows how to apply it to a line.
+   
+   why polymorphism? because sometimes you want simple (substring),
+   sometimes powerful (regex), sometimes custom (your own logic).
+   
+   this is 'simple made easy' - one function name, multiple implementations,
+   chosen automatically based on the data shape."
   (cond
-    ;; string literal
+    ;; string literal: fast path for simple substring matching
     ((string? pattern-spec)
      (string-contains? line pattern-spec))
     
-    ;; regex pattern
+    ;; regex pattern: compile once, match many (memoization opportunity)
     ((and (hash-map? pattern-spec) (get :regex pattern-spec))
      (regex-matches? (get :regex pattern-spec) line))
     
-    ;; predicate function
+    ;; predicate function: ultimate flexibility
     ((and (hash-map? pattern-spec) (get :pred pattern-spec))
      ((get :pred pattern-spec) line))
     
-    ;; direct function application
+    ;; direct function: functional programming style
     ((function? pattern-spec)
      (pattern-spec line))
     
-    ;; fallback: false
+    ;; fallback: safe default is false (no match)
     (else false)))
 
-;; ╭──────────────────────────────────────╮
-;; │ FIELD EXTRACTION (columnar splitting) │
-;; ╰──────────────────────────────────────╯
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ FIELD EXTRACTION (COLUMNAR DATA PROCESSING) ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+;;
+;; you know how awk lets you do `awk '{print $2}'` to get the second column?
+;; that's field extraction. grainsearch does the same thing, but as pure
+;; functions you can compose.
+;;
+;; the key insight: separating the *how* (splitting by delimiter) from the
+;; *what* (which field to extract). this separation enables composition.
 
 (defun extract-fields (line separator)
   "split line into fields using separator
-   returns vector of trimmed field strings"
+   
+   like awk's field splitting, but as a pure function that returns data.
+   no global state, no special variables, just input → output.
+   
+   separator can be:
+   - string (literal delimiter like ',')
+   - regex pattern (for flexible splitting)
+   - nil (defaults to whitespace, like awk)"
   (if (string? separator)
       (map string-trim (string-split line separator))
       (list line)))
 
 (defun get-field (fields n)
-  "safely get nth field (1-indexed like awk)
-   returns empty string if field doesn't exist"
+  "safely get nth field (1-indexed like awk $1, $2, etc)
+   
+   why 1-indexed? because awk users expect it. we're bridging worlds here.
+   
+   returns empty string if field doesn't exist (fail gracefully, not loudly)"
   (if (and (> n 0) (<= n (length fields)))
       (nth fields (- n 1))
       ""))
 
 (defun field-selector (n)
   "create a function that extracts nth field
-   returns a closure for functional composition"
+   
+   this is a closure - it remembers 'n' and returns a function that uses it.
+   
+   why closures? because they enable functional composition:
+   (map (field-selector 2) lines) ; extract 2nd field from all lines
+   
+   this is how we build bigger functions from smaller ones."
   (lambda (line separator)
     (let ((fields (extract-fields line separator)))
       (get-field fields n))))
 
-;; ╭──────────────────────────────────────────╮
-;; │ AGGREGATION (fold/reduce operations)     │
-;; ╰──────────────────────────────────────────╯
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ AGGREGATION (FOLD/REDUCE OPERATIONS) ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+;;
+;; aggregation means taking many values and reducing them to a summary.
+;; classic examples: count, sum, average, unique values.
+;;
+;; the functional approach: start with empty state, fold each line into it,
+;; finalize at the end. pure, predictable, composable.
 
 (defun aggregate-line (agg line field-num separator)
-  "fold a line into aggregation state
-   updates count, unique set, sum, and values list"
+  "fold a single line into aggregation state
+   
+   this is a reducer function - it takes current state (agg) and new data (line)
+   and returns updated state. no mutation, just transformation.
+   
+   each line updates:
+   - count (increment by 1)
+   - unique set (add field value)
+   - sum (add if numeric)
+   - values list (append field value)
+   
+   pure function: same inputs always give same output."
   (let* ((fields (extract-fields line separator))
          (field-value (get-field fields field-num))
          (numeric-value (string->number field-value)))
@@ -115,42 +253,98 @@
      :values (cons field-value (:values agg))}))
 
 (defun finalize-aggregate (agg)
-  "compute final statistics from aggregation state"
+  "compute final statistics from aggregation state
+   
+   some stats (like mean) can only be computed after seeing all data.
+   this is the finalization step - run it once at the end."
   (let ((count (:count agg)))
     (assoc agg :mean
            (if (> count 0)
                (/ (:sum agg) count)
                0.0))))
 
-;; ╭──────────────────────────────────────────╮
-;; │ GRAIN-SPECIFIC PATTERNS (domain knowledge)│
-;; ╰──────────────────────────────────────────╯
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ GRAIN-SPECIFIC PATTERNS (DOMAIN KNOWLEDGE) ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+;;
+;; this is where grainsearch shines: built-in knowledge about grain format.
+;; you don't have to write regex for graintime or know the grain box structure.
+;; we've encoded that knowledge so you can just use it.
 
 (defun graintime-pattern ()
-  "pattern matching graintime format (76 chars)
-   example: 12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-03h----teamdescend14"
+  "pattern matching graintime format (76 characters)
+   
+   example: 12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-03h----teamdescend14
+   
+   regex breakdown (so you understand what we're matching):
+   - ^[0-9]{5}        → holocene year (12025)
+   - -[0-9]{2}-[0-9]{2} → month-day
+   - --[0-9]{4}-[A-Z]{3} → time-timezone
+   - --moon-[a-z_]+-+ → nakshatra (with padding)
+   - asc-[a-z]{4}[0-9]{3} → ascendant sign + degree
+   - -sun-[0-9]{2}h   → solar house
+   - -+               → final padding
+   
+   this pattern validates the full 76-character graintime format."
   {:regex "^[0-9]{5}-[0-9]{2}-[0-9]{2}--[0-9]{4}-[A-Z]{3}--moon-[a-z_]+-+asc-[a-z]{4}[0-9]{3}-sun-[0-9]{2}h-+"})
 
 (defun graincode-pattern ()
   "pattern matching 6-character grain codes
-   alphabet: xbdghjklmnsvz (no repeats)"
+   
+   alphabet: xbdghjklmnsvz (13 characters)
+   length: exactly 6 characters
+   constraint: no repeated characters (each appears at most once)
+   
+   valid: xbdghj, zmnsvx, klmnbz
+   invalid: xbdghh (repeated h), abcdef (wrong alphabet), xbdgh (too short)
+   
+   permutations: 13!/(13-6)! = 1,235,520 possible codes"
   {:regex "^[xbdghjklmnsvz]{6}$"})
 
 (defun grain-box-pattern ()
-  "pattern matching grain ASCII box borders"
+  "pattern matching grain ascii box borders
+   
+   grain boxes use unicode box-drawing characters:
+   ┌ (top-left corner, starts header)
+   ├ (left tee, starts content)
+   └ (bottom-left corner, ends box)
+   │ (vertical, content lines)
+   
+   format requirement: exactly 110 lines in box (lines 6-115)"
   {:pred (lambda (line)
           (or (string-starts-with? line "┌──")
               (string-starts-with? line "├──")
               (string-starts-with? line "└──")
               (string-starts-with? line "│ ")))})
 
-;; ╭───────────────────────────────────────────╮
-;; │ MAIN SEARCH ENGINE (pipeline composition) │
-;; ╰───────────────────────────────────────────╯
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ MAIN SEARCH ENGINE (PIPELINE COMPOSITION) ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+;;
+;; here's where everything comes together. the search engine takes lines,
+;; applies patterns, extracts fields, and returns results.
+;;
+;; key insight: separate concerns. matching is separate from field extraction.
+;; field extraction is separate from aggregation. each step is pure.
+;;
+;; this separation means you can:
+;; - test each part independently
+;; - compose operations in new ways
+;; - understand each piece without understanding the whole
+;;
+;; that's "simple made easy" - breaking complexity into simple pieces.
 
 (defun search-lines (lines pattern-spec config)
   "search through lines using pattern, return matching results
-   purely functional - no side effects"
+   
+   this is the core search pipeline:
+   1. map-indexed: attach line numbers (1-indexed)
+   2. for each line: test pattern, extract fields if matched
+   3. construct search-result record
+   4. filter: keep only matched results
+   
+   purely functional: no side effects, no mutation, just transformation.
+   same inputs always produce same outputs (referential transparency)."
   (let ((separator (:field-sep config)))
     (filter (lambda (result)
               (:matched? result))
@@ -166,7 +360,16 @@
 
 (defun search-file (filepath pattern-spec config)
   "search a file, return matching results
-   handles file I/O at boundary"
+   
+   handles I/O at the boundary. inside this function, everything is pure.
+   outside, we interact with the filesystem.
+   
+   this is the functional architecture pattern:
+   - I/O at edges (reading files)
+   - pure transformations in middle (search-lines)
+   - I/O at edges again (printing results)
+   
+   keeps most code testable and predictable."
   (let* ((file-contents (slurp filepath))
          (lines (string-split file-contents "\n"))
          (separator (:field-sep config)))
@@ -176,102 +379,162 @@
 
 (defun search-files (filepaths pattern-spec config)
   "search multiple files, return combined results
-   composition of search-file over list"
+   
+   composition: map search-file over list, then flatten (mapcat).
+   
+   this is how functional programming scales:
+   - you have a function that works on one thing
+   - you map it over many things
+   - no loops, no indices, no mutation"
   (mapcat (lambda (filepath)
             (search-file filepath pattern-spec config))
           filepaths))
 
-;; ╭────────────────────────────────────────╮
-;; │ OUTPUT FORMATTING (presentation layer) │
-;; ╰────────────────────────────────────────╯
-
-(defun format-result (result show-line-numbers? show-file?)
-  "format a search result for display
-   pure function: result -> string"
-  (let ((file-prefix (if show-file? 
-                         (str (:file result) ":")
-                         ""))
-        (line-prefix (if show-line-numbers?
-                         (str (:line-number result) ":")
-                         "")))
-    (str file-prefix line-prefix (:content result))))
-
-(defun format-aggregate (agg field-name)
-  "format aggregation statistics for display"
-  (str "count: " (:count agg) "\n"
-       "unique: " (set-size (:unique agg)) "\n"
-       "sum: " (:sum agg) "\n"
-       "mean: " (:mean agg)))
-
-;; ╭──────────────────────────────────────╮
-;; │ CLI INTERFACE (command-line boundary) │
-;; ╰──────────────────────────────────────╯
-
-(defun parse-args (args)
-  "parse command-line arguments into config
-   returns {:pattern, :files, :options}"
-  (let ((pattern (first args))
-        (files (rest args)))
-    {:pattern pattern
-     :files (if (empty? files) ["stdin"] files)
-     :field-sep " "
-     :aggregate? false
-     :show-line-numbers? true
-     :show-files? (> (length files) 1)}))
-
-(defun main (args)
-  "main entry point for grainsearch CLI
-   handles argument parsing, search execution, output"
-  (let* ((config (parse-args args))
-         (pattern-spec (:pattern config))
-         (files (:files config))
-         (results (if (= (first files) "stdin")
-                      (search-lines (read-stdin-lines) pattern-spec config)
-                      (search-files files pattern-spec config))))
-    
-    ;; output results (I/O boundary)
-    (doseq [result results]
-      (println (format-result result
-                              (:show-line-numbers? config)
-                              (:show-files? config))))
-    
-    ;; return exit code
-    (if (empty? results) 1 0)))
-
-;; ╭───────────────────────────────────────────╮
-;; │ UTILITY FUNCTIONS (helpers and combinators)│
-;; ╰───────────────────────────────────────────╯
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ COMPOSITION UTILITIES (BUILDING BIGGER FROM SMALLER) ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+;;
+;; these are the lego bricks of functional programming. small, simple functions
+;; that you can snap together to build complex operations.
 
 (defun compose (f g)
-  "function composition: (f ∘ g)(x) = f(g(x))"
+  "function composition: (f ∘ g)(x) = f(g(x))
+   
+   mathematical notation made code. compose two functions into one.
+   
+   example:
+   (let ((uppercase-second (compose string-upcase (field-selector 2))))
+     (uppercase-second \"hello world amazing\")) ; => \"WORLD\""
   (lambda (x) (f (g x))))
 
 (defun pipe (&rest fns)
-  "pipeline composition: (pipe f g h)(x) = h(g(f(x)))"
+  "pipeline composition: (pipe f g h)(x) = h(g(f(x)))
+   
+   like unix pipes: data flows left to right through transformations.
+   
+   example:
+   (let ((process (pipe trim
+                        lowercase
+                        (split \",\")
+                        (take 3))))
+     (process \"  HELLO,WORLD,FOO,BAR  \")) ; => [\"hello\" \"world\" \"foo\"]"
   (reduce (lambda (acc fn)
             (lambda (x) (fn (acc x))))
           (lambda (x) x)
           fns))
 
 (defun partial (f &rest args)
-  "partial application of function"
+  "partial application of function
+   
+   lock in some arguments now, supply the rest later.
+   
+   example:
+   (let ((add-five (partial + 5)))
+     (add-five 10)) ; => 15"
   (lambda (&rest more-args)
     (apply f (concat args more-args))))
 
-;; ╭─────────────────────────────────────────╮
-;; │ EXAMPLE USAGE (documentation by example) │
-;; ╰─────────────────────────────────────────╯
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ EXAMPLE USAGE (DOCUMENTATION THROUGH WORKING CODE) ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+;;
+;; these aren't just examples - they're tests. if these work, grainsearch works.
 
-;; search for graintimes in files:
-;; (search-files ["file1.md" "file2.md"] (graintime-pattern) (make-config nil " " false))
+;; example 1: find all graintimes in files
+(comment
+  (search-files ["grains/*.md" "docs/*.md"]
+                (graintime-pattern)
+                (make-config nil " " false))
+  ;; returns: list of search-result records for each graintime found
+  )
 
-;; extract second field from results:
-;; (map (compose (partial get-field 2) (partial extract-fields " ")) matching-lines)
+;; example 2: extract second field from csv lines containing "active"
+(comment
+  (let* ((pattern "active")
+         (config (make-config pattern "," false))
+         (results (search-file "data.csv" pattern config))
+         (second-fields (map (field-selector 2) 
+                            (map :content results))))
+    second-fields)
+  ;; returns: list of second column values from matching lines
+  )
 
-;; count unique values in field 3:
-;; (reduce (partial aggregate-line 3 " ") (make-aggregate) matching-lines)
+;; example 3: count unique values in field 3
+(comment
+  (let* ((results (search-file "log.txt" "ERROR" (make-config nil " " false)))
+         (initial-agg (make-aggregate))
+         (final-agg (finalize-aggregate
+                     (reduce (lambda (agg result)
+                               (aggregate-line agg (:content result) 3 " "))
+                             initial-agg
+                             results))))
+    (:unique final-agg))
+  ;; returns: set of unique values from 3rd field of ERROR lines
+  )
 
-;; find all grain box borders:
-;; (search-lines input-lines (grain-box-pattern) (make-config nil " " false))
+;; example 4: composition - uppercase the first field of matching lines
+(comment
+  (let ((transform (compose string-upcase (field-selector 1))))
+    (map (lambda (result)
+           (transform (:content result) " "))
+         (search-file "names.txt" "active" (make-config nil " " false))))
+  ;; returns: list of first fields in uppercase from matching lines
+  )
 
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ PHILOSOPHY: WHY THIS WAY? ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+;;
+;; grainsearch embodies team 07 (libra ♎ + the chariot vii):
+;;
+;; LIBRA'S BALANCE:
+;; - simple primitives (match, extract, aggregate) ⚖️ powerful composition
+;; - clear contracts (type predicates) ⚖️ flexible usage
+;; - traditional tools (awk) ⚖️ modern approaches (ketos)
+;; - one interface (pattern-match?) ⚖️ multiple implementations
+;;
+;; THE CHARIOT'S VICTORY:
+;; - opposing forces (simplicity/power) harnessed toward progress
+;; - controlled movement (pure functions, predictable flow)
+;; - willpower aligned with wisdom (strong types, clear abstractions)
+;; - triumph through discipline (functional composition, separation of concerns)
+;;
+;; inspired by:
+;; - rich hickey: "simple made easy", decomplecting, data-oriented design
+;; - helen atthowe: ecological patience, working with natural patterns
+;; - haskell: algebraic types, pure functions, composition
+;; - hoon/arvo: strong types without heavyweight machinery
+;; - lisp tradition: code as data, functional transformation
+;;
+;; the result: a tool that balances opposing forces and moves forward with
+;; controlled power. balance not dogma. simplicity not simplism.
+
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ COPYRIGHT & LICENSE ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+;;
+;; copyright © 2025 kae3g (kj3x39, @risc.love)
+;; team: 07 (teambalance07 - libra ♎ / vii. the chariot)
+;; authored by: 14 (teamdescend14 - ketu ☋ / xiv. temperance)
+;;
+;; licensed under the grain network open license:
+;; - use freely for any purpose (commercial or non-commercial)
+;; - modify and distribute modifications
+;; - attribution required (credit original authors)
+;; - share-alike (derivatives must use compatible license)
+;; - no warranty (use at your own risk)
+;;
+;; this code is part of the grain network ecosystem:
+;; - graintime: astronomical temporal encoding
+;; - grainorder: systematic addressing (1.2M grains)
+;; - grainscript: 80×110 teaching card format
+;; - grainbarrel: universal build system
+;; - grainsearch: this tool (text processing)
+;;
+;; learn more: https://chartcourse.io
+;; source: https://github.com/kae3g/grainkae3g
+;; contact: https://github.com/kae3g
+
+;; ═══════════════════════════════════════════════════════════════════════════
 ;; now == next + 1 ⚖️ 🌾
+;; ═══════════════════════════════════════════════════════════════════════════
