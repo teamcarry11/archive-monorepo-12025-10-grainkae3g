@@ -62,7 +62,7 @@
 </svelte:head>
 
 <h1>Ember Harvest</h1>
-<p><a href="https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainbook-scripts" class="branch-link">🎃 grainbook scripts</a></p>
+<p><a href="/grainscripts" class="grainscripts-link">🎃 grainscripts</a></p>
 
 <hr>
 

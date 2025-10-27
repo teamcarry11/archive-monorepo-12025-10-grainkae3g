@@ -15,10 +15,17 @@
   });
 </script>
 
-<span class="username-indicator">{username}</span>
+<a 
+  href="https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainscripts"
+  class="username-indicator"
+  target="_blank"
+  rel="noopener noreferrer"
+  title="View grainscripts on GitHub"
+>{username}</a>
 
 <style>
   .username-indicator {
+    text-decoration: none;
     position: fixed;
     top: 20px;
     /* Golden ratio position: ~61.8% from left edge of content column
