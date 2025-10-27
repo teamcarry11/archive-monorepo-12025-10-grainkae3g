@@ -1,0 +1,221 @@
+;; grainbranch-readme-sync.ket - Ketos version
+;; 
+;; Syncs the current grainbranch README to root README (symlink)
+;; "As above, so below" - outer reflects inner
+;;
+;; Usage: ketos grainbranch-readme-sync.ket [grainbranch-name]
+;;        If no grainbranch provided, uses current git branch
+
+;; =============================================================================
+;; GLOW'S TEACHING COMMENTS  
+;; =============================================================================
+
+;; Listen, what's happening here? Let me walk you through this Ketos program.
+;;
+;; We're solving a simple problem: How do we make the root README reflect
+;; the current grainbranch README?
+;;
+;; The answer is symbolic links. Think of a symlink like a portal or shortcut.
+;; The root README.md isn't a file anymore - it's a pointer that says "go look
+;; over there for the actual content."
+;;
+;; Why does this matter? Because when you push to GitHub, people see the root
+;; README.md first. But the real work happens in grainbranches. So we create
+;; a bridge between them.
+;;
+;; In Hermetic terms: "As above, so below." The outer world (root) reflects
+;; the inner truth (grainbranch). They're not separate - they're one.
+;;
+;; Question: Why write this in Ketos instead of Babashka?
+;;
+;; Answer: To learn! Ketos is new to us. The best way to learn a language is
+;; to solve real problems with it. This script is simple enough to understand,
+;; complex enough to teach us something.
+;;
+;; Does this make sense so far?
+
+;; =============================================================================
+;; HELPER FUNCTIONS (TODO: Implement via Rust FFI)
+;; =============================================================================
+
+(define (run-command cmd)
+  "Run shell command and return output
+   
+   Glow: In Babashka, we can just call shell commands directly.
+   In Ketos, we need Rust FFI (Foreign Function Interface) to call
+   external programs. For now, this is a stub - it logs what we WOULD do.
+   
+   Once we implement the Rust FFI, this function will actually execute
+   the command and return the output."
+  
+  (println (concat "Would run: " cmd))
+  {:success true :output "" :error ""})
+
+(define (file-exists? path)
+  "Check if file exists
+   TODO: Implement via Rust FFI"
+  (println (concat "Checking if file exists: " path))
+  true)
+
+(define (is-symlink? path)
+  "Check if path is a symbolic link
+   TODO: Implement via Rust FFI"
+  false)
+
+(define (current-timestamp)
+  "Get current timestamp string
+   TODO: Implement via Rust FFI"
+  "12025-10-26-1900")
+
+;; =============================================================================
+;; CORE LOGIC
+;; =============================================================================
+
+(define (get-current-branch)
+  "Get the current git branch name
+   
+   Glow: We're asking git what branch we're on. This way, if you don't
+   specify a grainbranch name, we'll automatically use the current one."
+  
+  (let ((result (run-command "git branch --show-current")))
+    (if (:success result)
+      (:output result)
+      (do
+        (println "⚠️  Could not determine current branch")
+        nil))))
+
+(define (backup-root-readme)
+  "Back up the current root README if it's not already a symlink
+   
+   Glow: Before we create the symlink, we want to save the existing README.
+   But only if it's an actual file, not already a symlink.
+   
+   Why? Because if something goes wrong, you can always restore from backup.
+   We're being careful here - Panthera-serious about not losing work."
+  
+  (let ((readme-path "README.md")
+        (backup-path (concat "README-backup-" (current-timestamp) ".md")))
+    
+    (when (and (file-exists? readme-path)
+              (not (is-symlink? readme-path)))
+      (println (concat "📋 Backing up root README to: " backup-path))
+      (run-command (concat "cp " readme-path " " backup-path))
+      backup-path)))
+
+(define (create-symlink grainbranch-name)
+  "Create symlink from root README to grainbranch README
+   
+   Glow: This is the heart of the script. We're creating a symbolic link.
+   
+   Think of it like this: The root README becomes a signpost that says
+   'for the actual content, go look in the grainbranch directory.'
+   
+   In Hermetic philosophy: As above, so below. The macrocosm (root)
+   reflects the microcosm (grainbranch). They mirror each other.
+   
+   When you change the grainbranch README, the root README changes too.
+   They're unified. That's the power of symlinks."
+  
+  (let ((target-path (concat "grainstore/grain6pbc/teamdescend14/" 
+                            grainbranch-name 
+                            "/README.md"))
+        (link-path "README.md"))
+    
+    ;; Check if target exists
+    (if (not (file-exists? target-path))
+      (do
+        (println (concat "❌ Target README not found: " target-path))
+        (println "   Create the grainbranch README first!")
+        false)
+      
+      (do
+        (println "🔗 Creating symlink...")
+        (println (concat "   From: " link-path " (root)"))
+        (println (concat "   To:   " target-path " (grainbranch)"))
+        (println)
+        
+        ;; Remove existing README if it exists
+        (when (file-exists? link-path)
+          (run-command (concat "rm " link-path)))
+        
+        ;; Create the symlink
+        (let ((result (run-command (concat "ln -sf " target-path " " link-path))))
+          (if (:success result)
+            (do
+              (println "✅ Symlink created successfully!")
+              (println)
+              (println "As above, so below. 🌾")
+              (println "The outer (root) now reflects the inner (grainbranch).")
+              true)
+            (do
+              (println "❌ Failed to create symlink")
+              (println (:error result))
+              false)))))))
+
+;; =============================================================================
+;; MAIN FUNCTION
+;; =============================================================================
+
+(define (main args)
+  "Main entry point
+   
+   Glow: Let me walk you through what happens when you run this script.
+   
+   First, we figure out which grainbranch we're working with. You can either
+   tell us explicitly by passing the branch name, or we'll detect it from
+   your current git branch.
+   
+   Second, we back up the existing root README if it's not already a symlink.
+   Safety first - Panthera protects what matters.
+   
+   Third, we create the symlink from root to grainbranch. This is where the
+   'as above, so below' principle manifests in code.
+   
+   Finally, we give you next steps. The symlink is created, but you need to
+   commit it to git so others see it too.
+   
+   The whole process takes about 2 seconds. But the result is elegant -
+   your root README always shows your current work."
+  
+  (let ((grainbranch (or (first args) (get-current-branch))))
+    
+    (println)
+    (println "🌾 GRAINBRANCH README SYNC (Ketos)")
+    (println "=" (apply str (repeat 60 "=")))
+    (println)
+    (println (concat "Grainbranch: " grainbranch))
+    (println)
+    
+    (if (not grainbranch)
+      (do
+        (println "❌ No grainbranch specified and could not detect current branch")
+        (println)
+        (println "Usage: ketos grainbranch-readme-sync.ket [grainbranch-name]")
+        1)  ; exit code 1
+      
+      (do
+        ;; Back up existing root README
+        (backup-root-readme)
+        (println)
+        
+        ;; Create the symlink
+        (if (create-symlink grainbranch)
+          (do
+            (println)
+            (println "💡 Next steps:")
+            (println "   1. git add README.md (add the symlink)")
+            (println "   2. git commit -m \"docs: README symlinked to grainbranch\"")
+            (println "   3. git push")
+            (println)
+            (println "The root README now reflects your grainbranch README.")
+            (println "Change the grainbranch README, and the root changes too.")
+            (println)
+            0)  ; exit code 0
+          1)))))  ; exit code 1
+
+;; Entry point
+;; In Ketos, we might call (main (args)) or similar
+;; For now, this is the structure - we'll refine when testing with real Ketos
+
+;; 🌾 now == next + 1
+
