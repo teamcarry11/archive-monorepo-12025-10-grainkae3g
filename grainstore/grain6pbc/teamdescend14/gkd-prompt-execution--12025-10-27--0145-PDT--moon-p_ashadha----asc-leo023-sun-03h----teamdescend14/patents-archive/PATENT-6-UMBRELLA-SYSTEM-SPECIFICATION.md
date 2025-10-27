@@ -70,7 +70,7 @@ Every development session creates a grainbranch:
 {project}--{graintime}--{team}
 
 Example:
-gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula--asc-arie05-sun-08h--teamdescend14
+12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-03h----teamdescend14
 ```
 
 This encodes:
