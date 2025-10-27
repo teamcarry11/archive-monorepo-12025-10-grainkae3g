@@ -91,8 +91,9 @@
 │ Think of it like learning Spanish then Italian. Same roots (Latin/Lisp),    │
 │ different flavors. Once you know one Lisp, you know them all. The mental    │
 │ model transfers. The parentheses make sense. The data-as-code philosophy    │
-│ clicks. This is why we teach both: not to confuse you, but to show you      │
-│ the UNITY beneath the syntax. Different tools. Same thinking.                │
+│ clicks. We teach both to reveal the UNITY beneath the syntax. Different     │
+│ tools serving the same thinking. Learning one illuminates the other. The    │
+│ comparison teaches what neither alone could show.                            │
 │                                                                              │
 │ NEXT STEPS:                                                                  │
 │ 1. Install Ketos: cargo install ketos (requires Rust toolchain)             │
@@ -101,12 +102,13 @@
 │ 4. Modify both - see how changes mirror each other                           │
 │                                                                              │
 │ DOES THIS MAKE SENSE?                                                        │
-│ You're not learning two random languages. You're learning one IDEA (Lisp)   │
-│ expressed in two FORMS (Clojure-flavored vs Scheme-flavored). The deeper    │
-│ you go, the more you'll see: they're the same river, different banks.       │
+│ You're learning one IDEA (Lisp) expressed in two FORMS (Clojure-flavored vs│
+│ Scheme-flavored). The deeper you go, the more you'll see: they're the same  │
+│ river, different banks. One pattern, two voices.                             │
 │ Babashka flows through JVM land. Ketos flows through Rust land. But both    │
 │ flow to the same ocean: elegant, functional, beautiful code. Learning one   │
-│ teaches you both. The syntax differs. The thinking unifies. Welcome. 🌾    │
+│ teaches you both. The syntax differs. The thinking unifies. The deeper      │
+│ pattern emerges through comparison. Welcome to the river. 🌾                │
 │                                                                              │
 │ grain: xbdghk (2 of 1,235,520)                                             > │
 │                                                                              │
