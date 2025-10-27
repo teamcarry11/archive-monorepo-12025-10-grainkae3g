@@ -165,6 +165,21 @@
   - `CHART-COURSE-INDEX.md` (569 lines, navigation)
 - **GitHub Pages**: Deployed (pending URL)
 
+#### **graindualwifi** ⭐ NEW!
+- **Path**: `teamprecision06/graindualwifi/`
+- **Purpose**: Dual-wifi failover daemon (Starlink + cellular)
+- **Created**: 2025-10-26 (17:00 PDT)
+- **Language**: **Ketos** (Rust Lisp) - First real Ketos program! 🎉
+- **Target**: Ubuntu 24.04 LTS (Framework 16)
+- **Key Files**:
+  - `SPEC.md` (Complete technical specification, 410 lines)
+  - `src/graindualwifi.ket` (Ketos program, ~200 lines)
+  - `src/main.rs` (Rust entry point with stub mode)
+  - `config/graindualwifi.edn` (Configuration)
+  - `systemd/graindualwifi.service` (System daemon)
+- **Philosophy**: VI. The Lovers - Choose wisely between two paths
+- **Status**: Complete (needs Rust + Ketos to build)
+
 #### **chartcourse**
 - **Path**: `teamprecision06/chartcourse/`
 - **Purpose**: New brand for precision navigation + education
@@ -208,15 +223,31 @@
 ### **Team10 - teamstructure10** (Capricorn ♑ / X. Wheel of Fortune)
 **Location**: `grainstore/grain6pbc/teamstructure10/`
 
-#### **graintime**
+#### **graintime** ⭐ MAJOR UPDATE (2025-10-26)
 - **GitHub**: https://github.com/grain6pbc/teamstructure10/graintime
 - **Path**: `teamstructure10/graintime/`
-- **Purpose**: Vedic astrology graintime generator
-- **Status**: Active
-- **Key Files**:
-  - `src/graintime/generator.clj` (graintime generation)
+- **Purpose**: Vedic astrology graintime generator with triple-redundancy ascendant
+- **Status**: **Active** (LST perfect, ascendant debugging)
+- **Core Files**:
+  - `src/graintime/generator.clj` (graintime generation, LST PERFECT ✅)
   - `src/graintime/format76.clj` (76-char format)
-- **TODO**: Swiss Ephemeris integration (accurate ascendant)
+  - `src/graintime/solar_houses.clj` (diurnal sun houses ✅)
+  - `src/graintime/sunset.clj` (solar time calculations ✅)
+- **NEW Triple-Redundancy Ascendant** (2025-10-26):
+  - `src/graintime/swiss_ephemeris_real.clj` (Method A: Professional-grade)
+  - `src/graintime/ascendant_api.clj` (Method C: API fallback)
+  - `src/graintime/ascendant_unified.clj` (Unified calculator)
+  - `src/graintime/ascendant_houses.clj` (Method B: Manual formula)
+  - `test/graintime/nakshatra_ascendant_tests.clj` (Comprehensive test suite)
+- **Documentation** (2025-10-26):
+  - `GRAINTIME-ALGORITHM-COMPLETE.md` (Complete specification)
+  - `TRIPLE-REDUNDANCY-ASCENDANT.md` (Architecture)
+  - `SESSION-SUMMARY-OCT26-2025.md` (Session notes)
+- **Accuracy Status**:
+  - LST: ✅ PERFECT (18.2051h matches astro-seek 18:12:18)
+  - Diurnal Houses: ✅ WORKING (8th house at 17:00 PDT)
+  - Ascendant: 🚧 Triple redundancy built, formula debugging
+  - Moon Nakshatra: 🚧 Pending (Swiss Eph or API)
 
 #### **grainbranch** ✨ NEW (2025-10-26)
 - **Path**: `teamstructure10/grainbranch/`
