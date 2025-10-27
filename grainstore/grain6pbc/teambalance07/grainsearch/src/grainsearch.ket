@@ -1,0 +1,442 @@
+;;; ✧･ﾟ:* grainsearch.ket - search utility for grains (awk in ketos)
+;;;
+;;; team: 07 (teambalance07 - libra ♎ / vii. the chariot)
+;;; authored by: 14 (teamdescend14 - ketu ☋ / xiv. temperance)
+;;;
+;;; purpose: search, filter, and transform grain files using pattern matching
+;;;          and text processing, entirely in ketos (no awk dependency).
+;;;          
+;;; the chariot's victory: movement with balance, action with equilibrium.
+;;; libra's scales: weighing patterns, finding matches, balancing input/output.
+;;;
+;;; this tool searches grains like awk searches text, but with lisp elegance:
+;;;   - pattern matching (regex, predicates, functions)
+;;;   - field extraction (columns, components, metadata)
+;;;   - transformations (map, filter, reduce over lines)
+;;;   - aggregation (counts, sums, statistics)
+;;;   - composability (chain operations functionally)
+;;;
+;;; ∿∿∿ the chariot moves forward while maintaining perfect balance ∿∿∿
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; core data structures (pattern, match, result)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+;; ✿ Pattern = Regex | Predicate | Function ✿
+;;
+;; a pattern can be:
+;;   - regex string for text matching
+;;   - predicate function (String → Boolean)
+;;   - transformation function (String → a)
+
+;; ✿ Match = {:line String, :line-number Integer, :fields [String]} ✿
+;;
+;; represents a matched line with its metadata
+
+;; ✿ SearchResult = [Match] ✿
+;;
+;; collection of all matches from a search
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; line processing (the heart of text searching)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define (split-fields line separator)
+  ;; :: String → String → [String]
+  ;;
+  ;; split line into fields by separator (like awk's field splitting).
+  ;;
+  ;; examples:
+  ;;   (split-fields "a:b:c" ":") → ["a" "b" "c"]
+  ;;   (split-fields "hello world" " ") → ["hello" "world"]
+  ;;
+  ;; default separator is whitespace (like awk default)
+  
+  (if (equal? separator "")
+      (string-split line #\space)  ; split on whitespace
+      (string-split line separator)))
+
+(define (match-pattern? line pattern)
+  ;; :: String → Pattern → Boolean
+  ;;
+  ;; check if line matches pattern.
+  ;;
+  ;; pattern can be:
+  ;;   - string (treated as regex)
+  ;;   - function (applied as predicate)
+  ;;
+  ;; libra's scales: does this line balance with this pattern?
+  
+  (cond
+    ((string? pattern)
+     ;; regex match
+     (string-contains? line pattern))  ; TODO: use actual regex when available
+    
+    ((function? pattern)
+     ;; predicate match
+     (pattern line))
+    
+    (else
+     false)))
+
+(define (process-line line line-number pattern action field-sep)
+  ;; :: String → Integer → Pattern → Action → String → Maybe Match
+  ;;
+  ;; process a single line: check pattern, apply action if matches.
+  ;;
+  ;; returns Match if pattern matches, nil otherwise.
+  ;;
+  ;; the chariot's movement: forward through text, balanced processing
+  
+  (when (match-pattern? line pattern)
+    (let ((fields (split-fields line field-sep))
+          (result (if action (action line fields) line)))
+      {:line result
+       :line-number line-number
+       :fields fields
+       :original line})))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; file processing (read and search)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define (search-file filepath pattern action field-sep)
+  ;; :: String → Pattern → Action → String → [Match]
+  ;;
+  ;; search entire file for pattern, applying action to matches.
+  ;;
+  ;; the chariot drives through the file, line by line, maintaining balance
+  ;; between reading (input) and transforming (output).
+  
+  ;; TODO: implement file reading in ketos
+  ;; (let ((lines (read-lines filepath)))
+  ;;   (filter identity
+  ;;     (map-indexed (lambda (idx line)
+  ;;                   (process-line line (+ idx 1) pattern action field-sep))
+  ;;                 lines)))
+  
+  ;; placeholder for now
+  '())
+
+(define (search-files filepaths pattern action field-sep)
+  ;; :: [String] → Pattern → Action → String → [(String, [Match])]
+  ;;
+  ;; search multiple files, returning (filepath, matches) pairs.
+  ;;
+  ;; libra balances: process many files while keeping results organized
+  
+  (map (lambda (filepath)
+        {:file filepath
+         :matches (search-file filepath pattern action field-sep)})
+       filepaths))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; common actions (what to do with matched lines)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define (action-print line fields)
+  ;; :: String → [String] → String
+  ;;
+  ;; default action: just print the line (like awk's default)
+  line)
+
+(define (action-print-field n)
+  ;; :: Integer → (String → [String] → String)
+  ;;
+  ;; return action that prints nth field (like awk's $1, $2, etc.)
+  ;;
+  ;; examples:
+  ;;   ((action-print-field 1) "a:b:c" ["a" "b" "c"]) → "a"
+  ;;   ((action-print-field 2) "a:b:c" ["a" "b" "c"]) → "b"
+  
+  (lambda (line fields)
+    (if (< n (length fields))
+        (nth fields n)
+        "")))
+
+(define (action-transform f)
+  ;; :: (String → String) → Action
+  ;;
+  ;; return action that transforms line through function f
+  ;;
+  ;; examples:
+  ;;   ((action-transform string-upcase) "hello" _) → "HELLO"
+  ;;   ((action-transform (lambda (s) (str ">>> " s))) "hi" _) → ">>> hi"
+  
+  (lambda (line fields)
+    (f line)))
+
+(define (action-count)
+  ;; :: () → Action
+  ;;
+  ;; action that just counts matches (returns line number)
+  ;;
+  ;; use with aggregation to count total matches
+  
+  (lambda (line fields)
+    "1"))  ; will be counted later
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; grain-specific patterns (domain knowledge)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define (pattern-graintime)
+  ;; :: () → Pattern
+  ;;
+  ;; pattern matching valid graintime strings (76 chars)
+  "12[0-9]{3}-[0-9]{2}-[0-9]{2}--[0-9]{4}-[A-Z]{3}--moon-")
+
+(define (pattern-grain-code)
+  ;; :: () → Pattern
+  ;;
+  ;; pattern matching grain codes (xbdghj, etc.)
+  "[xbdghjklmnsvz]{6}")
+
+(define (pattern-ascii-box)
+  ;; :: () → Pattern  
+  ;;
+  ;; pattern matching ASCII box lines (│ ... │)
+  "^│.*│$")
+
+(define (predicate-empty-line)
+  ;; :: String → Boolean
+  ;;
+  ;; predicate: is line empty or only whitespace?
+  (lambda (line)
+    (equal? "" (string-trim line))))
+
+(define (predicate-contains word)
+  ;; :: String → (String → Boolean)
+  ;;
+  ;; predicate factory: line contains this word?
+  (lambda (line)
+    (string-contains? line word)))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; aggregation functions (reduce matches to insights)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define (aggregate-count matches)
+  ;; :: [Match] → Integer
+  ;;
+  ;; count total matches (like awk's END {print NR})
+  (length matches))
+
+(define (aggregate-extract-field n matches)
+  ;; :: Integer → [Match] → [String]
+  ;;
+  ;; extract nth field from all matches
+  (map (lambda (m)
+        (nth (get m :fields) n))
+       matches))
+
+(define (aggregate-unique-values matches key-fn)
+  ;; :: [Match] → (Match → a) → #{a}
+  ;;
+  ;; get unique values by applying key-fn to each match
+  (set (map key-fn matches)))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; command-line interface (the chariot's reins)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define (grainsearch pattern files options)
+  ;; :: Pattern → [String] → Options → IO ()
+  ;;
+  ;; main entry point for grainsearch.
+  ;;
+  ;; options:
+  ;;   :field-sep → field separator (default whitespace)
+  ;;   :action → what to do with matches (default print)
+  ;;   :aggregate → how to summarize results (default none)
+  ;;   :case-insensitive → ignore case (default false)
+  ;;
+  ;; examples:
+  ;;   (grainsearch "graintime" ["*.md"] {})
+  ;;   (grainsearch (predicate-contains "ketos") ["grains/*.md"] 
+  ;;                {:action (action-print-field 0)})
+  
+  (let ((field-sep (or (get options :field-sep) ""))
+        (action (or (get options :action) action-print))
+        (aggregate-fn (get options :aggregate))
+        (results (search-files files pattern action field-sep)))
+    
+    ;; print results
+    (for-each (lambda (file-result)
+               (let ((filepath (get file-result :file))
+                     (matches (get file-result :matches)))
+                 (when (not (empty? matches))
+                   (println (format "{}:" filepath))
+                   (for-each (lambda (match)
+                              (println (format "  {}: {}" 
+                                             (get match :line-number)
+                                             (get match :line))))
+                            matches))))
+             results)
+    
+    ;; print aggregation if requested
+    (when aggregate-fn
+      (let ((all-matches (apply concat (map #(get % :matches) results))))
+        (println "")
+        (println (format "Total matches: {}" (aggregate-fn all-matches)))))))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; convenience functions (common use cases)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define (find-graintimes files)
+  ;; find all graintime strings in files
+  (grainsearch (pattern-graintime) files {}))
+
+(define (find-grain-codes files)
+  ;; find all grain codes in files
+  (grainsearch (pattern-grain-code) files {}))
+
+(define (count-lines-matching pattern files)
+  ;; count lines matching pattern (like grep -c)
+  (grainsearch pattern files {:aggregate aggregate-count}))
+
+(define (extract-field n pattern files)
+  ;; extract nth field from lines matching pattern
+  (grainsearch pattern files 
+               {:action (action-print-field n)}))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; exports (public api)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(export grainsearch
+        search-file
+        search-files
+        split-fields
+        match-pattern?
+        
+        ;; actions
+        action-print
+        action-print-field
+        action-transform
+        action-count
+        
+        ;; patterns
+        pattern-graintime
+        pattern-grain-code
+        pattern-ascii-box
+        predicate-empty-line
+        predicate-contains
+        
+        ;; aggregations
+        aggregate-count
+        aggregate-extract-field
+        aggregate-unique-values
+        
+        ;; convenience
+        find-graintimes
+        find-grain-codes
+        count-lines-matching
+        extract-field)
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; usage examples
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(comment
+  ;; example 1: find all graintime strings
+  (find-graintimes ["grains/*.md"])
+  ;; → prints all lines containing graintimes
+  
+  ;; example 2: count grains mentioning "ketos"
+  (count-lines-matching "ketos" ["grains/*.md"])
+  ;; → prints total count
+  
+  ;; example 3: extract grain codes from filenames
+  (find-grain-codes ["grains/*"])
+  ;; → prints all 6-char codes found
+  
+  ;; example 4: find grains with box line count issues
+  (grainsearch pattern-ascii-box
+               ["grains/*.md"]
+               {:aggregate (lambda (matches)
+                            (let ((count (length matches)))
+                              (if (equal? count 110)
+                                  (format "✅ perfect: {} box lines" count)
+                                  (format "❌ wrong: {} box lines (need 110)" count))))})
+  
+  ;; example 5: custom pattern and transformation
+  (grainsearch (predicate-contains "helen")
+               ["grains-helen-mode/*.md"]
+               {:action (action-transform string-upcase)})
+  ;; → prints matching lines in UPPERCASE
+  
+  ;; example 6: field extraction (assuming colon-separated data)
+  (extract-field 1 "graintime" ["logs/*.txt"])
+  ;; → extracts second field from lines containing "graintime"
+  )
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; libra philosophy (balance in search)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+;; libra teaches balance through weighing. the scales don't judge - they measure.
+;; grainsearch embodies this:
+;;
+;;   INPUT ←→ OUTPUT (balance what goes in with what comes out)
+;;   PATTERN ←→ MATCH (balance strictness with flexibility)
+;;   FILTER ←→ TRANSFORM (balance selection with modification)
+;;   SPEED ←→ ACCURACY (balance performance with correctness)
+;;
+;; the chariot's victory: moving forward while staying centered.
+;; grainsearch processes text without losing equilibrium.
+
+;; the chariot (vii) governs:
+;;   - movement with control
+;;   - victory through balance
+;;   - opposing forces harnessed
+;;   - willpower aligned with wisdom
+;;
+;; applied to text search:
+;;   - move through files (chariot's motion)
+;;   - maintain pattern discipline (chariot's control)
+;;   - balance input/output (opposing sphinxes harnessed)
+;;   - achieve results through focused will (victory)
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; future enhancements
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+;; phase 1: basic implementation
+;;   - file i/o (read lines from files)
+;;   - regex matching (proper regex engine)
+;;   - glob expansion (*.md → actual file list)
+;;   - streaming (don't load entire file into memory)
+;;
+;; phase 2: advanced features
+;;   - multi-line patterns (like awk's RS)
+;;   - begin/end blocks (like awk's BEGIN {} END {})
+;;   - variables and state (like awk's built-in vars)
+;;   - arithmetic operations (sum, avg, min, max)
+;;
+;; phase 3: grain-specific
+;;   - parse grain headers automatically
+;;   - validate 80×110 format while searching
+;;   - extract graintime components
+;;   - aggregate grain statistics
+;;
+;; phase 4: optimization
+;;   - parallel file processing
+;;   - incremental results (stream output)
+;;   - index building (cache for repeat searches)
+;;   - rust integration (use ripgrep for speed)
+
+;;; ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
+;;; end of grainsearch.ket
+;;;
+;;; the chariot moves with balance ⚖️
+;;; the scales weigh with wisdom ∿
+;;;
+;;; now == next + 1 ✧･ﾟ:* 🌾
+;;;
+;;; copyright © 2025 kae3g (kj3x39, @risc.love)
+;;; team: 07 (teambalance07 - libra ♎ / vii. the chariot)
+;;; authored by: 14 (teamdescend14 - ketu ☋ / xiv. temperance)
+;;; ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
+
