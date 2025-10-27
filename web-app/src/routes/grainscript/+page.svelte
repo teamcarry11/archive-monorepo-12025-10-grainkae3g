@@ -49,34 +49,48 @@
   
   <div class="grain-card">
     <h3><a href="{base}/grainscript/xbdghj">xbdghj</a></h3>
-    <p class="title">Grainbranch README Sync (Babashka)</p>
-    <p class="description">How to symlink your root README to a grainbranch README using Babashka. Your first automation script.</p>
+    <p class="title">Grainbranch README Sync (Ketos Primary)</p>
+    <p class="description">How to symlink your root README to a grainbranch README. Your first automation script in Ketos for Redox OS.</p>
     <span class="card-number">Card 1 of 1,235,520</span>
   </div>
   
   <div class="grain-card">
     <h3><a href="{base}/grainscript/xbdghk">xbdghk</a></h3>
-    <p class="title">Grainbranch README Sync (Ketos)</p>
-    <p class="description">The same script, but in Ketos (Rust Lisp). Compare and learn both languages side-by-side.</p>
+    <p class="title">Babashka Comparison</p>
+    <p class="description">Comparing two Lisps: Babashka (Clojure scripting) and Ketos (Rust Lisp). Learn when to use each.</p>
     <span class="card-number">Card 2 of 1,235,520</span>
   </div>
   
   <div class="grain-card">
     <h3><a href="{base}/grainscript/xbdghl">xbdghl</a></h3>
     <p class="title">Graincard Format Specification</p>
-    <p class="description">The meta-script! Learn the 80×110 format itself. How graincards work, why they're this size, and the philosophy behind them.</p>
+    <p class="description">The meta-grain! Learn the 80×110 format itself. How grains work, why they're this size, and the philosophy behind them.</p>
     <span class="card-number">Card 3 of 1,235,520</span>
   </div>
   
   <div class="grain-card">
     <h3><a href="{base}/grainscript/xbdghn">xbdghn</a></h3>
     <p class="title">Grainorder Alphabet System</p>
-    <p class="description">How we order 1.2 million cards with 13 consonants. No vowels, no duplicates, pure math. The addressing system explained.</p>
+    <p class="description">How we address 1.2 million grains with 13 consonants (xbdghjklmnsvz). No vowels, no duplicates, pure math.</p>
     <span class="card-number">Card 4 of 1,235,520</span>
   </div>
   
+  <div class="grain-card">
+    <h3><a href="{base}/grainscript/xbdghs">xbdghs</a></h3>
+    <p class="title">Graintime Temporal Calculation</p>
+    <p class="description">76-character timestamps with moon nakshatras, rising signs, and solar houses. Astronomical precision meets poetic richness.</p>
+    <span class="card-number">Card 5 of 1,235,520</span>
+  </div>
+  
+  <div class="grain-card">
+    <h3><a href="{base}/grainscript/xbdghv">xbdghv</a></h3>
+    <p class="title">Moon Cycles and Branching</p>
+    <p class="description">How grainbranches mirror lunar cycles. Seasonal synthesis, session consolidation, working with time's rhythms.</p>
+    <span class="card-number">Card 6 of 1,235,520</span>
+  </div>
+  
   <p class="more-coming">
-    📝 <em>1,235,515 more grains coming...</em>
+    📝 <em>1,235,514 more grains coming...</em>
   </p>
 </section>
 

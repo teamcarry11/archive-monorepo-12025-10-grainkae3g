@@ -18,21 +18,26 @@
 }
 
 :root[data-theme="dark"] {
-  /* Ember Harvest (Dark - DEFAULT) - Halloween night with glowing embers 🎃 */
-  --fg: #e8d5c4;          /* Warm sand/clay text (faded Material) */
-  --bg: #1a0f0a;          /* Almost black with warm brown undertone */
-  --bd: #ff8200;          /* BRIGHT PUMPKIN ORANGE borders (Cleveland Browns) */
-  --lk: #ffb347;          /* Glowing amber links */
-  --lkv: #d67229;         /* Burnt ember (visited) */
-  --hg: #ff6b35;          /* Hot ember highlight */
-  --code-bg: #0f0804;     /* Darker than bg - true black-brown */
-  --code-fg: #ffb88c;     /* Warm peachy orange code */
+  /* Ember Harvest (Dark - DEFAULT) - Zen pottery meets cedar & oil lamp 🎃 */
+  --fg: #d4c5b0;          /* Warm pottery glaze text */
+  --bg: #2b2520;          /* Smokey warm gray (cedar wood) */
+  --bd: #cc7a3a;          /* Muted pumpkin orange borders (natural clay) */
+  --lk: #e8a860;          /* Warm oil lamp glow links */
+  --lkv: #b8855a;         /* Aged bronze (visited) */
+  --hg: #d67844;          /* Gentle ember highlight */
+  --code-bg: #1f1a17;     /* Dark oiled cedar */
+  --code-fg: #e8c9a8;     /* Light pottery code */
   
-  /* Halloween effects (dark mode) */
-  --pumpkin: #ff8200;     /* Bright pumpkin glow */
-  --ember: #ff6b35;       /* Hot glowing ember */
-  --smoke: rgba(0, 0, 0, 0.6);  /* Dark transparent smoke */
-  --pumpkin-glow: rgba(255, 130, 0, 0.3);  /* Orange glow overlay */
+  /* Halloween effects (dark mode) - subtle zen tones */
+  --pumpkin: #cc7a3a;     /* Natural pumpkin (not bright) */
+  --ember: #d67844;       /* Gentle glowing ember */
+  --smoke: rgba(43, 37, 32, 0.7);  /* Warm transparent smoke */
+  --pumpkin-glow: rgba(204, 122, 58, 0.15);  /* Subtle orange glow */
+  
+  /* Zen pottery tones */
+  --pottery: #8a7a6a;     /* Natural fired clay */
+  --cedar: #4a3f38;       /* Dark cedar wood */
+  --oil-lamp: #ffcc88;    /* Warm oil lamp flame */
 }
 
 :root[data-palette="cold"] {
