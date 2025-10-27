@@ -3,14 +3,14 @@
 </script>
 
 <svelte:head>
-  <title>grainscripts - Ember Harvest 🎃</title>
+  <title>grainscript - Ember Harvest 🎃</title>
 </svelte:head>
 
-<div class="grainscripts-header">
-  <h1>grainscripts</h1>
-  <p class="tagline">80×110 monospace teaching cards • 1,235,520 scripts total</p>
+<div class="grainscript-header">
+  <h1>grainscript</h1>
+  <p class="tagline">80×110 monospace teaching cards • 1,235,520 total</p>
   <p class="github-link">
-    <a href="https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainscripts" 
+    <a href="https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainscript" 
        target="_blank" 
        rel="noopener noreferrer">
       📂 View on GitHub
@@ -103,12 +103,12 @@
 <LicenseFooter />
 
 <style>
-  .grainscripts-header {
+  .grainscript-header {
     text-align: center;
     margin: 2em 0;
   }
   
-  .grainscripts-header h1 {
+  .grainscript-header h1 {
     font-size: 3em;
     margin-bottom: 0.2em;
     font-family: 'Courier New', monospace;
