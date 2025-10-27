@@ -1,7 +1,9 @@
 <script>
+  import GraincardFooter from '$lib/GraincardFooter.svelte';
+  
   export let data;
   
-  const { code, content, title, nextCard } = data;
+  const { code, content, title, sortOrder } = data;
 </script>
 
 <svelte:head>
@@ -12,6 +14,8 @@
   <div class="graincard-content">
     {@html content}
   </div>
+  
+  <GraincardFooter {code} {sortOrder} />
 </div>
 
 <style>

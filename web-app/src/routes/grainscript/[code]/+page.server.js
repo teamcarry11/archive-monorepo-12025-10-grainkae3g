@@ -4,6 +4,13 @@ import { join } from 'path';
 
 const GRAINSCRIPT_DIR = join(process.cwd(), '../grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainscript');
 
+// Grainorder sequence (first 100 cards)
+// This will eventually call the grainorder library
+const grainorderSequence = [
+  'xbdghj', 'xbdghk', 'xbdghl', 'xbdghm', 'xbdghn', 'xbdghs', 
+  'xbdghv', 'xbdghz', // ... more will be generated
+];
+
 export async function load({ params }) {
   const { code } = params;
   
@@ -23,15 +30,14 @@ export async function load({ params }) {
     const titleMatch = content.match(/# Graincard \w+ - (.+)/);
     const title = titleMatch ? titleMatch[1] : code;
     
-    // Extract next card link
-    const nextMatch = content.match(/Next: \[(\w+)\]/);
-    const nextCard = nextMatch ? nextMatch[1] : null;
+    // Get sort order from grainorder sequence
+    const sortOrder = grainorderSequence.indexOf(code);
     
     return {
       code,
       title,
       content,
-      nextCard
+      sortOrder: sortOrder >= 0 ? sortOrder : 0
     };
   } catch (err) {
     if (err.status === 404) throw err;
