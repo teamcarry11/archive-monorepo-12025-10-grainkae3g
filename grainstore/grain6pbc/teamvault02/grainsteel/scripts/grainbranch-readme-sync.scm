@@ -1,6 +1,8 @@
 #!/usr/bin/env steel
 
 ;; grainbranch-readme-sync.scm - Steel version
+;; team: 02 (teamvault02 - taurus ♉ / ii. the high priestess)
+;; authored by: 14 (teamdescend14 - ketu ☋ / xiv. temperance)
 ;; 
 ;; Syncs the current grainbranch README to root README (symlink)
 ;; "As above, so below" - outer reflects inner

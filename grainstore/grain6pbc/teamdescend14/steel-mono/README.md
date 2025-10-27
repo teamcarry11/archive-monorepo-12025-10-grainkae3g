@@ -51,9 +51,11 @@ steel grainbranch-readme-sync.scm my-branch-name
 ## Available Scripts
 
 Symlinks will appear here as we create them. Current scripts live in:
-- `grainstore/grain6pbc/teamnurture04/grainbarrel/scripts/*.scm`
+- `grainstore/grain6pbc/teamvault02/grainsteel/scripts/*.scm` ⭐ PRIMARY
 - `grainstore/grain6pbc/teamstructure10/graincard-spec/src/*.scm`
 - `grainstore/grain6pbc/teambalance07/grainsearch/src/*.scm`
+
+**Team 02 (teamvault02)** owns all Steel scripting infrastructure!
 
 ## Steel Syntax Quick Reference
 

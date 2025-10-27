@@ -1,6 +1,8 @@
 #!/usr/bin/env steel
 
 ;; grain line count validator (Steel - pure Rust Scheme)
+;; team: 02 (teamvault02 - taurus ♉ / ii. the high priestess)
+;; authored by: 14 (teamdescend14 - ketu ☋ / xiv. temperance)
 ;; checks that all grain boxes have exactly 110 lines (between fences)
 
 (require-builtin steel/filesystem)

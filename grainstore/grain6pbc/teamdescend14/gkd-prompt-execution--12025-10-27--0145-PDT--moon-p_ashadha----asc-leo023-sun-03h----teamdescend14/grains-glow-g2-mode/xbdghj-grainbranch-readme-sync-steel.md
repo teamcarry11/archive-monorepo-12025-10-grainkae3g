@@ -33,7 +33,7 @@
 │                                                                              │
 │ ;; grainbranch-readme-sync.scm                                               │
 │ ;; Purpose: Symlink root README to current grainbranch README                │
-│ ;; Team: 04 (teamnurture04 - Taurus ♉ / IV. The Emperor)                     │
+│ ;; Team: 02 (teamvault02 - Taurus ♉ / II. The High Priestess)                │
 │                                                                              │
 │ (require-builtin steel/process)                                              │
 │                                                                              │
