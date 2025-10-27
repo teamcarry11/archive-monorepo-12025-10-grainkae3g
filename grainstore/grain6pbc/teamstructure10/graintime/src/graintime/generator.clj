@@ -224,64 +224,130 @@
     
     (let [;; San Rafael coordinates
           lat-rad (Math/toRadians latitude)  ; 37.9735°N
-          lon-hours (/ longitude 15.0)        ; -122.5311°W = -8.174 hours
           
-          ;; Current time components
+          ;; Current time components (MUST use UTC for proper calculation!)
+          year (.getYear datetime)
+          month (.getMonthValue datetime)
+          day (.getDayOfMonth datetime)
           hour (.getHour datetime)
           minute (.getMinute datetime)
-          day-of-year (.getDayOfYear datetime)
-          year (.getYear datetime)
+          second (.getSecond datetime)
           
-          ;; Convert to fractional hours
-          fractional-hour (+ hour (/ minute 60.0))
+          ;; Get UTC offset in hours (negative for west of Greenwich)
+          offset-seconds (.getTotalSeconds (.getOffset datetime))
+          offset-hours (/ offset-seconds 3600.0)
           
-          ;; Calculate Local Sidereal Time (LST)
-          ;; LST = GMST + longitude_hours
-          ;; GMST ≈ 6.697374558 + 0.06570982441908 * D + 1.00273790935 * H
-          ;; where D = days since J2000.0, H = hours since midnight
+          ;; Convert local time to UTC (SUBTRACT the offset)
+          ;; PDT is UTC-7, so 17:00 PDT = 17:00 - (-7) = 24:00 UTC (00:00 next day)
+          utc-hour-raw (- hour offset-hours)
           
-          ;; Days since J2000.0 (January 1, 2000, 12:00 UTC)
-          days-since-j2000 (- (double day-of-year) 1.0)
-          ;; Add years since 2000
-          years-since-2000 (- year 2000)
-          total-days (+ days-since-j2000 (* years-since-2000 365.25))
+          ;; Handle day rollover
+          utc-day (if (>= utc-hour-raw 24) (+ day 1) day)
+          utc-month (if (>= utc-hour-raw 24) month month)
+          utc-year (if (>= utc-hour-raw 24) year year)
+          utc-hour (mod utc-hour-raw 24)
           
-          ;; Greenwich Mean Sidereal Time (GMST) in hours
-          gmst-hours (mod (+ 6.697374558 
-                            (* 0.06570982441908 total-days)
-                            (* 1.00273790935 fractional-hour)) 24)
+          utc-fractional (+ utc-hour (/ minute 60.0) (/ second 3600.0))
           
-          ;; Local Sidereal Time (LST)
-          lst-hours (mod (+ gmst-hours lon-hours) 24)
+          ;; Calculate Julian Day Number (proper formula)
+          ;; MUST use UTC date, not local date!
+          ;; For dates after 1582, Gregorian calendar
+          a (quot (- 14 utc-month) 12)
+          y (+ utc-year 4800 (- a))
+          m (+ utc-month (* 12 a) -3)
+          jdn (+ utc-day
+                 (quot (+ (* 153 m) 2) 5)
+                 (* 365 y)
+                 (quot y 4)
+                 (- (quot y 100))
+                 (quot y 400)
+                 -32045)
           
-          ;; Calculate ascendant using oblique ascension
-          ;; Each sign rises in ~2 hours, but varies by latitude
-          ;; At latitude 37.97°N, signs rise faster than at equator
+          ;; Julian Day (including fractional day)
+          jd (+ jdn (/ (- utc-fractional 12.0) 24.0))
           
-          ;; Oblique ascension factor (signs rise faster at higher latitudes)
-          ;; At 37.97°N, signs rise in approximately 1.6 hours instead of 2
-          oblique-factor (* 2.0 (Math/cos lat-rad))  ; ~1.58 hours per sign
+          ;; Days since J2000.0 (JD 2451545.0 = Jan 1, 2000, 12:00 UTC)
+          d (- jd 2451545.0)
           
-          ;; Calculate which sign is rising (tropical zodiac)
-          ;; Aries rises at LST 0h, Taurus at LST ~1.58h, etc.
-          sign-index (mod (int (/ lst-hours oblique-factor)) 12)
+          ;; Greenwich Mean Sidereal Time at 0h UT (in hours)
+          ;; GMST0 = 6.697374558 + 0.06570982441908 * D
+          gmst0 (+ 6.697374558 (* 0.06570982441908 d))
+          
+          ;; GMST at current UT (add 1.00273790935 × UT hours)
+          gmst (+ gmst0 (* 1.00273790935 utc-fractional))
+          
+          ;; Normalize to 0-24 range
+          gmst-hours (mod gmst 24)
+          
+          ;; Local Sidereal Time = GMST + (longitude / 15)
+          ;; longitude is NEGATIVE for West
+          lst-hours (mod (+ gmst-hours (/ longitude 15.0)) 24)
+          
+          ;; Calculate ascendant using standard astronomical formula
+          ;; Reference: Jean Meeus, "Astronomical Algorithms"
+          
+          ;; Obliquity of the ecliptic (Earth's axial tilt)
+          ;; 23.4397° for J2000.0
+          obliquity (Math/toRadians 23.4397)
+          
+          ;; RAMC (Right Ascension of Midheaven) = LST in degrees
+          ramc-deg (* lst-hours 15.0)
+          ramc-rad (Math/toRadians ramc-deg)
+          
+          ;; Step 1: Calculate Midheaven (MC) ecliptic longitude
+          ;; tan(MC) = tan(RAMC) / cos(obliquity)
+          mc-tan (/ (Math/tan ramc-rad) (Math/cos obliquity))
+          mc-rad (Math/atan mc-tan)
+          mc-deg-raw (Math/toDegrees mc-rad)
+          
+          ;; Adjust MC to correct quadrant based on RAMC
+          mc-deg (cond
+                   ;; RAMC 0-90° → MC in quadrant 1 (0-90°)
+                   (and (>= ramc-deg 0) (< ramc-deg 90))
+                   mc-deg-raw
+                   
+                   ;; RAMC 90-180° → MC in quadrant 2 (90-180°)
+                   (and (>= ramc-deg 90) (< ramc-deg 180))
+                   (+ 180 mc-deg-raw)
+                   
+                   ;; RAMC 180-270° → MC in quadrant 3 (180-270°)
+                   (and (>= ramc-deg 180) (< ramc-deg 270))
+                   (+ 180 mc-deg-raw)
+                   
+                   ;; RAMC 270-360° → MC in quadrant 4 (270-360°)
+                   :else
+                   (+ 360 mc-deg-raw))
+          
+          ;; Step 2: Calculate Ascendant from MC and latitude
+          ;; tan(ASC) = -cos(MC + 90°) / (sin(obliquity) × tan(latitude) + cos(obliquity) × sin(MC + 90°))
+          mc-plus-90-rad (Math/toRadians (+ mc-deg 90))
+          
+          numerator (- (Math/cos mc-plus-90-rad))
+          denominator (+ (* (Math/sin obliquity) (Math/tan lat-rad))
+                        (* (Math/cos obliquity) (Math/sin mc-plus-90-rad)))
+          
+          asc-rad (Math/atan2 numerator denominator)
+          asc-deg-raw (Math/toDegrees asc-rad)
+          
+          ;; Normalize to 0-360° range
+          asc-deg (mod (+ asc-deg-raw 360) 360.0)
+          
+          ;; Convert to zodiac sign and degree
+          sign-index (int (/ asc-deg 30.0))
           signs ["arie" "taur" "gemi" "canc" "leo" "virg"
                  "libr" "scor" "sagi" "capr" "aqua" "pisc"]
           sign (nth signs sign-index)
           
-          ;; Calculate degree within the rising sign
-          ;; Degree = (LST mod oblique_factor) * (30 / oblique_factor)
-          degree-in-sign (* (mod lst-hours oblique-factor) 
-                           (/ 30.0 oblique-factor))
-          
-          ;; Round to nearest degree
+          ;; Degree within the sign (0-29)
+          degree-in-sign (mod asc-deg 30.0)
           degree-rounded (int (Math/round degree-in-sign))]
       
       {:sign sign
        :degree (format "%03d" degree-rounded)
        :method :tropical-astronomical-calculation
        :lst-hours lst-hours
-       :oblique-factor oblique-factor
+       :asc-longitude asc-deg
+       :ramc ramc-deg
        :latitude latitude
        :longitude longitude
        :location "San Rafael, CA"
