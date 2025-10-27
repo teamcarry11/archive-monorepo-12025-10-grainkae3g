@@ -5,6 +5,8 @@ on:
     branches:
       - main
       - 'glow-calm-session*'
+      - 'gkd-prompt-execution*'
+      - 'gkh-chartcourse*'
   workflow_dispatch:
 
 permissions:
