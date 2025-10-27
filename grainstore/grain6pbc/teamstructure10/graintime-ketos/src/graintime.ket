@@ -1,0 +1,362 @@
+;;; ✧･ﾟ:* graintime.ket - graintime generation in ketos (rust lisp)
+;;;
+;;; team: 10 (teamstructure10 - capricorn ♑ / x. wheel of fortune)
+;;; authored by: 14 (teamdescend14 - sagittarius ♐ / xiv. temperance)
+;;;
+;;; purpose: generate precisely formatted 76-character graintimes with
+;;;          perfect column alignment across all 378 combinations
+;;;          (27 nakshatras × 14 teams = 378 graintimes)
+;;;
+;;; format:  12025-10-27--0145-PDT--moon-{nak13}asc-leo023-sun-04h{team17}
+;;;
+;;; this implements the same logic as graintime/src/graintime/format76.clj
+;;; but in pure ketos for redox os compatibility and rust-native performance.
+;;;
+;;; ∿∿∿ the river of time flows through rust ∿∿∿
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; nakshatra abbreviations (27 lunar mansions)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define nakshatra-abbreviations
+  ;; ✿ map: full-name → abbreviated-form ✿
+  ;;
+  ;; purva (पूर्व "former") → p_ prefix
+  ;; uttara (उत्तर "latter") → u_ prefix  
+  ;; all others → lowercase with spaces removed
+  ;;
+  ;; this keeps graintime compact while preserving vedic authenticity.
+  ;; each nakshatra carries its deity its purpose its unique energetic signature.
+  
+  {"Ashwini"           "ashwini"        ; अश्विनी - ashwini kumara - dharma
+   "Bharani"           "bharani"        ; भरणी - yama - artha
+   "Krittika"          "krittika"       ; कृत्तिका - agni - kama
+   "Rohini"            "rohini"         ; रोहिणी - prajapati - moksha
+   "Mrigashira"        "mrigashira"     ; मृगशीर्ष - soma - moksha
+   "Ardra"             "ardra"          ; आर्द्रा - rudra - kama
+   "Punarvasu"         "punarvasu"      ; पुनर्वसु - aditi - artha
+   "Pushya"            "pushya"         ; पुष्य - brihaspati - dharma
+   "Ashlesha"          "ashlesha"       ; आश्लेषा - nagas - dharma
+   "Magha"             "magha"          ; मघा - pitrs - artha
+   "Purva Phalguni"    "p_phalguni"     ; पूर्व फाल्गुनी - bhaga - kama
+   "Uttara Phalguni"   "u_phalguni"     ; उत्तर फाल्गुनी - aryaman - moksha
+   "Hasta"             "hasta"          ; हस्त - savitr - moksha
+   "Chitra"            "chitra"         ; चित्रा - tvashtar - kama
+   "Swati"             "swati"          ; स्वाति - vayu - artha
+   "Vishakha"          "vishakha"       ; विशाखा - indra-agni - dharma
+   "Anuradha"          "anuradha"       ; अनुराधा - mitra - dharma
+   "Jyeshtha"          "jyeshtha"       ; ज्येष्ठा - indra - artha
+   "Mula"              "mula"           ; मूल - nirriti - kama
+   "Purva Ashadha"     "p_ashadha"      ; पूर्वाषाढ़ा - apas - moksha
+   "Uttara Ashadha"    "u_ashadha"      ; उत्तराषाढ़ा - vishvedevas - moksha
+   "Shravana"          "shravana"       ; श्रवण - vishnu - artha
+   "Dhanishta"         "dhanishta"      ; धनिष्ठा - ashta-vasus - artha
+   "Shatabhisha"       "shatabhisha"    ; शतभिषा - varuna - dharma
+   "Purva Bhadrapada"  "p_bhadrapada"   ; पूर्वभाद्रपदा - aja ekapada - dharma
+   "Uttara Bhadrapada" "u_bhadrapada"   ; उत्तरभाद्रपदा - ahirbudhnya - artha
+   "Revati"            "revati"})       ; रेवती - pushan - moksha
+
+(define (abbreviate-nakshatra full-name)
+  ;; :: String → String
+  ;;
+  ;; convert full nakshatra name to abbreviated form for 76-char format.
+  ;; 
+  ;; examples:
+  ;;   "Purva Ashadha"     → "p_ashadha"     (9 chars)
+  ;;   "Uttara Bhadrapada" → "u_bhadrapada"  (12 chars, longest)
+  ;;   "Mula"              → "mula"          (4 chars, shortest)
+  ;;
+  ;; algebraic property: this function is a monoid homomorphism from the
+  ;; set of nakshatra names to the set of abbreviated strings. it preserves
+  ;; the structure while compacting the representation.
+  
+  (or (get nakshatra-abbreviations full-name)
+      (string-downcase full-name)))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; zodiac sign abbreviations (12 rashi)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define sign-abbreviations
+  ;; ✿ map: full-sign → 4-char-code ✿
+  ;;
+  ;; all zodiac signs compressed to exactly 4 characters for graintime compactness.
+  ;; maintains phonetic recognition while achieving uniform width.
+  
+  {"Aries"       "arie"        ; मेष
+   "Taurus"      "taur"        ; वृषभ
+   "Gemini"      "gemi"        ; मिथुन
+   "Cancer"      "canc"        ; कर्क
+   "Leo"         "leo0"        ; सिंह (leo needs padding to 4 chars)
+   "Virgo"       "virg"        ; कन्या
+   "Libra"       "libr"        ; तुला
+   "Scorpio"     "scor"        ; वृश्चिक
+   "Sagittarius" "sagi"        ; धनु
+   "Capricorn"   "capr"        ; मकर
+   "Aquarius"    "aqua"        ; कुंभ
+   "Pisces"      "pisc"})      ; मीन
+
+(define (abbreviate-sign full-sign)
+  ;; :: String → String
+  ;;
+  ;; convert zodiac sign to 4-char code.
+  ;;
+  ;; examples:
+  ;;   "Aries"       → "arie"
+  ;;   "Leo"         → "leo0"  (padded)
+  ;;   "Sagittarius" → "sagi"
+  
+  (or (get sign-abbreviations full-sign)
+      (substring (string-downcase full-sign) 0 4)))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; padding functions (achieve perfect 76-char alignment)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define (pad-nakshatra-to-13 nakshatra-abbr)
+  ;; :: String → String
+  ;;
+  ;; pad nakshatra abbreviation to exactly 13 characters with trailing dashes.
+  ;;
+  ;; the nakshatra section must be precisely 13 chars for vertical alignment:
+  ;;   "u_bhadrapada" (12 chars) → "u_bhadrapada-"  (12 + 1 = 13)
+  ;;   "mula"         (4 chars)  → "mula---------"  (4 + 9 = 13)
+  ;;   "p_ashadha"    (9 chars)  → "p_ashadha----"  (9 + 4 = 13)
+  ;;
+  ;; functorial property: this is a functor from (String, length) to (String, 13).
+  ;; it lifts variable-width strings into the fixed-width space while preserving
+  ;; their semantic content.
+  
+  (let ((padding-needed (- 13 (string-length nakshatra-abbr))))
+    (string-append nakshatra-abbr
+                   (make-string padding-needed #\-))))
+
+(define (pad-team-to-17 team-base)
+  ;; :: String → String
+  ;;
+  ;; pad team name to exactly 17 characters with LEADING dashes.
+  ;;
+  ;; the team section must be precisely 17 chars for vertical alignment:
+  ;;   "structure" → "team" + "structure" + "10" = "teamstructure10" (15 chars)
+  ;;                 15 chars needs 2 leading dashes → "--teamstructure10" (17 total)
+  ;;   "flow"      → "team" + "flow" + "10" = "teamflow10" (10 chars)
+  ;;                 10 chars needs 7 leading dashes → "-------teamflow10" (17 total)
+  ;;
+  ;; the formula: total-dashes = 2 + (15 - length(full-team))
+  ;;              where full-team = "team" + team-base + "10"
+  ;;
+  ;; comonadic property: this extracts context (team-base) and extends it with
+  ;; padding to create a uniform coalgebraic structure across all teams.
+  
+  (let* ((full-team (string-append "team" team-base "10"))
+         (padding-needed (- 15 (string-length full-team)))
+         (total-dashes (+ 2 padding-needed)))
+    (string-append (make-string total-dashes #\-)
+                   full-team)))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; component formatters
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define (format-ascendant sign degree)
+  ;; :: String → Integer → String
+  ;;
+  ;; format ascendant as "asc-{sign4}{deg2}" (exactly 10 chars).
+  ;;
+  ;; examples:
+  ;;   sign="Aries", degree=15  → "asc-arie15"
+  ;;   sign="Leo", degree=23    → "asc-leo023"
+  ;;   sign="Pisces", degree=5  → "asc-pisc05"
+  ;;
+  ;; the degree is always zero-padded to 2 digits.
+  
+  (string-append "asc-"
+                 (abbreviate-sign sign)
+                 (format "{:02}" degree)))
+
+(define (format-sun-house house)
+  ;; :: Integer → String
+  ;;
+  ;; format sun house as "sun-{house2}h" (exactly 8 chars).
+  ;;
+  ;; examples:
+  ;;   house=4  → "sun-04h"
+  ;;   house=10 → "sun-10h"
+  ;;   house=1  → "sun-01h"
+  ;;
+  ;; the house number is always zero-padded to 2 digits, followed by 'h'.
+  
+  (format "sun-{:02}h" house))
+
+(define (format-timezone tz-abbr)
+  ;; :: String → String
+  ;;
+  ;; format timezone as 3-char abbreviation.
+  ;;
+  ;; examples:
+  ;;   "PDT"  → "PDT"
+  ;;   "PST"  → "PST"
+  ;;   "UTC"  → "UTC"
+  ;;   "IST"  → "IST"
+  ;;
+  ;; assumes input is already 3 chars. validation occurs at call site.
+  
+  tz-abbr)
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; main graintime generator
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define (generate-graintime-76 params)
+  ;; :: Map → String
+  ;;
+  ;; generate exactly 76-character graintime with perfect column alignment.
+  ;;
+  ;; parameters (as map):
+  ;;   :year        → integer (holocene calendar, e.g., 12025)
+  ;;   :month       → integer (1-12)
+  ;;   :day         → integer (1-31)
+  ;;   :hour        → integer (0-23)
+  ;;   :minute      → integer (0-59)
+  ;;   :timezone    → string (3-char abbreviation, e.g., "PDT")
+  ;;   :nakshatra   → string (full name, e.g., "Purva Ashadha")
+  ;;   :asc-sign    → string (e.g., "Leo")
+  ;;   :asc-degree  → integer (0-30)
+  ;;   :sun-house   → integer (1-12)
+  ;;   :team-base   → string (e.g., "structure", "descend")
+  ;;
+  ;; returns: string of EXACTLY 76 characters
+  ;;
+  ;; format: 12025-10-27--0145-PDT--moon-{nak13}asc-leo023-sun-04h{team17}
+  ;;         ├─date──┤  ├time┤ ├tz┤  ├─nakshatra─┤├ascendant┤├house─┤├─team──┤
+  ;;         11 chars   4     3      18 chars      10        8        17
+  ;;         Total: 11 + 4 + 3 + 18 + 10 + 8 + 17 + 5 dashes = 76 chars
+  ;;
+  ;; categorical semantics: this function is a natural transformation from the
+  ;; category of temporal-astronomical data to the category of fixed-width strings.
+  ;; it preserves temporal ordering while achieving spatial uniformity.
+  
+  (let* (;; extract parameters
+         (year       (get params :year))
+         (month      (get params :month))
+         (day        (get params :day))
+         (hour       (get params :hour))
+         (minute     (get params :minute))
+         (tz         (get params :timezone))
+         (nakshatra  (get params :nakshatra))
+         (asc-sign   (get params :asc-sign))
+         (asc-degree (get params :asc-degree))
+         (sun-house  (get params :sun-house))
+         (team-base  (get params :team-base))
+         
+         ;; format components
+         (nak-abbr     (abbreviate-nakshatra nakshatra))
+         (nak-padded   (pad-nakshatra-to-13 nak-abbr))
+         (asc-formatted (format-ascendant asc-sign asc-degree))
+         (sun-formatted (format-sun-house sun-house))
+         (team-padded  (pad-team-to-17 team-base)))
+    
+    ;; assemble the graintime
+    ;; format string breakdown:
+    ;;   {year}-{month:02}-{day:02}--{hour:02}{minute:02}-{tz}--moon-{nak}{asc}-{sun}{team}
+    (format "{}-{:02}-{:02}--{:02}{:02}-{}--moon-{}{}-{}{}"
+            year month day hour minute tz
+            nak-padded asc-formatted sun-formatted team-padded)))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; validation
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define (validate-graintime-76 graintime-str)
+  ;; :: String → Map
+  ;;
+  ;; validate that a graintime string is exactly 76 characters.
+  ;;
+  ;; returns: {:valid? boolean, :length integer, :message string}
+  ;;
+  ;; this validator ensures structural rigidity. in ketos we use specs to
+  ;; encode contracts but here we keep it simple with boolean validation.
+  
+  (let ((len (string-length graintime-str)))
+    {:valid?  (equal? 76 len)
+     :length  len
+     :message (if (equal? 76 len)
+                  "✅ perfect 76-char graintime ✧･ﾟ:*"
+                  (format "❌ length mismatch: expected 76, got {}" len))}))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; examples and tests
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(comment
+  ;; example 1: purva ashadha moon (oct 27, 2025 01:45 PDT)
+  (define test-params-1
+    {:year       12025
+     :month      10
+     :day        27
+     :hour       1
+     :minute     45
+     :timezone   "PDT"
+     :nakshatra  "Purva Ashadha"
+     :asc-sign   "Leo"
+     :asc-degree 23
+     :sun-house  4
+     :team-base  "descend"})
+  
+  (define graintime-1 (generate-graintime-76 test-params-1))
+  ;; → "12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-04h----teamdescend10"
+  
+  (validate-graintime-76 graintime-1)
+  ;; → {:valid? true, :length 76, :message "✅ perfect 76-char graintime ✧･ﾟ:*"}
+  
+  ;; example 2: mula moon (shortest nakshatra)
+  (define test-params-2
+    (assoc test-params-1
+           :nakshatra "Mula"
+           :team-base "flow"))
+  
+  (define graintime-2 (generate-graintime-76 test-params-2))
+  ;; → "12025-10-27--0145-PDT--moon-mula---------asc-leo023-sun-04h-------teamflow10"
+  
+  (validate-graintime-76 graintime-2)
+  ;; → {:valid? true, :length 76, :message "✅ perfect 76-char graintime ✧･ﾟ:*"}
+  
+  ;; example 3: uttara bhadrapada moon (longest nakshatra)
+  (define test-params-3
+    (assoc test-params-1
+           :nakshatra "Uttara Bhadrapada"
+           :team-base "structure"))
+  
+  (define graintime-3 (generate-graintime-76 test-params-3))
+  ;; → "12025-10-27--0145-PDT--moon-u_bhadrapada-asc-leo023-sun-04h--teamstructure10"
+  
+  (validate-graintime-76 graintime-3)
+  ;; → {:valid? true, :length 76, :message "✅ perfect 76-char graintime ✧･ﾟ:*"}
+  
+  ;; all three examples should be exactly 76 characters with perfect alignment.
+  ;; the padding dynamically adjusts to maintain column structure across all
+  ;; 378 possible combinations (27 nakshatras × 14 teams).
+  )
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; exports
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+;; public api for graintime generation
+(export generate-graintime-76
+        validate-graintime-76
+        abbreviate-nakshatra
+        abbreviate-sign
+        pad-nakshatra-to-13
+        pad-team-to-17)
+
+;;; ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
+;;; end of graintime.ket
+;;; 
+;;; now == next + 1 ✧･ﾟ:* 🌾
+;;;
+;;; copyright © 2025 kae3g (kj3x39, @risc.love)
+;;; team: 10 (teamstructure10)
+;;; authored by: 14 (teamdescend14)
+;;; ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
+
