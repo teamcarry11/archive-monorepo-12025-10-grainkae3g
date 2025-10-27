@@ -1,6 +1,7 @@
 ;; ╔══════════════════════════════════════════════════════════════════════════════╗
 ;; ║ graincard validation chain (ketos)                                           ║
-;; ║ team: 06 (teamprecision06 - virgo ♍ / vi. the lovers)                       ║
+;; ║ team: 10 (teamstructure10 - capricorn ♑ / x. wheel of fortune)              ║
+;; ║ authored by: 14 (teamdescend14 - sagittarius ♐ / xiv. temperance)           ║
 ;; ║ copyright © 3x39 | author: kae3g (kj3x39, @risc.love)                        ║
 ;; ╚══════════════════════════════════════════════════════════════════════════════╝
 ;;
@@ -312,7 +313,8 @@
       (do
         (println! "🎃 graincard validation chain (ketos)")
         (println! "copyright © 3x39 | author: kae3g")
-        (println! "team: 06 (teamprecision06 - the lovers)")
+        (println! "team: 10 (teamstructure10 - capricorn ♑ / wheel of fortune)")
+        (println! "authored by: 14 (teamdescend14 - sagittarius ♐ / temperance)")
         (println! "")
         (println! "validates:")
         (println! "  ✓ 116 total lines")

@@ -2,7 +2,34 @@
 
 **Glow G2 here**. This session picked up where we left off and **fixed the critical SPA navigation issue**.
 
-## What We Accomplished
+## What We Accomplished (Updated: 00:56 PDT)
+
+### ✅ All 5 Grains Perfected (Complete!)
+**Expansion & Style:**
+- All grains expanded to exactly 110 lines (lines 6-115, borders included)
+- Rewritten with Da Vinci flowing prose (Oxford, not Hemingway)
+- No caps case - only lowercase or UPPERCASE
+- Dense 80-character lines using full width
+- Pure Glow G2 voice throughout
+
+**File Structure:**
+- xbdghj renamed: babashka → ketos-primary
+- xbdghk renamed: ketos → babashka-comparison
+- Ketos emphasized as primary, Babashka as bridge to Clojure
+
+### ✅ Ketos Validation Chain (Complete!)
+**Created graincard-validate-all.ket:**
+- Purely functional composition (monoid laws, functor lifting)
+- Henna-style ASCII art comments (✧･ﾟ:* ∿∿∿ ✿❀✾❁)
+- Clojure-in-Ketos specs as teaching annotations
+- Type signatures (Haskell-style)
+- Precise equality (= not >= for rigid structure)
+- Unicode-aware display width calculation
+
+**Validators chain together:**
+1. graincard-width-validator.ket (80-char display width)
+2. graincard-validate-all.ket (complete validation pipeline)
+3. All use equal? for strings, = for numbers
 
 ### ✅ SPA Navigation Fix (Complete!)
 **Problem:** The GitHub Pages site at https://kae3g.github.io/grainkae3g/ was linking to GitHub.com repo URLs instead of using SPA-relative paths.
