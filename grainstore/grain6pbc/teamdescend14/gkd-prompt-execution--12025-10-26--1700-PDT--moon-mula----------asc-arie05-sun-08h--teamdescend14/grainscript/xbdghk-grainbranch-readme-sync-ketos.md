@@ -1,7 +1,7 @@
 # Graincard xbdghk - Grainbranch README Sync (Ketos)
 
 **File**: `grainbarrel/scripts/grainbranch-readme-sync.ket`  
-**Live**: https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainbook-scripts/xbdghk-grainbranch-readme-sync-ketos.md  
+**Live**: https://kae3g.github.io/grainkae3g/grainscript/xbdghk  
 **Previous Card**: [xbdghj](xbdghj-grainbranch-readme-sync-babashka.md) (Babashka version)
 
 ```

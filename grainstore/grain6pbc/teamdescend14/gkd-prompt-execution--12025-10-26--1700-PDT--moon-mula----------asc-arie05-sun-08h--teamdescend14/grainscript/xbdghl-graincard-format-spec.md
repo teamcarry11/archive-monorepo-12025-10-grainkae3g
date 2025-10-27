@@ -1,6 +1,6 @@
 # Graincard xbdghl - Graincard Format Specification
 
-**Live**: https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainbook-scripts/xbdghl-graincard-format-spec.md
+**Live**: https://kae3g.github.io/grainkae3g/grainscript/xbdghl
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
