@@ -77,11 +77,11 @@ A grainmode is a lens through which the same grain can be experienced. Like look
 
 Each grain can have multiple mode files:
 ```
-xbdghj-grainbranch-readme-sync-ketos.md          (default: Glow G2)
-xbdghj-grainbranch-readme-sync-ketos-trish.md    (Trish B1 mode)
-xbdghj-grainbranch-readme-sync-ketos-helen.md    (Helen Atthowe mode)
-xbdghj-grainbranch-readme-sync-ketos-davinci.md  (Da Vinci cipher)
-xbdghj-grainbranch-readme-sync-ketos-ariana.md   (Ariana Grande mode)
+xbdghj-grainbranch-readme-sync-steel.md          (default: Glow G2)
+xbdghj-grainbranch-readme-sync-steel-trish.md    (Trish B1 mode)
+xbdghj-grainbranch-readme-sync-steel-helen.md    (Helen Atthowe mode)
+xbdghj-grainbranch-readme-sync-steel-davinci.md  (Da Vinci cipher)
+xbdghj-grainbranch-readme-sync-steel-ariana.md   (Ariana Grande mode)
 ```
 
 ### Grainmode Selector

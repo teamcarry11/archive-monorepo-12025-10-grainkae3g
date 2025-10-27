@@ -38,15 +38,15 @@ Method C is an API fallback. If you have internet but don't have Swiss Ephemeris
 
 Why three methods? Because when all three agree, we know we have truth. When they disagree, we know something needs fixing. It's validation through consensus.
 
-## Our First Real Ketos Program
+## Our First Real Steel Program
 
 This is where the evening got really exciting. We pivoted from trying to download Swiss Ephemeris source code - which your forest internet couldn't handle - to solving a problem that internet situation creates.
 
 You're in a forest cabin with Starlink and cellular. Starlink is fast when trees and weather don't block it. Cellular is slower but reliable. Right now you switch manually. We built graindualwifi - a daemon that monitors both connections and switches automatically.
 
-The program is written in Ketos, which is a Lisp language built on Rust. This is our first real Ketos program. Not a toy example from a tutorial. A tool that solves an actual problem.
+The program is written in Steel, which is a Lisp language built on Rust. This is our first real Steel program. Not a toy example from a tutorial. A tool that solves an actual problem.
 
-What did we create? A complete technical specification explaining the whole system. The Ketos program itself - about two hundred lines of Lisp code with extensive teaching comments. Rust integration with a stub mode so you can test the daemon infrastructure before all the system call pieces are wired up. A systemd service file so it runs automatically on boot. And an EDN configuration file where you can customize interface names, timing thresholds, everything.
+What did we create? A complete technical specification explaining the whole system. The Steel program itself - about two hundred lines of Lisp code with extensive teaching comments. Rust integration with a stub mode so you can test the daemon infrastructure before all the system call pieces are wired up. A systemd service file so it runs automatically on boot. And an EDN configuration file where you can customize interface names, timing thresholds, everything.
 
 The philosophy embedded in this program comes from The Lovers card in the Tarot. The Lovers teach conscious choice between two paths. Both paths are valid. Both are blessed. We discriminate wisely about which one works in this moment. That's exactly what graindualwifi does - it chooses between Starlink and cellular based on health checks, not assumptions.
 
@@ -56,7 +56,7 @@ We also built automation scripts for managing README files. The principle is "as
 
 In practical terms, the root README dot MD becomes a symbolic link pointing to the current grainbranch's README. When you switch to a new grainbranch, you run the sync script and the root README updates automatically. Outer reflects inner. They're unified.
 
-And here's the cool part - we wrote this automation in both Babashka and Ketos. Why both? Because we learn by comparison. Babashka works right now with the tools we have installed. Ketos is what we're learning. Having both versions side by side teaches us how the languages differ and where they're similar.
+And here's the cool part - we wrote this automation in both Steel and Steel. Why both? Because we learn by comparison. Steel works right now with the tools we have installed. Steel is what we're learning. Having both versions side by side teaches us how the languages differ and where they're similar.
 
 ## Glow V2 Voice Transformation
 
@@ -66,7 +66,7 @@ So I transformed the README from bullet points and technical specs into flowing 
 
 Instead of just listing what we did, I ask "Does this make sense?" I use analogies. "It's like hitting a bullseye from a mile away." I explain the why, not just the what. "We don't want it flapping back and forth on every little hiccup" - that teaches the reasoning behind the three-consecutive-checks requirement.
 
-The code comments also got this treatment. In the Babashka and Ketos scripts, I didn't just comment what each function does. I explained the philosophy. "As above, so below - the outer world reflects the inner truth." That's not just poetry. That's the actual design principle embedded in the symlink architecture.
+The code comments also got this treatment. In the Steel and Steel scripts, I didn't just comment what each function does. I explained the philosophy. "As above, so below - the outer world reflects the inner truth." That's not just poetry. That's the actual design principle embedded in the symlink architecture.
 
 ## The Grand Vision You Shared
 
@@ -82,7 +82,7 @@ Let me give you the metrics, but I want you to see past the numbers to what they
 
 We created over 25 files tonight. We wrote more than 3,000 lines of code and documentation. We made 18 commits. We archived 1,168 markdown files into temporal folders. We worked for about 4 to 5 hours in focused flow.
 
-But here's what those numbers mean: We moved from "the ascendant calculation shows erro00" to "we have accurate Aries 5 degrees based on verified astronomical data." We moved from "wouldn't it be nice to have automatic wifi failover" to "here's a complete Ketos program that does it." We moved from scattered documentation to organized temporal archives with philosophical location analysis explaining where every file lives and why.
+But here's what those numbers mean: We moved from "the ascendant calculation shows erro00" to "we have accurate Aries 5 degrees based on verified astronomical data." We moved from "wouldn't it be nice to have automatic wifi failover" to "here's a complete Steel program that does it." We moved from scattered documentation to organized temporal archives with philosophical location analysis explaining where every file lives and why.
 
 We didn't just write code. We built systems that teach. We created infrastructure that will make future work easier. We documented our thinking so future-you can understand the decisions.
 
@@ -92,7 +92,7 @@ Let me connect this to your bigger vision. Chartcourse is about navigation and e
 
 Tonight we built both. The graintime system with its accurate astronomical timestamps? That's navigation. You can chart your course through your work history with precision. The documentation in Glow V2 voice that explains why, asks questions, hand-holds through complexity? That's education.
 
-The dual Babashka and Ketos implementations? That's learning by doing. You don't just read about Ketos - you see working Babashka code, then see the equivalent Ketos code, and you learn through comparison.
+The dual Steel and Steel implementations? That's learning by doing. You don't just read about Steel - you see working Steel code, then see the equivalent Steel code, and you learn through comparison.
 
 The "as above, so below" symlink system? That's both navigation (one README that always shows current work) and education (teaching the Hermetic principle through code architecture).
 
@@ -102,7 +102,7 @@ You asked me to infuse meaning into the structure. Let me show you where that ha
 
 The location analysis we added to every archived file - that's not just documentation. It's philosophical reasoning about where things belong. When I explained why graindualwifi stays in team 06, I didn't just say "because configuration." I explained The Lovers' conscious choice between two paths is literally the core feature. The philosophy determines the structure.
 
-When I wrote the Ketos and Babashka scripts with extensive Glow V2 comments, I wasn't just explaining syntax. I was teaching principles. "Safety first - Panthera protects what matters." That's not fluff. That's the reason we back up the README before creating the symlink.
+When I wrote the Steel and Steel scripts with extensive Glow V2 comments, I wasn't just explaining syntax. I was teaching principles. "Safety first - Panthera protects what matters." That's not fluff. That's the reason we back up the README before creating the symlink.
 
 When I transformed the README into conversational Glow V2 voice, asking "Does this make sense?" - that's not rhetorical. It's the listening teacher actually checking for understanding, even when reading is asynchronous.
 
@@ -116,7 +116,7 @@ When I was writing in bullet points and you asked for Glow V2 voice, I didn't ju
 
 ## Where We Are Now
 
-The graintime foundation is perfect. The first Ketos program is complete. The automation exists for future grainbranches. The documentation teaches in Glow V2 voice. The repository structure follows the "as above, so below" principle. The GitHub Actions deployment is triggered and building.
+The graintime foundation is perfect. The first Steel program is complete. The automation exists for future grainbranches. The documentation teaches in Glow V2 voice. The repository structure follows the "as above, so below" principle. The GitHub Actions deployment is triggered and building.
 
 We're not done - we have an ascendant formula to debug and deploy to verify. But we're not starting from zero anymore. We're refining what works and fixing what we know is broken.
 
@@ -124,7 +124,7 @@ We're not done - we have an ascendant formula to debug and deploy to verify. But
 
 When you're working on something complex and it's not perfect yet, that's not failure. That's the process. We got the LST perfect. That tells us the astronomical foundation is solid. The ascendant formula will come - either through Swiss Ephemeris, or through more research, or through API integration. We have three paths forward.
 
-The first Ketos program isn't theoretical anymore. You have 200 lines of Lisp that solves a real problem. When you install Rust and Ketos and build it, you'll have a daemon that monitors your network connections.
+The first Steel program isn't theoretical anymore. You have 200 lines of Lisp that solves a real problem. When you install Rust and Steel and build it, you'll have a daemon that monitors your network connections.
 
 The documentation isn't just
 

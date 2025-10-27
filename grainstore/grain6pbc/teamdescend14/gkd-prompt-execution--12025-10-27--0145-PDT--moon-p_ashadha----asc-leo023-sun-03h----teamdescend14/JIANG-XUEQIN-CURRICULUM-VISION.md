@@ -97,7 +97,7 @@ By week 8, you'll have 5 grains deployed. You're building your own grainbook. Yo
 
 Let's explore the design decisions that shape grain infrastructure:
 
-- **Why Ketos instead of Python?** (Rust compatibility, Redox OS future)
+- **Why Steel instead of Python?** (Rust compatibility, Redox OS future)
 - **Why functional programming?** (composition, testability, clarity)
 - **What are static binaries?** (musl vs glibc choice)
 - **What is s6 supervision?** (process management that actually works)
@@ -140,7 +140,7 @@ Answer: **Yes.** Through portable GrainOS.
 - Start with Tails OS (privacy-focused Linux on USB)
 - Flash to 32-128GB USB drive (USB 3.0 or USB-C)
 - Include USB-C to USB-A adapter (for older library computers)
-- Configure with single boot script (written in Ketos!)
+- Configure with single boot script (written in Steel!)
 - Set up persistent encrypted storage
 - Install grain validators and sync tools
 
@@ -299,7 +299,7 @@ Each author teaches a different lens for seeing the same truth.
 
 Everything we use is **free and open source**:
 
-- **Ketos**: Rust-based Lisp (we'll install together)
+- **Steel**: Rust-based Lisp (we'll install together)
 - **Alpine Linux**: Minimal OS (optional, for advanced students)
 - **s6**: Process supervision (you'll learn this in trimester 2)
 - **Git**: Version control (we'll teach from scratch)
@@ -324,7 +324,7 @@ So here's how we assess learning:
 Can you:
 - [ ] Write a grain that teaches something you know?
 - [ ] Deploy it to GitHub Pages?
-- [ ] Validate its format using our Ketos scripts?
+- [ ] Validate its format using our Steel scripts?
 - [ ] Explain graintime to someone who's never seen it?
 
 If you can do these four things, you've mastered foundation. Not memorized—**mastered**. There's a difference.
@@ -359,7 +359,7 @@ Let me explain this more carefully because it's central to the course philosophy
 
 A bootable USB drive containing:
 - Full Linux environment (Tails OS base)
-- Grain development tools (Ketos, validators, sync scripts)
+- Grain development tools (Steel, validators, sync scripts)
 - Persistent storage (your grains, your work, encrypted)
 - Works on any computer (library, school, friend's, anywhere)
 
@@ -384,7 +384,7 @@ That's enough. If you have those three things, you can participate fully in this
 **Grain Runtime**: Alpine Linux minimal environment
 - Why Alpine? Smallest footprint, musl libc, apk packages
 - s6 init system (process supervision)
-- Ketos interpreter (static binary)
+- Steel interpreter (static binary)
 - All validators included
 
 **Setup Process** (we'll do this together in class):

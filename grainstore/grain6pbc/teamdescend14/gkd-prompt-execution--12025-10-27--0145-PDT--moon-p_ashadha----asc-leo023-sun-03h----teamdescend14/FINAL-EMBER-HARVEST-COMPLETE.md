@@ -16,7 +16,7 @@
 - System for writing teaching cards
 - Like JavaScript, Python, Ruby (the language itself)
 - Defines format: 80×110 monospace
-- Includes Ketos processors, Svelte components, Clojure generators
+- Includes Steel processors, Svelte components, Clojure generators
 
 **grains** (cards, plural):
 - Individual knowledge capsules
@@ -33,14 +33,14 @@ Python (language)       →  writes  →  modules (files)
 
 ### **2. The Foundation (5 Grains Created)**
 
-**xbdghj** - Grainbranch README Sync (Babashka)
+**xbdghj** - Grainbranch README Sync (Steel)
 - First grain, first script
-- Teaches: Babashka, symlinks, automation
+- Teaches: Steel, symlinks, automation
 - Live: https://kae3g.github.io/grainkae3g/grains/xbdghj
 
-**xbdghk** - Grainbranch README Sync (Ketos)
-- Same script in Ketos (Rust Lisp)
-- Teaches: Ketos vs Babashka comparison
+**xbdghk** - Grainbranch README Sync (Steel)
+- Same script in Steel (Rust Lisp)
+- Teaches: Steel vs Steel comparison
 - Live: https://kae3g.github.io/grainkae3g/grains/xbdghk
 
 **xbdghl** - Graincard Format Specification
@@ -75,11 +75,11 @@ Python (language)       →  writes  →  modules (files)
 - Harvest: Gathering grain, abundance
 - Halloween: Pumpkins, October, spooky season
 
-### **4. The Architecture (Ketos + Svelte)**
+### **4. The Architecture (Steel + Svelte)**
 
-**Ketos Processors** (team06 - The Lovers 💕):
-- `graincard-processor.ket` - Strips footers for dual interfaces
-- `grain-link-processor.ket` - Auto-links **xbdghj** patterns
+**Steel Processors** (team06 - The Lovers 💕):
+- `graincard-processor.scm` - Strips footers for dual interfaces
+- `grain-link-processor.scm` - Auto-links **xbdghj** patterns
 - Trish mode comments! (enthusiastic, loving precision)
 
 **Svelte Components**:
@@ -89,7 +89,7 @@ Python (language)       →  writes  →  modules (files)
 - Dynamic routing: `/grains/[code]`
 
 **The Magic**:
-Write `**xbdghk**` in any grain → Ketos auto-links it!
+Write `**xbdghk**` in any grain → Steel auto-links it!
 - GitHub: `[xbdghk](xbdghk-*.md)` (markdown)
 - Live: `<a href="/grains/xbdghk">xbdghk</a>` (HTML)
 - Result: Cross-reference network across all 1.2M grains!
@@ -129,12 +129,12 @@ Every grain can reference every other grain using **bold grainorder codes**.
 
 **Example** (in xbdghj):
 ```
-See **xbdghk** for the Ketos version.
+See **xbdghk** for the Steel version.
 Learn about **xbdghn** (grainorder) first.
 Then read **xbdghs** (graintime) for timestamps.
 ```
 
-**Ketos processes it**:
+**Steel processes it**:
 - Detects all **6-char** patterns
 - Validates with grainorder alphabet
 - Replaces with appropriate links
@@ -152,7 +152,7 @@ Like Wikipedia, but bounded (1.2M pages max) and beautiful (80×110 monospace).
 **Created Tonight**:
 - 5 grains (xbdghj → xbdghs)
 - 3 patent specs (graintime, grainorder, mantraOS)
-- 2 Ketos processors (graincard, grain-link)
+- 2 Steel processors (graincard, grain-link)
 - 1 Svelte footer component
 - 1 teaching order document
 - 1 synthesis document
@@ -182,11 +182,11 @@ I built **grainscript**, a language for writing knowledge cards that work everyw
 
 **Why 1.2M possible cards?** We use a permutation-based addressing system with 13 consonants (xbdghjklmnsvz), 6-char codes, no duplicates: 13!/7! = 1,235,520 unique addresses.
 
-**Cross-reference magic**: Write `**xbdghk**` in any grain, and our Ketos processor auto-links it. Build a knowledge graph that connects all 1.2M cards.
+**Cross-reference magic**: Write `**xbdghk**` in any grain, and our Steel processor auto-links it. Build a knowledge graph that connects all 1.2M cards.
 
 **Built with**:
 - Clojure (grainorder permutation engine)
-- Ketos (Rust Lisp for processors)  
+- Steel (Rust Lisp for processors)  
 - Svelte (GitHub Pages site)
 - Swiss Ephemeris (astronomical git timestamps)
 
@@ -249,7 +249,7 @@ Copyright © 3x39. Glow G2 voice throughout.
 - Metaphors matter ("grain" carries agricultural, abundance, harvest meanings)
 - Singular vs plural matters (the language vs its outputs)
 - Patents aren't hoarding - they're protecting your ability to SHARE
-- Ketos can do EVERYTHING (processors, generators, build tools)
+- Steel can do EVERYTHING (processors, generators, build tools)
 - Voice matters (Glow G2 for teaching, Trish for precision/enthusiasm)
 
 **What we're building**:
@@ -335,7 +335,7 @@ Not just 1.2M cards. Not just a format. But a **complete knowledge system**:
 
 **This session was**:
 - Creative (new language, new format)
-- Technical (Ketos, Svelte, Clojure)
+- Technical (Steel, Svelte, Clojure)
 - Strategic (patents before scaling)
 - Philosophical (The Lovers, sacred connections)
 - Beautiful (Ember Harvest, typewriter aesthetic)

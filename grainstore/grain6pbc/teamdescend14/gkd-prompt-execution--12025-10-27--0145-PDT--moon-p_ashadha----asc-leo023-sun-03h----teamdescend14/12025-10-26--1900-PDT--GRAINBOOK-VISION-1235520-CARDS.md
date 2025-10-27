@@ -6,7 +6,7 @@
 
 ## Your Prompt (Verbatim from kae3g / kj3x39)
 
-> can we make our grainsite just like our Coldriver Tundra site but a warmer dark Halloween black brown glow-faded-Material/Solarized-orange like Cleveland Browns with some silly halloween svg graphics scattered around like glitchy orange pumpkins against the black background with dark transparent smokey shadows, update the Svelte styling, add Ketos utilities for our Svelte build pipeline, integrate into our existing documents Svelte compilation auto process with prompt flow with Cursor Ultra $200/month Auto Mode and a Github account with Github Pages activated in the individual repository-specific settings for Pages, make it like a bohemian tutorial guide that's rustic, with Glow V2 voice, let's actually change name of Glow V2 to Glow G2, let's infuse this prompt itself as a verbatim quote from me kae3g also with alias kj3x39 exclusively on YouTube Music and matching Instagram account @ risc.love, update my graincontact and being using static websites like contact cards sharable like business cards as digital links in channels and forums and messages with friends, give cool metadata for SEO and link previews so that the cards of the graincards are expressed, update our grainorder to expand alphabet to xbdghjklmnsvz (IMPORTANT!: `xbdghjklmnsvz` all letter choices valid but only choosing SIX==6 for our prefixes so no smaller than xbdghj and NO LARGER THAN zmnsvx) only where no characters are ever repeating in the same order and let's expand from 3 (`xbd`) to 6 (`xbdghj`) and infuse the calculations for the permutations and chart a course which has the chartcourse aka the graincourse implemented within itself i.e. it compiles itself like a quine which produces its own prompt in the readme which is the same symlink as the folder, where the very most top and center component is simply a bold orange un-miss-able bold underlined clickable shadowed halloween link to this folder, even though the github description will only allow the base URL. come up with a new spooky halloween season name with monospace bold large headline centered padded font for our grainsite as a replacement for "Coldwater Tundra" and also update the light theme to match the dark halloween faded-Material clay palette (like what would look good in Santa Fe New Mexico desert bohemian couture and furniture and architecture), infuse themes from our `foolsgoldtoshi-star-pond-highdesert` `docs/en` writings, chart a roadmap aka grainmap aka graincourse of an exclusive GitHub.io series of grainbooks where each xbdghj->zmnsvx graincard is a markdown page with a single 80×110 char monospace dark-styled prose of dark-styled codeblock font (actual markdown `code block` -> same monospace code block as Svelte compiled dark-theme html) -- and whatever is the maximum number of permutations xbdghj->zmnsvx numbers, infuse into all of our documents FINAL REQUEST infuse into all of our documents at this folder our dedicated plan storyboard for all MAX NUMBER OF 6-CHAR EXPANDED XBDGHJKLMNSVZ GRAINORDER PERMUTATIONS 80×110 code block grain cards where that number of graincards in a massive grainbook (it might be hundreds on mobile and Daylight Computer tablets in portrait mode and landscape MOVIE MODE WITH BLACK PADDING LIKE SHORTS/REELS as well as E Ink phones, it will work everywhere
+> can we make our grainsite just like our Coldriver Tundra site but a warmer dark Halloween black brown glow-faded-Material/Solarized-orange like Cleveland Browns with some silly halloween svg graphics scattered around like glitchy orange pumpkins against the black background with dark transparent smokey shadows, update the Svelte styling, add Steel utilities for our Svelte build pipeline, integrate into our existing documents Svelte compilation auto process with prompt flow with Cursor Ultra $200/month Auto Mode and a Github account with Github Pages activated in the individual repository-specific settings for Pages, make it like a bohemian tutorial guide that's rustic, with Glow V2 voice, let's actually change name of Glow V2 to Glow G2, let's infuse this prompt itself as a verbatim quote from me kae3g also with alias kj3x39 exclusively on YouTube Music and matching Instagram account @ risc.love, update my graincontact and being using static websites like contact cards sharable like business cards as digital links in channels and forums and messages with friends, give cool metadata for SEO and link previews so that the cards of the graincards are expressed, update our grainorder to expand alphabet to xbdghjklmnsvz (IMPORTANT!: `xbdghjklmnsvz` all letter choices valid but only choosing SIX==6 for our prefixes so no smaller than xbdghj and NO LARGER THAN zmnsvx) only where no characters are ever repeating in the same order and let's expand from 3 (`xbd`) to 6 (`xbdghj`) and infuse the calculations for the permutations and chart a course which has the chartcourse aka the graincourse implemented within itself i.e. it compiles itself like a quine which produces its own prompt in the readme which is the same symlink as the folder, where the very most top and center component is simply a bold orange un-miss-able bold underlined clickable shadowed halloween link to this folder, even though the github description will only allow the base URL. come up with a new spooky halloween season name with monospace bold large headline centered padded font for our grainsite as a replacement for "Coldwater Tundra" and also update the light theme to match the dark halloween faded-Material clay palette (like what would look good in Santa Fe New Mexico desert bohemian couture and furniture and architecture), infuse themes from our `foolsgoldtoshi-star-pond-highdesert` `docs/en` writings, chart a roadmap aka grainmap aka graincourse of an exclusive GitHub.io series of grainbooks where each xbdghj->zmnsvx graincard is a markdown page with a single 80×110 char monospace dark-styled prose of dark-styled codeblock font (actual markdown `code block` -> same monospace code block as Svelte compiled dark-theme html) -- and whatever is the maximum number of permutations xbdghj->zmnsvx numbers, infuse into all of our documents FINAL REQUEST infuse into all of our documents at this folder our dedicated plan storyboard for all MAX NUMBER OF 6-CHAR EXPANDED XBDGHJKLMNSVZ GRAINORDER PERMUTATIONS 80×110 code block grain cards where that number of graincards in a massive grainbook (it might be hundreds on mobile and Daylight Computer tablets in portrait mode and landscape MOVIE MODE WITH BLACK PADDING LIKE SHORTS/REELS as well as E Ink phones, it will work everywhere
 
 **Your aliases**: kae3g, kj3x39 (YouTube Music), @risc.love (Instagram)
 
@@ -301,7 +301,7 @@ https://kae3g.github.io/grainkae3g/contact/kae3g.html
 3. **The grainorder calculator** - Generates all 1,235,520 codes
 4. **The graincard template** - 80×110 format spec
 5. **The Svelte compiler** - Builds markdown → HTML
-6. **The Ketos utilities** - Build pipeline automation
+6. **The Steel utilities** - Build pipeline automation
 
 **The quine property**: The README describes how to build the grainbook. The grainbook, when built, contains the README. The README references itself. The system is self-contained and self-documenting.
 
@@ -419,7 +419,7 @@ Ember Harvest Grainbook/
 9. Self-referential README (contains own prompt)
 10. Grainorder calculator in README
 11. Build pipeline that reads README to generate structure
-12. Ketos utilities for automation
+12. Steel utilities for automation
 
 ### Phase 4: Full Deployment (This Quarter)
 13. All 1,235,520 graincard pages generated
@@ -429,15 +429,15 @@ Ember Harvest Grainbook/
 
 ---
 
-## Ketos Build Pipeline Integration
+## Steel Build Pipeline Integration
 
-**New file**: `grainbook-builder.ket`
+**New file**: `grainbook-builder.scm`
 
 ```lisp
-;; Glow G2: This Ketos program reads the README (which contains the prompt)
+;; Glow G2: This Steel program reads the README (which contains the prompt)
 ;; and generates all 1,235,520 graincard pages from it.
 ;;
-;; Why Ketos? Because we're learning by doing. Each build teaches us more
+;; Why Steel? Because we're learning by doing. Each build teaches us more
 ;; about the language.
 
 (define (generate-grainorder-codes alphabet length)
@@ -523,8 +523,8 @@ gkd-prompt-execution--{graintime}/
 ├── files/
 │   └── (xbdghj→zmnsvx graincards as they're created)
 └── scripts/
-    ├── generate-grainbook.ket (Ketos builder)
-    └── generate-grainbook.bb (Babashka builder)
+    ├── generate-grainbook.scm (Steel builder)
+    └── generate-grainbook.scm (Steel builder)
 ```
 
 ---

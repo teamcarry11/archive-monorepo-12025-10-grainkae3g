@@ -20,14 +20,14 @@
 
 ### **Introduction Series** (xbdghj → xbdghn)
 
-**1. xbdghj** - Grainbranch README Sync (Babashka)  
+**1. xbdghj** - Grainbranch README Sync (Steel)  
 → *Your first automation script. Learn how we symlink READMEs.*  
-→ **Start here if you**: Want to see a real Babashka script  
+→ **Start here if you**: Want to see a real Steel script  
 → **Learn**: File operations, symlinks, git integration
 
-**2. xbdghk** - Grainbranch README Sync (Ketos)  
-→ *Same script, but in Ketos (Rust Lisp). Compare side-by-side.*  
-→ **Start here if you**: Want to learn Ketos vs Babashka  
+**2. xbdghk** - Grainbranch README Sync (Steel)  
+→ *Same script, but in Steel (Rust Lisp). Compare side-by-side.*  
+→ **Start here if you**: Want to learn Steel vs Steel  
 → **Learn**: Lisp syntax, Rust integration, language comparison
 
 **3. xbdghl** - Graincard Format Specification  
@@ -47,17 +47,17 @@
 
 ### **Implementation Series** (xbdghv → xbdgjz)
 
-**6. xbdghv** - Dual-Wifi Failover (Ketos)  
+**6. xbdghv** - Dual-Wifi Failover (Steel)  
 → *Starlink + cellular automatic switching.*  
 → **Start here if you**: Need robust internet in remote areas  
-→ **Learn**: Network monitoring, failover logic, Ketos CLI
+→ **Learn**: Network monitoring, failover logic, Steel CLI
 
 **7. xbdghz** - Ember Harvest Theme Guide  
 → *Halloween browns + glowing orange design system.*  
 → **Start here if you**: Want to build beautiful dark themes  
 → **Learn**: CSS variables, color theory, accessibility
 
-**8. xbdgjk** - Graincard Processor (Ketos)  
+**8. xbdgjk** - Graincard Processor (Steel)  
 → *How we strip footers for dual GitHub/Pages navigation.*  
 → **Start here if you**: Building tools that output multiple formats  
 → **Learn**: String processing, metadata extraction, dual interfaces
@@ -122,8 +122,8 @@
 ### Path A: **"I want to use grainscript"**
 Start: **xbdghl** (format spec) → **xbdghn** (grainorder) → **xbdghj** (first script)
 
-### Path B: **"I want to learn Ketos"**
-Start: **xbdghk** (Ketos sync) → **xbdghv** (dual-wifi) → **xbdgjk** (processor)
+### Path B: **"I want to learn Steel"**
+Start: **xbdghk** (Steel sync) → **xbdghv** (dual-wifi) → **xbdgjk** (processor)
 
 ### Path C: **"I want to build my own system"**
 Start: **xbdgjm** (grainorder code) → **xbdghs** (graintime code) → **xbdgjl** (Svelte component)
@@ -156,7 +156,7 @@ The format works everywhere:
 
 Built with:
 - Clojure (grainorder permutation engine)
-- Ketos (Rust Lisp for scripts)
+- Steel (Rust Lisp for scripts)
 - Svelte (GitHub Pages site)
 - Swiss Ephemeris (astronomical timestamps)
 
@@ -167,7 +167,7 @@ Live demo: https://kae3g.github.io/grainkae3g/grainscript
 - If you write teaching content
 - If you want reproducible, portable knowledge cards
 - If you're filing patents (we document our process)
-- If you're learning Ketos (Rust Lisp)
+- If you're learning Steel (Rust Lisp)
 
 Built in the forest cabin with Starlink failover. Copyright © 3x39. Open sourcing after provisional patents filed.
 

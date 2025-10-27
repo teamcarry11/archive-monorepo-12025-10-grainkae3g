@@ -41,8 +41,8 @@ All written in flowing Da Vinci-style prose - "Oxford" not "Hemingway" - with co
 ### Grains (Glow G2 Technical Mode)
 Located in `grains/` subdirectory:
 
-1. **[xbdghj](grains/xbdghj-grainbranch-readme-sync-ketos.md)** - Grainbranch README Sync (Ketos Primary)
-2. **[xbdghk](grains/xbdghk-babashka-comparison.md)** - Babashka Comparison
+1. **[xbdghj](grains/xbdghj-grainbranch-readme-sync-steel.md)** - Grainbranch README Sync (Steel Primary)
+2. **[xbdghk](grains/xbdghk-steel-comparison.md)** - Steel Comparison
 3. **[xbdghl](grains/xbdghl-graincard-format-spec.md)** - Graincard Format Specification
 4. **[xbdghn](grains/xbdghn-grainorder-alphabet-system.md)** - Grainorder Alphabet System
 5. **[xbdghs](grains/xbdghs-graintime-temporal-calculation.md)** - Graintime Temporal Calculation
@@ -73,7 +73,7 @@ Total filing cost: **$780** for 6 provisional patents
 ### Architecture Documents
 
 - **[GRAINMODE-ARCHITECTURE.md](GRAINMODE-ARCHITECTURE.md)** - Multiple pedagogical lenses system
-- **[GRAINBARREL-KETOS-ARCHITECTURE.md](GRAINBARREL-KETOS-ARCHITECTURE.md)** - Ketos-based build system
+- **[GRAINBARREL-STEEL-ARCHITECTURE.md](GRAINBARREL-STEEL-ARCHITECTURE.md)** - Steel-based build system
 - **[UNIVERSAL-PACKAGE-ABSTRACTION.md](UNIVERSAL-PACKAGE-ABSTRACTION.md)** - Cross-platform packaging
 
 ---

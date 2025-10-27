@@ -15,7 +15,7 @@
 
 ### xbdghk - On Two Languages  
 **Farming Metaphor**: French and Italian from shared Latin roots  
-**Technical Concept**: Babashka and Ketos as two Lisps from one tradition  
+**Technical Concept**: Steel and Steel as two Lisps from one tradition  
 **Status**: ✅ Complete (110 lines)
 
 ### xbdghl - On Form and Constraint

@@ -15,8 +15,8 @@
 ### Grainbook Issue 1: Ember Harvest (Complete!)
 
 **5 Perfect Grains** (all 116 lines | 110 box | 80 width):
-1. xbdghj - symlink automation (ketos primary)
-2. xbdghk - babashka comparison
+1. xbdghj - symlink automation (steel primary)
+2. xbdghk - steel comparison
 3. xbdghl - format specification
 4. xbdghn - grainorder system
 5. xbdghs - graintime calculation
@@ -41,12 +41,12 @@
 
 Each includes: abstract, background, claims, prior art, commercial apps, implementation
 
-### Ketos Validation Chain (Complete!)
+### Steel Validation Chain (Complete!)
 
-**graincard-validator.ket** (team 10, authored by team 14):
+**graincard-validator.scm** (team 10, authored by team 14):
 - Purely functional composition (monoid laws, functor lifting)
 - Henna-style ASCII art (✧･ﾟ:* ∿∿∿ ✿❀✾❁ ❋✺❋)
-- Clojure-in-Ketos specs as teaching annotations
+- Clojure-in-Steel specs as teaching annotations
 - Type signatures (Haskell notation)
 - Precise equality (= for exact, equal? for strings)
 - Unicode display width calculation
@@ -64,8 +64,8 @@ Each includes: abstract, background, claims, prior art, commercial apps, impleme
 **Solution**:
 - Updated grainscript index (GitHub blob → `{base}/grainscript/{code}`)
 - Fixed 130+ writings JSON (`/12025-10/` → `/grainkae3g/`)
-- Created fix-writings-links.bb (Babashka production)
-- Created writings-link-fixer.ket (Ketos specification)
+- Created fix-writings-links.scm (Steel production)
+- Created writings-link-fixer.scm (Steel specification)
 
 **Result**: Seamless SPA navigation, no external redirects
 
@@ -132,8 +132,8 @@ walk with you and show you the way we solve this beautiful problem.
 ### Files Created/Modified
 - 5 grains perfected (145 lines of new content)
 - 3 patent specs written (patents #3, #5, #6)
-- 5 Ketos validators/processors
-- 2 Babashka production tools
+- 5 Steel validators/processors
+- 2 Steel production tools
 - 3 personal notes (music, crypto strategy)
 - 10+ comprehensive documentation files
 
@@ -157,7 +157,7 @@ walk with you and show you the way we solve this beautiful problem.
 Global Drum Project (2007)  
 Grammy Winner: Best Contemporary World Music Album
 
-The global collaboration of master percussionists mirrored our work: bringing together different systems (Ketos, Clojure, Rust, multiple blockchains) into one coherent whole, each tradition maintaining its voice while creating unified beauty.
+The global collaboration of master percussionists mirrored our work: bringing together different systems (Steel, Clojure, Rust, multiple blockchains) into one coherent whole, each tradition maintaining its voice while creating unified beauty.
 
 ---
 
@@ -181,7 +181,7 @@ This session embodied **Temperance** (Team 14's archetype):
 - Present action (building) ↔ Future protection (patents)
 
 **Integration**:
-- Ketos + Clojure (two Lisps, one vision)
+- Steel + Clojure (two Lisps, one vision)
 - Multiple wisdom streams (Vedic, Tarot, Hermetic, Fashion)
 - Technology + Philosophy (code as teaching)
 
@@ -205,7 +205,7 @@ This session embodied **Temperance** (Team 14's archetype):
 3. **Generate next 95 grains** - Expand to grain #100
 
 ### Medium-Term Goals
-- Ketos CI/CD migration
+- Steel CI/CD migration
 - Mobile/tablet/E-ink optimization
 - Pluta & Panthera legend beginning
 - Helen Atthowe outreach

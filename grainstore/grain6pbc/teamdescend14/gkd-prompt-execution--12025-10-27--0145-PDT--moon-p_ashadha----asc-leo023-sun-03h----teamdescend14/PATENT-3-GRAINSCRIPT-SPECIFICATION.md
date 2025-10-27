@@ -236,7 +236,7 @@ A method comprising:
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │ GRAINCARD xbdghj                                              grain 1 of 1.2M │
 │ symlink automation: repository root → grainbranch depth                     │
-│ script: grainbranch-readme-sync.ket (ketos)                                  │
+│ script: grainbranch-readme-sync.scm (steel)                                  │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
 │ [educational content fills 106 lines, wrapped at 78 chars per line]         │
@@ -313,9 +313,9 @@ IO:      ✓                                                            ✓
 
 ### Reference Implementation
 
-**Language**: Ketos (Rust-based Lisp)  
+**Language**: Steel (Rust-based Lisp)  
 **Location**: grainstore/grain6pbc/teamstructure10/graincard-spec/  
-**Validator**: graincard-validator.ket  
+**Validator**: graincard-validator.scm  
 **License**: Multi-licensed (Apache-2.0 / MIT / others)
 
 ### Integration Points

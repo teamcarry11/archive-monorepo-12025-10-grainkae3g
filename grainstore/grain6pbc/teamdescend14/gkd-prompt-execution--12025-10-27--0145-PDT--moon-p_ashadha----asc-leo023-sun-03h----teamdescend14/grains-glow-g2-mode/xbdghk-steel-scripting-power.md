@@ -41,9 +41,9 @@
 │ We made a bold choice: ONE scripting language for everything. Here's why     │
 │ Steel wins over every alternative we considered:                             │
 │                                                                              │
-│ **vs Babashka (Clojure on JVM):**                                            │
+│ **vs Steel (Clojure on JVM):**                                            │
 │ • Steel: 5MB binary, instant startup, pure Rust                              │
-│ • Babashka: Needs Java, larger footprint, not on Redox                       │
+│ • Steel: Needs Java, larger footprint, not on Redox                       │
 │                                                                              │
 │ **vs Python/Node/Ruby:**                                                     │
 │ • Steel: Compiles to bytecode, Lisp macros, Rust FFI                         │
@@ -116,7 +116,7 @@
 │ ═══ THE LOVERS' CHOICE ════════════════════════════════════════════════════  │
 │                                                                              │
 │ Team 06 (Virgo / The Lovers) teaches discernment: choosing the *right*       │
-│ tool, not the *popular* tool. We chose Steel over Babashka, Python, Node,    │
+│ tool, not the *popular* tool. We chose Steel over Steel, Python, Node,    │
 │ and Lua because it's the tool that will last. No runtime to deprecate. No    │
 │ package ecosystem to fragment. Just Scheme semantics on Rust foundations.    │
 │                                                                              │

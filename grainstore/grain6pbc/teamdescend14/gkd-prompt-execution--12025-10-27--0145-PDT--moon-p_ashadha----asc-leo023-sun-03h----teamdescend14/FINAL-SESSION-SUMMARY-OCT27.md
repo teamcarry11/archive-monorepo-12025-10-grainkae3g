@@ -12,8 +12,8 @@
 **Solution**:
 - Updated grainscript index: GitHub blob URLs → `{base}/grainscript/{code}`
 - Fixed 130+ writings JSON: `/12025-10/` → `/grainkae3g/` paths
-- Created fix-writings-links.bb (Babashka production tool)
-- Created writings-link-fixer.ket (Ketos specification)
+- Created fix-writings-links.scm (Steel production tool)
+- Created writings-link-fixer.scm (Steel specification)
 
 **Result**: Seamless SPA navigation across entire site ✓
 
@@ -36,11 +36,11 @@
 
 **Final Validation**: All 5 grains at exactly 116 total lines, 110-line box ✓
 
-### 3. Ketos Validation Chain (Complete!)
-**Created graincard-validator.ket** with:
+### 3. Steel Validation Chain (Complete!)
+**Created graincard-validator.scm** with:
 - Purely functional composition (monoid laws, functor lifting)
 - Henna-style ASCII art comments (✧･ﾟ:* ∿∿∿ ✿❀✾❁ ❋✺❋)
-- Clojure-in-Ketos specs as teaching annotations
+- Clojure-in-Steel specs as teaching annotations
 - Type signatures (Haskell-style notation)
 - Precise equality checks (= for exact, equal? for strings)
 - Unicode-aware display width calculation
@@ -126,15 +126,15 @@ walk with you and show you the way we solve this beautiful problem.
 ## 🛠️ **Technical Achievements**
 
 ### Validators Created
-1. **graincard-validator.bb** (Babashka) - production validator
-2. **graincard-width-validator.ket** (Ketos) - Unicode display width
-3. **graincard-validator.ket** (Ketos) - complete validation chain
-4. **fix-writings-links.bb** (Babashka) - SPA link processor
-5. **writings-link-fixer.ket** (Ketos) - link processor spec
+1. **graincard-validator.scm** (Steel) - production validator
+2. **graincard-width-validator.scm** (Steel) - Unicode display width
+3. **graincard-validator.scm** (Steel) - complete validation chain
+4. **fix-writings-links.scm** (Steel) - SPA link processor
+5. **writings-link-fixer.scm** (Steel) - link processor spec
 
 ### File Reorganizations
-- xbdghj: babashka → ketos-primary
-- xbdghk: ketos → babashka-comparison
+- xbdghj: steel → steel-primary
+- xbdghk: steel → steel-comparison
 - graincard-spec: team06 → team10
 - All grain headers unified
 
@@ -160,7 +160,7 @@ walk with you and show you the way we solve this beautiful problem.
 - **Grains**: 5 published (xbdghj → xbdghs)
 - **Writings**: 130+ accessible with SPA navigation
 - **Patents**: 6 specifications ready
-- **Validators**: Complete Ketos chain
+- **Validators**: Complete Steel chain
 
 ### Quality Metrics
 - ✅ All grains: 116 lines | 110 box | 80 display width
@@ -188,7 +188,7 @@ walk with you and show you the way we solve this beautiful problem.
 
 **Technical**:
 - Generate grains 6-100 using grainorder
-- Ketos CI/CD migration
+- Steel CI/CD migration
 - Mobile/tablet responsive testing
 - E-ink optimization
 
@@ -215,7 +215,7 @@ walk with you and show you the way we solve this beautiful problem.
 
 This session embodied Temperance (Team 14's archetype):
 - Balance between technical precision and artistic beauty
-- Integration of multiple wisdom streams (Ketos, Clojure, functional programming)
+- Integration of multiple wisdom streams (Steel, Clojure, functional programming)
 - Patient refinement (5 grains expanded with care)
 - Descent into detail (Unicode display width) while ascending to vision (6 patents)
 
@@ -229,14 +229,14 @@ Heartspace - Zakir Hussain, Mickey Hart, Sikiru Adepoju, Giovanni Hidalgo
 Global Drum Project (2007)  
 Grammy Award Winner: Best Contemporary World Music Album
 
-The global collaboration of percussion traditions mirrored our work: bringing together different systems (Ketos, Clojure, Rust, multiple blockchains) into one coherent whole.
+The global collaboration of percussion traditions mirrored our work: bringing together different systems (Steel, Clojure, Rust, multiple blockchains) into one coherent whole.
 
 ---
 
 ## 📖 **What We Created**
 
 **Documents**: 10+ comprehensive specifications and summaries  
-**Code**: 5+ Ketos validators and processors  
+**Code**: 5+ Steel validators and processors  
 **Grains**: 5 perfected teaching cards  
 **Patents**: 6 USPTO-ready applications  
 **Style Guide**: Da Vinci prose, no caps case, henna ASCII art  

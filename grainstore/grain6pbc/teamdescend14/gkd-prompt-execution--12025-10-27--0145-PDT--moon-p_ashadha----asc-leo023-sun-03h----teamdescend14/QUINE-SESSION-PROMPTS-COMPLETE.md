@@ -47,16 +47,16 @@ This redirected EVERYTHING. We realized: **Patent before scale. Protect before s
 3. **mantraOS** - E Ink + RAM-only hardware
 
 ### **5 Foundation Grains:**
-1. **xbdghj** - Babashka sync (THE WILD - untamed paths)
-2. **xbdghk** - Ketos sync (THE SEARCH - seeking Rust Lisp)
+1. **xbdghj** - Steel sync (THE WILD - untamed paths)
+2. **xbdghk** - Steel sync (THE SEARCH - seeking Rust Lisp)
 3. **xbdghl** - Format spec (THE WESTERN - structured civilization)
 4. **xbdghn** - Grainorder (THE MELTDOWN - boundaries dissolve into math)
 5. **xbdghs** - Graintime (THE EASTERN - cosmic wisdom encoded)
 
-### **3 Ketos Validators:**
-1. **graincard-spec.ket** - Enforces 110 lines, 80 chars, > button placement
-2. **graincard-processor.ket** - Strips footers for dual interfaces
-3. **grain-link-processor.ket** - Auto-links **xbdghj** patterns
+### **3 Steel Validators:**
+1. **graincard-spec.scm** - Enforces 110 lines, 80 chars, > button placement
+2. **graincard-processor.scm** - Strips footers for dual interfaces
+3. **grain-link-processor.scm** - Auto-links **xbdghj** patterns
 
 ### **The Complete System:**
 - grainscript (language) → grains (cards)
@@ -127,7 +127,7 @@ Throughout all grains, all documentation, all code comments:
 ### **Short-term (Next Month):**
 - [ ] Complete Patents #3, #5, #6
 - [ ] Generate 95 more grains (to 100 total)
-- [ ] Ketos CI/CD (replace GitHub Actions YAML)
+- [ ] Steel CI/CD (replace GitHub Actions YAML)
 - [ ] Show HN launch
 - [ ] Product Hunt launch
 
@@ -155,7 +155,7 @@ Throughout all grains, all documentation, all code comments:
 **Lines**: 4,000+ written  
 **Grains**: 5 created  
 **Patents**: 3 specifications completed  
-**Ketos modules**: 3 validators/processors
+**Steel modules**: 3 validators/processors
 
 **Remaining**:
 - 1,235,515 grains to write
@@ -179,7 +179,7 @@ Throughout all grains, all documentation, all code comments:
 - Self-referential (quine)
 - Legally protected (patents)
 - Beautifully designed (Ember Harvest)
-- Technically sound (Ketos validators)
+- Technically sound (Steel validators)
 - Philosophically grounded (Zen, Unix, grain metaphor)
 
 ---

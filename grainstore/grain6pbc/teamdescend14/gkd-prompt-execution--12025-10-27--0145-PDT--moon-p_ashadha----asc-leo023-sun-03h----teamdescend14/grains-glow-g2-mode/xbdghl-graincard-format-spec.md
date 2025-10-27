@@ -74,7 +74,7 @@
 │                                                                              │
 │ THE VALIDATION:                                                              │
 │ Location: grainstore/grain6pbc/teamstructure10/graincard-spec/               │
-│ Validator: graincard-validator.bb (Babashka)                                 │
+│ Validator: graincard-validator.scm (Steel)                                 │
 │ Checks:                                                                      │
 │   ✓ Total lines = 116                                                        │
 │   ✓ Line 5 = ```                                                             │
@@ -84,7 +84,7 @@
 │   ✓ Footer has card number + > next button                                   │
 │                                                                              │
 │ USAGE EXAMPLE:                                                               │
-│ $ bb graincard-validator.bb grains/                                          │
+│ $ steel graincard-validator.scm grains/                                          │
 │ ✅ xbdghj-*.md - VALID                                                        │
 │ ✅ xbdghk-*.md - VALID                                                        │
 │ ❌ xbdghl-*.md - INVALID (only 62 lines, needs +48!)                          │

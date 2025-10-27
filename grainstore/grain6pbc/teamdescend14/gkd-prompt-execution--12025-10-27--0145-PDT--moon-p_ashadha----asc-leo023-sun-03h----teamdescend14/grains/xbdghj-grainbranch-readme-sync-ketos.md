@@ -6,7 +6,7 @@
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │ GRAINCARD xbdghj                                              Grain 1 of 1.2M │
 │ Symlink Automation: Repository Root → Grainbranch Depth                     │
-│ Script: grainbranch-readme-sync.ket (Ketos) | Author: kae3g (@risc.love)    │
+│ Script: grainbranch-readme-sync.scm (Steel) | Author: kae3g (@risc.love)    │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
 │ Glow G2: Imagine standing at the edge of a wild forest where countless      │
@@ -29,15 +29,15 @@
 │ matters now. When you switch branches, the symlink updates. The surface     │
 │ stays synchronized with the depths. One command makes this magic happen.    │
 │                                                                              │
-│ ═══ THE CODE (Ketos Primary, Babashka Bridge) ═════════════════════════════ │
+│ ═══ THE CODE (Steel Primary, Steel Bridge) ═════════════════════════════ │
 │                                                                              │
-│ ;; grainbranch-readme-sync.ket                                               │
+│ ;; grainbranch-readme-sync.scm                                               │
 │ (define (get-current-branch)                                                 │
 │   (shell-result-trim (run-command "git branch --show-current")))             │
 │                                                                              │
 │ (define (build-grain-path branch)                                            │
 │   (string-join "/" ["grainstore" "grain6pbc" "teamdescend14"                 │
-│                     branch "grains" "xbdghj-grainbranch-readme-sync-ketos    │
+│                     branch "grains" "xbdghj-grainbranch-readme-sync-steel    │
 .md"]))                                                                        │
 │                                                                              │
 │ (define (sync-readme)                                                        │
@@ -47,7 +47,7 @@
 │     (run-command (format "ln -sf ~a README.md" target))                      │
 │     (println (format "✅ Synced: README.md → ~a" target))))                  │
 │                                                                              │
-│ The Babashka version follows the same logic with Clojure syntax. Both       │
+│ The Steel version follows the same logic with Clojure syntax. Both       │
 │ solve the same problem: connecting root to branch, surface to depth,        │
 │ visitor to current work. The Unix command stays simple: ln -sf creates a    │
 │ symbolic link, rm -f removes the old one. The beauty lives in how we        │
@@ -92,7 +92,7 @@
 │ terminal. Your phone in airplane mode. Your E Ink reader. Your tablet.      │
 │                                                                              │
 │ Unicode box-drawing characters (┌─┐│├┤└┘) measure 3 bytes each but display  │
-│ as 1 character width. Our Ketos validator counts display width, ensuring    │
+│ as 1 character width. Our Steel validator counts display width, ensuring    │
 │ visual correctness across all devices. Byte count and display width differ  │
 │ for Unicode, yet what matters is how the grain looks when rendered. Every   │
 │ grain maintains 80 visual characters. Every grain fits everywhere.          │
@@ -107,7 +107,7 @@
 │ contains itself, how the wild path marks itself as you walk it.             │
 │                                                                              │
 │ Run it. Watch the symlink form. Then read grain **xbdghk** to see the same  │
-│ logic expressed through Babashka comparison. Two languages flowing from one │
+│ logic expressed through Steel comparison. Two languages flowing from one │
 │ source of understanding. The Lovers choosing both paths simultaneously.     │
 │                                                                              │
 │ grain: xbdghj (1 of 1,235,520)                                             > │

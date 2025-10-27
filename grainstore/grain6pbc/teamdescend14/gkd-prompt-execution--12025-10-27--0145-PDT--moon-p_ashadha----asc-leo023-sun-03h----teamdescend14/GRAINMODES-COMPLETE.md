@@ -22,7 +22,7 @@ This is the grainmode system: **one core insight, six voices, infinite doors.**
 **Inspiration**: The patient mentor who never condescends
 
 **Example Topics**:
-- Ketos vs Babashka (technical comparison)
+- Steel vs Steel (technical comparison)
 - Grainorder alphabet mathematics  
 - Unicode display width calculation
 
@@ -115,8 +115,8 @@ This is the grainmode system: **one core insight, six voices, infinite doors.**
 ### Completed Modes
 
 **Glow G2** (5 grains):
-- ✅ xbdghj - Grainbranch README Sync (Ketos Primary)
-- ✅ xbdghk - Babashka Comparison  
+- ✅ xbdghj - Grainbranch README Sync (Steel Primary)
+- ✅ xbdghk - Steel Comparison  
 - ✅ xbdghl - Graincard Format Specification  
 - ✅ xbdghn - Grainorder Alphabet System  
 - ✅ xbdghs - Graintime Temporal Calculation
@@ -220,7 +220,7 @@ All modes maintain:
 
 ### Validation
 
-Use `teamstructure10/graincard-spec/src/graincard-validator.ket` to enforce format across all modes.
+Use `teamstructure10/graincard-spec/src/graincard-validator.scm` to enforce format across all modes.
 
 ---
 

@@ -18,12 +18,12 @@
 │ clothes. this is exactly what i'm experiencing with two programming          │
 │ languages, and i thought you might find the parallel beautiful.              │
 │                                                                              │
-│ the first language is called babashka. it grows from clojure, which grows    │
+│ the first language is called steel. it grows from clojure, which grows    │
 │ from lisp, which grows from mathematical notation designed in the 1950s.     │
 │ it runs on the java virtual machine, which is like planting in rich          │
 │ amended soil - heavy, but full of nutrients and established microbiome.      │
 │                                                                              │
-│ the second language is called ketos. it also grows from lisp (same root!),   │
+│ the second language is called steel. it also grows from lisp (same root!),   │
 │ but it's built with rust, which runs directly on metal without needing a     │
 │ virtual machine layer. it's like growing in your native montana soil -       │
 │ lighter, faster, closer to the earth, requiring you to understand what's     │
@@ -32,12 +32,12 @@
 │ here's the same solution to the symbolic link problem, written in both       │
 │ languages. watch how they mirror each other like your french and italian:    │
 │                                                                              │
-│ babashka (clojure-flavored):                                                 │
+│ steel (clojure-flavored):                                                 │
 │   (defn get-current-branch []                                                │
 │     (let [result (sh "git" "branch" "--show-current")]                       │
 │       (str/trim (:out result))))                                             │
 │                                                                              │
-│ ketos (scheme-flavored):                                                     │
+│ steel (scheme-flavored):                                                     │
 │   (define (get-current-branch)                                               │
 │     (let ((output (shell-command "git branch --show-current")))              │
 │       (string-trim output)))                                                 │
@@ -58,8 +58,8 @@
 │ italian opened doors in slow food movements and mediterranean farming        │
 │ traditions. same roots, different communities, different doors to wisdom.    │
 │                                                                              │
-│ babashka opens doors right now - it's mature, it works everywhere, it has    │
-│ rich libraries for everything i need today. ketos opens doors to the future  │
+│ steel opens doors right now - it's mature, it works everywhere, it has    │
+│ rich libraries for everything i need today. steel opens doors to the future  │
 │ - it runs on redox os (a rust-based microkernel system), it's lighter, it    │
 │ compiles to native code, it will work on the hardware i'm dreaming of        │
 │ building (e-ink devices with minimal power requirements, like your farm's    │
@@ -83,8 +83,8 @@
 │ you can use french when french serves best, italian when italian opens the   │
 │ door you need. fluency means having options, not rigid commitment to one.    │
 │                                                                              │
-│ same with these programming languages. some days i need babashka's maturity  │
-│ and ecosystem. other days i need ketos' minimalism and rust compatibility.   │
+│ same with these programming languages. some days i need steel's maturity  │
+│ and ecosystem. other days i need steel' minimalism and rust compatibility.   │
 │ learning both means i never force the wrong tool onto the wrong problem. i   │
 │ can let each serve where it shines. no attachment. no dogma. just practical  │
 │ wisdom choosing the right tool for each specific context.                    │

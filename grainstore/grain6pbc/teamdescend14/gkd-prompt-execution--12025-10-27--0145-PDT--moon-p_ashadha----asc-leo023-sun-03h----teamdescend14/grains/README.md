@@ -25,12 +25,12 @@ Think **typewriter manuscripts**. Think **vintage screenplays**. Think **flashca
 
 | Card Code | Title | Topic | Status |
 |-----------|-------|-------|--------|
-| [xbdghj](xbdghj-grainbranch-readme-sync-babashka.md) | Grainbranch README Sync (Babashka) | Automation | ✅ Live |
-| [xbdghk](xbdghk-grainbranch-readme-sync-ketos.md) | Grainbranch README Sync (Ketos) | Automation | ✅ Live |
+| [xbdghj](xbdghj-grainbranch-readme-sync-steel.md) | Grainbranch README Sync (Steel) | Automation | ✅ Live |
+| [xbdghk](xbdghk-grainbranch-readme-sync-steel.md) | Grainbranch README Sync (Steel) | Automation | ✅ Live |
 | [xbdghl](xbdghl-graincard-format-spec.md) | Graincard Format Specification | Meta | ✅ Live |
 | xbdghn | Grainorder Alphabet System | Meta | 📝 Next |
 | xbdghs | Graintime Calculation | Time | 📝 Planned |
-| xbdghv | Dual-Wifi Failover (Ketos) | Network | 📝 Planned |
+| xbdghv | Dual-Wifi Failover (Steel) | Network | 📝 Planned |
 | xbdghz | Ember Harvest Theme Guide | Design | 📝 Planned |
 
 ### Series 2: Core Concepts (xbdgjh-xbdgjz range)
@@ -46,7 +46,7 @@ Think **typewriter manuscripts**. Think **vintage screenplays**. Think **flashca
 ## 🎯 How to Read Graincards
 
 1. **Start with xbdghj** - The first card teaches you the README sync pattern
-2. **Compare xbdghj and xbdghk** - See Babashka vs Ketos implementations
+2. **Compare xbdghj and xbdghk** - See Steel vs Steel implementations
 3. **Read xbdghl** - Understand the format itself (meta!)
 4. **Navigate with links** - Each card has Prev/Next navigation at the top
 5. **Learn by doing** - Every card teaches through questions and examples
@@ -58,7 +58,7 @@ Think **typewriter manuscripts**. Think **vintage screenplays**. Think **flashca
 Use the graincard generator:
 
 ```bash
-bb grainstore/grain6pbc/teamnurture04/grainbarrel/scripts/graincard-generator.bb \
+steel grainstore/grain6pbc/teamnurture04/grainbarrel/scripts/graincard-generator.scm \
   --code "xbdghn" \
   --title "Your Card Title" \
   --content "Your teaching content here..." \

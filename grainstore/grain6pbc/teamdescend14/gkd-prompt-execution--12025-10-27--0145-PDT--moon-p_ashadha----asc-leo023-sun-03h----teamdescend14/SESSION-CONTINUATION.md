@@ -72,15 +72,15 @@
 
 ### Architecture Documents
 - ✅ GRAINMODE-ARCHITECTURE.md
-- ✅ GRAINBARREL-KETOS-ARCHITECTURE.md
+- ✅ GRAINBARREL-STEEL-ARCHITECTURE.md
 - ✅ UNIVERSAL-PACKAGE-ABSTRACTION.md
 - ✅ Multiple session summaries
 
 ### Validation & Tooling
-- ✅ Ketos validator (team 10, authored by team 14)
+- ✅ Steel validator (team 10, authored by team 14)
 - ✅ Unicode display width handling
 - ✅ Purely functional validation chain
-- ✅ Clojure-in-Ketos specs
+- ✅ Clojure-in-Steel specs
 - ✅ Henna-style ASCII art
 
 ---
@@ -121,16 +121,16 @@
    - 12-month protection window
    - Plan for full utility conversion
 
-6. **Ketos CI/CD Migration**
+6. **Steel CI/CD Migration**
    - Move from GitHub Actions YAML
-   - Pure Ketos build pipeline
+   - Pure Steel build pipeline
    - Integrate with grainbarrel
-   - Deploy to GitHub Pages via Ketos
+   - Deploy to GitHub Pages via Steel
 
 7. **mantraOS Prototype**
    - E Ink display research
    - RAM-only architecture design
-   - Ketos runtime integration
+   - Steel runtime integration
    - Daylight Computer collaboration potential
 
 ### Long-Term Vision

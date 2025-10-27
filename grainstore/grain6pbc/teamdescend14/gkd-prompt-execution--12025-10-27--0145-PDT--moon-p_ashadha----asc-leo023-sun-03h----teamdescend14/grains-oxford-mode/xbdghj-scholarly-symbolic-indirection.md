@@ -36,7 +36,7 @@
 │  repository portability across deployment contexts while accepting          │
 │  increased complexity in automated maintenance scripts.                     │
 │                                                                              │
-│  the automation layer, implemented in ketos (a rust-embedded lisp dialect   │
+│  the automation layer, implemented in steel (a rust-embedded lisp dialect   │
 │  descended from scheme via r5rs and r7rs specifications), demonstrates      │
 │  functional programming approaches to filesystem manipulation. pure         │
 │  functions compute desired symlink targets deterministically from           │

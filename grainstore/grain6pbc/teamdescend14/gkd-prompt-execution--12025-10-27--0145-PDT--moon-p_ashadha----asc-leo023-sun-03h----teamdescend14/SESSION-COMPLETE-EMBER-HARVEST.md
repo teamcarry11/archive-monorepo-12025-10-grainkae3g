@@ -24,8 +24,8 @@
 
 ### **The grainscript Format (Hours 2-4)**
 ✅ **4 Graincards Created**
-- xbdghj: Grainbranch README Sync (Babashka)
-- xbdghk: Grainbranch README Sync (Ketos)
+- xbdghj: Grainbranch README Sync (Steel)
+- xbdghk: Grainbranch README Sync (Steel)
 - xbdghl: Graincard Format Specification
 - xbdghn: Grainorder Alphabet System
 
@@ -43,7 +43,7 @@
 
 ### **The Architecture (Hours 4-5)**
 ✅ **Complete Synthesis Document**
-- 6 layers: Hoon/Haskell → ICP/Hedera/Solana → Ketos
+- 6 layers: Hoon/Haskell → ICP/Hedera/Solana → Steel
 - Educational path: Abstract → Concrete
 - Theosophical foundation (foolsgoldtoshi writings)
 - Accessibility layer (Charlemagne tha God, 10K words)
@@ -76,7 +76,7 @@
 - 4 graincards
 - 1 complete synthesis
 - 1 grainscript page
-- 2 automation scripts (Babashka + Ketos)
+- 2 automation scripts (Steel + Steel)
 - 1 copyright attribution
 - 1 domain research note (grainscript.com available!)
 
@@ -97,7 +97,7 @@
 ### **The grainscript Metaphor**
 
 **Three meanings unified:**
-1. **Code script** - Automation (Babashka, Ketos, shell)
+1. **Code script** - Automation (Steel, Steel, shell)
 2. **Movie script** - Narrative (screenplay, manuscript, story)
 3. **Teaching script** - Education (Glow G2's patient guidance)
 
@@ -116,7 +116,7 @@ Hoon/Haskell/Arvo (Type systems, P2P)
        ↓
 ICP + Hedera + Solana (Multi-chain commerce)
        ↓
-Ketos Universal Scripting (Rust Lisp)
+Steel Universal Scripting (Rust Lisp)
        ↓
 Theosophical Writings (foolsgoldtoshi)
        ↓
@@ -161,7 +161,7 @@ The Legend (Pluta & Panthera)
 - [ ] SEO metadata for grainscript sharing
 
 ### **Medium-term (Next Month)**
-- [ ] Ketos utilities integrated into Svelte build
+- [ ] Steel utilities integrated into Svelte build
 - [ ] Pluta & Panthera prologue (chapters 1-10)
 - [ ] Charlemagne tha God accessibility layer (audio-first)
 - [ ] foolsgoldtoshi integration (sovereign writings)

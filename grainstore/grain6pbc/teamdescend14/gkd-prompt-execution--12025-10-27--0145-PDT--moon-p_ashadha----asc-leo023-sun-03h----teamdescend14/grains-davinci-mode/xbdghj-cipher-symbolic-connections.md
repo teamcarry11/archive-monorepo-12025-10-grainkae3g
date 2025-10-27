@@ -51,7 +51,7 @@
 │  interior spaces serve functional necessity. the hidden geometries encode   │
 │  philosophical proportion. each layer serves its purpose. the automation    │
 │  that maintains these symbolic connections must operate with similar        │
-│  elegance. ketos the rust-based lisp provides the foundation for such       │
+│  elegance. steel the rust-based lisp provides the foundation for such       │
 │  systematic reference management because it combines functional purity      │
 │  with systems-level control. pure functions create symbolic links           │
 │  deterministically. immutable data structures ensure reference stability.   │
@@ -59,13 +59,13 @@
 │  is data. data is code. the symbolic representation and the computational   │
 │  reality merge into unified expression. this reflexive property allows      │
 │  programs that reason about themselves that modify their own structure      │
-│  that maintain coherence across transformation. when we write ketos code    │
+│  that maintain coherence across transformation. when we write steel code    │
 │  to manage symbolic links we are having symbols manage symbols. pointers    │
 │  pointing to pointers. references referencing references. yet this does     │
 │  not create confusion but rather crystalline clarity because each level     │
 │  maintains its distinct purpose. the implementation details matter less     │
 │  than the underlying pattern. whether accomplished through shell scripts    │
-│  or ketos programs or manual maintenance the principle remains constant.    │
+│  or steel programs or manual maintenance the principle remains constant.    │
 │  surface forms change. deep structures persist. leonardo sketched the       │
 │  same face from dozens of angles seeking the platonic ideal behind          │
 │  particular manifestations. we approach symbolic links similarly. the       │

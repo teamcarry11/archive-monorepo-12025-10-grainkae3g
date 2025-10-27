@@ -58,8 +58,8 @@ When viewing the live site at https://kae3g.github.io/grainkae3g/:
 
 ## The Tools We Built
 
-### 1. `fix-writings-links.bb` (Babashka - Production)
-Location: `grainstore/grain6pbc/teamnurture04/grainbarrel/scripts/fix-writings-links.bb`
+### 1. `fix-writings-links.scm` (Steel - Production)
+Location: `grainstore/grain6pbc/teamnurture04/grainbarrel/scripts/fix-writings-links.scm`
 
 This script:
 - Reads all JSON files in `web-app/static/content/`
@@ -70,18 +70,18 @@ This script:
 
 **Usage:**
 ```bash
-bb fix-writings-links.bb web-app/static/content /grainkae3g
+steel fix-writings-links.scm web-app/static/content /grainkae3g
 ```
 
-### 2. `writings-link-fixer.ket` (Ketos - Spec)
-Location: `grainstore/grain6pbc/teamprecision06/grainscript-processor/src/writings-link-fixer.ket`
+### 2. `writings-link-fixer.scm` (Steel - Spec)
+Location: `grainstore/grain6pbc/teamprecision06/grainscript-processor/src/writings-link-fixer.scm`
 
-This is the **Ketos specification** for the same functionality, demonstrating how the link processor will work once Ketos CI/CD is fully integrated.
+This is the **Steel specification** for the same functionality, demonstrating how the link processor will work once Steel CI/CD is fully integrated.
 
-**Key difference:** Ketos version includes more robust regex handling and functional pipeline composition, showing the future architecture.
+**Key difference:** Steel version includes more robust regex handling and functional pipeline composition, showing the future architecture.
 
-### 3. `grain-link-processor.ket` (Ketos - Grain Auto-Linking)
-Location: `grainstore/grain6pbc/teamprecision06/grainscript-processor/src/grain-link-processor.ket`
+### 3. `grain-link-processor.scm` (Steel - Grain Auto-Linking)
+Location: `grainstore/grain6pbc/teamprecision06/grainscript-processor/src/grain-link-processor.scm`
 
 This processor handles **bold grain references** within markdown content:
 - Detects patterns like `**xbdghj**` (bold 6-char grainorder codes)
@@ -140,13 +140,13 @@ The `+page.server.js` files:
 ## Files Changed
 - `web-app/src/routes/grainscript/+page.svelte` (added `{base}` links)
 - All 130+ `web-app/static/content/*.json` files (updated HTML links)
-- Created `fix-writings-links.bb` (Babashka production tool)
-- Created `writings-link-fixer.ket` (Ketos specification)
+- Created `fix-writings-links.scm` (Steel production tool)
+- Created `writings-link-fixer.scm` (Steel specification)
 
 ## Next Steps
 
 1. **Test on live site** - Verify all navigation works after GitHub Actions deploys
-2. **Ketos CI/CD** - Integrate Ketos-based link processing into build pipeline
+2. **Steel CI/CD** - Integrate Steel-based link processing into build pipeline
 3. **Auto-linking** - Enable `**xbdghj**` bold references to auto-link
 4. **Grain metadata** - Add proper title extraction and sort order from grainorder library
 

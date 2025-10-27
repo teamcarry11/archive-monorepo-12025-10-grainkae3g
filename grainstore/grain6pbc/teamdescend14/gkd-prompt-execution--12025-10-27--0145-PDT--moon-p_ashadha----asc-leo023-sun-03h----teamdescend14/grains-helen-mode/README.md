@@ -23,7 +23,7 @@ These five letters translate technical concepts into ecological wisdom, showing 
 
 ### 2. On Two Languages (xbdghk)
 **Farm metaphor**: Learning French and Italian from shared Latin roots  
-**Technical concept**: Babashka and Ketos as two Lisps with one essence  
+**Technical concept**: Steel and Steel as two Lisps with one essence  
 **Wisdom**: Understanding roots reveals universal patterns
 
 ### 3. On Form and Constraint (xbdghl)

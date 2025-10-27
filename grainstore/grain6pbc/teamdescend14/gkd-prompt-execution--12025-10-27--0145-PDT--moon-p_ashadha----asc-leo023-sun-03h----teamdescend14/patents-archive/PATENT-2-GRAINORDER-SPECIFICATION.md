@@ -229,8 +229,8 @@ Output: "xbdgjk" (h→j, z→k)
 
 ### Figure 3: Use Case - Content Addressing
 ```
-Content Item 1 → xbdghj → "Grainbranch README Sync (Babashka)"
-Content Item 2 → xbdghk → "Grainbranch README Sync (Ketos)"
+Content Item 1 → xbdghj → "Grainbranch README Sync (Steel)"
+Content Item 2 → xbdghk → "Grainbranch README Sync (Steel)"
 Content Item 3 → xbdghl → "Graincard Format Specification"
      ...
 Content Item 1,235,520 → zmnsvx → "Final Knowledge Card"

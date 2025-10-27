@@ -250,7 +250,7 @@ A settlement system comprising:
 - Motoko (ICP smart contracts)
 - Solidity-equivalent (Hedera/Solana)
 - Rust (Solana programs)
-- Clojure/Ketos (business logic)
+- Clojure/Steel (business logic)
 
 **Key Libraries**:
 - @dfinity/agent (ICP)

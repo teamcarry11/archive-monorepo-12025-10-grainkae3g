@@ -40,8 +40,8 @@ This document synthesizes the complete multi-session journey of creating Grainbo
 ### 1. Grainscript Format (80×110 Teaching Cards)
 
 **5 Technical Grains** (Glow G2 Mode):
-- ✅ xbdghj - Grainbranch README Sync (Ketos Primary)
-- ✅ xbdghk - Babashka Comparison
+- ✅ xbdghj - Grainbranch README Sync (Steel Primary)
+- ✅ xbdghk - Steel Comparison
 - ✅ xbdghl - Graincard Format Specification
 - ✅ xbdghn - Grainorder Alphabet System
 - ✅ xbdghs - Graintime Temporal Calculation
@@ -92,15 +92,15 @@ This document synthesizes the complete multi-session journey of creating Grainbo
 
 All backed up in `patents-archive/` directory.
 
-### 4. Ketos Graintime Generator
+### 4. Steel Graintime Generator
 
-**Complete Implementation** (`teamstructure10/graintime-ketos/src/graintime.ket`):
-- ✅ Pure functional Ketos (Rust Lisp)
+**Complete Implementation** (`teamstructure10/graintime-steel/src/graintime.scm`):
+- ✅ Pure functional Steel (Rust Lisp)
 - ✅ Same logic as Clojure `format76.clj`
 - ✅ 76-character format with perfect alignment
 - ✅ Nakshatra abbreviations (`p_ashadha`, `u_bhadrapada`)
 - ✅ Padding rules (13-char nakshatra, 17-char team)
-- ✅ Clojure-in-Ketos specs as teaching comments
+- ✅ Clojure-in-Steel specs as teaching comments
 - ✅ Henna-style ASCII art (✧･ﾟ:* ∿∿∿ ✿❀✾❁)
 - ✅ Ready for Redox OS deployment
 
@@ -114,7 +114,7 @@ All backed up in `patents-archive/` directory.
 
 ### 6. Validation Infrastructure
 
-**Ketos Validator** (`teamstructure10/graincard-spec/src/graincard-validator.ket`):
+**Steel Validator** (`teamstructure10/graincard-spec/src/graincard-validator.scm`):
 - ✅ Pure functional validation chain
 - ✅ Unicode display width calculation
 - ✅ Exact format enforcement (116/110/80)
@@ -198,7 +198,7 @@ Together they guide all grainbook content, each contributing their unique gift.
 - Lines written: ~2,000
 - Commits: 10+
 - Files created: 10+
-- Major outputs: Graintime corrections, Ketos generator, 2 new grainmodes
+- Major outputs: Graintime corrections, Steel generator, 2 new grainmodes
 
 **Combined Totals**:
 - Duration: ~12 hours total
@@ -250,10 +250,10 @@ Each mode reveals the same truth from a different angle. Like light through a pr
    - 12-month protection window
    - Plan for full utility conversion
 
-5. **Ketos CI/CD Migration**
-   - Move from GitHub Actions YAML to pure Ketos
+5. **Steel CI/CD Migration**
+   - Move from GitHub Actions YAML to pure Steel
    - Integrate with grainbarrel build system
-   - Deploy to GitHub Pages via Ketos
+   - Deploy to GitHub Pages via Steel
 
 6. **Pluta & Panthera Prologue**
    - Begin the legend using 8001-v888 and 8002-v888 writings
@@ -277,7 +277,7 @@ Each mode reveals the same truth from a different angle. Like light through a pr
 9. **mantraOS Prototype**
    - E Ink display research & sourcing
    - RAM-only architecture design
-   - Ketos runtime integration
+   - Steel runtime integration
    - Daylight Computer collaboration potential
 
 10. **Framework Partnership**
@@ -312,15 +312,15 @@ Any deviation breaks vertical alignment across all 378 combinations (27 nakshatr
 - Between midnight and sunrise = NIGHT
 - Early night → **3rd house** (first half of night period)
 
-### Clojure-in-Ketos
+### Clojure-in-Steel
 
-Ketos can implement Clojure features through:
+Steel can implement Clojure features through:
 - Macros for syntax sugar
 - Pure functions for persistent data structures
 - Specs as teaching comments
 - Functional composition patterns
 
-This makes Ketos viable as "Clojure for Redox OS" while maintaining Rust's safety.
+This makes Steel viable as "Clojure for Redox OS" while maintaining Rust's safety.
 
 ### Grainmode Accessibility
 
@@ -368,7 +368,7 @@ grainstore/grain6pbc/teamdescend14/
 ## 🎓 For Future Sessions
 
 **When Continuing**:
-1. Run `bb grainbranch:create` to generate new graintime
+1. Run `steel grainbranch:create` to generate new graintime
 2. Verify nakshatra abbreviation (`p_`, `u_` prefixes)
 3. Verify solar house using asymmetric algorithm
 4. Verify 76-char format with proper padding
@@ -380,8 +380,8 @@ grainstore/grain6pbc/teamdescend14/
 10. Continue building!
 
 **Validation Tools**:
-- Ketos validator: `teamstructure10/graincard-spec/src/graincard-validator.ket`
-- Graintime generator: `teamstructure10/graintime-ketos/src/graintime.ket`
+- Steel validator: `teamstructure10/graincard-spec/src/graincard-validator.scm`
+- Graintime generator: `teamstructure10/graintime-steel/src/graintime.scm`
 - Format checker: Ensure 116/110/80 line structure
 
 **Remember**:
@@ -397,7 +397,7 @@ grainstore/grain6pbc/teamdescend14/
 
 This grainbook represents the convergence of multiple wisdom streams:
 - **Vedic astronomy** (graintime, nakshatras, solar houses)
-- **Computational precision** (Ketos, Rust, functional programming)
+- **Computational precision** (Steel, Rust, functional programming)
 - **Ecological wisdom** (Helen Atthowe's farming metaphors)
 - **Renaissance observation** (Da Vinci's patient flowing prose)
 - **Emotional honesty** (Ariana's vulnerable heartpath)

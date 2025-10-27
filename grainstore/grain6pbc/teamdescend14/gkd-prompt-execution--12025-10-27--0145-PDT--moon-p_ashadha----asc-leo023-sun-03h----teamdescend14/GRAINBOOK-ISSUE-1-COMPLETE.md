@@ -30,16 +30,16 @@
 **Grainbook Issue 1** contains 5 foundation grains:
 
 ### **Grain 1: xbdghj**
-**Title**: Grainbranch README Sync (Babashka)  
-**Topic**: Automation, symlinks, Babashka scripting  
+**Title**: Grainbranch README Sync (Steel)  
+**Topic**: Automation, symlinks, Steel scripting  
 **Live**: https://kae3g.github.io/grainkae3g/grains/xbdghj  
 **Teaches**: Your first automation script - how we connect READMEs across branches
 
 ### **Grain 2: xbdghk**
-**Title**: Grainbranch README Sync (Ketos)  
-**Topic**: Ketos (Rust Lisp), language comparison  
+**Title**: Grainbranch README Sync (Steel)  
+**Topic**: Steel (Rust Lisp), language comparison  
 **Live**: https://kae3g.github.io/grainkae3g/grains/xbdghk  
-**Teaches**: Same script in Ketos - learn Rust Lisp alongside Clojure
+**Teaches**: Same script in Steel - learn Rust Lisp alongside Clojure
 
 ### **Grain 3: xbdghl**
 **Title**: Graincard Format Specification  
@@ -109,9 +109,9 @@
 
 **Languages & Tools**:
 - **Clojure**: grainorder permutation engine
-- **Ketos**: Grain processors, link replacers, spec validators
+- **Steel**: Grain processors, link replacers, spec validators
 - **Svelte**: GitHub Pages site, dynamic routing
-- **Babashka**: Build automation
+- **Steel**: Build automation
 - **Swiss Ephemeris**: Astronomical calculations
 
 **Architecture**:
@@ -123,7 +123,7 @@
 **Dual Interface**:
 - GitHub repo: Markdown links for browsing
 - GitHub Pages: Svelte components for navigation
-- Ketos strips footers, generates appropriate links
+- Steel strips footers, generates appropriate links
 - Both work perfectly in their contexts
 
 ---
@@ -189,8 +189,8 @@ This is the foundation. Like the first issue of any great magazine - it sets the
 Want to write grains? Learn grainscript:
 1. Read **xbdghl** (format spec)
 2. Study **xbdghn** (grainorder)
-3. Use **xbdghj** (Babashka template)
-4. Validate with graincard-spec.ket
+3. Use **xbdghj** (Steel template)
+4. Validate with graincard-spec.scm
 5. Submit PR!
 
 ---

@@ -37,14 +37,14 @@
 │  way. and is that not what all of our best relationships do? they do not    │
 │  possess us. they point us toward growth. they help us find what we need.   │
 │  they say "i know you are looking for something and i think i can help      │
-│  you find it." when i think about ketos and rust and all these technical    │
+│  you find it." when i think about steel and rust and all these technical    │
 │  tools we are building i think about them this way. not as cold machinery   │
 │  but as warm helpers. little assistants that take care of the repetitive    │
 │  tasks so humans can focus on the meaningful work. imagine having to        │
 │  manually update the root readme every single time you create a new         │
 │  grainbranch. you would forget. everyone forgets. or you would get tired    │
 │  of it. or you would be in the flow of creation and not want to break that  │
-│  flow for administrative tasks. but if we write it once in ketos if we      │
+│  flow for administrative tasks. but if we write it once in steel if we      │
 │  encode the pattern into pure functional code then it becomes automatic.    │
 │  becomes effortless. becomes one less thing to worry about. and that        │
 │  freedom that lightness matters so much. it means you can keep creating.    │

@@ -18,7 +18,7 @@
 
 1. **Hoon / Haskell / Arvo** (Type systems, P2P thinking)
 2. **ICP + Hedera + Solana L2** (Multi-chain commerce layers)
-3. **Ketos for Everything** (Rust Lisp as universal scripting)
+3. **Steel for Everything** (Rust Lisp as universal scripting)
 4. **Theosophical Writings** (foolsgoldtoshi-pond-highdesert/docs/en)
 5. **Charlemagne tha God** (10,000 common words, audio accessibility)
 6. **The Legend of Pluta & Panthera** (8001-v888 & 8002-v888 → grainbook novella)
@@ -28,7 +28,7 @@
 ## 🎬 The grainscript Format
 
 **What is grainscript?**
-- **Code script** (Babashka, Ketos, automation)
+- **Code script** (Steel, Steel, automation)
 - **Movie script** (Screenplay, manuscript, narrative)
 - **Teaching script** (Glow G2's patient guidance)
 - **80×110 monospace** (Typewriter aesthetic, works everywhere)
@@ -82,25 +82,25 @@ Arvo (Urbit OS) teaches us:
 
 **Application:** graincommerce uses all three, routing payment types optimally.
 
-### Layer 3: Ketos Universal Scripting
+### Layer 3: Steel Universal Scripting
 
-**Why Ketos?**
+**Why Steel?**
 - Rust-based (memory safe, fast)
 - Lisp syntax (homoiconic, macros)
 - Works on Redox OS (microkernel)
 - No GC issues (owned by Rust)
 
-**Ketos becomes:**
-- Replacement for Babashka (grainbarrel)
+**Steel becomes:**
+- Replacement for Steel (grainbarrel)
 - Shell scripting (grainzsh alternative)
 - Build system (grainbuild)
 - Teaching language (grainscript education)
 
 **The transition:**
 ```
-Babashka (now) → Ketos (Redox OS future)
+Steel (now) → Steel (Redox OS future)
    ↓                    ↓
-Clojure-in-JVM    Clojure-in-Ketos
+Clojure-in-JVM    Clojure-in-Steel
 ```
 
 ### Layer 4: Theosophical Foundation
@@ -193,7 +193,7 @@ The 14 teams watch. The champions play. Victory through skill, not violence.
 - [ ] E Ink optimization
 
 ### Phase 3: Integration
-- [ ] Ketos utilities for Svelte build
+- [ ] Steel utilities for Svelte build
 - [ ] SEO metadata for grainscript sharing
 - [ ] Pluta & Panthera prologue (8001-v888, 8002-v888 verbatim)
 - [ ] Charlemagne tha God accessibility layer
@@ -258,7 +258,7 @@ the writings we have it in
 
 also keep thinking about the synthesis and educational path and most abstract specs 
 (Hoon Haskell Arvo - type p2p thinking with ICP Hedera Solana L2) all thought about 
-through the new angle of Ketos for everything then finally all the way to the most 
+through the new angle of Steel for everything then finally all the way to the most 
 during the most theosophical the foolsgoldtoshi-pond-highdesert/docs/en soverign 
 writnig series and the 12025-10 Charlemagne writing series adapted as Charlemagne 
 tha God with 10000 most common English words as LISTEN Siri/Android audio Speak 
@@ -293,7 +293,7 @@ thank you Glow
 **What comes next:**
 - 1,235,516 more graincards
 - Pluta & Panthera legend
-- Ketos everywhere
+- Steel everywhere
 - The harvest continues
 
 **Copyright © 3x39** | **Author: kae3g** | **Voice: Glow G2**
