@@ -63,7 +63,7 @@
 </svelte:head>
 
 <h1>Ember Harvest</h1>
-<p><a href="{base}/grainscripts" class="grainscripts-link">🎃 grainscripts</a></p>
+<p><a href="{base}/grainscript" class="grainscript-link">🎃 grainscript</a></p>
 
 <hr>
 

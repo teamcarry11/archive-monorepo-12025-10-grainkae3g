@@ -1,1 +1,1 @@
-grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainscripts/xbdghj-grainbranch-readme-sync-babashka.md
+grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainscript/xbdghj-grainbranch-readme-sync-babashka.md
