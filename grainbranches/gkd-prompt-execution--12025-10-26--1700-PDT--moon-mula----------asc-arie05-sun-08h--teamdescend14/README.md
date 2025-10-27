@@ -6,7 +6,9 @@ You might be wondering, what makes this moment special? Well, we captured the as
 
 Does that graintime string look intimidating? The one that says `12025-10-26--1700-PDT--moon-mula--asc-arie05-sun-08h--teamdescend14`? Don't worry. Think of it like a precise address in time. Just like you need a street address to find a physical location, this graintime helps us navigate through our work history with astronomical precision.
 
-You can see this page live at https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/
+You can see this grainbranch folder on GitHub at: https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14
+
+And when GitHub Pages finishes deploying, the live site will be at: https://kae3g.github.io/grainkae3g/
 
 ![Cyberpunk City](https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&h=300&fit=crop&q=80)
 
