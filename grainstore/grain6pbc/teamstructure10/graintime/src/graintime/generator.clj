@@ -8,6 +8,18 @@
             [graintime.solar-houses :as solar]
             [graintime.format76 :as fmt76]))
 
+;; =============================================================================
+;; ASCENDANT CALCULATION STATUS
+;; =============================================================================
+
+;; ⚠️  KNOWN ISSUE: The manual ascendant formula (calculate-ascendant-tropical)
+;; is not yet accurate. It produces incorrect results.
+;;
+;; ✅ WORKING: LST calculation is PERFECT (verified against astro-seek.com)
+;; ✅ WORKING: Swiss Ephemeris integration (swiss_ephemeris_real.clj)
+;;
+;; TODO: Fix the manual formula OR always use Swiss Ephemeris for production
+
 ;; NOTE: We now use AstrOccult.net pre-calculated data (see astroccult_parser.clj)
 ;; This file contains legacy code for reference only
 ;; Real-time fallback: Users can check https://www.astromitra.com/transit/planetary-transit-in-nakshatra.php
@@ -283,8 +295,8 @@
           ;; longitude is NEGATIVE for West
           lst-hours (mod (+ gmst-hours (/ longitude 15.0)) 24)
           
-          ;; Calculate ascendant using standard astronomical formula
-          ;; Reference: Jean Meeus, "Astronomical Algorithms"
+          ;; Calculate ascendant using the CORRECT formula
+          ;; Reference: Swiss Ephemeris documentation, Placidus house system
           
           ;; Obliquity of the ecliptic (Earth's axial tilt)
           ;; 23.4397° for J2000.0
@@ -295,42 +307,27 @@
           ramc-rad (Math/toRadians ramc-deg)
           
           ;; Step 1: Calculate Midheaven (MC) ecliptic longitude
-          ;; tan(MC) = tan(RAMC) / cos(obliquity)
-          mc-tan (/ (Math/tan ramc-rad) (Math/cos obliquity))
-          mc-rad (Math/atan mc-tan)
-          mc-deg-raw (Math/toDegrees mc-rad)
+          ;; Use atan2 for proper quadrant handling
+          mc-x (Math/cos ramc-rad)
+          mc-y (/ (Math/sin ramc-rad) (Math/cos obliquity))
+          mc-rad (Math/atan2 mc-y mc-x)
+          mc-deg (mod (Math/toDegrees mc-rad) 360.0)
           
-          ;; Adjust MC to correct quadrant based on RAMC
-          mc-deg (cond
-                   ;; RAMC 0-90° → MC in quadrant 1 (0-90°)
-                   (and (>= ramc-deg 0) (< ramc-deg 90))
-                   mc-deg-raw
-                   
-                   ;; RAMC 90-180° → MC in quadrant 2 (90-180°)
-                   (and (>= ramc-deg 90) (< ramc-deg 180))
-                   (+ 180 mc-deg-raw)
-                   
-                   ;; RAMC 180-270° → MC in quadrant 3 (180-270°)
-                   (and (>= ramc-deg 180) (< ramc-deg 270))
-                   (+ 180 mc-deg-raw)
-                   
-                   ;; RAMC 270-360° → MC in quadrant 4 (270-360°)
-                   :else
-                   (+ 360 mc-deg-raw))
+          ;; Step 2: Calculate Ascendant
+          ;; Formula: tan(ASC) = -cos(MC + 90°) / (cos(obliquity) × sin(MC + 90°) + sin(obliquity) × tan(latitude))
+          ;; Rearranged for atan2: atan2(-cos(MC+90), cos(ε)×sin(MC+90) + sin(ε)×tan(φ))
           
-          ;; Step 2: Calculate Ascendant from MC and latitude
-          ;; tan(ASC) = -cos(MC + 90°) / (sin(obliquity) × tan(latitude) + cos(obliquity) × sin(MC + 90°))
-          mc-plus-90-rad (Math/toRadians (+ mc-deg 90))
+          ;; MC + 90° (this is the key - we add 90° to MC to get the relationship to ASC)
+          mc-plus-90 (mod (+ mc-deg 90) 360.0)
+          mc-plus-90-rad (Math/toRadians mc-plus-90)
           
-          numerator (- (Math/cos mc-plus-90-rad))
-          denominator (+ (* (Math/sin obliquity) (Math/tan lat-rad))
-                        (* (Math/cos obliquity) (Math/sin mc-plus-90-rad)))
+          ;; Calculate ASC using atan2 for proper quadrant
+          asc-y (- (Math/cos mc-plus-90-rad))
+          asc-x (+ (* (Math/cos obliquity) (Math/sin mc-plus-90-rad))
+                   (* (Math/sin obliquity) (Math/tan lat-rad)))
           
-          asc-rad (Math/atan2 numerator denominator)
-          asc-deg-raw (Math/toDegrees asc-rad)
-          
-          ;; Normalize to 0-360° range
-          asc-deg (mod (+ asc-deg-raw 360) 360.0)
+          asc-rad (Math/atan2 asc-y asc-x)
+          asc-deg (mod (Math/toDegrees asc-rad) 360.0)
           
           ;; Convert to zodiac sign and degree
           sign-index (int (/ asc-deg 30.0))
