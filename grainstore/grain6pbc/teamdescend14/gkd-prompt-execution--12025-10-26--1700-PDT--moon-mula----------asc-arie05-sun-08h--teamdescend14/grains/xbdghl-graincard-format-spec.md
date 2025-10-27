@@ -73,7 +73,7 @@
 │ exactly what it is. Not too big. Not too small. Just right. 80×110.         │
 │                                                                              │
 │ THE VALIDATION:                                                              │
-│ Location: grainstore/grain6pbc/teamprecision06/graincard-spec/             │
+│ Location: grainstore/grain6pbc/teamstructure10/graincard-spec/             │
 │ Validator: graincard-validator.bb (Babashka)                                │
 │ Checks:                                                                      │
 │   ✓ Total lines = 116                                                       │

@@ -94,8 +94,8 @@ The umbrella contains itself:
 
 **Earth League** (Structure & Foundation):
 - Team 01: Aries ♈ (The Magician) - Initiation, grainbarrel
-- Team 10: Capricorn ♑ (Wheel of Fortune) - Structure, graintime
-- Team 06: Virgo ♍ (The Lovers) - Precision, grainenvvars
+- Team 10: Capricorn ♑ (Wheel of Fortune) - Structure, graintime, validators
+- Team 06: Virgo ♍ (The Lovers) - Precision, grainenvvars, grainzsh
 
 **Water League** (Flow & Connection):
 - Team 04: Taurus ♉ (The Emperor) - Resources, grainfunds

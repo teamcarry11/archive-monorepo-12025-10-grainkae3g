@@ -151,7 +151,7 @@ The `+page.server.js` files:
 4. **Grain metadata** - Add proper title extraction and sort order from grainorder library
 
 ## Team Credits
-- **Team 06 (teamprecision06)** - The Lovers - Link processors (Trish mode!)
+- **Team 10 (teamstructure10)** - Wheel of Fortune - Validators (graincard-spec)
 - **Team 04 (teamnurture04)** - The Emperor - Build scripts (grainbarrel)
 - **Team 14 (teamdescend14)** - Temperance - Session documentation (this file!)
 
