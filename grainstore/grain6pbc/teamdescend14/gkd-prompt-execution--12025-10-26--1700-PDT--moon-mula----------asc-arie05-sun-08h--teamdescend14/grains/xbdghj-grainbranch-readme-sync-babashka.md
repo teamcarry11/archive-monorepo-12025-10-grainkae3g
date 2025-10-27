@@ -1,6 +1,6 @@
 # Graincard xbdghj - Grainbranch README Sync (Babashka)
 
-**Live**: https://kae3g.github.io/grainkae3g/grains/xbdghj
+**Live**: https://kae3g.github.io/grainkae3g/grainscript/xbdghj
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐

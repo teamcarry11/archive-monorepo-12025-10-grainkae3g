@@ -1,6 +1,6 @@
 # Graincard xbdghs - Graintime: Temporal Calculation
 
-**Live**: https://kae3g.github.io/grainkae3g/grains/xbdghs
+**Live**: https://kae3g.github.io/grainkae3g/grainscript/xbdghs
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐

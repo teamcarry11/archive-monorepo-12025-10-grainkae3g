@@ -1,6 +1,6 @@
 # Graincard xbdghn - Grainorder Alphabet System
 
-**Live**: https://kae3g.github.io/grainkae3g/grains/xbdghn
+**Live**: https://kae3g.github.io/grainkae3g/grainscript/xbdghn
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐

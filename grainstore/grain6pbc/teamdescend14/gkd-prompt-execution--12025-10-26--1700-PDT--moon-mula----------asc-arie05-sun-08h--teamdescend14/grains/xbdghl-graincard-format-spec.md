@@ -1,6 +1,6 @@
 # Graincard xbdghl - Graincard Format Specification
 
-**Live**: https://kae3g.github.io/grainkae3g/grains/xbdghl
+**Live**: https://kae3g.github.io/grainkae3g/grainscript/xbdghl
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
