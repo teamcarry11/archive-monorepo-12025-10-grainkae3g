@@ -60,8 +60,9 @@
 
 **BAT-Specific Opportunities**:
 - Solana staking: "Lock $BAT on Solana, earn $GUANO"
-- NFT burning: "Use SOL incinerator to get BAT"
+- NFT burning: "Use SOL incinerator to get BAT" (see sol-incinerator-nft-burning-bat-rewards.md)
 - Quest completion: Earn BAT through platform activities
+- Burn-off events: BAT Community organized events via r/BATProject
 
 ## Integration with Grain Network Commerce
 
