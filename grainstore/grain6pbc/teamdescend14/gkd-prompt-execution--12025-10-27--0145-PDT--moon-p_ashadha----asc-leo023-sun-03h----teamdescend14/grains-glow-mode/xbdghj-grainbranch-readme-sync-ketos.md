@@ -110,7 +110,6 @@
 │ logic expressed through Babashka comparison. Two languages flowing from one │
 │ source of understanding. The Lovers choosing both paths simultaneously.     │
 │                                                                              │
-│                                                                              │
 │ grain: xbdghj (1 of 1,235,520)                                             > │
 │                                                                              │
 └──────────────────────────────────────────────────────────────────────────────┘
