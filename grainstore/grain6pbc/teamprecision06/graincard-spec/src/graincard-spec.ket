@@ -1,0 +1,247 @@
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ GRAINCARD SPEC (Ketos - inspired by Clojure Spec)                           ║
+;; ║ Team: 06 (teamprecision06 - Virgo ♍ / VI. The Lovers)                       ║
+;; ║ Copyright © 3x39 | Author: kae3g (kj3x39, @risc.love)                        ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+;;
+;; Trish mode: OMG this is SO PRECISE! 💕 We're enforcing EXACT formatting rules
+;; for every graincard! The Lovers choose: every grain must have the PERFECT
+;; structure or it doesn't validate! Precision with love! ✨
+;;
+;; Purpose: Validate graincard structure and enforce formatting rules
+;;   - 80 characters wide (78 + 2 for borders)
+;; ✨ - Exactly 110 lines total (enforced!)
+;;   - Blank lines at specific positions
+;;   - Centered 6-char grain code at bottom
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ GRAINCARD DIMENSIONS                                                         ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define GRAIN-WIDTH 80)
+(define GRAIN-CONTENT-WIDTH 78)  ;; 80 - 2 for borders │ ... │
+(define GRAIN-HEIGHT 110)
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ BOTTOM LINE SPEC (The Critical Rules!)                                      ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+;;
+;; Line 110 (last):     BLANK (empty line after closing ```)
+;; Line 109 (2nd last): BLANK (spacing after grain code)
+;; Line 108 (3rd last): Grain code CENTERED (6 chars: xbdghj)
+;; Line 107 (4th last): BLANK (spacing before grain code)
+;; Line 106 (5th last): Closing box: └────...────┘
+
+(define (spec-last-line-blank? lines)
+  "Line 110 must be blank"
+  (let ((last-line (nth 109 lines)))  ;; 0-indexed
+    (or (nil? last-line) 
+        (= "" (string-trim last-line)))))
+
+(define (spec-second-to-last-blank? lines)
+  "Line 109 must be blank (spacing after grain code)"
+  (let ((line (nth 108 lines)))
+    (or (nil? line)
+        (= "" (string-trim line)))))
+
+(define (spec-grain-code-centered? lines)
+  "Line 108 must have exactly 6 characters, centered
+   
+   Format: │ Grain: xbdghj (N of 1,235,520)                                               │
+           ^       ^6 chars
+   
+   The grain code appears after 'Grain: ' and must be exactly 6 characters."
+  
+  (let ((line (nth 107 lines)))  ;; 3rd from bottom (0-indexed line 107)
+    (if line
+        (let ((trimmed (string-trim line)))
+          ;; Look for pattern: │ Grain: {6-char} ...
+          (and (string-starts-with? trimmed "│ Grain:")
+               (let ((code-match (string-match "Grain: (\\w{6})" line)))
+                 (if code-match
+                     (= 6 (length (nth 1 code-match)))
+                     false))))
+        false)))
+
+(define (spec-fourth-from-last-blank? lines)
+  "Line 107 must be blank (spacing before grain code)"
+  (let ((line (nth 106 lines)))
+    (or (nil? line)
+        (= "" (string-trim line)))))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ WIDTH VALIDATION                                                             ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (spec-line-width-valid? line)
+  "Each line must be ≤ 80 chars"
+  (<= (length line) GRAIN-WIDTH))
+
+(define (spec-all-lines-width-valid? lines)
+  "All lines must be ≤ 80 chars"
+  (every? spec-line-width-valid? lines))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ HEIGHT VALIDATION                                                            ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (spec-height-valid? lines)
+  "Must have exactly 110 lines"
+  (= GRAIN-HEIGHT (length lines)))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ BOX STRUCTURE VALIDATION                                                     ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (spec-has-top-border? lines)
+  "Must have ┌─── top border"
+  (some? (find (lambda (line) (string-starts-with? (string-trim line) "┌─")) 
+               lines)))
+
+(define (spec-has-bottom-border? lines)
+  "Must have └─── bottom border"
+  (some? (find (lambda (line) (string-starts-with? (string-trim line) "└─")) 
+               lines)))
+
+(define (spec-has-separator? lines)
+  "Must have ├─── separator before footer"
+  (some? (find (lambda (line) (string-starts-with? (string-trim line) "├─")) 
+               lines)))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ COMPLETE VALIDATION                                                          ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (validate-graincard content)
+  "Validate a graincard against all specs
+   
+   Returns: {:valid true/false
+             :errors [list of error messages]}"
+  
+  (let ((lines (string-split content "\n"))
+        (errors '()))
+    
+    ;; Check height
+    (unless (spec-height-valid? lines)
+      (set! errors (cons (format "Height must be exactly ~a lines (got ~a)" 
+                                 GRAIN-HEIGHT 
+                                 (length lines))
+                        errors)))
+    
+    ;; Check width
+    (unless (spec-all-lines-width-valid? lines)
+      (set! errors (cons "Some lines exceed 80 characters" errors)))
+    
+    ;; Check box structure
+    (unless (spec-has-top-border? lines)
+      (set! errors (cons "Missing top border (┌───)" errors)))
+    
+    (unless (spec-has-bottom-border? lines)
+      (set! errors (cons "Missing bottom border (└───)" errors)))
+    
+    (unless (spec-has-separator? lines)
+      (set! errors (cons "Missing separator (├───)" errors)))
+    
+    ;; Check bottom line specs (THE CRITICAL ONES!)
+    (unless (spec-last-line-blank? lines)
+      (set! errors (cons "Line 110 (last) must be blank" errors)))
+    
+    (unless (spec-grain-code-with-next-button? lines)
+      (set! errors (cons "Line 109 (2nd to last) must have 6-char code + > next button" errors)))
+    
+    (unless (spec-third-from-last-blank? lines)
+      (set! errors (cons "Line 108 (3rd to last) must be blank (spacing)" errors)))
+    
+    ;; Return validation result
+    {:valid (empty? errors)
+     :errors (reverse errors)}))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ PRETTY PRINTING                                                              ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (print-validation-result result)
+  "Pretty print validation result"
+  (if (:valid result)
+      (do
+        (println "✅ VALID GRAINCARD!")
+        (println "   All specs pass. Ready for publication.")
+        (println "   now == next + 1 🌾"))
+      (do
+        (println "❌ INVALID GRAINCARD!")
+        (println "   Errors found:")
+        (doseq [err (:errors result)]
+          (println "   -" err))
+        (println "")
+        (println "   Fix these issues and re-validate.")
+        (println "   💕 Trish says: The Lovers choose precision!"))))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ CLI INTERFACE                                                                 ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (main args)
+  "Validate graincard files against specs
+   
+   Usage: graincard-spec.ket <file.md>
+   
+   Checks:
+     - Exactly 110 lines
+     - Each line ≤ 80 chars
+     - Has top/bottom borders and separator
+     - Line 110: blank
+     - Line 109: blank
+     - Line 108: 6-char grain code centered
+     - Line 107: blank"
+  
+  (if (< (length args) 1)
+      (do
+        (println "🎃 Graincard Spec Validator (Ketos)")
+        (println "Copyright © 3x39 | Author: kae3g")
+        (println "Team: 06 (teamprecision06 - The Lovers)")
+        (println "")
+        (println "✨ Trish says: Let's make sure every grain is PERFECT! 💕")
+        (println "")
+        (println "Usage: graincard-spec.ket <file.md>")
+        (println "")
+        (println "Validates:")
+        (println "  ✓ Exactly 110 lines")
+        (println "  ✓ Each line ≤ 80 chars")
+        (println "  ✓ Line 110: blank")
+        (println "  ✓ Line 109: blank")
+        (println "  ✓ Line 108: 6-char grain code")
+        (println "  ✓ Line 107: blank")
+        (println "")
+        (println "now == next + 1 🌾"))
+      
+      (let ((filepath (nth 0 args)))
+        (println "🎬 Validating:" filepath)
+        (println "")
+        (let ((content (slurp filepath)))
+          (let ((result (validate-graincard content)))
+            (print-validation-result result)
+            ;; Exit code: 0 if valid, 1 if invalid
+            (if (:valid result) 0 1))))))
+
+;; Run if executed as script
+(when (defined? '*args*)
+  (main *args*))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ EXAMPLE USAGE                                                                 ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+;;
+;; $ ketos graincard-spec.ket xbdghj-grainbranch-readme-sync-babashka.md
+;; 
+;; 🎬 Validating: xbdghj-grainbranch-readme-sync-babashka.md
+;; 
+;; ✅ VALID GRAINCARD!
+;;    All specs pass. Ready for publication.
+;;    now == next + 1 🌾
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ Grainbook Issue 1: Ember Harvest 🎃 (System Magazine)                       ║
+;; ║ Module: graincard-spec                                                       ║
+;; ║ now == next + 1 🌾                                                           ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
