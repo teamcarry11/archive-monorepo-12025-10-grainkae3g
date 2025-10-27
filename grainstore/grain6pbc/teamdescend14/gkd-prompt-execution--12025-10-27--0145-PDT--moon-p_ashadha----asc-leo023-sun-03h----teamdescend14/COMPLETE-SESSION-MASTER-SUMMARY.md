@@ -3,7 +3,7 @@
 **Grainbook Issue 1: Ember Harvest**  
 **Session**: Oct 26-27, 2025 (17:00 PDT → 01:40 PDT)  
 **Duration**: ~9 hours of continuous development  
-**Team**: 14 (teamdescend14 - Sagittarius ♐ / Temperance)  
+**Team**: 14 (teamdescend14 - Ketu ☋ / XIV. Temperance)  
 **Moon**: Mula (destruction before creation)  
 **Ascendant**: Aries 5° (pioneering, initiating)  
 **Sun**: 8th House (transformation, depth, power)

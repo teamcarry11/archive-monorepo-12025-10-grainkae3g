@@ -14,7 +14,7 @@
 **Moon**: Purva Ashadha (the undefeated - Venus lord, Apas deity, Moksha)  
 **Ascendant**: Leo 23° (fire rising, royal creative heart)  
 **Sun**: 4th House (foundation, home, emotional core)  
-**Team**: 14 (teamdescend14 - Sagittarius ♐ / XIV. Temperance)  
+**Team**: 14 (teamdescend14 - Ketu ☋ / XIV. Temperance)  
 **Author**: kae3g (kj3x39, @risc.love)
 
 **Graintime carries**: Creative determination grounded in heart-wisdom. The undefeated spirit seeks liberation through building solid foundations. Leo's generous leadership illuminates the emotional home.
@@ -139,7 +139,7 @@ This grainbook contains grains 1-5. The next 1,235,515 grains await creation thr
 
 **Author**: kae3g  
 **Aliases**: kj3x39 (YouTube Music), @risc.love (Instagram)  
-**Team**: 14 (teamdescend14 - Sagittarius ♐ / XIV. Temperance)  
+**Team**: 14 (teamdescend14 - Ketu ☋ / XIV. Temperance)  
 **Copyright**: © 2025 kae3g (kj3x39, @risc.love)  
 **License**: All rights reserved (provisional patents pending)
 

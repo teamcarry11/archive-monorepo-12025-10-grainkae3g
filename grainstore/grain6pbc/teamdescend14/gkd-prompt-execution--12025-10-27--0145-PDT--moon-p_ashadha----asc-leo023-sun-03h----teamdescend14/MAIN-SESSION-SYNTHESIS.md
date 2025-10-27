@@ -29,7 +29,7 @@ This document synthesizes the complete multi-session journey of creating Grainbo
 
 ### Team & Authorship
 
-**Team**: 14 (teamdescend14 - Sagittarius ♐ / XIV. Temperance)  
+**Team**: 14 (teamdescend14 - Ketu ☋ / XIV. Temperance)  
 **Author**: kae3g (kj3x39, @risc.love)  
 **Copyright**: © 2025 kae3g
 
@@ -412,7 +412,7 @@ now == next + 1 ✧･ﾟ:* 🌾
 ---
 
 **Copyright © 2025 kae3g (kj3x39, @risc.love)**  
-**Team**: 14 (teamdescend14 - Sagittarius ♐ / XIV. Temperance)
+**Team**: 14 (teamdescend14 - Ketu ☋ / XIV. Temperance)
 
 Grainbook Issue 1: Ember Harvest 🎃  
 The Ecological Computer

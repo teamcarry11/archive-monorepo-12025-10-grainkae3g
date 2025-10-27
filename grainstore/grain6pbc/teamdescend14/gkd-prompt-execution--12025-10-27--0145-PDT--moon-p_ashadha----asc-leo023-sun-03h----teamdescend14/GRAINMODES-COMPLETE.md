@@ -236,7 +236,7 @@ now == next + 1 ✧･ﾟ:* 🌾
 
 ---
 
-**Team**: 14 (teamdescend14 - Sagittarius ♐ / XIV. Temperance)  
+**Team**: 14 (teamdescend14 - Ketu ☋ / XIV. Temperance)  
 **Author**: kae3g (kj3x39, @risc.love)  
 **Copyright**: © 2025 kae3g
 

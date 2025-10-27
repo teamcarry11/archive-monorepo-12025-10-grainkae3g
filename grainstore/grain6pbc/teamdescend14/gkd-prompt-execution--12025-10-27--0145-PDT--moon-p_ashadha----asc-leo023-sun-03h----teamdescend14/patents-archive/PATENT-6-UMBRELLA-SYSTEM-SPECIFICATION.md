@@ -3,7 +3,7 @@
 **Applicant**: kae3g (kj3x39, @risc.love)  
 **Application Type**: Provisional Patent Application  
 **Date Prepared**: October 27, 2025  
-**Team**: 14 (teamdescend14 - Sagittarius ♐ / XIV. Temperance)
+**Team**: 14 (teamdescend14 - Ketu ☋ / XIV. Temperance)
 
 ---
 
