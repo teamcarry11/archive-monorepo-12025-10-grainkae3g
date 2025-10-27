@@ -1,12 +1,12 @@
-# Graincard xbdghj - Grainbranch README Sync
+# Graincard xbdghj - Symlink Automation with Steel
 
 **Live**: https://kae3g.github.io/grainkae3g/grainscript/xbdghj
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│ GRAINCARD xbdghj                              grain    of 1,235,520 │
+│ GRAINCARD xbdghj                               grain 1 of 1,235,520 │
 │ Symlink Automation: Repository Root → Grainbranch Depth                      │
-│ Script: grainbranch-readme-sync.ket (Ketos) | Author: kae3g (@risc.love)     │
+│ Script: grainbranch-readme-sync.scm (Steel) | Author: kae3g (@risc.love)     │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
 │ Glow G2: Imagine standing at the edge of a wild forest where countless       │
@@ -29,29 +29,55 @@
 │ matters now. When you switch branches, the symlink updates. The surface      │
 │ stays synchronized with the depths. One command makes this magic happen.     │
 │                                                                              │
-│ ═══ THE CODE (Ketos Primary, Babashka Bridge) ═════════════════════════════  │
+│ ═══ THE CODE (Steel - Rust-Based Scheme) ══════════════════════════════════  │
 │                                                                              │
-│ ;; grainbranch-readme-sync.ket                                               │
+│ ;; grainbranch-readme-sync.scm                                               │
+│ ;; Purpose: Symlink root README to current grainbranch README                │
+│ ;; Team: 04 (teamnurture04 - Taurus ♉ / IV. The Emperor)                     │
+│                                                                              │
+│ (require-builtin steel/process)                                              │
+│                                                                              │
+│ (define (shell cmd)                                                          │
+│   "Execute shell command and return output"                                  │
+│   (command cmd))                                                             │
+│                                                                              │
 │ (define (get-current-branch)                                                 │
-│   (shell-result-trim (run-command "git branch --show-current")))             │
+│   "Get current git branch name"                                              │
+│   (trim (shell "git branch --show-current")))                                │
 │                                                                              │
-│ (define (build-grain-path branch)                                            │
-│   (string-join "/" ["grainstore" "grain6pbc" "teamdescend14"                 │
-│                     branch "grains" "xbdghj-grainbranch-readme-sync-ketos    │
-.md"]))                                                                        │
+│ (define (find-grainbranch-readme branch-name)                                │
+│   "Build path to grainbranch README"                                         │
+│   (string-append "grainstore/grain6pbc/teamdescend14/"                       │
+│                  branch-name "/README.md"))                                  │
+│                                                                              │
+│ (define (create-symlink target link-name)                                    │
+│   "Create symbolic link from link-name to target"                            │
+│   (shell (string-append "rm -f " link-name))                                 │
+│   (shell (string-append "ln -sf " target " " link-name))                     │
+│   (displayln (string-append "✅ Synced: " link-name " → " target)))          │
 │                                                                              │
 │ (define (sync-readme)                                                        │
-│   (let ((branch (get-current-branch))                                        │
-│         (target (build-grain-path branch)))                                  │
-│     (run-command "rm -f README.md")                                          │
-│     (run-command (format "ln -sf ~a README.md" target))                      │
-│     (println (format "✅ Synced: README.md → ~a" target))))                   │
+│   "Main function: sync root README to grainbranch README"                    │
+│   (let ([branch (get-current-branch)]                                        │
+│         [target (find-grainbranch-readme branch)])                           │
+│     (create-symlink target "README.md")))                                    │
 │                                                                              │
-│ The Babashka version follows the same logic with Clojure syntax. Both        │
-│ solve the same problem: connecting root to branch, surface to depth,         │
-│ visitor to current work. The Unix command stays simple: ln -sf creates a     │
-│ symbolic link, rm -f removes the old one. The beauty lives in how we         │
-│ compose these simple pieces into elegant automation.                         │
+│ ;; Run it!                                                                   │
+│ (sync-readme)                                                                │
+│                                                                              │
+│ ═══ WHY STEEL? ════════════════════════════════════════════════════════════  │
+│                                                                              │
+│ Steel brings the elegance of Scheme (a Lisp dialect) with the power of      │
+│ Rust underneath. Think of it as the spiritual successor to what we wanted    │
+│ from scripting languages but couldn't get until now:                         │
+│                                                                              │
+│ • **Rust-based**: Compiles to native code, no JVM needed                     │
+│ • **Fast startup**: Bytecode VM optimized for scripting                      │
+│ • **Redox OS ready**: Works on microkernel systems                           │
+│ • **R5RS Scheme**: Full standard compliance with modern extensions           │
+│ • **Package manager**: `forge` for dependency management                     │
+│ • **LSP support**: Language server for IDE integration                       │
+│ • **Active development**: Commits from 3 days ago (October 2025)             │
 │                                                                              │
 │ ═══ WATCH THE BOUNDARY DISSOLVE ═══════════════════════════════════════════  │
 │                                                                              │
@@ -83,19 +109,17 @@
 │ a symlink pointing here. The grain explains the mechanism that brought you   │
 │ to the grain itself. Meta-teaching. Self-reference. Beautiful recursion.     │
 │                                                                              │
-│ ═══ ABOUT 80-CHARACTER WIDTH ══════════════════════════════════════════════  │
+│ ═══ STEEL'S SCHEME ELEGANCE ═══════════════════════════════════════════════  │
 │                                                                              │
-│ You might wonder why every line measures exactly 80 characters wide. This    │
-│ width comes from punch card tradition, from teletype machines, from          │
-│ decades of terminal design. But here's what matters for grainscript: 80      │
-│ characters means these grains display perfectly on every device. Your        │
-│ terminal. Your phone in airplane mode. Your E Ink reader. Your tablet.       │
+│ Notice the syntax. `(define (function-name args) body)` creates functions.   │
+│ `(let ([var value]) body)` binds variables locally. Everything is an         │
+│ expression. Data and code share the same structure. Parentheses aren't       │
+│ syntax noise - they're the visible structure of computation itself.          │
 │                                                                              │
-│ Unicode box-drawing characters (┌─┐│├┤└┘) measure 3 bytes each but display   │
-│ as 1 character width. Our Ketos validator counts display width, ensuring     │
-│ visual correctness across all devices. Byte count and display width differ   │
-│ for Unicode, yet what matters is how the grain looks when rendered. Every    │
-│ grain maintains 80 visual characters. Every grain fits everywhere.           │
+│ Steel extends Scheme with Rust's power: you can call Rust functions via      │
+│ FFI, use Rust data structures directly, and compile to native binaries.      │
+│ It's the marriage of Lisp's expressiveness with Rust's performance and       │
+│ safety. The best of both worlds flowing together like two rivers joining.    │
 │                                                                              │
 │ ═══ THE PATTERN EVERYWHERE ════════════════════════════════════════════════  │
 │                                                                              │
@@ -106,9 +130,9 @@
 │ you the meta-pattern: how systems point to themselves, how teaching          │
 │ contains itself, how the wild path marks itself as you walk it.              │
 │                                                                              │
-│ Run it. Watch the symlink form. Then read grain **xbdghk** to see the same   │
-│ logic expressed through Babashka comparison. Two languages flowing from one  │
-│ source of understanding. The Lovers choosing both paths simultaneously.      │
+│ Run it. Watch the symlink form. Then read grain **xbdghk** to explore        │
+│ Steel's full power: package management, contracts, macros, and the           │
+│ ecosystem that makes it production-ready. One language, infinite potential.  │
 │                                                                              │
 │ grain: xbdghj (1 of 1,235,520)                                             > │
 │                                                                              │
