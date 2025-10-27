@@ -102,7 +102,8 @@
 │  understanding systems constraints clarifies why scripting ergonomics exist. │
 │  each language becomes teacher revealing aspects its sibling handles         │
 │  differently. duality creates pedagogical richness unavailable in            │
-│  monolithic uniformity.                                                      │
+│  monolithic uniformity. plurality serves wisdom when each variant honors     │
+│  its specific context while sharing deeper pattern.                          │
 │                                                                              │
 │                            xbdghk                                         >  │
 │                                                                              │
