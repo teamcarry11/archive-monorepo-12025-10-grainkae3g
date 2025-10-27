@@ -105,12 +105,9 @@
 │ expressed in two FORMS (Clojure-flavored vs Scheme-flavored). The deeper    │
 │ you go, the more you'll see: they're the same river, different banks.       │
 │ Babashka flows through JVM land. Ketos flows through Rust land. But both    │
-│ flow to the same ocean: elegant, functional, beautiful code. Welcome. 🌾    │
+│ flow to the same ocean: elegant, functional, beautiful code. Learning one   │
+│ teaches you both. The syntax differs. The thinking unifies. Welcome. 🌾    │
 │                                                                              │
-├──────────────────────────────────────────────────────────────────────────────┤
-│ Grainbook Issue 1: Ember Harvest 🎃 (System Magazine)                       │
-│ Grain: xbdghk (2 of 1,235,520)                                             > │
+│ grain: xbdghk (2 of 1,235,520)                                             > │
 │                                                                              │
-│ Next: [xbdghl](xbdghl-graincard-format-spec.md) →                           │
-│ now == next + 1 🌾                                                           │
 └──────────────────────────────────────────────────────────────────────────────┘

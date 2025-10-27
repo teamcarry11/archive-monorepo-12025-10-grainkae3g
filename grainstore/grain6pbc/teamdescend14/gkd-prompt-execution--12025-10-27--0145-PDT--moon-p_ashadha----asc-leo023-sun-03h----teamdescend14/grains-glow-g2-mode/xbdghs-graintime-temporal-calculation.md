@@ -95,8 +95,9 @@
 │                                                                              │
 │ From forest to city, meltdown to capital, every grainbranch carries its     │
 │ temporal DNA. The graintime isn't decoration - it's MEMORY. When you read   │
-│ "moon-p_ashadha------asc-arie05-sun-08h", you're reading the MOMENT. Mula destroys   │
-│ before creating. Aries initiates. 8th house transforms.                      │
+│ "moon-p_ashadha----asc-arie05-sun-08h", you're reading the MOMENT. Purva    │
+│ ashadha invincible. Aries initiates. 8th house transforms. Each component   │
+│ tells the story of that precise instant in astronomical time.                │
 │                                                                              │
 │ DOES THIS MAKE SENSE?                                                        │
 │ Every commit in grain6pbc has a graintime. Every branch remembers when      │

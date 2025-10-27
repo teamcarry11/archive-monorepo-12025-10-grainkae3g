@@ -94,7 +94,7 @@
 │ 80×110 means it works EVERYWHERE: Your terminal. Your phone in airplane     │
 │ mode over the Pacific. Your E Ink reader in the cabin. Your tablet in       │
 │ landscape "MOVIE MODE". It's democratic technology. No app required.        │
-│ Just markdown. Just monospace. Just teaching.                                │
+│ Just markdown. Just monospace. Just teaching. That simplicity is the power. │
 │                                                                              │
 │ DOES THIS MAKE SENSE?                                                        │
 │ Each graincard is a teaching moment. A knowledge capsule. A temporal        │
@@ -103,7 +103,8 @@
 │ E Ink reader in the cabin. Always 80×110. Always beautiful. Always yours.   │
 │                                                                              │
 │ This grain (xbdghl) teaches the format by BEING the format. Meta-teaching.  │
-│ The grain about grains. The form teaching form. Now you know. 🌾            │
+│ The grain about grains. The form teaching form. The box explaining boxes.   │
+│ Now you know. 🌾                                                            │
 │                                                                              │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │ Grainbook Issue 1: Ember Harvest 🎃 (System Magazine)                       │

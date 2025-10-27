@@ -97,7 +97,8 @@
 │ Because knowledge needs order. Not rigid hierarchy, but gentle sequence.    │
 │ Like books on a shelf. Like stars in constellations. Each grain knows its   │
 │ place, not through force, but through elegant mathematics. The alphabet     │
-│ gives order. The algorithm gives life.                                       │
+│ gives order. The algorithm gives life. Together they enable navigation      │
+│ through 1.2 million knowledge cards without ever feeling lost.               │
 │                                                                              │
 │ DOES THIS MAKE SENSE?                                                        │
 │ Think of it like latitude/longitude. Pure coordinates. No meaning except    │
