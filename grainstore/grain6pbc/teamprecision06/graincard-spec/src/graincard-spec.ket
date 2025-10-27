@@ -1,84 +1,174 @@
 ;; ╔══════════════════════════════════════════════════════════════════════════════╗
-;; ║ GRAINCARD SPEC (Ketos - inspired by Clojure Spec)                           ║
+;; ║ GRAINCARD SPEC VALIDATOR (Ketos - inspired by Clojure Spec)                 ║
 ;; ║ Team: 06 (teamprecision06 - Virgo ♍ / VI. The Lovers)                       ║
 ;; ║ Copyright © 3x39 | Author: kae3g (kj3x39, @risc.love)                        ║
+;; ║ Grainbook Issue 1: Ember Harvest 🎃 (System Magazine)                       ║
 ;; ╚══════════════════════════════════════════════════════════════════════════════╝
 ;;
-;; Trish mode: OMG this is SO PRECISE! 💕 We're enforcing EXACT formatting rules
-;; for every graincard! The Lovers choose: every grain must have the PERFECT
-;; structure or it doesn't validate! Precision with love! ✨
+;; Glow G2: Let me teach you what this validator does and why it matters.
 ;;
-;; Purpose: Validate graincard structure and enforce formatting rules
-;;   - 80 characters wide (78 + 2 for borders)
-;; ✨ - Exactly 110 lines total (enforced!)
-;;   - Blank lines at specific positions
-;;   - Centered 6-char grain code at bottom
+;; THE PROBLEM:
+;; You want 1,235,520 grains to have EXACTLY the same format. Every grain
+;; must be 80×110 monospace. Every grain must have the > next button in the
+;; exact right place. How do you enforce this across all grains?
+;;
+;; THE SOLUTION: GRAINCARD SPEC
+;; A Ketos validator that checks EVERY formatting rule. If a grain doesn't
+;; pass validation, it can't be published. Precision with love. 💕
+;;
+;; WHY KETOS?
+;; - Runs on Redox OS (our future platform)
+;; - Fast (Rust underneath)
+;; - Lisp syntax (readable, composable)
+;; - No GC issues (owned by Rust)
+;;
+;; DOES THIS MAKE SENSE?
+;; This validator is like a quality control inspector. Every grain passes
+;; through it. Only perfect grains get published. Team 14 precision.
 
 ;; ╔══════════════════════════════════════════════════════════════════════════════╗
-;; ║ GRAINCARD DIMENSIONS                                                         ║
+;; ║ DIMENSIONS (The Sacred Numbers)                                             ║
 ;; ╚══════════════════════════════════════════════════════════════════════════════╝
 
 (define GRAIN-WIDTH 80)
-(define GRAIN-CONTENT-WIDTH 78)  ;; 80 - 2 for borders │ ... │
+  ;; Glow G2: Why 80? Classic terminal width. Unix tradition. Works everywhere.
+
+(define GRAIN-CONTENT-WIDTH 78)
+  ;; Glow G2: 78 inside the box (80 - 2 for the │ borders on each side)
+
 (define GRAIN-HEIGHT 110)
+  ;; Glow G2: Why 110? Fits portrait mobile with scroll. Landscape tablet
+  ;; in MOVIE MODE. Not too short (truncated), not too long (scrolling forever).
 
 ;; ╔══════════════════════════════════════════════════════════════════════════════╗
-;; ║ BOTTOM LINE SPEC (The Critical Rules!)                                      ║
+;; ║ BOTTOM FOOTER SPEC (The Critical Rules!)                                    ║
 ;; ╚══════════════════════════════════════════════════════════════════════════════╝
 ;;
-;; Line 110 (last):     BLANK (empty line after closing ```)
-;; Line 109 (2nd last): BLANK (spacing after grain code)
-;; Line 108 (3rd last): Grain code CENTERED (6 chars: xbdghj)
-;; Line 107 (4th last): BLANK (spacing before grain code)
-;; Line 106 (5th last): Closing box: └────...────┘
+;; Glow G2: The bottom of every grain follows an EXACT pattern:
+;;
+;; Line 110 (last):       BLANK (empty after closing ```)
+;; Line 109 (2nd last):   "now == next + 1 🌾"
+;; Line 108 (3rd last):   "Next: [xbdghk](...) →"
+;; Line 107 (4th last):   BLANK (spacing)
+;; Line 106 (5th last):   "Grain: xbdghj (N of 1,235,520)              >"
+;; Line 105 (6th last):   "Grainbook Issue 1: Ember Harvest 🎃"
+;; Line 104 (7th last):   "├────...────┤" (separator)
+;;
+;; THE MOST IMPORTANT RULE:
+;; Line 106 must have the 6-char grain code + > next button
+;; The > must be in the 3rd position from the right edge
+;; Format: │ Grain: xbdghj (1 of 1,235,520)                                             > │
+;;                ^^^^^^                                                              ^
+;;                6 chars                                                        next button
+;;
+;; Why? The > becomes a clickable next button on the live site!
 
 (define (spec-last-line-blank? lines)
-  "Line 110 must be blank"
-  (let ((last-line (nth 109 lines)))  ;; 0-indexed
+  "Glow G2: Line 110 must be blank. This gives breathing room after the grain.
+   Like a pause at the end of a chapter. Does this make sense?"
+  
+  (let ((last-line (nth 109 lines)))  ;; 0-indexed (line 110 = index 109)
     (or (nil? last-line) 
         (= "" (string-trim last-line)))))
 
-(define (spec-second-to-last-blank? lines)
-  "Line 109 must be blank (spacing after grain code)"
-  (let ((line (nth 108 lines)))
-    (or (nil? line)
-        (= "" (string-trim line)))))
-
-(define (spec-grain-code-centered? lines)
-  "Line 108 must have exactly 6 characters, centered
-   
-   Format: │ Grain: xbdghj (N of 1,235,520)                                               │
-           ^       ^6 chars
-   
-   The grain code appears after 'Grain: ' and must be exactly 6 characters."
+(define (spec-now-equals-next? lines)
+  "Glow G2: Line 109 must be 'now == next + 1 🌾'. Our signature.
+   This line teaches the philosophy: the present moment creates the next."
   
-  (let ((line (nth 107 lines)))  ;; 3rd from bottom (0-indexed line 107)
+  (let ((line (nth 108 lines)))  ;; Line 109 = index 108
     (if line
-        (let ((trimmed (string-trim line)))
-          ;; Look for pattern: │ Grain: {6-char} ...
-          (and (string-starts-with? trimmed "│ Grain:")
-               (let ((code-match (string-match "Grain: (\\w{6})" line)))
-                 (if code-match
-                     (= 6 (length (nth 1 code-match)))
-                     false))))
+        (string-contains? line "now == next + 1 🌾")
         false)))
 
-(define (spec-fourth-from-last-blank? lines)
-  "Line 107 must be blank (spacing before grain code)"
-  (let ((line (nth 106 lines)))
+(define (spec-has-next-link? lines)
+  "Glow G2: Line 108 must have 'Next: [code](file.md) →'.
+   This is the GitHub markdown link for browsing the repo."
+  
+  (let ((line (nth 107 lines)))  ;; Line 108 = index 107
+    (if line
+        (and (string-contains? line "Next:")
+             (string-contains? line "→"))
+        false)))
+
+(define (spec-blank-before-next? lines)
+  "Glow G2: Line 107 must be blank. Spacing before the 'Next' link.
+   Visual breathing room. Makes the footer readable."
+  
+  (let ((line (nth 106 lines)))  ;; Line 107 = index 106
     (or (nil? line)
         (= "" (string-trim line)))))
+
+(define (spec-grain-code-with-next-button? lines)
+  "Glow G2: Line 106 is THE MOST CRITICAL LINE.
+   
+   Must have:
+   1. The word 'Grain:'
+   2. Exactly 6 characters (the grain code, like xbdghj)
+   3. The count '(N of 1,235,520)'
+   4. The > next button in the 3rd position from right
+   
+   Format: │ Grain: xbdghj (1 of 1,235,520)                                             > │
+           ^       ^^^^^^                                                              ^
+           border  6 chars                                                      next button
+           
+   Why the >? It becomes a clickable button on the live site. Svelte converts
+   it to a link. On GitHub, it's a visual indicator. Both interfaces work!"
+  
+  (let ((line (nth 105 lines)))  ;; Line 106 = index 105
+    (if line
+        (and 
+         ;; Must contain "Grain:"
+         (string-contains? line "Grain:")
+         
+         ;; Must have 6-char grain code (validates it's from grainorder alphabet)
+         (let ((code-match (regexp-match "Grain: ([xbdghjklmnsvz]{6})" line)))
+           (if code-match
+               (= 6 (length (nth 1 code-match)))
+               false))
+         
+         ;; Must have > in 3rd position from right (before space and │)
+         ;; Example: "...520)                                             > │"
+         ;;                                                                ^
+         ;;                                                    3rd from right
+         (let ((trimmed (string-trim-right line)))
+           (if (>= (length trimmed) 3)
+               (= (string-ref trimmed (- (length trimmed) 3)) #\>)
+               false)))
+        false)))
+
+(define (spec-has-grainbook-issue? lines)
+  "Glow G2: Line 105 must say 'Grainbook Issue 1: Ember Harvest 🎃'.
+   This tells readers which issue they're reading. Like a magazine cover."
+  
+  (let ((line (nth 104 lines)))  ;; Line 105 = index 104
+    (if line
+        (and (string-contains? line "Grainbook Issue")
+             (string-contains? line "Ember Harvest"))
+        false)))
+
+(define (spec-has-separator? lines)
+  "Glow G2: Line 104 must be the separator: ├────...────┤
+   This separates the content from the footer. Visual clarity."
+  
+  (let ((line (nth 103 lines)))  ;; Line 104 = index 103
+    (if line
+        (string-contains? line "├──────")
+        false)))
 
 ;; ╔══════════════════════════════════════════════════════════════════════════════╗
 ;; ║ WIDTH VALIDATION                                                             ║
 ;; ╚══════════════════════════════════════════════════════════════════════════════╝
 
 (define (spec-line-width-valid? line)
-  "Each line must be ≤ 80 chars"
+  "Glow G2: Each line must be ≤ 80 chars. Why? Classic terminal width.
+   Fits on any screen. Respects the Unix tradition of 80-column displays."
+  
   (<= (length line) GRAIN-WIDTH))
 
 (define (spec-all-lines-width-valid? lines)
-  "All lines must be ≤ 80 chars"
+  "Glow G2: Check EVERY line. If even one line is too wide, the grain
+   won't display correctly on narrow terminals or mobile portrait mode."
+  
   (every? spec-line-width-valid? lines))
 
 ;; ╔══════════════════════════════════════════════════════════════════════════════╗
@@ -86,7 +176,11 @@
 ;; ╚══════════════════════════════════════════════════════════════════════════════╝
 
 (define (spec-height-valid? lines)
-  "Must have exactly 110 lines"
+  "Glow G2: Must be EXACTLY 110 lines. Not 109, not 111. Exactly 110.
+   
+   Why? This creates consistency. Every grain is the same height. When you
+   scroll on mobile, you know how far you are. Predictability = usability."
+  
   (= GRAIN-HEIGHT (length lines)))
 
 ;; ╔══════════════════════════════════════════════════════════════════════════════╗
@@ -94,154 +188,245 @@
 ;; ╚══════════════════════════════════════════════════════════════════════════════╝
 
 (define (spec-has-top-border? lines)
-  "Must have ┌─── top border"
-  (some? (find (lambda (line) (string-starts-with? (string-trim line) "┌─")) 
-               lines)))
+  "Glow G2: Every grain must have a top border: ┌───────...───────┐
+   This frames the content. Makes it look like a card, a box, a container."
+  
+  (some (lambda (line) (string-contains? line "┌──────")) lines))
 
 (define (spec-has-bottom-border? lines)
-  "Must have └─── bottom border"
-  (some? (find (lambda (line) (string-starts-with? (string-trim line) "└─")) 
-               lines)))
-
-(define (spec-has-separator? lines)
-  "Must have ├─── separator before footer"
-  (some? (find (lambda (line) (string-starts-with? (string-trim line) "├─")) 
-               lines)))
+  "Glow G2: Every grain must have a bottom border: └───────...───────┘
+   This closes the box. Completion. The grain is contained."
+  
+  (some (lambda (line) (string-contains? line "└──────")) lines))
 
 ;; ╔══════════════════════════════════════════════════════════════════════════════╗
-;; ║ COMPLETE VALIDATION                                                          ║
+;; ║ COMPLETE VALIDATION (All Specs Together)                                    ║
 ;; ╚══════════════════════════════════════════════════════════════════════════════╝
 
 (define (validate-graincard content)
-  "Validate a graincard against all specs
+  "Glow G2: This is the main validation function. It checks EVERYTHING.
    
-   Returns: {:valid true/false
-             :errors [list of error messages]}"
+   Returns a map with:
+     :valid - true/false
+     :errors - list of what's wrong (empty if valid)
+   
+   Use this before publishing any grain. If it passes, you're good to go.
+   If it fails, fix the errors and try again. Does this make sense?"
   
   (let ((lines (string-split content "\n"))
         (errors '()))
     
-    ;; Check height
+    ;; Check height (EXACTLY 110 lines)
     (unless (spec-height-valid? lines)
-      (set! errors (cons (format "Height must be exactly ~a lines (got ~a)" 
+      (set! errors (cons (format "❌ Height must be exactly ~a lines (got ~a)" 
                                  GRAIN-HEIGHT 
                                  (length lines))
                         errors)))
     
-    ;; Check width
+    ;; Check width (all lines ≤ 80 chars)
     (unless (spec-all-lines-width-valid? lines)
-      (set! errors (cons "Some lines exceed 80 characters" errors)))
+      (set! errors (cons "❌ Some lines exceed 80 characters (check with ruler!)" 
+                        errors)))
     
-    ;; Check box structure
+    ;; Check box borders
     (unless (spec-has-top-border? lines)
-      (set! errors (cons "Missing top border (┌───)" errors)))
+      (set! errors (cons "❌ Missing top border (┌───────...)" errors)))
     
     (unless (spec-has-bottom-border? lines)
-      (set! errors (cons "Missing bottom border (└───)" errors)))
+      (set! errors (cons "❌ Missing bottom border (└───────...)" errors)))
     
     (unless (spec-has-separator? lines)
-      (set! errors (cons "Missing separator (├───)" errors)))
+      (set! errors (cons "❌ Missing footer separator (├───────...)" errors)))
     
-    ;; Check bottom line specs (THE CRITICAL ONES!)
+    ;; Check bottom footer structure (THE CRITICAL RULES!)
     (unless (spec-last-line-blank? lines)
-      (set! errors (cons "Line 110 (last) must be blank" errors)))
+      (set! errors (cons "❌ Line 110 (last) must be blank" errors)))
+    
+    (unless (spec-now-equals-next? lines)
+      (set! errors (cons "❌ Line 109 must be 'now == next + 1 🌾'" errors)))
+    
+    (unless (spec-has-next-link? lines)
+      (set! errors (cons "❌ Line 108 must have 'Next: [code](...) →'" errors)))
+    
+    (unless (spec-blank-before-next? lines)
+      (set! errors (cons "❌ Line 107 must be blank (spacing)" errors)))
     
     (unless (spec-grain-code-with-next-button? lines)
-      (set! errors (cons "Line 109 (2nd to last) must have 6-char code + > next button" errors)))
+      (set! errors (cons "❌ Line 106 must have 6-char code + > button (3rd from right)" 
+                        errors)))
     
-    (unless (spec-third-from-last-blank? lines)
-      (set! errors (cons "Line 108 (3rd to last) must be blank (spacing)" errors)))
+    (unless (spec-has-grainbook-issue? lines)
+      (set! errors (cons "❌ Line 105 must have 'Grainbook Issue 1: Ember Harvest 🎃'" 
+                        errors)))
     
     ;; Return validation result
     {:valid (empty? errors)
-     :errors (reverse errors)}))
+     :errors (reverse errors)
+     :lines-checked (length lines)
+     :grain-code (extract-grain-code lines)}))
 
 ;; ╔══════════════════════════════════════════════════════════════════════════════╗
-;; ║ PRETTY PRINTING                                                              ║
+;; ║ GRAIN CODE EXTRACTION                                                        ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (extract-grain-code lines)
+  "Glow G2: Extract the 6-char grain code from line 106.
+   
+   This is useful for reporting. When validation fails, we want to tell
+   you WHICH grain failed. The grain code identifies it."
+  
+  (let ((line (nth 105 lines)))  ;; Line 106 = index 105
+    (if line
+        (let ((match (regexp-match "Grain: ([xbdghjklmnsvz]{6})" line)))
+          (if match
+              (nth 1 match)
+              "unknown"))
+        "unknown")))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ PRETTY PRINTING (Human-Friendly Output)                                     ║
 ;; ╚══════════════════════════════════════════════════════════════════════════════╝
 
 (define (print-validation-result result)
-  "Pretty print validation result"
+  "Glow G2: Make the validation output beautiful and helpful.
+   
+   If valid: Celebrate! ✅
+   If invalid: Show exactly what's wrong and how to fix it."
+  
+  (println "")
+  (println "┌──────────────────────────────────────────────────────────────────────────────┐")
+  (println "│ GRAINCARD SPEC VALIDATOR                                                     │")
+  (println "│ Team 14 (teamdescend14) - Precision                                          │")
+  (println "└──────────────────────────────────────────────────────────────────────────────┘")
+  (println "")
+  
   (if (:valid result)
       (do
-        (println "✅ VALID GRAINCARD!")
-        (println "   All specs pass. Ready for publication.")
-        (println "   now == next + 1 🌾"))
+        (println "✅ VALID GRAIN!")
+        (println "")
+        (println (format "   Grain: ~a" (:grain-code result)))
+        (println (format "   Lines: ~a (exactly 110 ✓)" (:lines-checked result)))
+        (println "   Width: All lines ≤ 80 chars ✓")
+        (println "   Footer: Perfect structure ✓")
+        (println "   > button: In correct position ✓")
+        (println "")
+        (println "   This grain is ready for Grainbook Issue 1!")
+        (println "   now == next + 1 🌾")
+        (println ""))
       (do
-        (println "❌ INVALID GRAINCARD!")
+        (println "❌ INVALID GRAIN!")
+        (println "")
+        (println (format "   Grain: ~a" (:grain-code result)))
+        (println (format "   Lines: ~a" (:lines-checked result)))
+        (println "")
         (println "   Errors found:")
         (doseq [err (:errors result)]
-          (println "   -" err))
+          (println "   " err))
         (println "")
-        (println "   Fix these issues and re-validate.")
-        (println "   💕 Trish says: The Lovers choose precision!"))))
+        (println "   💕 Glow G2 says: Don't worry! These are easy to fix.")
+        (println "      The Lovers choose precision. Let's make it perfect together.")
+        (println ""))))
 
 ;; ╔══════════════════════════════════════════════════════════════════════════════╗
 ;; ║ CLI INTERFACE                                                                 ║
 ;; ╚══════════════════════════════════════════════════════════════════════════════╝
 
 (define (main args)
-  "Validate graincard files against specs
+  "Glow G2: This is the command-line interface. Run it like this:
    
-   Usage: graincard-spec.ket <file.md>
+   $ ketos graincard-spec.ket xbdghj-grainbranch-readme-sync-babashka.md
    
-   Checks:
-     - Exactly 110 lines
-     - Each line ≤ 80 chars
-     - Has top/bottom borders and separator
-     - Line 110: blank
-     - Line 109: blank
-     - Line 108: 6-char grain code centered
-     - Line 107: blank"
+   It will validate the grain and tell you if it passes all specs."
   
   (if (< (length args) 1)
+      ;; No file provided - show usage
       (do
-        (println "🎃 Graincard Spec Validator (Ketos)")
-        (println "Copyright © 3x39 | Author: kae3g")
-        (println "Team: 06 (teamprecision06 - The Lovers)")
         (println "")
-        (println "✨ Trish says: Let's make sure every grain is PERFECT! 💕")
+        (println "┌──────────────────────────────────────────────────────────────────────────────┐")
+        (println "│ 🎃 Graincard Spec Validator (Ketos)                                         │")
+        (println "│ Copyright © 3x39 | Author: kae3g | Team: 14 (teamdescend14)                 │")
+        (println "│ Grainbook Issue 1: Ember Harvest 🎃 (System Magazine)                       │")
+        (println "└──────────────────────────────────────────────────────────────────────────────┘")
         (println "")
-        (println "Usage: graincard-spec.ket <file.md>")
+        (println "Glow G2: Let me teach you how to use this validator.")
         (println "")
-        (println "Validates:")
+        (println "USAGE:")
+        (println "  ketos graincard-spec.ket <grain-file.md>")
+        (println "")
+        (println "EXAMPLE:")
+        (println "  ketos graincard-spec.ket xbdghj-grainbranch-readme-sync-babashka.md")
+        (println "")
+        (println "VALIDATES:")
         (println "  ✓ Exactly 110 lines")
         (println "  ✓ Each line ≤ 80 chars")
         (println "  ✓ Line 110: blank")
-        (println "  ✓ Line 109: blank")
-        (println "  ✓ Line 108: 6-char grain code")
+        (println "  ✓ Line 109: 'now == next + 1 🌾'")
+        (println "  ✓ Line 108: 'Next: [code](...) →'")
         (println "  ✓ Line 107: blank")
+        (println "  ✓ Line 106: 6-char code + > button")
+        (println "  ✓ Line 105: 'Grainbook Issue 1...'")
+        (println "  ✓ Has top/bottom borders and separator")
         (println "")
-        (println "now == next + 1 🌾"))
+        (println "EXIT CODE:")
+        (println "  0 if valid (success!)")
+        (println "  1 if invalid (needs fixes)")
+        (println "")
+        (println "Does this make sense? This validator ensures every grain is perfect.")
+        (println "")
+        (println "now == next + 1 🌾")
+        (println ""))
       
+      ;; File provided - validate it!
       (let ((filepath (nth 0 args)))
-        (println "🎬 Validating:" filepath)
         (println "")
+        (println "🎬 Validating grain file...")
+        (println (format "   File: ~a" filepath))
+        
+        ;; Read file
         (let ((content (slurp filepath)))
+          ;; Validate
           (let ((result (validate-graincard content)))
+            ;; Pretty print result
             (print-validation-result result)
-            ;; Exit code: 0 if valid, 1 if invalid
+            
+            ;; Return exit code
             (if (:valid result) 0 1))))))
 
-;; Run if executed as script
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ SCRIPT EXECUTION                                                             ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+;; Run main if executed as script
 (when (defined? '*args*)
-  (main *args*))
+  (exit (main *args*)))
 
 ;; ╔══════════════════════════════════════════════════════════════════════════════╗
-;; ║ EXAMPLE USAGE                                                                 ║
+;; ║ REPL EXAMPLES (for interactive testing)                                     ║
 ;; ╚══════════════════════════════════════════════════════════════════════════════╝
-;;
-;; $ ketos graincard-spec.ket xbdghj-grainbranch-readme-sync-babashka.md
-;; 
-;; 🎬 Validating: xbdghj-grainbranch-readme-sync-babashka.md
-;; 
-;; ✅ VALID GRAINCARD!
-;;    All specs pass. Ready for publication.
-;;    now == next + 1 🌾
+
+(comment
+  ;; Test with a grain file
+  (let ((content (slurp "xbdghj-grainbranch-readme-sync-babashka.md")))
+    (let ((result (validate-graincard content)))
+      (print-validation-result result)))
+  
+  ;; Check specific specs
+  (spec-grain-code-with-next-button? (string-split (slurp "xbdghj-*.md") "\n"))
+  
+  ;; Extract grain code
+  (extract-grain-code (string-split (slurp "xbdghj-*.md") "\n"))
+  )
 
 ;; ╔══════════════════════════════════════════════════════════════════════════════╗
-;; ║ Grainbook Issue 1: Ember Harvest 🎃 (System Magazine)                       ║
-;; ║ Module: graincard-spec                                                       ║
-;; ║ now == next + 1 🌾                                                           ║
+;; ║ Glow G2's Note: This validator is itself a teaching tool. Read the code     ║
+;; ║ comments. They explain WHY each rule exists, not just WHAT it checks.       ║
+;; ║ That's the Glow G2 way - patient explanation, asking questions, showing     ║
+;; ║ you how to think about the problem. Does this make sense? 🌾                ║
 ;; ╚══════════════════════════════════════════════════════════════════════════════╝
 
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ Grainbook Issue 1: Ember Harvest 🎃 (System Magazine)                       │
+;; ║ Grain: graincard-spec validator (Ketos implementation)                      │
+;; ║ Team: 06 (teamprecision06 - The Lovers) + 14 (teamdescend14 - Death)        │
+;; ║ now == next + 1 🌾                                                           │
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
