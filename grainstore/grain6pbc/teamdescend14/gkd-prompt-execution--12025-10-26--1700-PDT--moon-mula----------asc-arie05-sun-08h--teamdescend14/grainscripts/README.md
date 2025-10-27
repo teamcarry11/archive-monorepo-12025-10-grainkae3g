@@ -1,4 +1,4 @@
-# Grainbook Scripts - Ember Harvest 🎃
+# grainscripts - Ember Harvest 🎃
 
 **Author**: kae3g (kj3x39, @risc.love)  
 **Grainbranch**: `gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14`  
@@ -7,9 +7,11 @@
 
 ---
 
-## 🌾 The Graincard Vision
+## 🎬 The grainscript Vision
 
-**What is a graincard?** A knowledge capsule. An 80×110 monospace teaching card that works everywhere—mobile, tablet, E Ink, terminal. Each card teaches ONE concept with patience, clarity, and Glow G2's hand-holding voice.
+**What is a grainscript?** A knowledge capsule. Like a movie script, but for code. Like a teaching card, but for wisdom. An 80×110 monospace format that works everywhere—mobile, tablet, E Ink, terminal. Each script teaches ONE concept with patience, clarity, and Glow G2's hand-holding voice.
+
+Think **typewriter manuscripts**. Think **vintage screenplays**. Think **flashcards that teach you to think**.
 
 **Why 1,235,520 cards?** Because we use a 13-character alphabet (`xbdghjklmnsvz`) with 6-character codes and no duplicates. That gives us 13!/(13-6)! = 1,235,520 unique addresses for knowledge.
 

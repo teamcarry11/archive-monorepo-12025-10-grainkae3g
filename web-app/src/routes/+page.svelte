@@ -3,6 +3,7 @@
   import { browser } from '$app/environment';
   import { navigating } from '$app/stores';
   import { link } from '$lib/paths';
+  import { base } from '$app/paths';
   import LicenseFooter from '$lib/LicenseFooter.svelte';
   
   export let data;
@@ -62,7 +63,7 @@
 </svelte:head>
 
 <h1>Ember Harvest</h1>
-<p><a href="/grainscripts" class="grainscripts-link">🎃 grainscripts</a></p>
+<p><a href="{base}/grainscripts" class="grainscripts-link">🎃 grainscripts</a></p>
 
 <hr>
 
