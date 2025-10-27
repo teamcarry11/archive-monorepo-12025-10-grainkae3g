@@ -1,27 +1,38 @@
-/* Coldriver Heal theme - warm valley + cold tundra, light + dark */
+/* Ember Harvest theme - Halloween browns + glowing orange 🎃 */
 
 :root {
-  /* Warm Light theme - Red clay on warm paper (inverted for dark) */
-  --fg: #311508;          /* Deep brown (Cleveland Browns brown, darker)  */
-  --bg: #f5ebe0;          /* Warm cream paper */
-  --bd: #bf5700;          /* Cleveland Browns orange (borders) */
-  --lk: #d76a03;          /* Bright burnt orange (links) */
-  --lkv: #a85a42;         /* Terra cotta (visited) */
-  --hg: #ff8c42;          /* Peach orange highlight */
-  --code-bg: #ede0d0;     /* Warmer cream for code */
-  --code-fg: #2a1a0a;     /* Dark brown code text */
+  /* Santa Fe Desert (Light) - Bohemian adobe + terracotta */
+  --fg: #3d2817;          /* Deep earth brown */
+  --bg: #f5e6d3;          /* Warm sand/adobe */
+  --bd: #c1502e;          /* Red clay borders */
+  --lk: #d67229;          /* Terracotta orange links */
+  --lkv: #a85a42;         /* Darker clay (visited) */
+  --hg: #ff8c42;          /* Warm highlight */
+  --code-bg: #ebe0d0;     /* Warm cream for code blocks */
+  --code-fg: #2d1810;     /* Dark brown code text */
+  
+  /* Halloween accents (light mode) */
+  --pumpkin: #ff8200;     /* Bright pumpkin */
+  --ember: #d67229;       /* Glowing ember */
+  --smoke: rgba(61, 40, 23, 0.1);  /* Light smoke */
 }
 
 :root[data-theme="dark"] {
-  /* Warm Dark theme (DEFAULT) - Cleveland Browns + red clay earth */
-  --fg: #e8c5a0;          /* Warm sand/clay text (inverted paper) */
-  --bg: #1f1108;          /* Deep brown-black earth */
-  --bd: #8a4a20;          /* Darker burnt orange borders */
-  --lk: #ff8c42;          /* Bright orange links (Cleveland Browns) */
-  --lkv: #d76a50;         /* Warm terra cotta visited */
-  --hg: #bf5700;          /* Cleveland Browns orange highlight */
-  --code-bg: #2a1810;     /* Darker brown code bg */
-  --code-fg: #d8b090;     /* Warm clay code text */
+  /* Ember Harvest (Dark - DEFAULT) - Halloween night with glowing embers 🎃 */
+  --fg: #e8d5c4;          /* Warm sand/clay text (faded Material) */
+  --bg: #1a0f0a;          /* Almost black with warm brown undertone */
+  --bd: #ff8200;          /* BRIGHT PUMPKIN ORANGE borders (Cleveland Browns) */
+  --lk: #ffb347;          /* Glowing amber links */
+  --lkv: #d67229;         /* Burnt ember (visited) */
+  --hg: #ff6b35;          /* Hot ember highlight */
+  --code-bg: #0f0804;     /* Darker than bg - true black-brown */
+  --code-fg: #ffb88c;     /* Warm peachy orange code */
+  
+  /* Halloween effects (dark mode) */
+  --pumpkin: #ff8200;     /* Bright pumpkin glow */
+  --ember: #ff6b35;       /* Hot glowing ember */
+  --smoke: rgba(0, 0, 0, 0.6);  /* Dark transparent smoke */
+  --pumpkin-glow: rgba(255, 130, 0, 0.3);  /* Orange glow overlay */
 }
 
 :root[data-palette="cold"] {
