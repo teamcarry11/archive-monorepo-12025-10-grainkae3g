@@ -32,15 +32,16 @@
     :nakshatra-expected "rohini"
     :source "AstrOccult.net"}
    
-   {:name "Latest data point"
+   {:name "Latest data point (before DST switch)"
     :year 2025
     :month 11
-    :day 2
-    :hour 17
-    :minute 3
-    :timezone "Asia/Kolkata"  ; IST
-    :nakshatra-expected "u_bhadrapada"  ; Uttara Bhadrapada
-    :source "AstrOccult.net"}
+    :day 1
+    :hour 18
+    :minute 20
+    :timezone "Asia/Kolkata"  ; IST (UTC+5:30, no DST)
+    :nakshatra-expected "p_bhadrapada"  ; Purva Bhadrapada
+    :source "AstrOccult.net (IST 18:20 = PDT 05:50)"
+    :note "New Delhi is 12.5 hours ahead of PDT"}
    
    {:name "Mid-range test (Jyeshtha)"
     :year 2024
@@ -88,7 +89,22 @@
     :ascendant-expected {:sign "arie" :degree 5}  ; Aries 5°03'
     :sun-house-expected 8  ; Late afternoon, descending toward sunset
     :lst-expected 18.205  ; 18:12:18
-    :source "Astro-Seek.com verified"}])
+    :source "Astro-Seek.com verified"}
+   
+   {:name "San Rafael, Nov 1, 2025, 05:50 PDT (= IST 18:20)"
+    :year 2025
+    :month 11
+    :day 1
+    :hour 5
+    :minute 50
+    :timezone "America/Los_Angeles"  ; PDT (still in effect, DST ends Nov 2)
+    :location {:latitude 37.9735 :longitude -122.5311}
+    :nakshatra-expected "p_bhadrapada"  ; Purva Bhadrapada (tropical + sidereal)
+    :ascendant-expected {:sign "libr" :degree 17}  ; Libra 17°05'
+    :sun-house-expected 1  ; Early morning, just after sunrise
+    :lst-expected nil  ; TBD from calculation
+    :source "Astro-Seek.com verified (Nov 1, 05:50 PDT = Nov 1, 18:20 IST)"
+    :note "Daylight saving still active (ends Nov 2)"}])
 
 ;; =============================================================================
 ;; HELPER FUNCTIONS
