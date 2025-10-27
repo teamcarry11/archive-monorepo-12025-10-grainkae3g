@@ -1,9 +1,6 @@
 # Graincard xbdghl - Graincard Format Specification
 
-**File**: `grainbarrel/scripts/graincard-generator.bb`  
-**Live**: https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainbook-scripts/xbdghl-graincard-format-spec.md  
-**Prev Card**: [xbdghk](xbdghk-grainbranch-readme-sync-ketos.md) (Ketos README sync)  
-**Next Card**: [xbdghn](xbdghn-*.md) (TBD)
+**Live**: https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainbook-scripts/xbdghl-graincard-format-spec.md
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
@@ -62,6 +59,7 @@
 ├──────────────────────────────────────────────────────────────────────────────┤
 │ Grainbook: Ember Harvest 🎃                                                  │
 │ Card: xbdghl (3 of 1,235,520)                                                │
+│ Next: [xbdghn](xbdghn-grainorder-alphabet-system.md) →                      │
 │ now == next + 1 🌾                                                           │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
