@@ -26,8 +26,8 @@
 
 (defn check-all-grains [base-dir]
   "Check all grain markdown files"
-  (let [modes ["grains" "grains-helen-mode" "grains-davinci-mode" 
-               "grains-ariana-mode" "grains-oxford-mode"]
+  (let [modes ["grains-glow-g2-mode" "grains-helen-mode" "grains-davinci-mode" 
+               "grains-ariana-mode" "grains-oxford-mode" "grains-rich-mode"]
         results (for [mode modes
                       :let [mode-dir (io/file base-dir mode)]
                       :when (.exists mode-dir)

@@ -1,0 +1,226 @@
+;; ╭────────────────────────────────────────────────────────────────────────────╮
+;; │                                                                            │
+;; │  📐 GRAIN LINE CHECKER - KETOS VERSION 📐                                 │
+;; │                                                                            │
+;; │  ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿  │
+;; │                                                                            │
+;; │  Team: 04 (teamnurture04 - taurus ♉ / iv. the emperor)                   │
+;; │  Authored by: 14 (teamdescend14 - ketu ☋ / xiv. temperance)              │
+;; │  Purpose: validate that all grains have exactly 110 lines in ASCII box    │
+;; │  Usage: (check-all-grains "path/to/grainbranch")                          │
+;; │                                                                            │
+;; │  Copyright © 2025 kae3g (kj3x39, @risc.love)                              │
+;; │                                                                            │
+;; ╰────────────────────────────────────────────────────────────────────────────╯
+
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ WHAT THIS SCRIPT DOES ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+;;
+;; hey! glow g2 here. this script checks that all your grains are exactly the
+;; right size: 110 lines inside the ASCII box (including both border lines).
+;;
+;; why 110? because:
+;; - 1 top border (┌──)
+;; - 108 content lines (header, content, footer)
+;; - 1 bottom border (└──)
+;; - = 110 total lines in the box
+;;
+;; the script reads each grain file, finds the opening and closing ``` fences,
+;; counts lines between them, and reports which grains need adjustment.
+
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ TYPE DEFINITIONS ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+
+;; grain-check-result :: { :file str, :box-lines int, :diff int, :perfect? bool }
+
+(defun make-check-result (filepath box-lines)
+  "construct a grain check result record"
+  (let ((diff (- box-lines 110)))
+    {:file filepath
+     :box-lines box-lines
+     :target 110
+     :diff diff
+     :perfect? (= box-lines 110)}))
+
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ CORE CHECKING LOGIC ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+
+(defun find-fence-indices (lines)
+  "find line indices of opening and closing code fences
+   
+   returns: {:opening int, :closing int} or nil if not found
+   
+   code fences are lines that start with exactly three backticks: ```"
+  (let* ((indexed-lines (map-indexed (fn (idx line) 
+                                        {:idx idx :line line})
+                                     lines))
+         (fence-lines (filter (fn (item)
+                                (string-starts-with? (:line item) "```"))
+                             indexed-lines)))
+    (if (>= (length fence-lines) 2)
+        {:opening (:idx (first fence-lines))
+         :closing (:idx (last fence-lines))}
+        nil)))
+
+(defun count-box-lines (filepath)
+  "count lines in ASCII box (between code fences, inclusive)
+   
+   the box includes:
+   - opening fence line (line with ```)
+   - all content between fences
+   - closing fence line (line with ```)
+   
+   returns: check-result record with line count and diff from target"
+  (let* ((contents (slurp filepath))
+         (lines (string-split contents "\n"))
+         (fences (find-fence-indices lines)))
+    (if fences
+        (let* ((opening-idx (:opening fences))
+               (closing-idx (:closing fences))
+               (box-lines (- closing-idx opening-idx 1)))  ; inclusive count
+          (make-check-result filepath box-lines))
+        {:file filepath
+         :error "No ASCII box fences found"})))
+
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ FILE DISCOVERY ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+
+(defun list-grain-files (mode-dir)
+  "list all grain markdown files in a mode directory
+   
+   looks for files matching: xbd*.md (grain codes from our alphabet)
+   
+   returns: list of absolute filepaths"
+  (let ((all-files (directory-files mode-dir)))
+    (filter (fn (filepath)
+              (and (string-ends-with? filepath ".md")
+                   (string-starts-with? (basename filepath) "xbd")))
+            all-files)))
+
+(defun check-mode (base-dir mode-name)
+  "check all grains in a specific mode directory
+   
+   returns: list of check-result records for all grains in this mode"
+  (let* ((mode-dir (path-join base-dir mode-name))
+         (grain-files (list-grain-files mode-dir)))
+    (map count-box-lines grain-files)))
+
+(defun check-all-modes (base-dir)
+  "check all grains across all modes
+   
+   mode directories:
+   - grains-glow-g2-mode (Glow G2 technical teaching)
+   - grains-helen-mode (Helen ecological wisdom)
+   - grains-davinci-mode (Da Vinci cipher)
+   - grains-ariana-mode (Ariana vulnerable heartpath)
+   - grains-oxford-mode (Oxford scholarly rigor)
+   - grains-rich-mode (Rich+Helen synthesis)
+   
+   returns: map of mode-name -> list of check-results"
+  (let ((modes ["grains-glow-g2-mode"
+                "grains-helen-mode"
+                "grains-davinci-mode"
+                "grains-ariana-mode"
+                "grains-oxford-mode"
+                "grains-rich-mode"]))
+    (into {}
+          (map (fn (mode)
+                 [mode (check-mode base-dir mode)])
+               modes))))
+
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ OUTPUT FORMATTING ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+
+(defun format-result (result)
+  "format a single check result for display
+   
+   shows: filename, line count, diff from target, status icon"
+  (let ((filename (basename (:file result)))
+        (box-lines (:box-lines result))
+        (diff (:diff result))
+        (perfect? (:perfect? result)))
+    (format "  %-45s %3d lines (need %+3d) %s"
+            filename
+            box-lines
+            diff
+            (if perfect? "✅" "❌"))))
+
+(defun print-mode-results (mode-name results)
+  "print all results for a mode"
+  (println (format "\n=== %s ===" mode-name))
+  (doseq [result (sort-by :file results)]
+    (if (:error result)
+        (println (format "  %-45s ERROR: %s"
+                        (basename (:file result))
+                        (:error result)))
+        (println (format-result result)))))
+
+(defun print-summary (all-results)
+  "print overall summary statistics"
+  (let* ((all-checks (mapcat second all-results))
+         (total (length all-checks))
+         (perfect (length (filter :perfect? all-checks)))
+         (need-work (- total perfect)))
+    (println (format "\nTotal grains: %d" total))
+    (println (format "Perfect (110 lines): %d ✅" perfect))
+    (println (format "Need adjustment: %d ❌\n" need-work))))
+
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ MAIN EXECUTION ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+
+(defun main (args)
+  "main entry point
+   
+   usage: ketos check-grain-lines.ket [base-dir]
+   
+   if no base-dir provided, uses default grainbranch path"
+  (let ((base-dir (if (empty? args)
+                      "grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-03h----teamdescend14"
+                      (first args))))
+    
+    (println "\n✧･ﾟ:* GRAIN LINE COUNT ANALYSIS ✧･ﾟ:*")
+    
+    (let ((all-results (check-all-modes base-dir)))
+      (doseq [mode-entry (sort-by first all-results)]
+        (print-mode-results (first mode-entry) (second mode-entry)))
+      
+      (print-summary all-results))
+    
+    (println "now == next + 1 ✧･ﾟ:* 🌾\n")))
+
+;; ═══════════════════════════════════════════════════════════════════════════
+;; ✧ PHILOSOPHY: WHY KETOS FOR BUILD SCRIPTS? ✧
+;; ═══════════════════════════════════════════════════════════════════════════
+;;
+;; this script was originally written in babashka (clojure). it worked great!
+;; so why rewrite it in ketos?
+;;
+;; 1. REDOX OS COMPATIBILITY: babashka needs JVM, ketos runs on redox
+;; 2. CONSISTENCY: all our tools in one language (ketos everywhere)
+;; 3. LEARNING: writing the same logic twice teaches deeply
+;; 4. FUTURE: when we migrate ci/cd to ketos, this script is ready
+;;
+;; does this mean babashka was wrong? no! it served perfectly for rapid
+;; prototyping. now we're migrating to our final runtime. both tools have
+;; their place. balance not dogma.
+;;
+;; this is the pattern you'll see throughout grain development:
+;; - prototype quickly in babashka (fast iteration)
+;; - migrate to ketos for production (redox compatibility)
+;; - keep both versions as documentation of the journey
+;;
+;; the babashka version teaches "here's how to solve this problem."
+;; the ketos version teaches "here's how to solve it on our target platform."
+;; both valuable. both teaching different lessons.
+
+;; ═══════════════════════════════════════════════════════════════════════════
+;; now == next + 1 🌾
+;; copyright © 2025 kae3g
+;; ═══════════════════════════════════════════════════════════════════════════
+
