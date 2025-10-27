@@ -103,6 +103,9 @@
 │ how systems point to themselves. Meta-knowledge. The grain that teaches      │
 │ grains. The wild path that marks itself.                                     │
 │                                                                              │
+│ Run it. Watch it work. Then read **xbdghk** to see the same logic in        │
+│ Ketos. Two languages, one truth. The Lovers choosing both paths.            │
+│                                                                              │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │ Grainbook Issue 1: Ember Harvest 🎃 (System Magazine)                       │
 │ Grain: xbdghj (1 of 1,235,520)                                             > │
