@@ -1,0 +1,175 @@
+;;; ✧･ﾟ:* field-extraction.ket - split lines into fields (decomplected)
+;;;
+;;; team: 07 (teambalance07 - libra ♎ / vii. the chariot)
+;;; authored by: 14 (teamdescend14 - ketu ☋ / xiv. temperance)
+;;;
+;;; purpose: field extraction and splitting logic.
+;;;          depends ONLY on data-structures.ket
+;;;
+;;; this file does ONE thing: turn lines into fields
+;;; like awk's field splitting ($1, $2, $3...)
+;;;
+;;; ∿∿∿ the chariot divides to conquer, libra weighs each piece ∿∿∿
+
+(require 'data-structures)
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; core splitting function (simple, clear, testable)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define (split-into-fields line separator)
+  ;; :: String → String → [Field]
+  ;;
+  ;; split line into Field records by separator.
+  ;;
+  ;; SIMPLE: one input (line + separator), one output (fields)
+  ;; NOT COMPLECTED: doesn't do matching, doesn't do i/o
+  ;;
+  ;; examples:
+  ;;   (split-into-fields "a:b:c" ":") 
+  ;;     → [Field("a",0,1) Field("b",1,1) Field("c",2,1)]
+  ;;
+  ;;   (split-into-fields "hello world" " ")
+  ;;     → [Field("hello",0,5) Field("world",1,5)]
+  
+  (let ((parts (if (equal? separator "")
+                   (string-split line #\space)  ; whitespace (awk default)
+                   (string-split line separator))))
+    
+    (map-indexed (lambda (idx part)
+                  (make-field part idx (string-length part)))
+                parts)))
+
+(define (get-field fields n)
+  ;; :: [Field] → Integer → Maybe Field
+  ;;
+  ;; get nth field (0-indexed, like arrays)
+  ;; or (1-indexed, like awk)?  let's be consistent: 0-indexed
+  ;;
+  ;; returns Field or nil if n out of bounds
+  
+  (if (and (>= n 0) (< n (length fields)))
+      (nth fields n)
+      nil))
+
+(define (get-field-value fields n)
+  ;; :: [Field] → Integer → String
+  ;;
+  ;; get nth field's value, or "" if not found
+  ;; (like awk where non-existent fields return empty string)
+  
+  (let ((f (get-field fields n)))
+    (if f
+        (field-value f)
+        "")))
+
+(define (field-count fields)
+  ;; :: [Field] → Integer
+  ;;
+  ;; how many fields? (like awk's NF variable)
+  (length fields))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; grain-specific field extraction
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(define (extract-graintime-components graintime-str)
+  ;; :: String → Maybe {:year String :month String :day String ...}
+  ;;
+  ;; parse graintime string into components.
+  ;; returns map of components or nil if invalid format.
+  ;;
+  ;; SIMPLE: one function, one purpose (parse graintime)
+  ;; NOT COMPLECTED: doesn't validate, doesn't search files
+  
+  ;; format: 12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-03h----teamdescend14
+  ;;         0....5.7..10..13.15.17..20....27......40...44....50...54..57...59............76
+  
+  (if (not (equal? 76 (string-length graintime-str)))
+      nil
+      {:year (substring graintime-str 0 5)
+       :month (substring graintime-str 6 8)
+       :day (substring graintime-str 9 11)
+       :hour (substring graintime-str 13 15)
+       :minute (substring graintime-str 15 17)
+       :timezone (substring graintime-str 18 21)
+       :nakshatra (substring graintime-str 27 40)
+       :asc-sign (substring graintime-str 44 48)
+       :asc-degree (substring graintime-str 48 50)
+       :sun-house (substring graintime-str 55 57)
+       :team (substring graintime-str 59 76)}))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; tests (exhaustive edge cases)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(comment
+  ;; test: basic field splitting (whitespace)
+  (let ((fields (split-into-fields "hello world test" "")))
+    (assert (equal? 3 (field-count fields)))
+    (assert (equal? "hello" (field-value (nth fields 0))))
+    (assert (equal? "world" (field-value (nth fields 1))))
+    (assert (equal? "test" (field-value (nth fields 2)))))
+  
+  ;; test: field splitting (custom separator)
+  (let ((fields (split-into-fields "a:b:c:d" ":")))
+    (assert (equal? 4 (field-count fields)))
+    (assert (equal? "c" (get-field-value fields 2))))
+  
+  ;; test: get-field bounds checking
+  (let ((fields (split-into-fields "a b" "")))
+    (assert (field? (get-field fields 0)))
+    (assert (field? (get-field fields 1)))
+    (assert (nil? (get-field fields 2)))
+    (assert (nil? (get-field fields -1))))
+  
+  ;; test: get-field-value with missing fields
+  (let ((fields (split-into-fields "a" "")))
+    (assert (equal? "a" (get-field-value fields 0)))
+    (assert (equal? "" (get-field-value fields 1)))
+    (assert (equal? "" (get-field-value fields 100))))
+  
+  ;; test: graintime component extraction
+  (let ((components (extract-graintime-components 
+                     "12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-03h----teamdescend14")))
+    (assert (equal? "12025" (get components :year)))
+    (assert (equal? "10" (get components :month)))
+    (assert (equal? "27" (get components :day)))
+    (assert (equal? "01" (get components :hour)))
+    (assert (equal? "45" (get components :minute)))
+    (assert (equal? "PDT" (get components :timezone)))
+    (assert (equal? "p_ashadha----" (get components :nakshatra)))
+    (assert (equal? "leo0" (get components :asc-sign)))
+    (assert (equal? "23" (get components :asc-degree)))
+    (assert (equal? "03" (get components :sun-house)))
+    (assert (equal? "---teamdescend14" (get components :team))))
+  
+  ;; edge case: empty line splitting
+  (let ((fields (split-into-fields "" "")))
+    (assert (equal? 1 (field-count fields)))  ; one empty field
+    (assert (equal? "" (get-field-value fields 0))))
+  
+  ;; edge case: line with only separator
+  (let ((fields (split-into-fields ":::" ":")))
+    (assert (equal? 4 (field-count fields)))  ; four empty fields
+    (assert (equal? "" (get-field-value fields 0))))
+  
+  ;; edge case: graintime too short
+  (assert (nil? (extract-graintime-components "12025-10-27")))
+  
+  ;; edge case: graintime too long
+  (assert (nil? (extract-graintime-components (make-string 100 #\x))))
+  
+  ;; edge case: unicode characters in fields
+  (let ((fields (split-into-fields "hello 🌾 world" " ")))
+    (assert (equal? 3 (field-count fields)))
+    (assert (equal? "🌾" (get-field-value fields 1))))
+  )
+
+;;; ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
+;;; end of field-extraction.ket
+;;;
+;;; the chariot splits the path into steps ⚖️
+;;; now == next + 1 ✧･ﾟ:* 🌾
+;;; ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
+

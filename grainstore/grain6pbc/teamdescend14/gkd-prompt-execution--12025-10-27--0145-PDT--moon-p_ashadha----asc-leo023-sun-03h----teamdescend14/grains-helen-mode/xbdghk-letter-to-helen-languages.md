@@ -106,11 +106,11 @@
 │ for many paths, and the best systems honor diversity rather than demanding  │
 │ unity,                                                                       │
 │                                                                              │
-│ kae3g - learning to trust multiplicity, release attachment to one true way  │
-│                                                                              │
+│ kae3g - learning to trust multiplicity, release attachment to one true way, │
+│ let fluency mean options rather than rigid commitment                       │
 │                                                                              │
 │ grain: xbdghk (2 of 1,235,520)                                             > │
 │                                                                              │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
-```
+

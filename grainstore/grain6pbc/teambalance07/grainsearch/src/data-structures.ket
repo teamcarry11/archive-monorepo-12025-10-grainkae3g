@@ -1,0 +1,322 @@
+;;; ✧･ﾟ:* data-structures.ket - core data types for grainsearch
+;;;
+;;; team: 07 (teambalance07 - libra ♎ / vii. the chariot)
+;;; authored by: 14 (teamdescend14 - ketu ☋ / xiv. temperance)
+;;;
+;;; purpose: define all data structures used in grainsearch in one place.
+;;;          simple, not easy - each type has one clear purpose.
+;;;
+;;; rich hickey's wisdom: "complecting" means interleaving/braiding.
+;;; decomplecting means separating concerns into independent pieces.
+;;;
+;;; this file is JUST data structures - no logic, no algorithms.
+;;; like lego instruction manual showing all the pieces before assembly.
+;;;
+;;; ∿∿∿ clarity through separation ∿∿∿
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; result type (success or failure)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+;; ✿ Result<T, E> ✿
+;;
+;; algebraic data type for operations that might fail.
+;; inspired by rust's Result<T, E> and haskell's Either.
+;;
+;; constructors:
+;;   (ok value)    → {:ok value :valid? true}
+;;   (error reason) → {:error reason :valid? false}
+;;
+;; this is SIMPLE (one concept: success-or-failure)
+;; not EASY (requires discipline to use everywhere)
+
+(define-record-type Result
+  "represents either success with value or failure with error"
+  
+  ;; fields:
+  ;;   :valid? - boolean, true for success, false for error
+  ;;   :ok     - the success value (present only if valid?)
+  ;;   :error  - the error reason (present only if not valid?)
+  
+  (make-result valid? ok error)
+  result?
+  (valid? result-valid?)
+  (ok result-ok-value)
+  (error result-error-reason))
+
+;; constructors (simple functions, clear purpose)
+(define (ok value)
+  (make-result true value nil))
+
+(define (error reason)
+  (make-result false nil reason))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; match type (a line that matched a pattern)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+;; ✿ Match ✿
+;;
+;; represents a line that matched search criteria.
+;; contains everything you might want to know about the match.
+;;
+;; this is SIMPLE: just data, no behavior
+;; the logic lives elsewhere
+
+(define-record-type Match
+  "a line from a file that matched the search pattern"
+  
+  ;; fields:
+  ;;   :line        - the actual text content
+  ;;   :line-number - which line in the file (1-indexed)
+  ;;   :fields      - line split by separator (like awk's $1, $2, ...)
+  ;;   :file        - which file this came from
+  ;;   :original    - unmodified original line (if transformed)
+  
+  (make-match line line-number fields file original)
+  match?
+  (line match-line)
+  (line-number match-line-number)
+  (fields match-fields)
+  (file match-file)
+  (original match-original))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; pattern type (what to search for)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+;; ✿ Pattern ✿
+;;
+;; patterns come in three flavors (tagged union):
+;;   - {:type :regex :pattern "..."}
+;;   - {:type :predicate :fn (String → Boolean)}
+;;   - {:type :function :fn (String → a)}
+;;
+;; this is SIMPLE: three distinct cases, explicitly tagged
+;; not EASY: requires checking type before use
+
+(define (regex-pattern pattern-string)
+  "create regex pattern"
+  {:type :regex :pattern pattern-string})
+
+(define (predicate-pattern pred-fn)
+  "create predicate pattern"
+  {:type :predicate :fn pred-fn})
+
+(define (function-pattern transform-fn)
+  "create function pattern"
+  {:type :function :fn transform-fn})
+
+(define (pattern-type p)
+  "get pattern type (:regex, :predicate, or :function)"
+  (get p :type))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; search options (configuration for search behavior)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+;; ✿ SearchOptions ✿
+;;
+;; all the knobs and dials for configuring search behavior.
+;; simple map, each key controls one aspect.
+;;
+;; fields:
+;;   :field-separator  - how to split lines into fields (default: whitespace)
+;;   :case-sensitive   - respect case in matching (default: true)
+;;   :invert-match     - show non-matches (default: false, like grep -v)
+;;   :count-only       - just count matches (default: false, like grep -c)
+;;   :max-matches      - stop after N matches (default: unlimited)
+;;   :line-numbers     - include line numbers in output (default: true)
+;;   :context-before   - lines of context before match (default: 0, like grep -B)
+;;   :context-after    - lines of context after match (default: 0, like grep -A)
+
+(define default-search-options
+  {:field-separator ""
+   :case-sensitive true
+   :invert-match false
+   :count-only false
+   :max-matches nil
+   :line-numbers true
+   :context-before 0
+   :context-after 0})
+
+(define (merge-options user-options)
+  "merge user options with defaults (user takes precedence)"
+  (merge default-search-options user-options))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; search result (collection of matches)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+;; ✿ SearchResult ✿
+;;
+;; the outcome of a search operation.
+;; contains matches plus metadata about the search.
+;;
+;; fields:
+;;   :matches       - list of Match records
+;;   :total-lines   - how many lines searched
+;;   :match-count   - how many matched
+;;   :files-searched - which files were examined
+;;   :pattern       - what pattern was used
+;;   :options       - what options were active
+
+(define-record-type SearchResult
+  "result of searching file(s) for pattern"
+  
+  (make-search-result matches total-lines match-count files-searched pattern options)
+  search-result?
+  (matches search-result-matches)
+  (total-lines search-result-total-lines)
+  (match-count search-result-match-count)
+  (files-searched search-result-files-searched)
+  (pattern search-result-pattern)
+  (options search-result-options))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; field type (a column from a split line)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+;; ✿ Field ✿
+;;
+;; a single field from a line (like awk's $1, $2, ...)
+;;
+;; simple wrapper providing semantic clarity:
+;;   field is not just string - it's a piece of structured data
+
+(define-record-type Field
+  "a field extracted from a line"
+  
+  ;; fields:
+  ;;   :value    - the string value
+  ;;   :position - which field (0-indexed)
+  ;;   :length   - character count
+  
+  (make-field value position length)
+  field?
+  (value field-value)
+  (position field-position)
+  (length field-length))
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; exports (make these types available)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(export 
+  ;; result type
+  make-result result? result-valid? result-ok-value result-error-reason
+  ok error
+  
+  ;; match type
+  make-match match? match-line match-line-number match-fields match-file match-original
+  
+  ;; pattern type
+  regex-pattern predicate-pattern function-pattern pattern-type
+  
+  ;; search options
+  default-search-options merge-options
+  
+  ;; search result type
+  make-search-result search-result? search-result-matches search-result-total-lines
+  search-result-match-count search-result-files-searched search-result-pattern
+  search-result-options
+  
+  ;; field type
+  make-field field? field-value field-position field-length)
+
+;;; ═══════════════════════════════════════════════════════════════════════════
+;;; tests (extensive edge case coverage)
+;;; ═══════════════════════════════════════════════════════════════════════════
+
+(comment
+  ;; test: result type construction
+  (let ((success (ok 42))
+        (failure (error "something broke")))
+    
+    (assert (result-valid? success))
+    (assert (equal? 42 (result-ok-value success)))
+    
+    (assert (not (result-valid? failure)))
+    (assert (equal? "something broke" (result-error-reason failure))))
+  
+  ;; test: match type construction
+  (let ((m (make-match "hello world" 5 ["hello" "world"] "test.txt" "hello world")))
+    (assert (equal? "hello world" (match-line m)))
+    (assert (equal? 5 (match-line-number m)))
+    (assert (equal? 2 (length (match-fields m))))
+    (assert (equal? "test.txt" (match-file m))))
+  
+  ;; test: pattern type construction
+  (let ((rp (regex-pattern "test.*"))
+        (pp (predicate-pattern (lambda (s) (> (string-length s) 10))))
+        (fp (function-pattern string-upcase)))
+    
+    (assert (equal? :regex (pattern-type rp)))
+    (assert (equal? :predicate (pattern-type pp)))
+    (assert (equal? :function (pattern-type fp))))
+  
+  ;; test: search options merging
+  (let ((custom {:field-separator ","
+                 :case-sensitive false})
+        (merged (merge-options custom)))
+    
+    (assert (equal? "," (get merged :field-separator)))
+    (assert (not (get merged :case-sensitive)))
+    (assert (equal? true (get merged :line-numbers)))  ; from default
+    (assert (equal? 0 (get merged :context-before))))   ; from default
+  
+  ;; test: field type construction
+  (let ((f (make-field "hello" 0 5)))
+    (assert (equal? "hello" (field-value f)))
+    (assert (equal? 0 (field-position f)))
+    (assert (equal? 5 (field-length f))))
+  
+  ;; edge case: empty string field
+  (let ((f (make-field "" 2 0)))
+    (assert (equal? "" (field-value f)))
+    (assert (equal? 0 (field-length f))))
+  
+  ;; edge case: result with nil value
+  (let ((r (ok nil)))
+    (assert (result-valid? r))
+    (assert (nil? (result-ok-value r))))
+  
+  ;; edge case: match with empty fields
+  (let ((m (make-match "" 1 [] "empty.txt" "")))
+    (assert (empty? (match-fields m)))
+    (assert (equal? "" (match-line m))))
+  )
+
+;;; ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
+;;; rich hickey's simple made easy applied to data structures
+;;; ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
+;;;
+;;; SIMPLE (one concept, clear boundary):
+;;;   - Result:        success-or-failure
+;;;   - Match:         matched-line-with-metadata
+;;;   - Pattern:       what-to-search-for
+;;;   - SearchOptions: how-to-search
+;;;   - SearchResult:  outcome-of-search
+;;;   - Field:         column-from-split-line
+;;;
+;;; NOT COMPLECTED (each is independent):
+;;;   - Result doesn't know about Match
+;;;   - Match doesn't know about Pattern
+;;;   - Pattern doesn't know about SearchOptions
+;;;   - SearchOptions doesn't know about SearchResult
+;;;
+;;; they compose through functions (next file: functions.ket)
+;;; but they don't interleave/depend on each other
+;;;
+;;; like lego blocks:
+;;;   - each block is simple (brick, plate, tile)
+;;;   - blocks don't contain each other
+;;;   - blocks connect through studs (interfaces)
+;;;   - castle emerges from composition
+;;;
+;;; ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
+;;; end of data-structures.ket
+;;;
+;;; now == next + 1 ✧･ﾟ:* 🌾
+;;; ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
+
