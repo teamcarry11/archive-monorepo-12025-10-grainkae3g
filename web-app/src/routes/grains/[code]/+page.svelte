@@ -33,6 +33,20 @@
     overflow-x: auto;
   }
   
+  /* Style the > next button in grains */
+  .graincard-content :global(.grain-next-btn) {
+    color: var(--orange);
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .graincard-content :global(.grain-next-btn:hover) {
+    transform: translateX(2px);
+    text-shadow: 0 0 8px var(--orange);
+  }
+  
   .graincard-content :global(pre) {
     margin: 0;
     padding: 0;
