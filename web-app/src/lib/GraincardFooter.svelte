@@ -26,7 +26,7 @@
 <div class="graincard-footer">
   <div class="footer-content">
     <div class="grainbook-info">
-      <span class="grainbook-name">Grainbook: Ember Harvest 🎃</span>
+      <span class="grainbook-name">Grainbook Issue 1: Ember Harvest 🎃 (System Magazine)</span>
     </div>
     <div class="card-meta">
       <span class="card-number">Card: {code} ({sortOrder + 1} of {totalCards.toLocaleString()})</span>

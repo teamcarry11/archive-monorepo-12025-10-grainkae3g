@@ -1,7 +1,7 @@
 # Graincard xbdghk - Grainbranch README Sync (Ketos)
 
 **File**: `grainbarrel/scripts/grainbranch-readme-sync.ket`  
-**Live**: https://kae3g.github.io/grainkae3g/grainscript/xbdghk  
+**Live**: https://kae3g.github.io/grainkae3g/grains/xbdghk  
 **Previous Card**: [xbdghj](xbdghj-grainbranch-readme-sync-babashka.md) (Babashka version)
 
 ```
@@ -56,8 +56,8 @@
 │ Redox OS future. The code is almost identical - that's the beauty of Lisp.   │
 │                                                                              │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│ Grainbook: Ember Harvest 🎃                                                  │
-│ Card: xbdghk (2 of 1,235,520)                                                │
+│ Grainbook Issue 1: Ember Harvest 🎃 (System Magazine)                       │
+│ Grain: xbdghk (2 of 1,235,520)                                               │
 │ Next: [xbdghl](xbdghl-graincard-format-spec.md) →                           │
 │ now == next + 1 🌾                                                           │
 └──────────────────────────────────────────────────────────────────────────────┘
