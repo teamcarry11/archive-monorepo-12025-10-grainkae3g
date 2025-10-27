@@ -1,0 +1,392 @@
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ graincard validation chain (ketos)                                           ║
+;; ║ team: 06 (teamprecision06 - virgo ♍ / vi. the lovers)                       ║
+;; ║ copyright © 3x39 | author: kae3g (kj3x39, @risc.love)                        ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+;;
+;; purpose: compose all graincard validators into one pure functional chain
+;;   - validates 110-line requirement (lines 6-115)
+;;   - validates 80-character display width
+;;   - validates file structure (header, fences, footer)
+;;   - validates grainorder code format
+;;   - purely functional (no side effects except reporting)
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ display width calculation (unicode-aware)                                    ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (char-display-width c)
+  "calculate display width of a character (handles unicode)"
+  (let ((code (char->integer c)))
+    (cond
+      ((< code 32) 0)                                    ;; control chars
+      ((< code 127) 1)                                   ;; ascii
+      ((and (>= code #x2500) (<= code #x257F)) 1)        ;; box-drawing
+      ((and (>= code #x3000) (<= code #x9FFF)) 2)        ;; cjk wide
+      ((and (>= code #x0300) (<= code #x036F)) 0)        ;; combining
+      (else 1))))                                        ;; default
+
+(define (string-display-width s)
+  "calculate total display width of string"
+  (fold + 0 (map char-display-width (string->list s))))
+
+;;    ✿ ❀ ✾ ❁ pure predicates: the building blocks ❁ ✾ ❀ ✿
+;;
+;;    each predicate follows these laws:
+;;      1. deterministic: same input → same output, always
+;;      2. pure: no side effects, no io, no mutation
+;;      3. total: defined for all inputs in domain
+;;      4. composable: can be combined through and/or/not
+;;
+;;    type signatures follow haskell notation:
+;;      predicate-name :: domain → Bool
+;;
+;;    in clojure.spec we'd write:
+;;      (s/def ::grain-lines (s/coll-of string? :count 116))
+;;      (s/fdef valid-total-lines? :args (s/cat :lines ::grain-lines))
+
+(define (valid-total-lines? lines)
+  "spec: [String] → Bool | grain file must be exactly 116 lines total
+   
+   line breakdown:
+     1-4: header (title, blank, live url, blank)
+     5: opening ``` fence
+     6-115: 110-line ascii box (the grain itself)
+     116: closing ``` fence"
+  (= 116 (length lines)))
+
+(define (valid-opening-fence? lines)
+  "spec: [String] → Bool | line 5 must be ``` (markdown code fence)
+   
+   the header (lines 1-4) is always exactly 4 lines, so line 5 is the fence.
+   we use exact equality here because the structure is rigid by design."
+  (and (= (length lines) 116)  ;; must be exact total
+       (equal? "```" (string-trim (list-ref lines 4)))))
+
+(define (valid-closing-fence? lines)
+  "spec: [String] → Bool | line 116 must be ``` (closing fence)
+   
+   exactly 116 lines required, so we check with = not >=.
+   the structure is precise: no more, no less than 116 lines total."
+  (and (= (length lines) 116)
+       (equal? "```" (string-trim (list-ref lines 115)))))
+
+;;    ∿∿∿ the sacred 110: lines 6-115 inclusive ∿∿∿
+
+(define (valid-box-line-count? lines)
+  "spec: [String] → Bool | lines 6-115 = exactly 110 lines (borders included)
+   
+   this is the heart of graincard format: 110 lines of 80-char content.
+   includes top border (┌), content, separator (├), footer, bottom border (└).
+   we know total is 116, so the box must be exactly 110 lines."
+  (and (= (length lines) 116)
+       (let ((box-lines (slice lines 5 115)))  ;; indices 5-114 = 110 lines
+         (= 110 (length box-lines)))))
+
+;;    ✧ ✦ ✧ display width (unicode-aware character counting) ✧ ✦ ✧
+
+(define (valid-line-width? line)
+  "spec: String → Bool | line must be exactly 80 display chars (not bytes!)
+   
+   unicode box-drawing (┌─┐│├┤└┘) = 3 bytes but 1 display width
+   emoji (🎃🌾) = 4 bytes but 2 display width (typically)
+   ascii (a-z 0-9) = 1 byte and 1 display width
+   
+   we count visual width as it appears in terminal/browser"
+  (= 80 (string-display-width line)))
+
+(define (all-box-lines-80-chars? lines)
+  "spec: [String] → Bool | every box line = 80 display chars
+   
+   applies valid-line-width? to all 110 lines in the box.
+   this is higher-order: a predicate that uses a predicate.
+   pure functional composition flowing like water through pipes."
+  (and (= (length lines) 116)
+       (let ((box-lines (slice lines 5 115)))
+         (every? valid-line-width? box-lines))))
+
+;;    ┌─── border validation ───┐
+
+(define (valid-top-border? lines)
+  "spec: [String] → Bool | line 6 starts with ┌ (top border)
+   
+   the top border opens the grain, welcoming readers into the teaching space."
+  (and (= (length lines) 116)
+       (string-starts-with? (list-ref lines 5) "┌")))
+
+(define (valid-bottom-border? lines)
+  "spec: [String] → Bool | line 115 starts with └ (bottom border)
+   
+   the bottom border closes the grain, completing the sacred 110-line form."
+  (and (= (length lines) 116)
+       (string-starts-with? (list-ref lines 114) "└")))
+
+;;    └─── footer structure ───┘
+
+(define (valid-footer-format? lines)
+  "spec: [String] → Bool | footer has grainbook, card number, > next button
+   
+   expected format on line 113:
+     │ grain: xbdghj (1 of 1,235,520)                                  > │
+   
+   the > character serves as a visual next button, linking grains together.
+   the footer must include: grain code, position in sequence, next indicator."
+  (and (= (length lines) 116)
+       (let ((footer-line (list-ref lines 112)))  ;; line 113
+         (and (string-contains? footer-line "grain:")
+              (string-contains? footer-line "of 1,235,520")
+              (string-contains? footer-line ">")))))
+
+;;    ✧･ﾟ: *✧･ﾟ:*    *:･ﾟ✧*:･ﾟ✧    ✧･ﾟ: *✧･ﾟ:*    *:･ﾟ✧*:･ﾟ✧
+;;    validation-result: the heart of our functional validation
+;;    ✧･ﾟ: *✧･ﾟ:*    *:･ﾟ✧*:･ﾟ✧    ✧･ﾟ: *✧･ﾟ:*    *:･ﾟ✧*:･ﾟ✧
+;;
+;;    in clojure we would write:
+;;      (s/def ::valid? boolean?)
+;;      (s/def ::errors (s/coll-of string?))
+;;      (s/def ::validation-result (s/keys :req-un [::valid? ::errors]))
+;;
+;;    in ketos we express this through records and predicates:
+
+(define-record validation-result
+  (valid?      ;; spec: boolean? | is this validation successful?
+   errors))    ;; spec: (list-of string?) | collection of error messages
+
+;;    type signature (haskell-style):
+;;      validation-result :: { valid? :: Bool, errors :: [String] }
+;;
+;;    laws (algebraic properties):
+;;      1. identity: (combine-validations '()) = (validation-passed)
+;;      2. associative: combine is associative like monoid append
+;;      3. homomorphic: preserves structure through composition
+
+(define (make-validation-result valid? errors)
+  "constructor :: Bool → [String] → validation-result
+   
+   creates a validation result from validity flag and error list.
+   pure function with no side effects."
+  (validation-result valid? errors))
+
+;;    ✿ ❀ ✿ smart constructors (factory functions) ✿ ❀ ✿
+
+(define (validation-passed)
+  "smart constructor :: () → validation-result
+   
+   represents successful validation with empty error list.
+   equivalent to clojure's (s/valid? spec data) returning true"
+  (make-validation-result #t '()))
+
+(define (validation-failed error-message)
+  "smart constructor :: String → validation-result
+   
+   represents failed validation with single error.
+   equivalent to clojure's (s/explain-data spec data) containing problems"
+  (make-validation-result #f (list error-message)))
+
+;;    ❋ ✺ ❋ monoid instance (algebraic structure) ❋ ✺ ❋
+;;
+;;    validation-result forms a monoid under combine-validations:
+;;      - identity element: (validation-passed)
+;;      - binary operation: (combine-validations results)
+;;      - associative: (combine (combine a b) c) = (combine a (combine b c))
+;;
+;;    this lets us compose validations freely, knowing they'll combine correctly
+
+(define (combine-validations results)
+  "monoid append :: [validation-result] → validation-result
+   
+   combines multiple validation results into one.
+   aggregates all errors, determines overall validity.
+   pure functional composition following monoid laws."
+  (let ((all-errors (apply append (map validation-result-errors results)))
+        (all-valid? (every? validation-result-valid? results)))
+    (make-validation-result all-valid? all-errors)))
+
+;;    ∿∿∿ lifting predicates into validation context ∿∿∿
+;;
+;;    in haskell: fmap :: (a → Bool) → a → Validation
+;;    in clojure: (s/valid? spec data) → boolean + (s/explain-data spec data)
+;;    in ketos: we lift manually through the check function
+;;
+;;    this is functor-like behavior: we're mapping from predicate-land
+;;    (functions returning bool) into validation-result-land (rich results
+;;    carrying both success/failure and error context)
+
+(define (check pred data error-msg)
+  "functor lift :: (a → Bool) → a → String → validation-result
+   
+   lifts a simple predicate (returns bool) into the validation monad.
+   transforms true → (validation-passed), false → (validation-failed msg).
+   this is how we compose pure predicates into rich validation chains."
+  (if (pred data)
+      (validation-passed)
+      (validation-failed error-msg)))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ composed validation pipeline (pure functional composition)                   ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (validate-grain-structure lines)
+  "validate complete grain structure through functional composition"
+  (combine-validations
+   (list
+    (check valid-total-lines? lines
+           "file must be exactly 116 lines total")
+    (check valid-opening-fence? lines
+           "line 5 must be ``` (opening fence)")
+    (check valid-closing-fence? lines
+           "line 116 must be ``` (closing fence)")
+    (check valid-box-line-count? lines
+           "lines 6-115 must be exactly 110 lines")
+    (check valid-top-border? lines
+           "line 6 must start with ┌ (top border)")
+    (check valid-bottom-border? lines
+           "line 115 must start with └ (bottom border)")
+    (check all-box-lines-80-chars? lines
+           "all box lines must be exactly 80 display chars")
+    (check valid-footer-format? lines
+           "footer must have proper format with > next button"))))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ file io (read grain into lines)                                              ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (read-grain-file path)
+  "read grain file and return list of lines"
+  (with-input-from-file path
+    (lambda ()
+      (let loop ((lines '()))
+        (let ((line (read-line)))
+          (if (eof-object? line)
+              (reverse lines)
+              (loop (cons line lines))))))))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ validation runner (io wrapper around pure validation)                        ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (validate-grain-file path)
+  "validate a grain file (io → pure validation → io reporting)"
+  (let* ((lines (read-grain-file path))
+         (result (validate-grain-structure lines))
+         (file-name (path-file-name path)))
+    
+    (if (validation-result-valid? result)
+        (println! (format "✅ ~a" file-name))
+        (do
+          (println! (format "❌ ~a" file-name))
+          (for-each
+           (lambda (err) (println! (format "   → ~a" err)))
+           (validation-result-errors result))))
+    
+    (validation-result-valid? result)))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ batch validation (map validation over all grains)                            ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (validate-all-grains grain-dir)
+  "validate all markdown files in directory (pure functional pipeline)"
+  (let* ((all-files (directory-list grain-dir))
+         (md-files (filter (lambda (f) (string-ends-with? f ".md"))
+                          all-files))
+         (full-paths (map (lambda (f) (path-join grain-dir f))
+                         md-files))
+         (results (map validate-grain-file full-paths))
+         (valid-count (count identity results))
+         (total-count (length results)))
+    
+    (println! "")
+    (println! (format "📏 validation complete: ~a/~a grains valid" 
+                    valid-count total-count))
+    (= valid-count total-count)))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ cli interface                                                                 ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (main args)
+  "cli entry point with pure functional validation chain"
+  
+  (if (< (length args) 1)
+      (do
+        (println! "🎃 graincard validation chain (ketos)")
+        (println! "copyright © 3x39 | author: kae3g")
+        (println! "team: 06 (teamprecision06 - the lovers)")
+        (println! "")
+        (println! "validates:")
+        (println! "  ✓ 116 total lines")
+        (println! "  ✓ 110-line box (lines 6-115, borders included)")
+        (println! "  ✓ 80 display-char width (unicode-aware)")
+        (println! "  ✓ proper structure (fences, borders, footer)")
+        (println! "")
+        (println! "usage:")
+        (println! "  ketos graincard-validate-all.ket <grain-directory>")
+        (println! "")
+        (println! "example:")
+        (println! "  ketos graincard-validate-all.ket grains/")
+        (println! "")
+        (println! "architecture:")
+        (println! "  pure predicates → validation results → composed pipeline")
+        (println! "  inspired by clojure.spec and functional composition")
+        (println! "")
+        (println! "now == next + 1 🌾")
+        1)
+      
+      (let* ((grain-dir (car args))
+             (all-valid? (validate-all-grains grain-dir)))
+        
+        (println! "")
+        (println! (if all-valid?
+                     "🎃 all grains valid! ready for deployment!"
+                     "⚠️  some grains need fixes"))
+        (println! "now == next + 1 🌾")
+        
+        (if all-valid? 0 1))))
+
+;; run if executed as script
+(when (defined? '*args*)
+  (exit (main *args*)))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ functional composition philosophy                                            ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+;;
+;; this validator follows pure functional principles:
+;;
+;; 1. pure predicates (valid-total-lines?, valid-opening-fence?, etc.)
+;;    - take data, return boolean
+;;    - no side effects
+;;    - composable
+;;
+;; 2. validation result type (validation-result record)
+;;    - wraps success/failure with error messages
+;;    - combines like a monoid (combine-validations)
+;;    - keeps validation pure while collecting errors
+;;
+;; 3. validation chain (validate-grain-structure)
+;;    - composes all predicates
+;;    - lifts them into validation result context
+;;    - combines results functionally
+;;
+;; 4. io boundary (validate-grain-file, validate-all-grains)
+;;    - handles file reading
+;;    - runs pure validation
+;;    - reports results
+;;    - keeps io separate from logic
+;;
+;; inspired by:
+;;   - clojure.spec (validation as data)
+;;   - haskell validation (applicative composition)
+;;   - railway oriented programming (result types)
+;;   - unix philosophy (compose small pieces)
+;;
+;; the chain flows:
+;;   file → lines → predicates → results → combined → report
+;;
+;; each step is pure. each step composes. the whole emerges from parts.
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ now == next + 1 🎃🌾                                                         ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+

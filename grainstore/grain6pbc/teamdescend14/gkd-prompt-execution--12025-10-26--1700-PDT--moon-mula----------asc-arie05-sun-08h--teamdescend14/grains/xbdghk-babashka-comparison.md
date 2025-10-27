@@ -1,8 +1,6 @@
-# Graincard xbdghk - Grainbranch README Sync (Ketos)
+# Graincard xbdghk - Babashka Comparison
 
-**File**: `grainbarrel/scripts/grainbranch-readme-sync.ket`  
-**Live**: https://kae3g.github.io/grainkae3g/grainscript/xbdghk  
-**Previous Card**: [xbdghj](xbdghj-grainbranch-readme-sync-babashka.md) (Babashka version)
+**Live**: https://kae3g.github.io/grainkae3g/grainscript/xbdghk
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
