@@ -1,4 +1,5 @@
 <script>
+  import { base } from '$app/paths';
   import LicenseFooter from '$lib/LicenseFooter.svelte';
 </script>
 
@@ -47,28 +48,28 @@
   <h2>Available grains</h2>
   
   <div class="grain-card">
-    <h3><a href="https://github.com/kae3g/grainkae3g/blob/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grains/xbdghj-grainbranch-readme-sync-babashka.md" target="_blank">xbdghj</a></h3>
+    <h3><a href="{base}/grainscript/xbdghj">xbdghj</a></h3>
     <p class="title">Grainbranch README Sync (Babashka)</p>
     <p class="description">How to symlink your root README to a grainbranch README using Babashka. Your first automation script.</p>
     <span class="card-number">Card 1 of 1,235,520</span>
   </div>
   
   <div class="grain-card">
-    <h3><a href="https://github.com/kae3g/grainkae3g/blob/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grains/xbdghk-grainbranch-readme-sync-ketos.md" target="_blank">xbdghk</a></h3>
+    <h3><a href="{base}/grainscript/xbdghk">xbdghk</a></h3>
     <p class="title">Grainbranch README Sync (Ketos)</p>
     <p class="description">The same script, but in Ketos (Rust Lisp). Compare and learn both languages side-by-side.</p>
     <span class="card-number">Card 2 of 1,235,520</span>
   </div>
   
   <div class="grain-card">
-    <h3><a href="https://github.com/kae3g/grainkae3g/blob/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grains/xbdghl-graincard-format-spec.md" target="_blank">xbdghl</a></h3>
+    <h3><a href="{base}/grainscript/xbdghl">xbdghl</a></h3>
     <p class="title">Graincard Format Specification</p>
     <p class="description">The meta-script! Learn the 80×110 format itself. How graincards work, why they're this size, and the philosophy behind them.</p>
     <span class="card-number">Card 3 of 1,235,520</span>
   </div>
   
   <div class="grain-card">
-    <h3><a href="https://github.com/kae3g/grainkae3g/blob/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grains/xbdghn-grainorder-alphabet-system.md" target="_blank">xbdghn</a></h3>
+    <h3><a href="{base}/grainscript/xbdghn">xbdghn</a></h3>
     <p class="title">Grainorder Alphabet System</p>
     <p class="description">How we order 1.2 million cards with 13 consonants. No vowels, no duplicates, pure math. The addressing system explained.</p>
     <span class="card-number">Card 4 of 1,235,520</span>

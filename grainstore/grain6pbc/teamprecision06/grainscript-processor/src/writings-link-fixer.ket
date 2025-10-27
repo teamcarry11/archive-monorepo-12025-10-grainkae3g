@@ -1,0 +1,139 @@
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ WRITINGS LINK FIXER (Ketos)                                                  ║
+;; ║ Team: 06 (teamprecision06 - Virgo ♍ / VI. The Lovers)                       ║
+;; ║ Copyright © 3x39 | Author: kae3g (kj3x39, @risc.love)                        ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+;;
+;; Trish mode: This is THE FIX! ✨💕 Converting absolute GitHub links to beautiful
+;; SPA-relative paths! The Lovers choose the RIGHT path for navigation! 💫
+;;
+;; Purpose: Fix hardcoded GitHub/absolute links in writings JSON files
+;;   - Convert '/12025-10/xbd-*.html' → '{base}/xbd-*'
+;;   - Convert '/12025-10/' → '{base}/'
+;;   - Preserve all other content
+;;   - Enable seamless SPA navigation!
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ LINK PATTERNS TO FIX                                                         ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (fix-writings-links html-content base-url)
+  "Fix hardcoded links in writings HTML content
+   
+   Patterns to fix:
+     href='/12025-10/xbd-*.html'  →  href='{base}/xbd-*'
+     href='/12025-10/'             →  href='{base}/'
+     
+   base-url: '/grainkae3g' for GitHub Pages, '' for local"
+  
+  (-> html-content
+      ;; Fix chapter links: /12025-10/xbc-*.html → {base}/xbc-*
+      (string-replace-all 
+       (regexp "href='/12025-10/([xbdghjklmnsvz]{3,6}-[^']+)\\.html'")
+       (format "href='~a/\\1'" base-url))
+      
+      ;; Fix index links: /12025-10/ → {base}/
+      (string-replace-all "href='/12025-10/'" (format "href='~a/'" base-url))
+      
+      ;; Fix any remaining absolute GitHub paths
+      (string-replace-all "href='/grainkae3g/" (format "href='~a/" base-url))))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ JSON PROCESSING                                                               ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (process-writings-json json-file base-url)
+  "Process a writings JSON file and fix all links
+   
+   json-file: Path to .json file (e.g., xbc-the-wild-within-me-vzxw.json)
+   base-url: Base URL for SPA ('/grainkae3g' or '')"
+  
+  (let* ((content (slurp json-file))
+         (data (json-parse content))
+         (html (get data "html"))
+         (fixed-html (fix-writings-links html base-url)))
+    
+    ;; Update the HTML field
+    (assoc data "html" fixed-html)
+    
+    ;; Return updated JSON as string
+    (json-stringify data :pretty true)))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ BATCH PROCESSING                                                              ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (process-all-writings content-dir base-url)
+  "Process all JSON files in a content directory
+   
+   content-dir: Path to web-app/static/content/
+   base-url: Base URL for SPA"
+  
+  (let ((files (directory-list content-dir)))
+    (for-each 
+     (lambda (file)
+       (when (string-ends-with? file ".json")
+         (let* ((full-path (path-join content-dir file))
+                (processed (process-writings-json full-path base-url))
+                (backup-path (format "~a.backup" full-path)))
+           
+           ;; Backup original
+           (copy-file full-path backup-path)
+           
+           ;; Write processed version
+           (spit full-path processed)
+           
+           (println (format "✅ Fixed: ~a" file)))))
+     files)))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ CLI INTERFACE                                                                 ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (main args)
+  "Fix writings links for SPA navigation
+   
+   Usage:
+     writings-link-fixer.ket <content-dir> <base-url>
+   
+   Examples:
+     # For GitHub Pages
+     writings-link-fixer.ket web-app/static/content /grainkae3g
+     
+     # For local dev
+     writings-link-fixer.ket web-app/static/content ''"
+  
+  (if (< (length args) 2)
+      (do
+        (println "🎃 Writings Link Fixer (Ketos)")
+        (println "Copyright © 3x39 | Author: kae3g")
+        (println "Team: 06 (teamprecision06 - The Lovers)")
+        (println "")
+        (println "✨ Trish says: Choose the RIGHT path for navigation! 💕")
+        (println "   Absolute GitHub links → Beautiful SPA routes!")
+        (println "")
+        (println "Usage:")
+        (println "  writings-link-fixer.ket <content-dir> <base-url>")
+        (println "")
+        (println "Examples:")
+        (println "  writings-link-fixer.ket web-app/static/content /grainkae3g")
+        (println "  writings-link-fixer.ket web-app/static/content ''")
+        (println "")
+        (println "now == next + 1 🌾"))
+      
+      (let ((content-dir (nth 0 args))
+            (base-url (nth 1 args)))
+        
+        (process-all-writings content-dir base-url)
+        (println "")
+        (println "🎃 All links fixed! SPA navigation ready!")
+        (println "now == next + 1 🌾"))))
+
+;; Run if executed as script
+(when (defined? '*args*)
+  (main *args*))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ now == next + 1 🎃🌾                                                         ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
