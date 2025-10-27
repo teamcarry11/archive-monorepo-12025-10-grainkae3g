@@ -4,7 +4,7 @@
   let theme = 'dark';
   
   onMount(() => {
-    // Check localStorage or default to dark (Tundra night)
+    // Check localStorage or default to dark (Ember Harvest night)
     theme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', theme);
   });
