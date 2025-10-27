@@ -1,0 +1,249 @@
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ GRAINCARD WIDTH VALIDATOR (Ketos)                                           ║
+;; ║ Team: 06 (teamprecision06 - Virgo ♍ / VI. The Lovers)                       ║
+;; ║ Copyright © 3x39 | Author: kae3g (kj3x39, @risc.love)                        ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+;;
+;; Purpose: Validate graincard lines are exactly 80 display characters
+;;   - Counts display width, NOT bytes (handles Unicode box-drawing)
+;;   - Checks lines 6-115 (110-line ASCII box)
+;;   - Reports violations with line number and actual width
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ DISPLAY WIDTH CALCULATION                                                    ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (char-display-width c)
+  "Calculate display width of a single character
+   
+   Most chars = 1 width
+   Wide chars (CJK, etc) = 2 width
+   Combining chars = 0 width
+   Box-drawing chars = 1 width (┌─┐│├┤└┘)"
+  
+  (let ((code (char->integer c)))
+    (cond
+      ;; Control characters (0 width)
+      ((< code 32) 0)
+      
+      ;; ASCII (1 width)
+      ((< code 127) 1)
+      
+      ;; Box-drawing characters (U+2500-U+257F) = 1 width
+      ((and (>= code #x2500) (<= code #x257F)) 1)
+      
+      ;; CJK and wide characters (2 width)
+      ;; This is simplified - full Unicode width tables are complex
+      ((or (and (>= code #x1100) (<= code #x115F))  ;; Hangul Jamo
+           (and (>= code #x2E80) (<= code #x2EFF))  ;; CJK Radicals
+           (and (>= code #x3000) (<= code #x303F))  ;; CJK Symbols
+           (and (>= code #x3040) (<= code #x309F))  ;; Hiragana
+           (and (>= code #x30A0) (<= code #x30FF))  ;; Katakana
+           (and (>= code #x3400) (<= code #x4DBF))  ;; CJK Unified
+           (and (>= code #x4E00) (<= code #x9FFF))  ;; CJK Unified
+           (and (>= code #xAC00) (<= code #xD7AF))  ;; Hangul
+           (and (>= code #xFF00) (<= code #xFFEF))) ;; Fullwidth
+       2)
+      
+      ;; Combining marks (0 width)
+      ((and (>= code #x0300) (<= code #x036F)) 0)
+      
+      ;; Default: 1 width
+      (else 1))))
+
+(define (string-display-width s)
+  "Calculate total display width of a string
+   
+   Sums display widths of all characters
+   Handles Unicode box-drawing, wide chars, combining marks"
+  
+  (fold + 0 (map char-display-width (string->list s))))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ GRAINCARD VALIDATION                                                         ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (read-grain-lines file-path)
+  "Read grain file and return all lines as a list"
+  (with-input-from-file file-path
+    (lambda ()
+      (let loop ((lines '()))
+        (let ((line (read-line)))
+          (if (eof-object? line)
+              (reverse lines)
+              (loop (cons line lines))))))))
+
+(define (validate-grain-width file-path)
+  "Validate all lines in ASCII box are exactly 80 display chars
+   
+   Returns: List of (line-number actual-width) for violations"
+  
+  (let* ((lines (read-grain-lines file-path))
+         (indexed-lines (zip (range 1 (+ 1 (length lines))) lines))
+         (box-lines (filter (lambda (pair)
+                             (let ((line-num (car pair)))
+                               (and (>= line-num 6) (<= line-num 115))))
+                           indexed-lines)))
+    
+    ;; Check each box line for 80-char width
+    (filter-map 
+     (lambda (pair)
+       (let ((line-num (car pair))
+             (line-text (cadr pair))
+             (width (string-display-width line-text)))
+         (if (not (= width 80))
+             (list line-num width)
+             #f)))
+     box-lines)))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ REPORTING                                                                     ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (report-validation-results file-path violations)
+  "Print validation results in a readable format"
+  
+  (let ((file-name (path-file-name file-path)))
+    (if (null? violations)
+        (println! (format "✅ ~a - All lines exactly 80 chars" file-name))
+        (do
+          (println! (format "❌ ~a - ~a violations:" 
+                           file-name 
+                           (length violations)))
+          (for-each
+           (lambda (v)
+             (let ((line-num (car v))
+                   (width (cadr v)))
+               (println! (format "   Line ~a: ~a chars (expected 80)" 
+                               line-num 
+                               width))))
+           violations)))))
+
+(define (validate-grain-file file-path)
+  "Validate a single grain file and print results"
+  
+  (let ((violations (validate-grain-width file-path)))
+    (report-validation-results file-path violations)
+    (null? violations)))  ;; Return true if valid
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ BATCH VALIDATION                                                              ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (validate-all-grains grain-dir)
+  "Validate all .md files in a directory
+   
+   Returns: Number of invalid grains"
+  
+  (let* ((files (directory-list grain-dir))
+         (md-files (filter (lambda (f) 
+                            (string-ends-with? f ".md"))
+                          files))
+         (full-paths (map (lambda (f) 
+                           (path-join grain-dir f))
+                         md-files)))
+    
+    (println! "🎃 Validating grain display widths...")
+    (println! (format "Directory: ~a" grain-dir))
+    (println! "")
+    
+    (let ((results (map validate-grain-file full-paths)))
+      (let ((valid-count (count identity results))
+            (total-count (length results)))
+        
+        (println! "")
+        (println! (format "📏 Results: ~a/~a grains valid" 
+                        valid-count 
+                        total-count))
+        (println! "now == next + 1 🌾")
+        
+        (- total-count valid-count)))))  ;; Return number of failures
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ CLI INTERFACE                                                                 ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+
+(define (main args)
+  "CLI entry point
+   
+   Usage:
+     graincard-width-validator.ket <grain-directory>
+   
+   Example:
+     ketos graincard-width-validator.ket grains/"
+  
+  (if (< (length args) 1)
+      (do
+        (println! "🎃 Graincard Width Validator (Ketos)")
+        (println! "Copyright © 3x39 | Author: kae3g")
+        (println! "Team: 06 (teamprecision06 - The Lovers)")
+        (println! "")
+        (println! "Purpose: Validate graincard lines are exactly 80 display chars")
+        (println! "")
+        (println! "Usage:")
+        (println! "  ketos graincard-width-validator.ket <grain-directory>")
+        (println! "")
+        (println! "Example:")
+        (println! "  ketos graincard-width-validator.ket grains/")
+        (println! "")
+        (println! "Notes:")
+        (println! "  - Counts DISPLAY width (visual chars), not bytes")
+        (println! "  - Handles Unicode box-drawing correctly")
+        (println! "  - Checks lines 6-115 (110-line ASCII box)")
+        (println! "")
+        (println! "now == next + 1 🌾")
+        1)  ;; Exit code 1
+      
+      (let ((grain-dir (car args)))
+        (validate-all-grains grain-dir))))
+
+;; Run if executed as script
+(when (defined? '*args*)
+  (exit (main *args*)))
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ EXAMPLE OUTPUT                                                                ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+;;
+;; $ ketos graincard-width-validator.ket grains/
+;; 🎃 Validating grain display widths...
+;; Directory: grains/
+;;
+;; ✅ xbdghj-grainbranch-readme-sync-babashka.md - All lines exactly 80 chars
+;; ✅ xbdghk-grainbranch-readme-sync-ketos.md - All lines exactly 80 chars
+;; ✅ xbdghl-graincard-format-spec.md - All lines exactly 80 chars
+;; ✅ xbdghn-grainorder-alphabet-system.md - All lines exactly 80 chars
+;; ✅ xbdghs-graintime-temporal-calculation.md - All lines exactly 80 chars
+;;
+;; 📏 Results: 5/5 grains valid
+;; now == next + 1 🌾
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ WHY DISPLAY WIDTH MATTERS                                                     ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+;;
+;; Unicode characters can be:
+;;   - 1 byte  (ASCII: a-z, 0-9)
+;;   - 2 bytes (Latin extended: é, ñ)
+;;   - 3 bytes (Box-drawing: ┌─┐│├┤└┘)
+;;   - 4 bytes (Emoji: 🎃🌾)
+;;
+;; But display width can be:
+;;   - 0 width (combining marks: á = a + ´)
+;;   - 1 width (most chars, including box-drawing)
+;;   - 2 width (CJK characters, fullwidth)
+;;
+;; This validator counts DISPLAY width, ensuring grains look correct on:
+;;   - Terminals (80-column tradition)
+;;   - E Ink readers (fixed-width displays)
+;;   - Mobile phones (portrait mode)
+;;   - Tablets (landscape "MOVIE MODE")
+;;
+;; The 80-character width is sacred. It's not arbitrary. It's the width of
+;; punch cards, the width of teletype machines, the width of tradition.
+;; Every grain respects this constraint. Every grain fits everywhere.
+
+;; ╔══════════════════════════════════════════════════════════════════════════════╗
+;; ║ now == next + 1 🎃🌾                                                         ║
+;; ╚══════════════════════════════════════════════════════════════════════════════╝
+

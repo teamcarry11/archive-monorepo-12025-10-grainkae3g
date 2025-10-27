@@ -34,8 +34,9 @@
 
 ### 📖 Grainbook Issue 1: Ember Harvest
 - **5 grains published**: xbdghj → xbdghs (cards 1-5 of 1,235,520)
-- **1 grain at 110 lines**: xbdghj (expanded with wild→eastern aesthetic)
-- **4 grains need expansion**: xbdghk, xbdghl, xbdghn, xbdghs
+- **ALL 5 grains at 110 lines**: ✅ COMPLETE! (lines 6-115, borders included)
+- **Dense 80-char content**: Full-width teaching, Glow G2 voice, zero negations
+- **Ready for Show HN**: Patent-quality docs, professional presentation
 
 ### 📜 Patent Applications
 - **3 specs complete**: Graintime, Grainorder, mantraOS
@@ -45,7 +46,7 @@
 ## Chart Course Forward
 
 ### Priority 1: File Provisional Patents 🏛️
-**Why this week?**
+**Why THIS WEEK:**
 - Graintime, grainorder, and mantraOS specs are **complete and ready**
 - $130 each = $390 total for provisional protection
 - Gives us 12 months to file full utility patents
@@ -57,14 +58,15 @@
 3. Pay $390 filing fees
 4. Receive provisional application numbers
 
-### Priority 2: Expand 4 Grains to 110 Lines 📏
-**Grains to expand:**
-- **xbdghk** - Grainbranch README Sync (Ketos)
-- **xbdghl** - Graincard Format Specification
-- **xbdghn** - Grainorder Alphabet System
-- **xbdghs** - Graintime Temporal Calculation
+### Priority 2: ✅ COMPLETE - All 5 Grains at 110 Lines
+**ACCOMPLISHED:**
+- **xbdghj** - Grainbranch README Sync (Babashka) ✅
+- **xbdghk** - Grainbranch README Sync (Ketos) ✅
+- **xbdghl** - Graincard Format Specification ✅
+- **xbdghn** - Grainorder Alphabet System ✅
+- **xbdghs** - Graintime Temporal Calculation ✅
 
-**Template:** Use xbdghj as the model - fill elegantly like a test prep formula sheet, infuse wild→eastern aesthetic abstractly
+**Quality:** Dense 80-char content, pure Glow G2 voice, zero negations, patent-style clarity
 
 ### Priority 3: Complete 3 More Patent Specs 📝
 - **Patent #3**: Grainscript (80×110 teaching card system, 1.2M permutations)
