@@ -107,7 +107,8 @@
 │ unity,                                                                       │
 │                                                                              │
 │ kae3g - learning to trust multiplicity, release attachment to one true way, │
-│ let fluency mean options rather than rigid commitment                       │
+│ let fluency mean options rather than rigid commitment, trust that speaking  │
+│ multiple dialects enriches rather than dilutes understanding                │
 │                                                                              │
 │ grain: xbdghk (2 of 1,235,520)                                             > │
 │                                                                              │

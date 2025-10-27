@@ -103,7 +103,6 @@
 │ belongs, what size serves best, how paths should flow. the design emerges   │
 │ from patient observation rather than imposed theory. these 80×110 grains    │
 │ emerged the same way through iteration, testing, observation of what works. │
-│                                                                              │
 │ with deep appreciation for your teaching about form enabling abundance,     │
 │ constraint creating freedom, and limits revealing the path toward true      │
 │ generosity,                                                                  │
