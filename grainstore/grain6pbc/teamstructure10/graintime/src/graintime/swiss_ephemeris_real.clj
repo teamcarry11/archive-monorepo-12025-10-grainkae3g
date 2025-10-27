@@ -235,6 +235,172 @@
     (println "   Accuracy:" (:accuracy result))
     result))
 
+;; =============================================================================
+;; ASCENDANT & HOUSE CALCULATION (TROPICAL)
+;; =============================================================================
+
+(defn calculate-ascendant-swiss
+  "Calculate tropical ascendant using REAL Swiss Ephemeris
+  
+  This is the gold standard - uses Swiss Ephemeris swe_houses function
+  with Placidus house system (most common in Western astrology).
+  
+  Returns:
+    {:sign \"Libra\"
+     :degree 15
+     :longitude 195.0
+     :house-cusps [house1 house2 ... house12]
+     :ascendant 195.0
+     :mc 90.0  ; Midheaven (10th house cusp)
+     :method :swiss-ephemeris-placidus
+     :accuracy :professional-grade}"
+  [^LocalDateTime datetime latitude longitude]
+  (let [sw (init-swiss-ephemeris)
+        jd (datetime-to-julian-day datetime)
+        
+        ;; Prepare arrays for house cusps and ascendant/MC
+        cusps (double-array 13)  ; houses 1-12 (index 0 unused)
+        ascmc (double-array 10)  ; ascendant, MC, etc.
+        
+        ;; Calculate houses using Placidus system
+        ;; 'P' = Placidus (most common), other options: 'K' (Koch), 'E' (Equal), etc.
+        ret (.swe_houses sw jd SweConst/SEFLG_SWIEPH latitude longitude (int \P) cusps ascmc)]
+    
+    (let [asc-longitude (aget ascmc 0)  ; Ascendant longitude (0-360°)
+          mc-longitude (aget ascmc 1)   ; Midheaven (MC) longitude
+          
+          ;; Convert longitude to zodiac sign
+          sign-index (int (/ asc-longitude 30))
+          signs ["Aries" "Taurus" "Gemini" "Cancer" "Leo" "Virgo"
+                 "Libra" "Scorpio" "Sagittarius" "Capricorn" "Aquarius" "Pisces"]
+          sign (nth signs sign-index)
+          degree (int (mod asc-longitude 30))
+          
+          ;; Extract all house cusps
+          house-cusps (vec (map #(aget cusps %) (range 1 13)))]
+      
+      {:sign sign
+       :degree degree
+       :longitude asc-longitude
+       :mc mc-longitude
+       :house-cusps house-cusps
+       :ascendant asc-longitude
+       :method :swiss-ephemeris-placidus
+       :accuracy :professional-grade
+       :julian-day jd
+       :latitude latitude
+       :longitude longitude
+       :datetime datetime})))
+
+(defn get-ascendant-now
+  "Get current ascendant for given location using REAL Swiss Ephemeris"
+  [latitude longitude]
+  (calculate-ascendant-swiss (LocalDateTime/now) latitude longitude))
+
+;; =============================================================================
+;; INTEGRATED GRAINTIME CALCULATION
+;; =============================================================================
+
+(defn get-graintime-components-swiss
+  "Get ALL graintime components using REAL Swiss Ephemeris
+  
+  This is the complete, professional-grade calculation:
+  - Moon nakshatra (sidereal, Lahiri ayanamsa)
+  - Ascendant (tropical, Placidus houses)
+  - Both accurate to the second!
+  
+  Usage:
+    (get-graintime-components-swiss datetime latitude longitude)"
+  [^LocalDateTime datetime latitude longitude]
+  (let [;; Moon nakshatra (sidereal)
+        nakshatra (calculate-moon-nakshatra datetime)
+        
+        ;; Ascendant (tropical)
+        ascendant (calculate-ascendant-swiss datetime latitude longitude)]
+    
+    {:nakshatra (:nakshatra-abbrev nakshatra)
+     :nakshatra-full (:nakshatra-name nakshatra)
+     :nakshatra-index (:nakshatra-index nakshatra)
+     :sidereal-longitude (:sidereal-longitude nakshatra)
+     
+     :ascendant-sign (:sign ascendant)
+     :ascendant-degree (:degree ascendant)
+     :ascendant-longitude (:longitude ascendant)
+     :mc (:mc ascendant)
+     :house-cusps (:house-cusps ascendant)
+     
+     :method :swiss-ephemeris-complete
+     :accuracy :professional-grade
+     :datetime datetime
+     :latitude latitude
+     :longitude longitude}))
+
+;; =============================================================================
+;; TESTING / VERIFICATION
+;; =============================================================================
+
+(defn test-ascendant-calculation
+  "Test ascendant calculation for San Rafael, CA"
+  []
+  (let [;; Test time: 4:30 PM PDT, Oct 26, 2025
+        test-dt (LocalDateTime/of 2025 10 26 16 30 0)
+        latitude 37.9735
+        longitude -122.5311
+        result (calculate-ascendant-swiss test-dt latitude longitude)]
+    
+    (println "\n🌅 Testing REAL Swiss Ephemeris Ascendant:")
+    (println "   Location: San Rafael, CA (" latitude "°N, " longitude "°W)")
+    (println "   Datetime: 2025-10-26 16:30 PDT")
+    (println)
+    (println "   RESULT:")
+    (println "     Ascendant Sign:" (:sign result))
+    (println "     Ascendant Degree:" (:degree result) "°")
+    (println "     Ascendant Longitude:" (format "%.4f°" (:longitude result)))
+    (println "     Midheaven (MC):" (format "%.4f°" (:mc result)))
+    (println "     Method:" (:method result))
+    (println "     Accuracy:" (:accuracy result))
+    (println)
+    (println "     House Cusps:")
+    (doseq [[i cusp] (map-indexed vector (:house-cusps result))]
+      (let [house-sign-index (int (/ cusp 30))
+            house-degree (int (mod cusp 30))
+            signs ["Aries" "Taurus" "Gemini" "Cancer" "Leo" "Virgo"
+                   "Libra" "Scorpio" "Sagittarius" "Capricorn" "Aquarius" "Pisces"]
+            house-sign (nth signs house-sign-index)]
+        (println (format "       House %2d: %6.2f° (%s %d°)" (inc i) cusp house-sign house-degree))))
+    (println)
+    
+    result))
+
+(defn test-complete-graintime
+  "Test complete graintime calculation with Swiss Ephemeris"
+  []
+  (let [;; Current time
+        dt (LocalDateTime/now)
+        latitude 37.9735
+        longitude -122.5311
+        result (get-graintime-components-swiss dt latitude longitude)]
+    
+    (println "\n🌾 Complete Graintime Components (Swiss Ephemeris):")
+    (println "   Location: San Rafael, CA")
+    (println "   Datetime:" (:datetime result))
+    (println)
+    (println "   MOON:")
+    (println "     Nakshatra:" (:nakshatra-full result) "(" (:nakshatra result) ")")
+    (println "     Sidereal longitude:" (format "%.4f°" (:sidereal-longitude result)))
+    (println)
+    (println "   ASCENDANT:")
+    (println "     Sign:" (:ascendant-sign result))
+    (println "     Degree:" (:ascendant-degree result) "°")
+    (println "     Longitude:" (format "%.4f°" (:ascendant-longitude result)))
+    (println)
+    (println "   METHOD:")
+    (println "     Calculation:" (:method result))
+    (println "     Accuracy:" (:accuracy result))
+    (println)
+    
+    result))
+
 (comment
   ;; Test against known value
   (test-against-astromitra)
@@ -245,5 +411,11 @@
   ;; Get ayanamsa for 2025
   (get-ayanamsa (LocalDateTime/of 2025 10 25 12 0 0))
   ;; Should be ~24.1-24.2°
+  
+  ;; Test ascendant calculation
+  (test-ascendant-calculation)
+  
+  ;; Test complete graintime
+  (test-complete-graintime)
   )
 
