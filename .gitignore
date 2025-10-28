@@ -384,5 +384,10 @@ graindaemon-state.edn
 # 4. Consider using git-secrets or similar tools
 #
 # Grain Network Philosophy: Security through simplicity and transparency
-# We protect the community by protecting ourselves first# Personal grainstore repos (separate git repos)
-grainstore/kae3g/teamkae3gtravel12/
+# We protect the community by protecting ourselves first
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PERSONAL GRAINSTORES (managed as git submodules)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Personal grainstores are separate git repos linked as submodules
+# They are NOT ignored - the submodule reference is tracked
