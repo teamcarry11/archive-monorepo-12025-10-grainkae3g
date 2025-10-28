@@ -39,7 +39,7 @@ Fire teams focus on starting things, inspiring action, and teaching truth.
 **Modules**: graindisplay, grainicons, grainas-voice  
 **Mascot**: Lion 🦁
 
-**Vibe!** Like a teacher who makes you feel brave enough to try hard things. Team 05 shares their light so others can shine too. Leadership through service, not control.
+**Vibe!** Like a teacher who makes you feel brave enough to try hard things. Team 05 shares their light so others can shine too. Leadership through service and example.
 
 ---
 
@@ -65,7 +65,7 @@ Earth teams focus on patient growth, careful attention, and solid structures.
 **Superpower**: Growing things patiently, building what lasts  
 **Challenge**: Staying flexible when change is needed  
 **Modules**: grainfriends, graincontact, grainstorage  
-**Mascot**: Bull 🐂
+**Mascot**: Cow Goddess 🐄
 
 **Vibe!** Like Helen Atthowe planting her organic garden. Team 02 knows good things take time. Steady, reliable, in it for the long haul. Your most loyal friend.
 
@@ -77,7 +77,7 @@ Earth teams focus on patient growth, careful attention, and solid structures.
 **Superpower**: Noticing details, fixing problems, making things better  
 **Challenge**: Knowing when "good enough" really is good enough  
 **Modules**: grainenvvars, grainzsh, clojure-s6  
-**Mascot**: Helpful Spirit 🌿
+**Mascot**: Sprite of the Lake 🌿
 
 **Vibe!** Like someone who proofreads your essay and catches every mistake with loving care. Team 06 pays attention to what others miss. Precision as an act of caring.
 
@@ -86,12 +86,12 @@ Earth teams focus on patient growth, careful attention, and solid structures.
 ### 10. teamrebel10 - ♑ CAPRICORN / MAKARA (Earth Crocodile)
 
 **Element**: 🌍 Earth + 🌊 Water  
-**Superpower**: Planning with patience, organizing with ancient power  
-**Challenge**: Enjoying the journey, not just the destination  
+**Superpower**: Standing up for what's right, protecting the vulnerable, stubborn as bricks  
+**Challenge**: Enjoying the journey as much as reaching the goal  
 **Modules**: graincard-spec, grainbranch, grainpersona  
-**Mascot**: Crocodile 🐊 (Makara - patient, enduring!)
+**Mascot**: Crocodile 🐊 (Makara - ancient, armored, unstoppable!)
 
-**Vibe!** Like an ancient crocodile waiting patiently then moving with unstoppable power! Team 10 builds solid structures that last. The rebel who creates systems that actually work.
+**Vibe!** Like an ancient crocodile with armor for skin - you think you can push them around? Try it. They won't budge. They wait, they watch, then they move with unstoppable force. Team 10 channels tenacity to protect those who can't protect themselves. They're the rebel who won't take no for an answer when building systems that actually work. Stubborn? Absolutely. But that stubbornness built mountains.
 
 ---
 
@@ -127,11 +127,11 @@ Air teams focus on connection, balance, and spreading ideas like wind carrying s
 
 **Element**: 💨 Air  
 **Superpower**: Helping everyone, sharing solutions, making tech accessible  
-**Challenge**: Remembering to rest - you can't help everyone all the time  
+**Challenge**: Remembering to rest and recharge your helpful energy  
 **Modules**: grainsource, grainsite, grainsync  
 **Mascot**: Helpful Hands 🤝
 
-**Vibe!** Like the person who's always saying "how can I help?" and really means it. Team 11 builds tools that help EVERYONE thrive, not just tech experts. They're the friendly helpers making technology accessible.
+**Vibe!** Like the person who's always saying "how can I help?" and really means it. Team 11 builds tools that help EVERYONE thrive, from beginners to experts. They're the friendly helpers making technology accessible.
 
 ---
 
@@ -155,11 +155,11 @@ Water teams focus on healing, adapting, and transformation. Water flows around o
 
 **Element**: 🌊 Water + ⚡ Electric Energy  
 **Superpower**: Complete transformation, focused intensity, deep change  
-**Challenge**: Using power wisely, not overwhelming others  
+**Challenge**: Using power wisely and respecting others' pace  
 **Modules**: grainconv, grainsynonym  
 **Mascot**: Electric Eel ⚡🐟
 
-**Vibe!** Like when you're so excited about an idea you get goosebumps - that electric feeling! Team 08 channels intense dedication into transformation. They don't just improve things, they remake them completely.
+**Vibe!** Like when you're so excited about an idea you get goosebumps - that electric feeling! Team 08 channels intense dedication into transformation. They improve things completely, remaking them from the ground up.
 
 ---
 
@@ -169,7 +169,7 @@ Water teams focus on healing, adapting, and transformation. Water flows around o
 **Superpower**: Adapting naturally, seeing all perspectives, flowing around obstacles  
 **Challenge**: Staying true to yourself while adapting to others  
 **Modules**: grainsteel (Steel scripting!), graintime  
-**Mascot**: River Fish 🐟
+**Mascot**: Two Fish Swimming Together 🐟🐟
 
 **Vibe!** Like water finding its path around rocks without fighting them. Team 12 adapts, flexes, and flows. This is why Steel scripting lives here - it flows through Rust naturally, finding the easiest path forward.
 
@@ -185,7 +185,7 @@ These two teams work with aether, the fifth element that connects all the others
 **Superpower**: Making complex things clear, lighting up new possibilities  
 **Challenge**: Explaining things so simply that everyone understands  
 **Modules**: grainai-vocab, grainas, grainmode, grainorder  
-**Mascot**: Firefly 🪲✨
+**Mascot**: Butterfly 🦋
 
 **Vibe!** Like when you finally understand a hard problem and everything clicks. Team 13 illuminates - they shine light on confusing things and make them clear. They take AI and make it helpful instead of scary.
 
@@ -199,11 +199,11 @@ These two teams work with aether, the fifth element that connects all the others
 **Superpower**: Learning from everything, understanding deeply, remembering what matters  
 **Challenge**: Filtering wisely - absorbing good things, releasing negativity  
 **Modules**: aspirational-pseudo, grainbusiness, grainsource-vegan  
-**Mascot**: Whale 🐋
+**Mascot**: Algae 🌿
 
 **Vibe!** Like watching your grandparent work and just absorbing their careful, thoughtful approach. Team 14 soaks up wisdom from nature, teachers, and quiet observation. They filter for kindness, compassion, and what serves all beings.
 
-**Ketu Energy**: The wise old tree that's absorbed centuries of seasons. Not rushing forward, just deeply understanding. The calm knowing when something is right in your heart.
+**Ketu Energy**: The wise old tree that's absorbed centuries of seasons. Deeply rooted, deeply understanding. The calm knowing when something is right in your heart.
 
 ---
 
@@ -239,17 +239,17 @@ Does this help you see the whole picture?
 
 ## Why Elements?
 
-You might wonder: why not just number the teams Team 1, Team 2, etc?
+You might ask: why elements instead of simple numbers like Team 1, Team 2?
 
 **Here's our thinking:**
 
-Elements teach balance. Too much fire burns out. Too much water floods. You learn that all energies are needed in right amounts.
+Elements teach balance. Each energy has its strength and its season. You learn that all energies are needed in right amounts, at right times.
 
-Elements are universal. Every culture understands fire, water, earth, air. They cross all boundaries - language, politics, age, background.
+Elements are universal. Every culture experiences fire, water, earth, air. They cross all boundaries - language, politics, age, background. Everyone knows what rain feels like. Everyone has felt wind.
 
-Elements are G-rated. No dark symbolism, no complicated mythology. Just nature everyone experiences every day.
+Elements come from nature. Simple, G-rated, accessible. Fire warms you. Water hydrates you. Earth grows food. Air fills your lungs. Aether connects everything. This is what everyone experiences every day.
 
-Elements show complementarity. Fire and water aren't enemies - they're partners. Sometimes you need fire's heat. Sometimes you need water's cooling. Both are valid.
+Elements show complementarity. Fire and water work as partners. Sometimes you need fire's heat to cook food. Sometimes you need water's cooling to hydrate you. Both are equally valid and necessary.
 
 Does that make sense?
 

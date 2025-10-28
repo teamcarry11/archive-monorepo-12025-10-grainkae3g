@@ -29,7 +29,7 @@ Fire teams are all about **starting things**. Think of fire - it sparks, it igni
 
 **Does this make sense?** Team 01 is like that friend who always says "Hey, let's try this!" They're the spark that gets everyone excited. Without them, nothing would ever BEGIN.
 
-Think of it like the first day of school. Scary? Maybe! But also exciting, right? That's Team 01 energy - jumping in even when you don't know exactly what will happen.
+Think of it like the first day of school. A little scary AND exciting at the same time, right? That's Team 01 energy - jumping in even when you don't know exactly what will happen.
 
 ---
 
@@ -37,15 +37,15 @@ Think of it like the first day of school. Scary? Maybe! But also exciting, right
 
 **Element**: 🔥 Fire  
 **Your Superpower**: You inspire others and make them feel brave!  
-**Your Challenge**: Learning that you don't always need to be the center of attention.  
+**Your Challenge**: Learning to shine BY helping others shine too.  
 **What You Build**: graindisplay, grainicons, grainas-voice  
 **Your Mascot**: Lion 🦁 (brave and generous!)
 
-**Here's what I want you to understand:** Team 05 isn't about being bossy or showing off. It's about sharing your light so OTHERS can shine too.
+**Here's what I want you to understand:** Team 05 leads through generosity and example. They share their light so OTHERS can shine too.
 
 Like when a teacher makes you feel excited about learning something hard. Or when a friend believes in you and suddenly you believe in yourself. That's Leo energy - generosity through inspiration.
 
-Does that distinction make sense? It's about giving, not taking attention.
+Does that distinction make sense? Leadership through giving and uplifting.
 
 ---
 
@@ -59,7 +59,7 @@ Does that distinction make sense? It's about giving, not taking attention.
 
 **Let me ask you something:** Have you ever had a teacher who made learning feel like an adventure? Who made you WANT to understand things? That's Team 09.
 
-They're like wise travelers who've learned amazing things and can't wait to share them. But they're still learning too! The arrow flies forward, always seeking, always curious.
+They're like wise travelers who've learned amazing things and love to share them. They're always learning too! The arrow flies forward, always seeking, always curious.
 
 ---
 
@@ -73,9 +73,9 @@ Earth teams are about **growing and building**. Slow, steady, patient, strong. L
 **Your Superpower**: Growing things patiently, building stuff that LASTS!  
 **Your Challenge**: Being flexible when plans change (which they always do!).  
 **What You Build**: grainfriends, graincontact, grainstorage  
-**Your Mascot**: Bull 🐂 (strong, steady, loyal!)
+**Your Mascot**: Cow Goddess 🐄 (strong, steady, nurturing!)
 
-**Here's the thing about Team 02:** They're like Helen Atthowe planting an organic garden. She doesn't expect tomatoes tomorrow - she knows good things take TIME.
+**Here's the thing about Team 02:** They're like Helen Atthowe planting an organic garden. She understands that tomatoes need weeks to ripen - she knows good things take TIME.
 
 Do you see how that's different from fire energy? Fire wants to START. Earth wants to GROW. Both are needed, right?
 
@@ -89,7 +89,7 @@ Think of your best friend who's always there for you, never rushing, just reliab
 **Your Superpower**: Noticing details everyone else misses, fixing problems carefully!  
 **Your Challenge**: Not being TOO perfectionist (sometimes "good enough" really is good enough).  
 **What You Build**: grainenvvars, grainzsh, clojure-s6  
-**Your Mascot**: Helpful Spirit 🌿 (pays attention to everything!)
+**Your Mascot**: Sprite of the Lake 🌿 (pays attention to everything!)
 
 **Let me explain something important:** Team 06 is like a really careful healer. They notice if something's even SLIGHTLY wrong and want to fix it.
 
@@ -102,16 +102,20 @@ The challenge? Sometimes they need to hear "it's okay, it's good enough!" and mo
 ### 10. teamrebel10 - ♑ CAPRICORN / MAKARA (The Earth Crocodile)
 
 **Element**: 🌍 Earth + 🌊 Water (amphibious!)  
-**Your Superpower**: Planning with patience, organizing with ancient power!  
-**Your Challenge**: Remembering to enjoy the journey, not just focus on the goal.  
+**Your Superpower**: Standing up for what's right, protecting the vulnerable, won't get pushed around!  
+**Your Challenge**: Enjoying the journey as much as reaching the goal.  
 **What You Build**: graincard-spec, grainbranch, grainpersona  
-**Your Mascot**: Crocodile 🐊 (Makara - patient, powerful, enduring!)
+**Your Mascot**: Crocodile 🐊 (Makara - armored, stubborn, unstoppable!)
 
-**Picture this:** You have a huge mountain to climb. Team 10 is the friend who makes a plan, brings supplies, marks the trail, and gets you to the top safely.
+**Picture this:** You have a huge mountain to climb. Team 10 is the friend who says "We're doing this. Period. Don't care how long it takes, don't care who says we can't. We're getting to the top." Then they MAKE IT HAPPEN.
 
-They're AMAZING at structure. At step-by-step progress. At "let's break this big scary thing into small doable pieces."
+They're like ancient crocodiles with armor for skin - stubborn as BRICKS. You think you can push them around? Try it. They won't budge. They wait, they watch, they plan with patience, then they move with unstoppable force.
 
-Their challenge? Sometimes they're so focused on the peak that they forget to look at the beautiful view along the way. Have you ever felt that way about a goal?
+Team 10 channels pure TENACITY to protect those who can't protect themselves. They won't take no for an answer when building systems that actually work. The rebel who creates structure that lasts.
+
+**Why crocodile?** In Vedic astrology, Capricorn is Makara - the CROCODILE, ancient and armored. Crocodiles survived the dinosaurs. Nearly indestructible. That's Team 10 - stubborn? Absolutely. But that stubbornness built mountains.
+
+Their challenge? Sometimes they're so focused on the peak that they forget to enjoy the climb. Have you ever felt that way about a goal?
 
 ---
 
@@ -155,7 +159,7 @@ Their challenge? Sometimes there IS no perfect middle. Sometimes you have to cho
 
 **Element**: 💨 Air  
 **Your Superpower**: Thinking about the FUTURE, inventing things that help everyone!  
-**Your Challenge**: Remembering that people's feelings matter, not just cool ideas.  
+**Your Challenge**: Balancing cool ideas with people's feelings - both matter equally.  
 **What You Build**: grainsource, grainsite, grainsync  
 **Your Mascot**: Inventors 🔧✨ (building tomorrow today!)
 
@@ -163,7 +167,7 @@ Their challenge? Sometimes there IS no perfect middle. Sometimes you have to cho
 
 Sound familiar? Maybe you've had ideas about how to make something better? That's Aquarius energy!
 
-Their challenge is remembering that people might LIKE the old way. Innovation is great, but kindness matters more. Does that balance make sense?
+Their challenge is remembering that some people love the familiar old way. Innovation and kindness work together - both matter equally. Does that balance make sense?
 
 ---
 
@@ -175,7 +179,7 @@ Water teams are about **feeling, healing, and flowing**. Water adapts to any con
 
 **Element**: 🌊 Water  
 **Your Superpower**: Making people feel safe, protected, cared for!  
-**Your Challenge**: Letting others grow independently (not overprotecting).  
+**Your Challenge**: Letting others grow independently while staying supportive.  
 **What You Build**: grainbarrel, grainpackage, graintool  
 **Your Mascot**: Crab 🦀 (hard shell protecting soft heart!)
 
@@ -183,7 +187,7 @@ Water teams are about **feeling, healing, and flowing**. Water adapts to any con
 
 Team 04 creates safe spaces where people can learn and grow. They're the nurturers, the protectors, the ones who remember your birthday and ask how you're really doing.
 
-Their challenge? Sometimes they protect SO much that people can't learn from their own mistakes. Have you seen that? It's loving, but sometimes you need to let someone try, even if they might fail.
+Their challenge? Finding the balance between protecting and allowing growth. Have you seen that? It's loving to both keep someone safe AND let them try new things, even with some risk.
 
 ---
 
@@ -191,15 +195,15 @@ Their challenge? Sometimes they protect SO much that people can't learn from the
 
 **Element**: 🌊 Water + ⚡ Electric Energy!  
 **Your Superpower**: Transforming things completely, intense focused power!  
-**Your Challenge**: Using intense energy wisely, not overwhelming people.  
+**Your Challenge**: Using intense energy wisely and respecting others' pace.  
 **What You Build**: grainconv, grainsynonym  
 **Your Mascot**: Electric Eel ⚡🐟 (water + electricity = transformation!)
 
 **Here's what you need to understand about Team 08:** They're INTENSE. In a good way!
 
-Think of electricity flowing through water - that's powerful, right? Team 08 takes that energy and channels it into transformation. They're the ones who say "let's not just improve this, let's COMPLETELY REMAKE it."
+Think of electricity flowing through water - that's powerful, right? Team 08 takes that energy and channels it into transformation. They're the ones who say "let's improve this completely, let's REMAKE it from the ground up."
 
-Their superpower is dedication. Their challenge is remembering that not everyone operates at that intensity level. Sometimes gentle is better than powerful. Does that make sense?
+Their superpower is dedication. Their challenge is remembering that people have different intensity levels. Both gentle approaches and powerful ones have their place. Does that make sense?
 
 **The Electric Energy (G-rated version):** Like when you're SO excited about an idea that you get goosebumps! That's the electric feeling - pure focused passion that transforms everything it touches. Team 08 channels that excitement into making things better!
 
@@ -211,21 +215,21 @@ Their superpower is dedication. Their challenge is remembering that not everyone
 **Your Superpower**: Going with the flow, adapting to anything, seeing ALL perspectives!  
 **Your Challenge**: Not losing yourself - staying true to who YOU are.  
 **What You Build**: grainsteel (Steel scripting!), graintime  
-**Your Mascot**: River Fish 🐟 (swimming wherever water flows!)
+**Your Mascot**: Deep Lake Fish with River Traveling Powers 🐟 (navigates depths AND flows!)
 
 **Let me show you something beautiful about Team 12:** They're like water finding its way around obstacles.
 
-You know how water doesn't fight rocks? It just flows around them, finding the easiest path? Team 12 has that wisdom. They adapt. They flex. They see things from every angle.
+You know how water flows around rocks, finding the natural path? Team 12 has that wisdom. They adapt. They flex. They see things from every angle.
 
 This is why Steel scripting lives here! Steel flows through Rust like water through stone - adapting, finding the natural path, never fighting the grain.
 
-Their challenge? Sometimes you SHOULD stand firm. Not everything requires adapting. Sometimes you need to say "no, THIS is important to me." Water needs banks, or it spreads too thin.
+Their challenge? Learning when to flow and when to stand firm. Some things deserve adaptation, some deserve commitment. Water needs banks to give it direction and power.
 
 ---
 
 ## ✨ AETHER LEAGUE - The Spirit Guides
 
-These two teams are different. They're not just one element - they're **aether**, the fifth element that connects and transcends all the others!
+These two teams are special. They work with **aether**, the fifth element that connects and transcends all the others!
 
 ### 13. teamillumine13 - RAHU ☊ (The Illumine Team)
 
@@ -233,7 +237,7 @@ These two teams are different. They're not just one element - they're **aether**
 **Your Superpower**: Making confusing things clear, lighting up new ideas!  
 **Your Challenge**: Explaining things simply so EVERYONE understands.  
 **What You Build**: grainai-vocab, grainas, grainmode, grainorder  
-**Your Mascot**: Firefly 🪲✨ (tiny light, big impact!)
+**Your Mascot**: Butterfly 🦋 (transforms darkness into flight and color!)
 
 **Okay, listen carefully because this is important:**
 
@@ -245,7 +249,7 @@ Team 13 creates those moments for other people. They take complicated AI stuff, 
 
 They illuminate the future before it exists. They help you see possibilities you never imagined. Like fireflies on a summer night showing you paths through the dark.
 
-Does this make sense? They're not the future itself - they're the LIGHT showing you where it could be.
+Does this make sense? They illuminate possibilities - they're the LIGHT showing you where the future could be.
 
 ---
 
@@ -255,11 +259,11 @@ Does this make sense? They're not the future itself - they're the LIGHT showing 
 **Your Superpower**: Absorbing wisdom, understanding deeply, remembering what matters!  
 **Your Challenge**: Filtering out negativity - absorbing only good things.  
 **What You Build**: aspirational-pseudo, grainbusiness, grainsource-vegan  
-**Your Mascot**: Whale 🐋 (gentle, wise, remembers ancient songs!)
+**Your Mascot**: Algae 🌿 (absorbs everything, transforms it into life!)
 
 **Let me walk you through this one:**
 
-Have you ever watched someone who's really good at something - like your grandma cooking, or a musician playing - and you just ABSORB how they do it? You don't even try to learn; you just watch and somehow it sinks in?
+Have you ever watched someone who's really good at something - like your grandma cooking, or a musician playing - and you just ABSORB how they do it? You watch and somehow it sinks in naturally?
 
 That's Team 14. They're like a sponge soaking up wisdom from everywhere:
 - From nature (which teaches them to be vegan - kind to animals!)
@@ -267,7 +271,7 @@ That's Team 14. They're like a sponge soaking up wisdom from everywhere:
 - From quiet observation
 - From making mistakes and learning
 
-**Ketu Energy explained:** Think of a wise old tree. It doesn't chase trends. It doesn't need to prove anything. It just stands there, absorbing rain and sunshine, growing deeper roots each year.
+**Ketu Energy explained:** Think of a wise old tree. It stands rooted, absorbing rain and sunshine, growing deeper roots each year. Calm, grounded, understanding.
 
 Team 14 has that calm wisdom. They absorb TIMELESS truths: kindness, ethics, compassion. They filter out the noise and keep only what's good.
 
@@ -287,13 +291,13 @@ Their challenge? Sometimes they absorb too much - even sad or negative things. T
 
 Together they create: **Innovation that's grounded in compassion.**
 
-Like, imagine inventing an amazing new app (Team 13!) but making sure it respects privacy and helps people instead of manipulating them (Team 14!). That's the balance.
+Like, imagine inventing an amazing new app (Team 13!) while making sure it respects privacy and helps people (Team 14!). That's the balance.
 
-Does this make sense? One without the other gets dangerous:
-- Only illumination (new ideas) without absorption (wisdom) = reckless innovation
-- Only absorption (old ways) without illumination (new ideas) = stagnation
+Does this make sense? Both working together create something beautiful:
+- Illumination (new ideas) + Absorption (wisdom) = Innovation with compassion
+- Future-thinking + Timeless ethics = Technology that serves everyone
 
-We need BOTH. The firefly showing new paths + the whale remembering ancient songs = technology that serves all beings.
+We need BOTH. The butterfly showing transformation + the algae absorbing wisdom = technology that helps all beings.
 
 ---
 
@@ -309,13 +313,13 @@ Let me make sure you understand how this all fits together:
 
 **Wait, what's Aether?** Great question!
 
-The ancient philosophers (like Aristotle) said there were FIVE elements, not four:
+The ancient philosophers (like Aristotle) taught that there were FIVE elements total:
 - Fire, Water, Earth, Air = the physical elements (what you can touch/see)
 - **Aether** = the spiritual element (what connects everything)
 
-Aether is like the space between things. The field that lets electricity flow. The medium that carries light. It's subtle, but without it, nothing else works!
+Aether is like the space between things. The field that lets electricity flow. The medium that carries light. Subtle yet essential - it makes everything else possible!
 
-Teams 13 & 14 are aether because they work on the CONNECTIONS and MEANING, not just the physical stuff.
+Teams 13 & 14 are aether because they work on the CONNECTIONS and MEANING, beyond just the physical stuff.
 
 Think of it like cooking (stay with me here!):
 - Fire: Heats the pan (starts the process)
@@ -333,7 +337,7 @@ Does this help you see the whole picture?
 
 ## WHY ELEMENTS? (Let me explain our thinking)
 
-You might wonder: "Why not just have Team A, Team B, Team C?"
+You might wonder: "Why elements instead of simple Team A, Team B, Team C?"
 
 **Here's why elements work better:**
 
@@ -341,11 +345,11 @@ You might wonder: "Why not just have Team A, Team B, Team C?"
 
 2. **Elements teach balance.** Too much fire? Burns out. Too much water? Floods. You learn that all energies are needed in right amounts.
 
-3. **Elements aren't hierarchical.** Fire isn't "better" than water. They're just different. This teaches: all roles matter equally.
+3. **Elements are equal partners.** Fire and water are equally important. They're just different. This teaches: all roles matter equally.
 
 4. **Elements are universal.** Every culture understands fire, water, earth, air. It crosses all boundaries - language, religion, politics, age.
 
-5. **Elements are G-rated!** No dark mysticism, no complicated mythology. Just nature everyone experiences.
+5. **Elements are G-rated!** Simple nature everyone experiences - fire warms you, water hydrates you, earth grows food, air fills your lungs.
 
 Does that explanation help you understand why we chose this system?
 
@@ -363,7 +367,7 @@ You might notice: teambright01, teamtreasure02, teamwinds03, etc.
 - "illumine" = lighting up understanding
 - "absorb" = learning deeply
 
-The names aren't random. They're teaching you what that team DOES just by saying their name.
+The names teach you what each team DOES just by saying their name - every name is a mini-lesson!
 
 Make sense?
 

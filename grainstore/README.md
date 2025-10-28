@@ -1,8 +1,9 @@
 # Grainstore: Verified Dependencies & Submodules
 
-**Neovedic Timestamp**: `12025-10-22--1600--CDT--moon-vishakha--09thhouse16--kae3g`
+**Graintime**: `12025-10-27--0145--PDT--moon-p_ashadha----asc-leo023--sun-03h--teamabsorb14`  
+**Grainbranch**: `glow-g2-kae3gcursor`
 
-The Grainstore is a curated collection of verified, open-source dependencies and projects that form the foundation of the Grain Network ecosystem.
+Hey! Welcome to the Grainstore. What is this place? Think of it as a curated library—every dependency here is open-source, verified, and built to last. We're not just collecting code; we're building a foundation you can trust and learn from. Does that make sense?
 
 ---
 
@@ -11,15 +12,21 @@ The Grainstore is a curated collection of verified, open-source dependencies and
 > *"From granules to grains to THE WHOLE GRAIN"*  
 > *"Chaos coming out from outside calmly so it's feeling new and what's inside is staying really solid watching observing"*
 
-The Grainstore embodies the Grain Network's commitment to:
-- **Transparency**: All dependencies are open-source and auditable
-- **Sustainability**: Focus on long-term maintainability  
-- **Security**: Verified licenses and security practices
-- **Community**: Building on and contributing to open-source
-- **Education**: Each module documented for learning
-- **Pragmatic Branding**: gb command, bb.edn files (Babashka requirement)
-- **Template/Personal Split**: Share defaults, preserve customization
-- **Real Resources Matter**: Crypto backed by real hardware/electricity/labor
+Why does the Grainstore exist? What principles guide it? Let me walk you through:
+
+**Transparency** - Every line of code here is open-source and auditable. You can see how it works, verify it yourself, and trust what you're building on. No black boxes.
+
+**Sustainability** - We focus on tools that will last. Long-term maintainability matters more than trendy frameworks. Would you rather build on shifting sand or solid rock?
+
+**Security** - All licenses are verified. All practices are vetted. We protect your work by choosing dependencies carefully.
+
+**Education** - Each module teaches. You're not just using these tools—you're learning from them. The code itself is a teacher.
+
+**Pure Rust+Steel Stack** - We've moved from Babashka/Clojure to Steel (a Rust-embedded Scheme). Why? Rust gives us safety and speed. Steel gives us Lisp's elegance. Together, they're powerful and teachable.
+
+**Template/Personal Split** - Share defaults, preserve customization. Templates live in `grain6pbc`, personal implementations live in team grainstores.
+
+**Real Resources Matter** - Our crypto philosophy: value should be backed by real hardware, electricity, and human labor. Digital scarcity means nothing without physical grounding.
 
 ---
 
@@ -64,14 +71,15 @@ Google Drive Model Context Protocol bindings
 
 ### **Transpilers & Compilers**
 
-#### **clotoko**
-Clojure-to-Motoko transpiler for ICP canisters
-- **Path**: `grainstore/clotoko/`
+#### **steeltoko** (Future)
+Steel-to-Motoko transpiler for ICP canisters
+- **Path**: `grainstore/steeltoko/` (planned)
 - **License**: MIT
-- **Purpose**: Compile Clojure to Motoko for ICP deployment
-- **Aliases**: `clomoko`
-- **Status**: Design phase
-- **Repository**: https://github.com/grainpbc/clotoko
+- **Purpose**: Transpile Steel (Rust Scheme) to Motoko for ICP canister deployment
+- **Status**: Design phase (future priority)
+- **Replaces**: `clotoko` (Clojure → Motoko)
+- **Why Steel?**: Pure Rust+Steel stack, embeddable, actively maintained
+- **Repository**: https://github.com/grainpbc/steeltoko (planned)
 
 ---
 
@@ -224,52 +232,46 @@ Public Benefit Corporation documentation
 
 ### **Adding Dependencies**
 
-All dependencies are managed via Babashka scripts and EDN configuration.
+How do we manage all these dependencies? With Steel scripts! Every module is tracked, versioned, and verified through automation.
 
-#### **grainstore.edn**
-```clojure
-{:modules
- {:clojure-s6 {:repo "https://github.com/grainpbc/clojure-s6"
-               :path "grainstore/clojure-s6"
-               :license "MIT"}
-  :clojure-sixos {:repo "https://github.com/grainpbc/clojure-sixos"
-                  :path "grainstore/clojure-sixos"
-                  :license "MIT"}
-  :clojure-icp {:repo "https://github.com/grainpbc/clojure-icp"
-                :path "grainstore/clojure-icp"
-                :license "MIT"
-                :aliases ["clojure-dfinity"]}
-  :clojure-google-drive-mcp {:repo "https://github.com/grainpbc/clojure-google-drive-mcp"
-                              :path "grainstore/clojure-google-drive-mcp"
-                              :license "MIT"}
-  ;; ... more modules
-  }}
+#### **grainstore.scm** (Steel Configuration)
+```scheme
+;; Grainstore module registry
+;; Written in Steel - our Rust-embedded Scheme
+
+(define modules
+  (hash
+    "clojure-s6" (hash
+      "repo" "https://github.com/grainpbc/clojure-s6"
+      "path" "grainstore/clojure-s6"
+      "license" "MIT")
+    "clojure-sixos" (hash
+      "repo" "https://github.com/grainpbc/clojure-sixos"
+      "path" "grainstore/clojure-sixos"
+      "license" "MIT")
+    ;; ... more modules
+  ))
 ```
 
-### **Babashka Tasks**
+### **Steel Scripts** (Replacing Babashka)
+
+We're migrating from Babashka to Steel. Why? Steel is embedded in Rust, actively maintained, and gives us a pure Rust+Lisp stack. Here's what's coming:
 
 ```bash
-# Load all grainstore modules
-bb grainstore:load
+# Load all grainstore modules (future)
+steel grainstore-load.scm
 
-# Update all modules
-bb grainstore:update
+# Update all modules (future)
+steel grainstore-update.scm
 
-# Verify licenses
-bb grainstore:verify-licenses
+# Verify licenses (future)
+steel grainstore-verify.scm
 
-# List all modules
-bb grainstore:list
-
-# Add new module
-bb grainstore:add <name> <repo-url>
-
-# Remove module
-bb grainstore:remove <name>
-
-# Sync with upstreams
-bb grainstore:sync
+# List all modules (future)
+steel grainstore-list.scm
 ```
+
+**Note**: These scripts are in development. The old `bb` commands still work during the transition.
 
 ---
 
@@ -291,9 +293,9 @@ grainkae3g (root)
 │   ├── clojure-google-drive-mcp      (Google Drive API)
 │   │   └── used by: graindrive
 │   │
-│   ├── clotoko                       (Clojure→Motoko)
+│   ├── steeltoko (future)            (Steel→Motoko)
 │   │   ├── depends on: clojure-icp
-│   │   └── used by: grainweb, grainmusic
+│   │   └── used by: grainweb, grainmusic (planned)
 │   │
 │   ├── grainclay                     (package manager)
 │   │   ├── depends on: clojure-sixos, grain-metatypes
@@ -305,11 +307,11 @@ grainkae3g (root)
 │   │
 │   ├── grainweb                      (web client)
 │   │   ├── depends on: clojure-s6, clojure-sixos, clojure-icp
-│   │   │              clotoko, grainclay, grain-metatypes
+│   │   │              steeltoko (future), grainclay, grain-metatypes
 │   │   └── standalone app
 │   │
 │   ├── grainmusic                    (music platform)
-│   │   ├── depends on: clojure-icp, clotoko, grain-metatypes
+│   │   ├── depends on: clojure-icp, steeltoko (future), grain-metatypes
 │   │   └── standalone app
 │   │
 │   ├── grainspace                    (unified platform)
@@ -337,9 +339,11 @@ grainkae3g (root)
 All Grainstore modules have been verified for permissive, allowing licenses:
 
 ### **Software Licenses**
-- **MIT**: clojure-s6, clojure-sixos, clojure-icp, clojure-google-drive-mcp, clotoko, grainclay, grainconv, grainweb, grainmusic, grainspace, graindrive, grain-metatypes, grainneovedic
+- **MIT**: clojure-s6, clojure-sixos, clojure-icp, clojure-google-drive-mcp, steeltoko (future), grainclay, grainconv, grainweb, grainmusic, grainspace, graindrive, grain-metatypes, grainneovedic
 - **GPL v2**: grainsource (Git compatibility)
 - **CC BY-SA 4.0**: grainpbc (documentation)
+
+**Note**: We're migrating from Babashka/Clojure to Steel (Rust-embedded Scheme) for all scripting. Clojure libraries remain for specific integrations (s6, ICP, Google Drive).
 
 ### **Hardware Licenses**
 - **CERN OHL v2**: grainwriter, graindroid, graincamera, grainpack
@@ -364,19 +368,23 @@ Each module contains:
 
 ## 🧪 **TESTING**
 
+How do we know the code works? We test it! Here's how:
+
 ```bash
-# Run all Grainstore tests
-bb grainstore:test
+# Run all Grainstore tests (transitioning to Steel)
+steel test-all.scm
 
-# Test specific module
-bb grainstore:test clojure-s6
+# Test specific module (future)
+steel test-module.scm clojure-s6
 
-# Integration tests
-bb grainstore:test:integration
+# Integration tests (future)
+steel test-integration.scm
 
-# Coverage report
-bb grainstore:test:coverage
+# Coverage report (future)
+steel test-coverage.scm
 ```
+
+**Note**: These Steel test scripts are in development. Current tests still use Babashka during the migration period.
 
 ---
 
@@ -384,36 +392,47 @@ bb grainstore:test:coverage
 
 ### **Multi-Platform Targets**
 
-Grainstore modules support deployment to:
-- **Linux**: Nix, APT, Pacman, Homebrew (Linuxbrew)
+Where can you deploy Grainstore modules? Almost anywhere! Here's the list:
+
+- **Linux**: Nix, APT (Ubuntu/Debian), Pacman (Arch), Homebrew (Linuxbrew), Alpine APK (preferred!)
 - **macOS**: Homebrew, Nix
-- **Android**: Graindroid Phone
-- **iOS**: (future)
-- **Web**: SvelteKit, Clojure web frameworks
-- **ICP**: Canisters via Clotoko
+- **Android**: Graindroid Phone (our open-hardware device)
+- **iOS**: Planned for future
+- **Web**: SvelteKit (our choice), Clojure frameworks
+- **ICP**: Canisters via `steeltoko` (Steel→Motoko transpiler, future)
+- **Redox OS**: Pure Rust OS with Steel scripting support!
+
+**Why Alpine?** We love Alpine Linux for its small footprint, musl libc, and security. When building packages, Alpine APK gets priority.
 
 ---
 
 ## 🔄 **SYNC & UPDATE STRATEGY**
 
 ### **Upstream Sync**
-```bash
-# Pull latest changes from all upstream repositories
-bb grainstore:sync
 
-# This will:
-# 1. Fetch from all upstream repos
-# 2. Check for conflicts
-# 3. Update local modules
-# 4. Verify licenses
-# 5. Run tests
-# 6. Update grainstore.edn
+How do we stay up to date with all these dependencies? With Steel automation!
+
+```bash
+# Pull latest changes from all upstream repositories (future)
+steel grainstore-sync.scm
+
+# What happens when you run this?
+# 1. Fetches from all upstream repos
+# 2. Checks for conflicts
+# 3. Updates local modules
+# 4. Verifies licenses
+# 5. Runs tests
+# 6. Updates grainstore.scm configuration
 ```
 
 ### **Conflict Resolution**
-- Auto-merge if no conflicts
-- Manual review required for conflicts
-- Grainclay preserves all versions
+
+What happens when two versions clash? We handle it gracefully:
+- Auto-merge when changes are compatible
+- Request your review when there are real conflicts
+- Grainclay (our package manager) preserves all versions - you can always roll back!
+
+Think of it like Git, where every version of every dependency is tracked and recoverable.
 
 ---
 
@@ -430,14 +449,19 @@ The Grainstore is the foundation of the Grain Network's:
 
 ## 📖 **CONTRIBUTING**
 
-See individual module READMEs for contribution guidelines.
+Want to contribute? We'd love that! Here's how to get started:
 
-General principles:
-- Follow existing code style
-- Add tests for new features
-- Update documentation
-- Use neovedic timestamps for commits
-- Sign commits with GPG key
+See individual module READMEs for specific contribution guidelines. But here are some universal principles:
+
+**Code Style** - Match the style you see in the existing code. Consistency helps everyone read and understand faster.
+
+**Testing** - Add tests for new features. If you're fixing a bug, add a test that would have caught it. Future you (and everyone else) will thank you!
+
+**Documentation** - Update docs when you change behavior. Good documentation teaches the next person who reads your code.
+
+**Timestamps** - Use graintime format for commits (includes nakshatras, ascendant, house placement). This helps us track when and where changes happened in cosmic time.
+
+**Signatures** - Sign your commits with a GPG key. This verifies you really made that commit. Security matters!
 
 ---
 
@@ -450,10 +474,20 @@ General principles:
 
 ---
 
+---
+
 **The Grainstore: Building the future with verified, open-source modules.** 🌾
+
+Every dependency matters. Every module teaches. Every line of code is a choice to build something that lasts.
+
+Thank you for being here.
 
 ---
 
 *Created: 12025-10-22--1600--CDT--moon-vishakha--09thhouse16--kae3g*  
+*Updated: 12025-10-27--0145--PDT--moon-p_ashadha----asc-leo023--sun-03h--teamabsorb14*  
 *License: CC BY-SA 4.0*  
+*Voice: Glow G2 (patient teacher, first principles)*  
 *Part of the Grain Network ecosystem*
+
+now == next + 1 🌾
