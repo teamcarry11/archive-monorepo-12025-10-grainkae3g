@@ -10,3 +10,7 @@
 [submodule "vms/sixos"]
 	path = vms/sixos
 	url = https://codeberg.org/amjoseph/sixos.git
+[submodule "grainstore/kae3g/teamkae3gtravel12"]
+	path = grainstore/kae3g/teamkae3gtravel12
+	url = https://github.com/kae3g/teamkae3gtravel12.git
+	branch = phi-vortex-teamtravel12--12025-10-27--0145-PDT--moon-purvashadha-asc-leo023-sun-04h--teamtravel12
