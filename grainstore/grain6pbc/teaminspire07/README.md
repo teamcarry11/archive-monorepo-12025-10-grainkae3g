@@ -1,4 +1,4 @@
-# ⚖️ teambalance07 - VII. THE CHARIOT
+# ⚖️ teaminspire07 - VII. THE CHARIOT
 ## *Libra ♎ - "Victory Through Equilibrium"*
 
 **Tarot**: VII - The Chariot (Le Chariot)  
@@ -15,7 +15,7 @@ The Chariot shows a victor in a cubic chariot, pulled by two sphinxes (one black
 
 But Libra's shadow: calcified abdomens of overgrown children with weapons. Victory without wisdom becomes rigidity. Balance maintained by force, not understanding. The Chariot must learn: **true control comes from harmony, not dominance**.
 
-This is **teambalance07** - where clotoko balances Clojure and Motoko, where clotoko-icp bridges local and blockchain, where opposing forces (functional/imperative, centralized/decentralized) achieve synthesis.
+This is **teaminspire07** - where clotoko balances Clojure and Motoko, where clotoko-icp bridges local and blockchain, where opposing forces (functional/imperative, centralized/decentralized) achieve synthesis.
 
 ---
 
@@ -59,9 +59,9 @@ bb icp:cycles --monitor --equilibrium # Watch the balance
 
 **"The Chariot achieves victory not by forcing but by balancing opposing powers."**
 
-teambalance07 doesn't choose Clojure OR Motoko - it harmonizes both.
-teambalance07 doesn't choose local OR blockchain - it bridges both.
-teambalance07 doesn't choose development OR production - it balances both.
+teaminspire07 doesn't choose Clojure OR Motoko - it harmonizes both.
+teaminspire07 doesn't choose local OR blockchain - it bridges both.
+teaminspire07 doesn't choose development OR production - it balances both.
 
 This is Libra's gift: **the destination reached through perfect equilibrium**.
 
@@ -70,7 +70,7 @@ This is Libra's gift: **the destination reached through perfect equilibrium**.
 ## 🏗️ **The Cubic Chariot**
 
 ```
-teambalance07/
+teaminspire07/
 ├── clotoko/              # 🌑 Black sphinx - Transpilation
 │   ├── compiler/
 │   ├── semantics/
@@ -88,9 +88,9 @@ teambalance07/
 ## 🔗 **Cosmic Connections**
 
 **The Chariot Transports**:
-- → teamparty03 (Gemini/Empress) - ICP sites multiply abundantly
+- → teamdance03 (Gemini/Empress) - ICP sites multiply abundantly
 - → teamquest09 (Sagittarius/Hermit) - Deploy courses to blockchain
-- → teamhelper11 (Aquarius/Force) - HumbleUI → Motoko UI
+- → teamhelp11 (Aquarius/Force) - HumbleUI → Motoko UI
 
 **The Chariot Receives**:
 - ← teambright01 (Aries/Magician) - Initial build becomes canister
@@ -160,7 +160,7 @@ Perfect balance of exactly two forces. That's victory.
 
 *"Calcified abdomens of overgrown children with weapons"*
 
-The shadow teambalance07 must avoid:
+The shadow teaminspire07 must avoid:
 - Rigid transpilation that breaks
 - Forced equivalence that lies
 - Balanced for balance's sake (not purpose)
@@ -188,7 +188,7 @@ clotoko-icp brings Clojure to this balanced blockchain. The destination: **full-
 
 The Chariot is cubic - not round, not fluid, but **structured balance**. Four walls, stable.
 
-teambalance07 structure:
+teaminspire07 structure:
 - Clojure syntax IN, Motoko syntax OUT (wall 1-2)
 - Local replica IN, Mainnet OUT (wall 3-4)
 - Development IN, Production OUT (balanced transformation)
@@ -200,6 +200,6 @@ Cube doesn't roll (chaos). Cube doesn't tip (imbalance). Cube moves forward on *
 *"Victory belongs not to the strong but to the balanced. The destination is reached not by speed but by harmony."*
 
 **VII - THE CHARIOT** 🎴  
-**teambalance07 - Libra ♎ - The Balanced Journey** ⚖️
+**teaminspire07 - Libra ♎ - The Balanced Journey** ⚖️
 
 🌾 *Transpile harmoniously. Deploy balanced. Journey to destination deliberately.* 🌾

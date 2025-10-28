@@ -1,6 +1,6 @@
 # grainglobal - The Virgin Group Pattern
 
-**teamparty03 (Gemini ♊ / III. The Empress)**  
+**teamdance03 (Gemini ♊ / III. The Empress)**  
 *"Multi-industry. Global reach. Unified brand."*
 
 ---
@@ -105,7 +105,7 @@ All under ONE network. All connected. All open.
 
 ---
 
-## 🎯 Why teamparty03 (Gemini/Empress)?
+## 🎯 Why teamdance03 (Gemini/Empress)?
 
 **Gemini** (Communication, Connection):
 - Global = Communication across borders
@@ -117,7 +117,7 @@ All under ONE network. All connected. All open.
 - grainglobal = Abundant modules
 - Both create abundance through diversity
 
-**Perfect fit for teamparty03!** 💕
+**Perfect fit for teamdance03!** 💕
 
 ---
 
@@ -193,7 +193,7 @@ All under ONE network. All connected. All open.
 3. **Partnership interface** (how others connect to Grain)
 4. **Brand management** (keeping Grain philosophy consistent globally)
 
-**Location**: teamparty03 (Gemini/Empress - communication + abundance)
+**Location**: teamdance03 (Gemini/Empress - communication + abundance)
 
 **NOT**: Separate legal entity. Keep simple. One grain6pbc PBC.
 

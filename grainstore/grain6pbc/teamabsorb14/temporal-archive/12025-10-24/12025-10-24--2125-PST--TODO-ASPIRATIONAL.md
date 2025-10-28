@@ -483,8 +483,8 @@
 
 3. **Computer Science** (ALL TEAMS):
    - Freshman: Join teambright01 (builds)
-   - Sophomore: Join teamparty03 (web)
-   - Junior: Join teambalance07 (ICP)
+   - Sophomore: Join teamdance03 (web)
+   - Junior: Join teaminspire07 (ICP)
    - Senior: Join teamillumine13 (AI)
    - Real application: Actual open-source contributions
 
@@ -511,7 +511,7 @@
 ## Experience
 
 ### grain6pbc Contributor
-**Team**: teamparty03 (Gemini/Empress - III. The Empress)
+**Team**: teamdance03 (Gemini/Empress - III. The Empress)
 **Role**: Web Developer
 **Contributions**:
 - 47 commits to grainweb
@@ -525,7 +525,7 @@
 ```markdown
 ## Projects
 
-1. **grain-social-canister** (teambalance07 deployment)
+1. **grain-social-canister** (teaminspire07 deployment)
    - Live on ICP: https://abc123.ic0.app
    - Clojure → Motoko via clotoko
    - 1000+ active users
@@ -662,17 +662,17 @@ teambright01 provides the build orchestration layer for grain6pbc infrastructure
 **Each Quarter Focuses on Different Arcana**:
 
 **Q4 12025 (Current)**: Cards I-V (Magician → Pope)
-- Focus: teambright01, teamtreasure02, teamparty03, teamplay04, teamshine05
+- Focus: teambright01, teamtreasure02, teamdance03, teamplay04, teamshine05
 - Theme: Foundation and Teaching
 - Deliverable: Complete docs, working builds, deployed sites
 
 **Q1 12026**: Cards VI-VIII (Lovers → Justice)
-- Focus: teamelegance06, teambalance07, teamtransform08
+- Focus: teamelegance06, teaminspire07, teamtransform08
 - Theme: Choice, Balance, Transformation
 - Deliverable: GrainOS alpha, ICP deployments, format converters
 
 **Q2 12026**: Cards IX-XI (Hermit → Force)
-- Focus: teamquest09, teamrebel10, teamhelper11
+- Focus: teamquest09, teamrebel10, teamhelp11
 - Theme: Wisdom, Structure, Future
 - Deliverable: Educational curriculum, validated specs, HumbleUI apps
 
@@ -703,7 +703,7 @@ teambright01 provides the build orchestration layer for grain6pbc infrastructure
 - [ ] Zero-knowledge encryption (original face hidden)
 - [ ] First satori cache (most-accessed data instant retrieval)
 
-**teamparty03** (Gemini/Empress): *Heart not reached, sore throat*
+**teamdance03** (Gemini/Empress): *Heart not reached, sore throat*
 - [ ] Silent grainweb (no console.log spam)
 - [ ] Listening analytics (what users NEED, not what we THINK)
 - [ ] Heart-centered UX (emotional intelligence in design)
@@ -727,7 +727,7 @@ teambright01 provides the build orchestration layer for grain6pbc infrastructure
 - [ ] SixOS under 150MB (peace champion's discipline)
 - [ ] Rooftop garden bloom = Maximum productivity from minimal config
 
-**teambalance07** (Libra/Chariot): *Calcified abdomens, glamorous posts*
+**teaminspire07** (Libra/Chariot): *Calcified abdomens, glamorous posts*
 - [ ] Soften clotoko transpilation (flexible, not rigid)
 - [ ] ICP deploy for UTILITY (not social media flex)
 - [ ] Drop weapons (collaboration, not competition)
@@ -751,7 +751,7 @@ teambright01 provides the build orchestration layer for grain6pbc infrastructure
 - [ ] Outrun requirements changes (specs evolve faster)
 - [ ] Panther/jaguar/angel unity (animal + divine = perfect structure)
 
-**teamhelper11** (Aquarius/Force): *Quiet custodians, infernal library*
+**teamhelp11** (Aquarius/Force): *Quiet custodians, infernal library*
 - [ ] Study Electron codebase (enemy lore)
 - [ ] Climb the stairs (strengthen through research)
 - [ ] Build alternative factory (HumbleUI complete)

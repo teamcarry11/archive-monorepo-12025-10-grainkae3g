@@ -99,7 +99,7 @@ teamtreasure02/
 
 **The High Priestess Receives From**:
 - ← teambright01 (Aries/Magician) - Stores build artifacts
-- ← teamparty03 (Gemini/Empress) - Archives web content
+- ← teamdance03 (Gemini/Empress) - Archives web content
 - ← ALL TEAMS - Every team needs the vault
 
 ---

@@ -124,13 +124,13 @@ teamshine05/
 
 **The Pope Teaches**:
 - → teamquest09 (Sagittarius/Hermit) - Voice reads courses aloud
-- → teamparty03 (Gemini/Empress) - Icons populate web pages
+- → teamdance03 (Gemini/Empress) - Icons populate web pages
 - → teamplay04 (Cancer/Emperor) - Display shows daemon status
 
 **The Pope Learns From**:
 - ← teambright01 (Aries/Magician) - Fire to sustain radiance
 - ← teamtravel12 (Pisces/Hanged Man) - Time governs nightlight
-- ← teamhelper11 (Aquarius/Force) - HumbleUI renders display
+- ← teamhelp11 (Aquarius/Force) - HumbleUI renders display
 
 ---
 

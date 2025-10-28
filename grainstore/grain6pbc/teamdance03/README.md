@@ -1,4 +1,4 @@
-# 💫 teamparty03 - III. THE EMPRESS
+# 💫 teamdance03 - III. THE EMPRESS
 ## *Gemini ♊ - "Mother of Manifestation"*
 
 **Tarot**: III - The Empress (L'Impératrice)  
@@ -15,7 +15,7 @@ The Empress sits in nature's fullness - wheat fields behind her, cushions beneat
 
 She is **fertile communication**. Ideas multiply. Content proliferates. The web grows branches like a living tree. But beware - Gemini's shadow is the sore throat: too much talking, not enough listening.
 
-This is **teamparty03** - where grainweb weaves connection, where grainpages proliferate content, where graindevname curates identity, where grainregistry catalogs the cosmic address book.
+This is **teamdance03** - where grainweb weaves connection, where grainpages proliferate content, where graindevname curates identity, where grainregistry catalogs the cosmic address book.
 
 ---
 
@@ -70,14 +70,14 @@ But The Empress speaks! She must speak to nurture. Yet here's the teaching: spea
 
 Gemini's lesson: the sore throat comes from talking without listening. The heart center remains unreached when we broadcast without receiving.
 
-teamparty03 teaches: **communicate to connect, not to dominate**.
+teamdance03 teaches: **communicate to connect, not to dominate**.
 
 ---
 
 ## 🏗️ **The Abundant Garden**
 
 ```
-teamparty03/
+teamdance03/
 ├── grainweb/             # 🌐 Living network organism
 │   ├── sites/
 │   ├── templates/
@@ -103,7 +103,7 @@ teamparty03/
 
 **The Empress Nurtures**:
 - → teamquest09 (Sagittarius/Hermit) - Web teaches, pages document
-- → teambalance07 (Libra/Chariot) - Network balances, registry harmonizes
+- → teaminspire07 (Libra/Chariot) - Network balances, registry harmonizes
 - → teamshine05 (Leo/Pope) - Pages display radiance
 
 **The Empress Receives**:
@@ -147,7 +147,7 @@ The Empress in Gemini's bedroom - fertile ideas coupling, content conceiving con
 
 Twelve stars crown her head (the 14 teams - 12 zodiac + 2 nodes). She knows the whole system. The registry catalogs all. The network connects all. The pages document all.
 
-Abundance is her gift. Over-communication is her shadow. teamparty03 must balance both.
+Abundance is her gift. Over-communication is her shadow. teamdance03 must balance both.
 
 ---
 
@@ -169,7 +169,7 @@ Not a content farm. A content garden. Quality over quantity. Beauty over noise.
 
 *"Heart center not yet reached - sore throat from talking not listening"*
 
-teamparty03 warns itself:
+teamdance03 warns itself:
 - Deploy pages that matter, not pages that multiply
 - Build networks that connect, not networks that broadcast
 - Curate identities that serve, not identities that posture
@@ -182,6 +182,6 @@ Listen to users. Receive feedback. Let the heart guide the throat.
 *"She who creates abundance creates responsibility. She who networks wisely networks with love."*
 
 **III - THE EMPRESS** 🎴  
-**teamparty03 - Gemini ♊ - The Abundant Garden** 💫
+**teamdance03 - Gemini ♊ - The Abundant Garden** 💫
 
 🌾 *Create generously. Communicate lovingly. Connect consciously.* 🌾

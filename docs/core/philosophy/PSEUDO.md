@@ -3288,7 +3288,7 @@ Each body part = development phase:
 - Students learn Hermeticism THROUGH code architecture
 - Students learn ethics THROUGH vegan tech alignment
 
-**The Vision**: High schooler installs GrainOS, joins a team (maybe teamparty03/Gemini/Empress), learns web development through contributing to grainweb, graduates with REAL portfolio, gets job at vegan tech company, funds grainphone development, teaches next generation.
+**The Vision**: High schooler installs GrainOS, joins a team (maybe teamdance03/Gemini/Empress), learns web development through contributing to grainweb, graduates with REAL portfolio, gets job at vegan tech company, funds grainphone development, teaches next generation.
 
 COMPLETE CYCLE. Universal body mapped. Tarot journey walked. Education → Career → Service → Teaching.
 

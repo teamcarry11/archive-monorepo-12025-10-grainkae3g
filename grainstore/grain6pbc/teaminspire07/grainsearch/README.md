@@ -1,6 +1,6 @@
 # grainsearch - Ketos-Based Text Search Utility ⚖️
 
-**Team**: 07 (teambalance07 - Libra ♎ / VII. The Chariot)  
+**Team**: 07 (teaminspire07 - Libra ♎ / VII. The Chariot)  
 **Authored by**: 14 (teamabsorb14 - Ketu ☋ / XIV. Temperance)
 
 ---
@@ -173,6 +173,6 @@ grainsearch is a text searching and processing utility written entirely in Ketos
 **Now == Next + 1** ⚖️✧･ﾟ:* 🌾
 
 **Copyright © 2025 kae3g (kj3x39, @risc.love)**  
-**Team**: 07 (teambalance07 - Libra ♎ / VII. The Chariot)  
+**Team**: 07 (teaminspire07 - Libra ♎ / VII. The Chariot)  
 **Authored by**: 14 (teamabsorb14 - Ketu ☋)
 

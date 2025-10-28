@@ -82,8 +82,8 @@
 
 ---
 
-### **Team03 - teamparty03** (Gemini ♊ / III. The Empress)
-**Location**: `grainstore/grain6pbc/teamparty03/`
+### **Team03 - teamdance03** (Gemini ♊ / III. The Empress)
+**Location**: `grainstore/grain6pbc/teamdance03/`
 
 #### **grainp2p** (Planned)
 - **Purpose**: P2P networking (IPFS + Urbit + Hypercore)
@@ -191,16 +191,16 @@
 
 ---
 
-### **Team07 - teambalance07** (Libra ♎ / VII. The Chariot)
-**Location**: `grainstore/grain6pbc/teambalance07/`
+### **Team07 - teaminspire07** (Libra ♎ / VII. The Chariot)
+**Location**: `grainstore/grain6pbc/teaminspire07/`
 
 #### **clotoko**
-- **Path**: `teambalance07/clotoko/`
+- **Path**: `teaminspire07/clotoko/`
 - **Purpose**: Clojure + Motoko integration (ICP smart contracts)
 - **Status**: Active development
 
 #### **clotoko-icp**
-- **Path**: `teambalance07/clotoko-icp/`
+- **Path**: `teaminspire07/clotoko-icp/`
 - **Purpose**: ICP canister deployment
 - **Status**: Active (local dfx state tracked)
 
@@ -282,8 +282,8 @@
 
 ---
 
-### **Team11 - teamhelper11** (Aquarius ♒ / XI. Justice)
-**Location**: `grainstore/grain6pbc/teamhelper11/`
+### **Team11 - teamhelp11** (Aquarius ♒ / XI. Justice)
+**Location**: `grainstore/grain6pbc/teamhelp11/`
 
 **Status**: Directory exists, modules pending
 

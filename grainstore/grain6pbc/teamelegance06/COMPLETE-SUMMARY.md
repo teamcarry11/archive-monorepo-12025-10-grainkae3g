@@ -288,14 +288,14 @@ See `THE-FOUR-CHOICES.md` for full workflow.
 
 - **teambright01** (Aries) - Clean build environment
 - **teamtreasure02** (Taurus) - Secure env var storage
-- **teamparty03** (Gemini) - Network config
+- **teamdance03** (Gemini) - Network config
 - **teamplay04** (Cancer) - s6 supervision
 - **teamshine05** (Leo) - Shell aesthetics
-- **teambalance07** (Libra) - Config harmony
+- **teaminspire07** (Libra) - Config harmony
 - **teamtransform08** (Scorpio) - Service transformation
 - **teamquest09** (Sagittarius) - Config truth
 - **teamrebel10** (Capricorn) - System foundation
-- **teamhelper11** (Aquarius) - Innovation platform
+- **teamhelp11** (Aquarius) - Innovation platform
 - **teamtravel12** (Pisces) - Workflow integration
 - **teamillumine13** (Ophiuchus) - Evolution support
 - **teamabsorb14** (Cetus) - Grounding infrastructure

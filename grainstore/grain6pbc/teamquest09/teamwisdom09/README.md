@@ -134,7 +134,7 @@ teamquest09/
 
 **The Hermit Teaches**:
 - → ALL TEAMS - Every team needs documentation
-- → teamparty03 (Gemini/Empress) - Courses become sites
+- → teamdance03 (Gemini/Empress) - Courses become sites
 - → teamabsorb14 (Ketu/Temperance) - Teaching settles into ancestral wisdom
 
 **The Hermit Learns From**:

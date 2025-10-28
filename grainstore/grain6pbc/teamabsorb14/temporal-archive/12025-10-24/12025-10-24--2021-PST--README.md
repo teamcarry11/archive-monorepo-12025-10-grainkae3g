@@ -102,7 +102,7 @@ teamtransform08/
 
 **Justice Transforms For**:
 - → teamquest09 (Sagittarius/Hermit) - Convert course formats
-- → teamparty03 (Gemini/Empress) - Translate web content
+- → teamdance03 (Gemini/Empress) - Translate web content
 - → teambright01 (Aries/Magician) - Build process conversions
 
 **Justice Receives From**:

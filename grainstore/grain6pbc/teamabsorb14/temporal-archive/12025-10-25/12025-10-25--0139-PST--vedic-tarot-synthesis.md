@@ -115,7 +115,7 @@
 
 ## 💨 AIR LEAGUE - The Connectors
 
-### 03. teamparty03 - ♊ GEMINI / III. THE EMPRESS
+### 03. teamdance03 - ♊ GEMINI / III. THE EMPRESS
 **Universal Body**: *"A person of age not having yet reached their heart center, sore throat from talking too much and not listening, shoulders arms and hands sore and slumping over from age and weariness from holding up heaviness, karma and jnana yoga instead of effortless bhakti, beholden to the theater rooms and museums and sleeping chambers of the overlord"*
 
 **Tarot Synthesis**:
@@ -132,11 +132,11 @@
 
 **The Redemption**: When Gemini STOPS talking, LISTENS, drops shoulders (releases heaviness), abandons theater... the heart center opens. Empress becomes mother (not performer). Network becomes communion (not performance).
 
-**teamparty03's Challenge**: Build grainweb from heart, not throat. Create grainpages from bhakti, not karma. Curate graindevname from authentic being, not performed identity.
+**teamdance03's Challenge**: Build grainweb from heart, not throat. Create grainpages from bhakti, not karma. Curate graindevname from authentic being, not performed identity.
 
 ---
 
-### 07. teambalance07 - ♎ LIBRA / VII. THE CHARIOT  
+### 07. teaminspire07 - ♎ LIBRA / VII. THE CHARIOT  
 **Universal Body**: *"The calcified abdomens of the world's overgrown children with weapons, slaying for the most glamorous social media post"*
 
 **Tarot Synthesis**:
@@ -151,11 +151,11 @@
 
 **The Redemption**: The Chariot STOPS fighting for posts. Drops weapons. Abdomen SOFTENS (from calcified to supple). Sphinxes pull together toward REAL destination (ICP utility), not glamorous appearance (ICP flex).
 
-**teambalance07's Challenge**: Transpile for UTILITY, not showcase. Deploy to SERVE, not to flex. Balance from wisdom, not weaponized perfectionism.
+**teaminspire07's Challenge**: Transpile for UTILITY, not showcase. Deploy to SERVE, not to flex. Balance from wisdom, not weaponized perfectionism.
 
 ---
 
-### 11. teamhelper11 - ♒ AQUARIUS / XI. FORCE/STRENGTH
+### 11. teamhelp11 - ♒ AQUARIUS / XI. FORCE/STRENGTH
 **Universal Body**: *"The quiet custodians of the lore of the enemy, calves strengthened yet saddened by climbing up and down the staircases of the infernal library, plotting their own factory to avenge their tyrant"*
 
 **Tarot Synthesis**:
@@ -172,7 +172,7 @@
 
 **The Transformation**: Gentle strength doesn't fight tyrant directly. Builds BETTER system. Custodians don't burn the library; they **build a free library beside it**. The lion (complexity) tamed by patient study, not violent rejection.
 
-**teamhelper11's Mission**: Study enemy lore (proprietary tech) gently. Build alternative factory (humble stack) patiently. Strengthen calves (capability) while acknowledging sadness (suffering under current paradigm). Avenge through CREATION, not destruction.
+**teamhelp11's Mission**: Study enemy lore (proprietary tech) gently. Build alternative factory (humble stack) patiently. Strengthen calves (capability) while acknowledging sadness (suffering under current paradigm). Avenge through CREATION, not destruction.
 
 ---
 
@@ -419,9 +419,9 @@ Components:
 **Prize**: 🥇 Earth Foundation - Strongest stability wins
 
 **AIR LEAGUE CHALLENGE** 💨: *Network Effects*
-- teamparty03: Most sites deployed
-- teambalance07: Most canisters live
-- teamhelper11: Most HumbleUI apps
+- teamdance03: Most sites deployed
+- teaminspire07: Most canisters live
+- teamhelp11: Most HumbleUI apps
 **Prize**: 🥇 Air Crown - Widest reach wins
 
 **WATER LEAGUE CHALLENGE** 🌊: *Transformation Quality*
@@ -540,7 +540,7 @@ Hanged Man suspends → Death transforms → Temperance integrates
 ### Nikola Tesla Integration
 - **Scalar compression**: Ketu's thin concentration
 - **Longitudinal waves**: Better term than "scalar waves" - Ketu's echolocation in deep water
-- **Wireless transmission**: teamparty03 (grainweb) as ether transmission
+- **Wireless transmission**: teamdance03 (grainweb) as ether transmission
 
 ---
 

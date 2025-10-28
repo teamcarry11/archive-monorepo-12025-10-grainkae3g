@@ -113,7 +113,7 @@ teamillumine13/
 **Death Transforms**:
 - → teamshine05 (Leo/Pope) - AI voice speaks teachings
 - → teamquest09 (Sagittarius/Hermit) - AI generates courses
-- → teamparty03 (Gemini/Empress) - AI creates web content
+- → teamdance03 (Gemini/Empress) - AI creates web content
 
 **Death Receives**:
 - ← teamrebel10 (Capricorn/Wheel) - Specs for AI data

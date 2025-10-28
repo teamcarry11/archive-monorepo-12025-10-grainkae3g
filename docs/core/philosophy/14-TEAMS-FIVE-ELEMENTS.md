@@ -99,39 +99,39 @@ Earth teams focus on patient growth, careful attention, and solid structures.
 
 Air teams focus on connection, balance, and spreading ideas like wind carrying seeds.
 
-### 03. teamwinds03 - ♊ GEMINI (Air Messengers)
+### 03. teamdance03 - ♊ GEMINI / MITHUNA (Air Messengers)
 
 **Element**: 💨 Air  
 **Superpower**: Connecting people, sharing ideas, explaining things clearly  
 **Challenge**: Focusing on one thing when everything seems interesting  
 **Modules**: graincomms, grainidentity, grain-nostr  
-**Mascot**: Butterflies 🦋
+**Mascot**: Dancing Couple 💃🕺 (Mithuna - moving together in harmony!)
 
-**Vibe!** Like the friend who knows everyone and helps people meet. Team 03 carries messages, connects communities, and explains complex ideas in multiple ways until everyone understands.
+**Vibe!** Like the dancing couple who moves as one while staying two - Team 03 connects people through communication, carries messages between communities, and explains complex ideas in multiple ways. The dance of connection!
 
 ---
 
-### 07. teambalance07 - ♎ LIBRA (Air Bridge)
+### 07. teaminspire07 - ♎ LIBRA (Air Bridge)
 
 **Element**: 💨 Air  
 **Superpower**: Finding fair solutions, creating harmony, bridging differences  
 **Challenge**: Making decisions when both sides have valid points  
 **Modules**: grainsearch, grainzsh  
-**Mascot**: Scales ⚖️
+**Mascot**: Artisan of the Balancing Scales ⚖️
 
-**Vibe!** Like the peacemaker who helps everyone get along. Team 07 sees all perspectives and finds solutions that work for everyone. The bridge between opposing viewpoints.
+**Vibe!** Like the master craftsman who balances opposing forces to create beauty. Team 07 sees all perspectives and finds solutions that work for everyone. The artisan who inspires fairness through their careful, balanced work.
 
 ---
 
-### 11. teamhelper11 - ♒ AQUARIUS (Air Helper)
+### 11. teamhelp11 - ♒ AQUARIUS (Air Helper)
 
 **Element**: 💨 Air  
 **Superpower**: Helping everyone, sharing solutions, making tech accessible  
 **Challenge**: Remembering to rest and recharge your helpful energy  
 **Modules**: grainsource, grainsite, grainsync  
-**Mascot**: Helpful Hands 🤝
+**Mascot**: Water Bearer 🤸‍♀️
 
-**Vibe!** Like the person who's always saying "how can I help?" and really means it. Team 11 builds tools that help EVERYONE thrive, from beginners to experts. They're the friendly helpers making technology accessible.
+**Vibe!** Like the person who walks to the distant well, fills their pot, and brings fresh water to the town market for everyone. Team 11 builds tools that help EVERYONE thrive, from beginners to experts. They're the water bearer - carrying what nourishes from where it's found to where it's needed. Pure service!
 
 ---
 

@@ -123,49 +123,53 @@ Their challenge? Sometimes they're so focused on the peak that they forget to en
 
 Air teams are about **connection and ideas**. Like wind carrying seeds, carrying voices, carrying messages across distances!
 
-### 03. teamwinds03 - ♊ GEMINI (The Air Messengers)
+### 03. teamdance03 - ♊ GEMINI / MITHUNA (The Air Messengers)
 
 **Element**: 💨 Air  
 **Your Superpower**: Connecting people, sharing ideas, explaining things in different ways!  
 **Your Challenge**: Staying focused on one thing when there are SO many interesting things.  
 **What You Build**: graincomms, grainidentity, grain-nostr  
-**Your Mascot**: Butterflies 🦋 (carrying messages flower to flower!)
+**Your Mascot**: Dancing Couple 💃🕺 (Mithuna - moving together in harmony!)
 
-**Here's what makes Team 03 special:** They're like the friend who knows EVERYONE and helps people meet each other.
+**Here's what makes Team 03 special:** They're like dancers moving together - two people flowing as one, perfectly coordinated!
 
-You know how some people are just good at explaining things? They can say something five different ways until you finally get it? That's Gemini energy. Communication magic.
+In Vedic astrology, Gemini is Mithuna - the DANCING COUPLE, not twins! They represent communication through movement, connection through rhythm, ideas flowing between partners like a beautiful dance.
 
-The tricky part? Air moves fast. Sometimes Team 03 starts explaining something, then gets excited about something else before finishing. Can you relate?
+You know how some people are just good at explaining things? They can say something five different ways until you finally get it? That's Gemini energy. Communication magic through the dance of words!
+
+The tricky part? Air moves fast, dancers spin quickly. Sometimes Team 03 starts explaining something, then gets excited about something else before finishing. Can you relate?
 
 ---
 
-### 07. teambalance07 - ♎ LIBRA (The Air Bridge)
+### 07. teaminspire07 - ♎ LIBRA (The Air Bridge)
 
 **Element**: 💨 Air  
 **Your Superpower**: Finding the middle path, making things fair, helping everyone get along!  
 **Your Challenge**: Making decisions when BOTH sides have good points.  
 **What You Build**: grainsearch, grainzsh  
-**Your Mascot**: Scales ⚖️ (finding perfect balance!)
+**Your Mascot**: Artisan of the Balancing Scales ⚖️ (master craftsman of fairness!)
 
 **Let me ask you this:** Have you ever been in an argument where BOTH people were kind of right? And someone helped find a solution that worked for everyone?
 
-That's Team 07. They're the peacemakers, the bridge-builders, the "let's find a way that helps EVERYONE" team.
+That's Team 07. They're the peacemakers, the bridge-builders, the "let's find a way that helps EVERYONE" team. Like a master artisan carefully balancing opposing forces to create something beautiful - they inspire fairness through their craft.
 
 Their challenge? Sometimes there IS no perfect middle. Sometimes you have to choose. And that's really hard for Libra energy because they see all sides so clearly.
 
 ---
 
-### 11. teamhelper11 - ♒ AQUARIUS (The Air Innovator)
+### 11. teamhelp11 - ♒ AQUARIUS (The Air Innovator)
 
 **Element**: 💨 Air  
 **Your Superpower**: Thinking about the FUTURE, inventing things that help everyone!  
 **Your Challenge**: Balancing cool ideas with people's feelings - both matter equally.  
 **What You Build**: grainsource, grainsite, grainsync  
-**Your Mascot**: Inventors 🔧✨ (building tomorrow today!)
+**Your Mascot**: Water Bearer 🤸‍♀️ (carrying what nourishes to everyone!)
 
-**Picture this:** Team 11 looks at a problem and thinks "what if we did it COMPLETELY differently?" They're the inventors, the future-thinkers, the "why do it the old way when we could..."
+**Picture this:** Someone walks to the distant mountain well, fills their pot with fresh water, and carries it through the valley back to the town market where everyone can drink. That's Team 11 - the Water Bearer!
 
-Sound familiar? Maybe you've had ideas about how to make something better? That's Aquarius energy!
+They bring what people need from where it exists to where it's needed. Like carrying water from the high mountain spring down through Half Dome valley to nourish the whole community below.
+
+Team 11 builds tools that help EVERYONE - they're the helpers, the sharers, the "how can I make this accessible to all?" team. Pure service, like the water bearer walking that long path so others can thrive.
 
 Their challenge is remembering that some people love the familiar old way. Innovation and kindness work together - both matter equally. Does that balance make sense?
 
@@ -357,7 +361,7 @@ Does that explanation help you understand why we chose this system?
 
 ## A NOTE ABOUT TEAM NAMES
 
-You might notice: teambright01, teamtreasure02, teamwinds03, etc.
+You might notice: teambright01, teamtreasure02, teamdance03, etc.
 
 **Why the specific names?** Each name captures that team's ESSENCE:
 - "fire" = initiative energy

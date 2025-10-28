@@ -99,7 +99,7 @@ teamplay04/
 
 **The Emperor Protects**:
 - → teamtravel12 (Pisces/Hanged Man) - Daemons supervise time services
-- → teambalance07 (Libra/Chariot) - Tools maintain ICP balance
+- → teaminspire07 (Libra/Chariot) - Tools maintain ICP balance
 - → ALL TEAMS - Every team needs daemon supervision
 
 **The Emperor Receives**:

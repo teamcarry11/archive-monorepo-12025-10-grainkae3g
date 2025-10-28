@@ -87,9 +87,9 @@
   (s/and string?
          #(str/starts-with? % "team")
          #{;; 14 teams
-           "teambright01" "teamtreasure02" "teamparty03" "teamplay04"
-           "teamshine05" "teamelegance06" "teambalance07" "teamtransform08"
-           "teamquest09" "teamrebel10" "teamhelper11" "teamtravel12"
+           "teambright01" "teamtreasure02" "teamdance03" "teamplay04"
+           "teamshine05" "teamelegance06" "teaminspire07" "teamtransform08"
+           "teamquest09" "teamrebel10" "teamhelp11" "teamtravel12"
            "teamillumine13" "teamabsorb14"}))
 
 ;; Glow: "The full branch name spec is like a complete meal plan, my dude.
