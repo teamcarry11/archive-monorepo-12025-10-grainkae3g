@@ -89,7 +89,7 @@
          #{;; 14 teams
            "teamfire01" "teamvault02" "teamnetwork03" "teamnurture04"
            "teamshine05" "teamprecision06" "teambalance07" "teamtransform08"
-           "teamtruth09" "teamstructure10" "teamfuture11" "teamflow12"
+           "teamtruth09" "teamstructure10" "teamhelper11" "teamflow12"
            "teamascend13" "teamdescend14"}))
 
 ;; Glow: "The full branch name spec is like a complete meal plan, my dude.

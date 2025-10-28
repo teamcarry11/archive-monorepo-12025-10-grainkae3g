@@ -151,7 +151,7 @@ Their challenge? Sometimes there IS no perfect middle. Sometimes you have to cho
 
 ---
 
-### 11. teamfuture11 - ♒ AQUARIUS (The Air Innovator)
+### 11. teamhelper11 - ♒ AQUARIUS (The Air Innovator)
 
 **Element**: 💨 Air  
 **Your Superpower**: Thinking about the FUTURE, inventing things that help everyone!  

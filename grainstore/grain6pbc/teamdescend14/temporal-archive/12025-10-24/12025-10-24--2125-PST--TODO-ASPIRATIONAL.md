@@ -672,7 +672,7 @@ teamfire01 provides the build orchestration layer for grain6pbc infrastructure.
 - Deliverable: GrainOS alpha, ICP deployments, format converters
 
 **Q2 12026**: Cards IX-XI (Hermit → Force)
-- Focus: teamwisdom09, teamstructure10, teamfuture11
+- Focus: teamwisdom09, teamstructure10, teamhelper11
 - Theme: Wisdom, Structure, Future
 - Deliverable: Educational curriculum, validated specs, HumbleUI apps
 
@@ -751,7 +751,7 @@ teamfire01 provides the build orchestration layer for grain6pbc infrastructure.
 - [ ] Outrun requirements changes (specs evolve faster)
 - [ ] Panther/jaguar/angel unity (animal + divine = perfect structure)
 
-**teamfuture11** (Aquarius/Force): *Quiet custodians, infernal library*
+**teamhelper11** (Aquarius/Force): *Quiet custodians, infernal library*
 - [ ] Study Electron codebase (enemy lore)
 - [ ] Climb the stairs (strengthen through research)
 - [ ] Build alternative factory (HumbleUI complete)

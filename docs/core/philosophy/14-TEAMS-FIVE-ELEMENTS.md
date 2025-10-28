@@ -123,15 +123,15 @@ Air teams focus on connection, balance, and spreading ideas like wind carrying s
 
 ---
 
-### 11. teamfuture11 - ♒ AQUARIUS (Air Innovator)
+### 11. teamhelper11 - ♒ AQUARIUS (Air Helper)
 
 **Element**: 💨 Air  
-**Superpower**: Inventing new solutions, thinking differently, helping everyone thrive  
-**Challenge**: Staying connected to people's real needs, not just cool ideas  
+**Superpower**: Helping everyone, sharing solutions, making tech accessible  
+**Challenge**: Remembering to rest - you can't help everyone all the time  
 **Modules**: grainsource, grainsite, grainsync  
-**Mascot**: Inventors 🔧
+**Mascot**: Helpful Hands 🤝
 
-**Vibe!** Like the person who looks at a problem and says "what if we tried something completely different?" Team 11 builds tomorrow's solutions today, with care for how they affect everyone.
+**Vibe!** Like the person who's always saying "how can I help?" and really means it. Team 11 builds tools that help EVERYONE thrive, not just tech experts. They're the friendly helpers making technology accessible.
 
 ---
 

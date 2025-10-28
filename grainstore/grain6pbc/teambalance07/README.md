@@ -90,7 +90,7 @@ teambalance07/
 **The Chariot Transports**:
 - → teamnetwork03 (Gemini/Empress) - ICP sites multiply abundantly
 - → teamwisdom09 (Sagittarius/Hermit) - Deploy courses to blockchain
-- → teamfuture11 (Aquarius/Force) - HumbleUI → Motoko UI
+- → teamhelper11 (Aquarius/Force) - HumbleUI → Motoko UI
 
 **The Chariot Receives**:
 - ← teamfire01 (Aries/Magician) - Initial build becomes canister

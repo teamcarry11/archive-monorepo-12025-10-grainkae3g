@@ -295,7 +295,7 @@ See `THE-FOUR-CHOICES.md` for full workflow.
 - **teamtransform08** (Scorpio) - Service transformation
 - **teamtruth09** (Sagittarius) - Config truth
 - **teamstructure10** (Capricorn) - System foundation
-- **teamfuture11** (Aquarius) - Innovation platform
+- **teamhelper11** (Aquarius) - Innovation platform
 - **teamflow12** (Pisces) - Workflow integration
 - **teamascend13** (Ophiuchus) - Evolution support
 - **teamdescend14** (Cetus) - Grounding infrastructure

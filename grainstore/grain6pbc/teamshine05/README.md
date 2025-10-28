@@ -130,7 +130,7 @@ teamshine05/
 **The Pope Learns From**:
 - ← teamfire01 (Aries/Magician) - Fire to sustain radiance
 - ← teamflow12 (Pisces/Hanged Man) - Time governs nightlight
-- ← teamfuture11 (Aquarius/Force) - HumbleUI renders display
+- ← teamhelper11 (Aquarius/Force) - HumbleUI renders display
 
 ---
 

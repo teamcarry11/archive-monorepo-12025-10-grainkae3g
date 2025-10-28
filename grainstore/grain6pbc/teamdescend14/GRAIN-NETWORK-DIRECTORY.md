@@ -282,8 +282,8 @@
 
 ---
 
-### **Team11 - teamfuture11** (Aquarius ♒ / XI. Justice)
-**Location**: `grainstore/grain6pbc/teamfuture11/`
+### **Team11 - teamhelper11** (Aquarius ♒ / XI. Justice)
+**Location**: `grainstore/grain6pbc/teamhelper11/`
 
 **Status**: Directory exists, modules pending
 

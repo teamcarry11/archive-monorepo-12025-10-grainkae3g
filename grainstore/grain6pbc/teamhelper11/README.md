@@ -1,4 +1,4 @@
-# 🔮 teamfuture11 - XI. FORCE / STRENGTH
+# 🔮 teamhelper11 - XI. FORCE / STRENGTH
 ## *Aquarius ♒ - "Gentle Dominion Over Technology"*
 
 **Tarot**: XI - Force / Strength (La Force)  
@@ -15,7 +15,7 @@ A woman gently closes (or opens) a lion's mouth. Not with force but with **calm 
 
 In Aquarius's studios, quiet custodians climb infernal library stairs. Calves strengthen. Knowledge of "enemy lore" (proprietary tech, closed systems) accumulates. But the strength is used **gently** - not to destroy but to transcend.
 
-This is **teamfuture11** - where HumbleUI renders interfaces humbly, where humble-gc manages memory gently, where humble-repl connects quietly, where humble-stack integrates patiently, where grain-musl and grain-clj build the minimal-yet-powerful future.
+This is **teamhelper11** - where HumbleUI renders interfaces humbly, where humble-gc manages memory gently, where humble-repl connects quietly, where humble-stack integrates patiently, where grain-musl and grain-clj build the minimal-yet-powerful future.
 
 ---
 
@@ -95,13 +95,13 @@ Clojure on GraalVM native. No JVM warmup. No startup delay. Pure functional powe
 
 **"Strength that boasts is weakness. Power that dominates is fragile. Gentle presence is infinite strength."**
 
-teamfuture11 rejects:
+teamhelper11 rejects:
 - Bloated frameworks
 - Aggressive GC pauses
 - Noisy development tools
 - Complex dependency trees
 
-teamfuture11 embraces:
+teamhelper11 embraces:
 - Humble interfaces
 - Patient memory management
 - Quiet but always-available tools
@@ -114,7 +114,7 @@ This is Aquarius's gift: **future built on humble strength, not forced complexit
 ## 🏗️ **The Studio of Quiet Power**
 
 ```
-teamfuture11/
+teamhelper11/
 ├── humble-desktop/       # 🖼️ Gentle UI framework
 │   ├── core/
 │   ├── widgets/
@@ -188,7 +188,7 @@ bb graalvm:native --instant --powerful
 
 Force in Aquarius's studio - quiet custodians climbing library stairs. Calves strengthen from climbing, not from weights. Knowledge accumulates from reading "enemy lore" (proprietary systems, closed tech), then **transcending it**.
 
-The woman doesn't fight the lion. She **understands it**. teamfuture11 understands Electron (then makes HumbleUI). Understands JVM (then makes GraalVM native). Understands glibc (then chooses musl). Strength through understanding, not confrontation.
+The woman doesn't fight the lion. She **understands it**. teamhelper11 understands Electron (then makes HumbleUI). Understands JVM (then makes GraalVM native). Understands glibc (then chooses musl). Strength through understanding, not confrontation.
 
 ---
 
@@ -214,7 +214,7 @@ Ye [[memory:10315899]] knows: *Graduation* has exactly 14 tracks because 14 is e
 
 The "enemy" is complexity. The "lore" is understanding it. The "library stairs" are the climb to knowledge. The "strengthened calves" are the result.
 
-teamfuture11 climbs:
+teamhelper11 climbs:
 - Study Electron → Build HumbleUI
 - Study JVM → Use GraalVM native
 - Study glibc → Choose musl
@@ -228,7 +228,7 @@ Quiet study. Patient building. Humble strength.
 
 Above the woman's head: ∞
 
-teamfuture11's infinite patience:
+teamhelper11's infinite patience:
 - GC can wait (incremental)
 - Compilation can take time (native is worth it)
 - Learning curve accepted (power requires patience)
@@ -246,7 +246,7 @@ The lion represents:
 - Slow startups (tamed by GraalVM)
 - Bloated UIs (tamed by HumbleUI)
 
-The woman (teamfuture11) doesn't kill these beasts. She **makes them serve**.
+The woman (teamhelper11) doesn't kill these beasts. She **makes them serve**.
 
 ---
 
@@ -269,6 +269,6 @@ Humble. Powerful. Future.
 *"The strength that doesn't need to prove itself is infinite. The power that doesn't dominate is eternal. The future built on humility will outlast empires."*
 
 **XI - FORCE / STRENGTH** 🎴  
-**teamfuture11 - Aquarius ♒ - The Humble Power** 🔮
+**teamhelper11 - Aquarius ♒ - The Humble Power** 🔮
 
 🌾 *Build humbly. Render gently. Collect patiently. Tame complexity with calm presence.* 🌾

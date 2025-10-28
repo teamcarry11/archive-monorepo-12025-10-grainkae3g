@@ -143,7 +143,7 @@
 - Consciousness exploration
 - Inner wisdom seeking
 
-**teamfuture11** (Force XI):
+**teamhelper11** (Force XI):
 - desiigner-inspiration.md
 - New energy, innovation
 - "ii" album, "TALKING TO JESUS"
