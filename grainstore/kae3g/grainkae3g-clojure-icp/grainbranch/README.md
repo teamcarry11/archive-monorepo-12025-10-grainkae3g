@@ -7,13 +7,13 @@
 **Grainvedicastrology**: `moon-vishakha------asc-gem000--sun-11th--kae3g`  
 **Status**: 🌱 **ACTIVE DEVELOPMENT** - ICP integration library  
 **Purpose**: Comprehensive Clojure library for Internet Computer Protocol  
-**Organization**: grain6pbc
+**Organization**: grain06pbc
 
 ---
 
 ## 🌾 **Grainchart Integration**
 
-This repository implements the **Grain Network vision** as outlined in our [grainchart](https://github.com/grain6pbc/grainchart):
+This repository implements the **Grain Network vision** as outlined in our [grainchart](https://github.com/grain06pbc/grainchart):
 
 ### **Core Philosophy**
 
@@ -222,13 +222,13 @@ This repository implements the **Grain Network vision** as outlined in our [grai
 **Development Tools**:
 - `grainbarrel`: Build system and automation
 - `graindaemon`: Service management and sync
-- `grain6pbc-utils`: Utility library collection
+- `grain06pbc-utils`: Utility library collection
 - `clelte`: Clojure to Svelte compiler
 
 ### **Open Source Strategy**
 
 **Repository Organization**:
-- **grain6pbc**: Main organization for public templates
+- **grain06pbc**: Main organization for public templates
 - **grain6**: GitHub mirror for broader reach
 - **grainpbc**: Legacy organization for compatibility
 - **kae3g**: Personal development and experimentation
@@ -247,8 +247,8 @@ This repository implements the **Grain Network vision** as outlined in our [grai
 
 ```clojure
 ;; Add to deps.edn
-{:deps {io.github.grain6pbc/clojure-icp 
-        {:git/url "https://github.com/grain6pbc/clojure-icp"
+{:deps {io.github.grain06pbc/clojure-icp 
+        {:git/url "https://github.com/grain06pbc/clojure-icp"
          :git/sha "abc123..."}}}
 ```
 
@@ -386,9 +386,9 @@ By integrating these elements, we create a powerful foundation for building dece
 
 ## 🔗 **Links**
 
-- **Main Repository**: [grain6pbc/clojure-icp](https://github.com/grain6pbc/clojure-icp)
-- **Grainchart**: [grain6pbc/grainchart](https://github.com/grain6pbc/grainchart)
-- **Grain Network**: [grain6pbc/grain6](https://github.com/grain6pbc/grain6)
+- **Main Repository**: [grain06pbc/clojure-icp](https://github.com/grain06pbc/clojure-icp)
+- **Grainchart**: [grain06pbc/grainchart](https://github.com/grain06pbc/grainchart)
+- **Grain Network**: [grain06pbc/grain6](https://github.com/grain06pbc/grain6)
 - **Documentation**: [clojure-icp.grain.network](https://clojure-icp.grain.network)
 - **Community**: [grain.network/community](https://grain.network/community)
 

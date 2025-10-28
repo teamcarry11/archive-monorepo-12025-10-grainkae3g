@@ -3,7 +3,7 @@
 
 **Version**: 1.0.0  
 **Author**: kae3g (Graingalaxy)  
-**Organizations**: Grain PBC, grain6pbc  
+**Organizations**: Grain PBC, grain06pbc  
 **License**: MIT  
 **Status**: 🌱 **ACTIVE DEVELOPMENT** - Production Ready
 
@@ -145,7 +145,7 @@ https://username.github.io/repository-name/grainpath-2025-10-24--1606--PDT--moon
 ### **Quick Start**
 ```bash
 # Clone the template
-git clone https://github.com/grain6pbc/graincreate-clelte-template.git my-site
+git clone https://github.com/grain06pbc/graincreate-clelte-template.git my-site
 cd my-site
 
 # Install dependencies
@@ -342,7 +342,7 @@ git clone https://github.com/yourusername/graincreate-clelte-template.git
 cd graincreate-clelte-template
 
 # Add upstream remote
-git remote add upstream https://github.com/grain6pbc/graincreate-clelte-template.git
+git remote add upstream https://github.com/grain06pbc/graincreate-clelte-template.git
 ```
 
 #### **Development Setup**
@@ -428,7 +428,7 @@ SOFTWARE.
 ### **Contributors**
 - **kae3g (Graingalaxy)**: Primary developer and architect
 - **Grain PBC**: Organization and vision
-- **grain6pbc**: Community and collaboration
+- **grain06pbc**: Community and collaboration
 - **Open Source Community**: Inspiration and support
 
 ---
@@ -468,7 +468,7 @@ SOFTWARE.
 ### **Primary Contact**
 - **Email**: kae3g@grain.network
 - **GitHub**: @kae3g
-- **Organization**: @grain6pbc
+- **Organization**: @grain06pbc
 
 ### **Community**
 - **GitHub Discussions**: Questions and general discussion

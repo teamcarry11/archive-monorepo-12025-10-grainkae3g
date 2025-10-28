@@ -208,7 +208,7 @@
   (case (str/lower-case username)
     "grainos" {:status :blacklisted
                :reason "GRAINOS CREATIVE STUDIO owns this username"
-               :alternative "grain6pbc"
+               :alternative "grain06pbc"
                :last-checked (jt/instant)
                :manual true}
     "grain6" {:status :available

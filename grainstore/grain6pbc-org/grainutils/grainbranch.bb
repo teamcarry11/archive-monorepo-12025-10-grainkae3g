@@ -33,7 +33,7 @@
   (println "🌾 Creating grainbranch for" repo-name "...")
   
   (let [grainbranch-name (generate-grainbranch-name repo-name description)
-        repo-url (str "https://github.com/grain6pbc/" repo-name)]
+        repo-url (str "https://github.com/grain06pbc/" repo-name)]
     
     (try
       ;; Clone repository temporarily
@@ -71,19 +71,19 @@
         (shell {:dir temp-dir} "git" "push" "origin" grainbranch-name)
         
         ;; Set as default branch
-        (shell "gh" "api" "repos/grain6pbc/" repo-name "--method" "PATCH" 
+        (shell "gh" "api" "repos/grain06pbc/" repo-name "--method" "PATCH" 
                "--field" (str "default_branch=" grainbranch-name))
         
         ;; Update repository description with grainbranch URL
-        (let [grainbranch-name (str "https://github.com/grain6pbc/" repo-name "/tree/" grainbranch-name)]
-          (shell "gh" "api" "repos/grain6pbc/" repo-name "--method" "PATCH"
+        (let [grainbranch-name (str "https://github.com/grain06pbc/" repo-name "/tree/" grainbranch-name)]
+          (shell "gh" "api" "repos/grain06pbc/" repo-name "--method" "PATCH"
                  "--field" (str "description=" description " | Grainbranch: " grainbranch-name)))
         
         ;; Clean up
         (shell {:dir "/tmp"} "rm" "-rf" (str "temp-" repo-name))
         
         (println "✅ Created grainbranch:" grainbranch-name)
-        (println "📁 URL: https://github.com/grain6pbc/" repo-name "/tree/" grainbranch-name)
+        (println "📁 URL: https://github.com/grain06pbc/" repo-name "/tree/" grainbranch-name)
         
         {:repo repo-name :grainbranch grainbranch-name :url grainbranch-name})
       
@@ -92,15 +92,15 @@
         {:repo repo-name :error (.getMessage e)}))))
 
 (defn create-grainbranches-for-all-repos
-  "Create grainbranches for all grain6pbc repositories"
+  "Create grainbranches for all grain06pbc repositories"
   []
-  (println "🌾 Creating grainbranches for all grain6pbc repositories...")
+  (println "🌾 Creating grainbranches for all grain06pbc repositories...")
   
   (let [repos [
         {:name "grain6" :description "Complete Grain Network Monorepo Template"}
-        {:name "grain6pbc/grainutils" :description "Grain6PBC Utilities Collection"}
+        {:name "grain06pbc/grainutils" :description "Grain6PBC Utilities Collection"}
         {:name "grainbarrel" :description "Grain Network Build System"}
-        {:name "grain6pbc" :description "Public Benefit Corporation Framework"}
+        {:name "grain06pbc" :description "Public Benefit Corporation Framework"}
         {:name "grainzsh" :description "Grain Network Zsh Configuration"}
         {:name "grainenvvars" :description "Environment Variables Management"}
         {:name "humble-social-client" :description "Humble UI Social Client"}

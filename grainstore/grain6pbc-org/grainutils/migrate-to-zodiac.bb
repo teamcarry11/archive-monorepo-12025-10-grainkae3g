@@ -57,9 +57,9 @@
 (defn find-module
   "Find module in grainstore"
   [module]
-  (let [search-paths ["grainstore/grain6pbc/"
+  (let [search-paths ["grainstore/grain06pbc/"
                       "grainstore/grainpbc-org/"
-                      "grainstore/grain6pbc-org/"]]
+                      "grainstore/grain06pbc-org/"]]
     (->> search-paths
          (map #(str % module))
          (filter fs/exists?)
@@ -72,14 +72,14 @@
   (println "━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
   
   ;; Ensure zodiac repo exists
-  (let [zodiac-path (str "grainstore/grain6pbc/" zodiac)]
+  (let [zodiac-path (str "grainstore/grain06pbc/" zodiac)]
     (when-not (fs/exists? zodiac-path)
       (println (str "  ⚠ Creating " zodiac-path))
       (fs/create-dirs zodiac-path)))
   
   (doseq [module modules]
     (let [source-path (find-module module)
-          target-path (str "grainstore/grain6pbc/" zodiac "/" module)]
+          target-path (str "grainstore/grain06pbc/" zodiac "/" module)]
       
       (cond
         (nil? source-path)

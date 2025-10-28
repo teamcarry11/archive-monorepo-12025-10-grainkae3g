@@ -1,12 +1,12 @@
 ;; grainstore/teamrebel10/grainteamrebel10mode/glo0w-persona.edn
 ;; PERSONAL IMPLEMENTATION (team10 org - customized)
-;; Uses specs from: grainstore/grain6pbc/teamrebel10/grainpersona/
+;; Uses specs from: grainstore/grain06pbc/teamrebel10/grainpersona/
 
 {:graindevname "glo0w"
  :full-name "Glo0w (The Nagual)"
  :pronunciation "glow (with a zero, like the void)"
  
- :extends "grain6pbc/teamrebel10/grainpersona/template/base-persona.edn"
+ :extends "grain06pbc/teamrebel10/grainpersona/template/base-persona.edn"
  
  :personality {:masculine true
                :mystique true

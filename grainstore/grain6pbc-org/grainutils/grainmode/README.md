@@ -3,7 +3,7 @@
 
 **Version**: 1.0.0  
 **Author**: kae3g (Graingalaxy)  
-**Organizations**: Grain PBC, grain6pbc  
+**Organizations**: Grain PBC, grain06pbc  
 **License**: MIT  
 **Status**: 🌱 **ACTIVE DEVELOPMENT** - Production Ready
 
@@ -100,7 +100,7 @@ glow-creative-v1             # Glow creative v1
 ### **Installation**
 ```bash
 # Clone the repository
-git clone https://github.com/grain6pbc/grainmode.git
+git clone https://github.com/grain06pbc/grainmode.git
 cd grainmode
 
 # Install dependencies
@@ -311,9 +311,9 @@ glo0w-technical-v3      # kae3g's Glow technical version 3
 ### **Grain6pbc Templates**
 
 #### **Public Templates**
-- **grain6pbc/grainmode**: Main public template
-- **grain6pbc/grain6pbc/grainutils**: Utility collection
-- **grain6pbc/graintime**: Graintime integration
+- **grain06pbc/grainmode**: Main public template
+- **grain06pbc/grain06pbc/grainutils**: Utility collection
+- **grain06pbc/graintime**: Graintime integration
 
 #### **Personal Versions**
 - **kae3g/grainmode**: Personal development version
@@ -332,7 +332,7 @@ git push -u origin grainbranch-2025-10-24--1542--PDT--moon-vishakha-----asc-libr
 
 #### **Grainpath URLs**
 ```
-https://grain6pbc.github.io/grainmode/grainbranch-2025-10-24--1542--PDT--moon-vishakha-----asc-libr005--sun-08th--kae3g/
+https://grain06pbc.github.io/grainmode/grainbranch-2025-10-24--1542--PDT--moon-vishakha-----asc-libr005--sun-08th--kae3g/
 ```
 
 ### **GrainDaemon Integration**
@@ -344,7 +344,7 @@ https://grain6pbc.github.io/grainmode/grainbranch-2025-10-24--1542--PDT--moon-vi
              :default-mode :trish-eli5
              :update-interval 3600
              :backup-enabled true
-             :sync-repos ["grain6pbc/grainmode" "kae3g/grainmode"]
+             :sync-repos ["grain06pbc/grainmode" "kae3g/grainmode"]
              :grainbranch-enabled true
              :grainpath-enabled true}}
 ```
@@ -446,7 +446,7 @@ git clone https://github.com/yourusername/grainmode.git
 cd grainmode
 
 # Add upstream remote
-git remote add upstream https://github.com/grain6pbc/grainmode.git
+git remote add upstream https://github.com/grain06pbc/grainmode.git
 ```
 
 #### **Development Setup**
@@ -532,7 +532,7 @@ SOFTWARE.
 ### **Contributors**
 - **kae3g (Graingalaxy)**: Primary developer and architect
 - **Grain PBC**: Organization and vision
-- **grain6pbc**: Community and collaboration
+- **grain06pbc**: Community and collaboration
 - **Open Source Community**: Inspiration and support
 
 ---
@@ -572,7 +572,7 @@ SOFTWARE.
 ### **Primary Contact**
 - **Email**: kae3g@grain.network
 - **GitHub**: @kae3g
-- **Organization**: @grain6pbc
+- **Organization**: @grain06pbc
 
 ### **Community**
 - **GitHub Discussions**: Questions and general discussion

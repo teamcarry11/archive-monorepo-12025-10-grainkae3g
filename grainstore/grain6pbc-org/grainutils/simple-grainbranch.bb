@@ -24,7 +24,7 @@
                "**Description**: " description "\n"
                "**Created**: " (java.time.Instant/now) "\n"
                "**Graintime**: " graintime "\n\n"
-               "This grainbranch represents an immutable version of the grain6pbc/grainutils repository.\n\n"
+               "This grainbranch represents an immutable version of the grain06pbc/grainutils repository.\n\n"
                "## Utilities Included\n\n"
                "- **Clelte**: Clojure to Svelte compiler\n"
                "- **Clotoko**: Clojure to Motoko compiler for ICP\n"
@@ -39,11 +39,11 @@
     (shell "git" "push" "origin" grainbranch-name)
     
     ;; Set as default branch
-    (shell "gh" "api" "repos/grain6pbc/grain6pbc/grainutils" "--method" "PATCH" 
+    (shell "gh" "api" "repos/grain06pbc/grain06pbc/grainutils" "--method" "PATCH" 
            "--field" (str "default_branch=" grainbranch-name))
     
     (println "✅ Created grainbranch:" grainbranch-name)
-    (println "📁 URL: https://github.com/grain6pbc/grain6pbc/grainutils/tree/" grainbranch-name)
+    (println "📁 URL: https://github.com/grain06pbc/grain06pbc/grainutils/tree/" grainbranch-name)
     
     grainbranch-name))
 

@@ -66,7 +66,7 @@
 (defn create-zodiac-repo
   "Create a zodiac repository with README and structure"
   [{:keys [sign symbol element energy name purpose modules]}]
-  (let [base-path (str "grain6pbc/" name)
+  (let [base-path (str "grain06pbc/" name)
         readme-path (str base-path "/README.md")]
     
     ;; Create directory

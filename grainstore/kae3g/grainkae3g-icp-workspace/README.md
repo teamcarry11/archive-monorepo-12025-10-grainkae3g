@@ -47,8 +47,8 @@ icp-workspace/
 
 ## 🔧 **Development**
 
-- **Primary Compilers**: `grain6pbc-utils/clelte/` and `grain6pbc-utils/clotoko/`
-- **Utilities**: `grain6pbc-utils/icp-tools/`
+- **Primary Compilers**: `grain06pbc-utils/clelte/` and `grain06pbc-utils/clotoko/`
+- **Utilities**: `grain06pbc-utils/icp-tools/`
 - **Core Library**: `clojure-icp/`
 
 ---

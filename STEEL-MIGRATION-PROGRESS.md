@@ -47,9 +47,9 @@ We're migrating from **Ketos** (abandoned 6 years ago) and **Babashka** (JVM dep
 ## Current State
 
 **Converted to Steel Syntax**: 3 files
-- grainstore/grain6pbc/teamplay04/grainbarrel/scripts/check-grain-width.scm
-- grainstore/grain6pbc/teamplay04/grainbarrel/scripts/check-grain-lines.scm  
-- grainstore/grain6pbc/teamplay04/grainbarrel/scripts/grainbranch-readme-sync.scm
+- grainstore/grain06pbc/teamplay04/grainbarrel/scripts/check-grain-width.scm
+- grainstore/grain06pbc/teamplay04/grainbarrel/scripts/check-grain-lines.scm  
+- grainstore/grain06pbc/teamplay04/grainbarrel/scripts/grainbranch-readme-sync.scm
 
 **Renamed (awaiting syntax conversion)**: 31 files
 - All in scripts/, docs/academic/, graindaemon/, urbit-icp-identity/

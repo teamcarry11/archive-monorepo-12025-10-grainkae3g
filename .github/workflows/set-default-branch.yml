@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       repository:
-        description: 'Repository to update (e.g., grain6pbc/grain6)'
+        description: 'Repository to update (e.g., grain06pbc/grain6)'
         required: true
-        default: 'grain6pbc/grain6'
+        default: 'grain06pbc/grain6'
       grainbranch:
         description: 'Grainbranch name to set as default'
         required: true
@@ -47,7 +47,7 @@ jobs:
           echo "✅ Set $GRAINBRANCH as default branch for $REPO"
           
           # Update repository description with grainbranch info
-          GRAINSITE_URL="https://grain6pbc.github.io/$(echo $REPO | cut -d'/' -f2)/$GRAINSITE_URL/"
+          GRAINSITE_URL="https://grain06pbc.github.io/$(echo $REPO | cut -d'/' -f2)/$GRAINSITE_URL/"
           
           gh api repos/$REPO --method PATCH \
             --field description="🌾 Grain6pbc $(echo $REPO | cut -d'/' -f2): $GRAINBRANCH | Live Site: $GRAINSITE_URL | Default Branch: $GRAINBRANCH"

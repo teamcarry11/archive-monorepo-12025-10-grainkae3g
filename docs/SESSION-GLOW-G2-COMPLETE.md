@@ -123,11 +123,11 @@ Kid-friendly, no trademarks, nature-based, universal!
 ## 🔧 TECHNICAL WORK
 
 ### **Files Created:**
-- `grainstore/grain6pbc/teamnurture04/grainbarrel/scripts/check-grain-width.scm`
-- `grainstore/grain6pbc/teamnurture04/grainbarrel/scripts/check-grain-lines.scm`
-- `grainstore/grain6pbc/teamnurture04/grainbarrel/scripts/grainbranch-readme-sync.scm`
-- `grainstore/grain6pbc/teamflow12/grainsteel/README.md` (moved from teamvault02)
-- `grainstore/grain6pbc/teamabsorb14/steel-mono/README.md` (replaced ketos-mono)
+- `grainstore/grain06pbc/teamnurture04/grainbarrel/scripts/check-grain-width.scm`
+- `grainstore/grain06pbc/teamnurture04/grainbarrel/scripts/check-grain-lines.scm`
+- `grainstore/grain06pbc/teamnurture04/grainbarrel/scripts/grainbranch-readme-sync.scm`
+- `grainstore/grain06pbc/teamflow12/grainsteel/README.md` (moved from teamvault02)
+- `grainstore/grain06pbc/teamabsorb14/steel-mono/README.md` (replaced ketos-mono)
 - `STEEL-MIGRATION-PROGRESS.md`
 - `docs/core/philosophy/14-TEAMS-ELEMENTAL-GLOW-G2.md` (complete rewrite)
 - `docs/SESSION-GLOW-G2-COMPLETE.md` (this file)
@@ -174,7 +174,7 @@ Added dark humor and stubborn defiance while staying hopeful:
 ### **MEDIUM PRIORITY:**
 4. **Rich Hickey grainbook** - 5 grains synthesizing Rich + Helen wisdom
 5. **Session consolidation** - Create MAIN synthesis before next grainbranch
-6. **Graindisplay split** - Template (grain6pbc) + Personal (kae3g) versions
+6. **Graindisplay split** - Template (grain06pbc) + Personal (kae3g) versions
 
 ### **FUTURE PRIORITIES:**
 7. Expand to 100 grains (all 6 modes = 600 grains)

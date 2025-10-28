@@ -19,12 +19,12 @@
         grainbranch-name (str graintime "-" clean-description)]
     
     (println "📝 Grainbranch name:" grainbranch-name)
-    (println "🔗 Repository URL: https://github.com/grain6pbc/" repo-name)
+    (println "🔗 Repository URL: https://github.com/grain06pbc/" repo-name)
     (println "📋 Description:" description)
     
     ;; Test GitHub API access
     (try
-      (let [api-result (shell "gh" "api" (str "repos/grain6pbc/" repo-name))]
+      (let [api-result (shell "gh" "api" (str "repos/grain06pbc/" repo-name))]
         (println "✅ GitHub API access successful")
         (println "📊 Current default branch:" (:out api-result)))
       (catch Exception e
