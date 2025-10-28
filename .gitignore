@@ -402,7 +402,11 @@ graindaemon-state.edn
 **/system_metadata.pbuf
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# PERSONAL GRAINSTORES (managed as git submodules)
+# PERSONAL GRAINSTORES (external git repos, symlinked)
 # ═══════════════════════════════════════════════════════════════════════════════
-# Personal grainstores are separate git repos linked as submodules
-# They are NOT ignored - the submodule reference is tracked
+# Personal grainstores live in ~/github/{user}/ as separate git repos
+# They are symlinked into grainstore/kae3g/ and ignored by this repo
+# Template code stays in grainstore/grain12pbc/ (tracked)
+# Personal code stays external (ignored, symlinked)
+
+grainstore/kae3g/
