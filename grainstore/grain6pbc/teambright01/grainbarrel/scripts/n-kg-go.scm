@@ -31,13 +31,15 @@
 ;;
 ;; About the command names:
 ;; n = NEXT      (what's next? show me the next thing!)
-;; k = OKAY      (okay, I'm ready, let's keep going!)
+;; k = OKAY      (okay, I'm ready!)
 ;;
-;; "n kg go" = "NEXT, keep going" - fresh grainbranch, keep momentum
-;; "k ng go" = "OKAY, new graintime, go" - same branch, sync time
+;; "n kg go" = "NEXT, keep going!" - fresh grainbranch, keep momentum
+;; "k ng go" = "OKAY NOW GO!" - same branch, sync time
 ;;
-;; Both feel GOOD to type. Simple words. Natural flow.
-;; n - okay - keep going - go!
+;; Feel that rhythm? k - ng - go! Like a drum fill. 🥁
+;; The buildup (okay... now...) then the release (GO!)
+;; 
+;; Both feel GOOD to type. Simple words. Natural rhythm.
 ;; Hit return. Keep momentum. That's the whole point! 🚀
 ;;
 ;; Low friction → high momentum → continuous flow 🌾
