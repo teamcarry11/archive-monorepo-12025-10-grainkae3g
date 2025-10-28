@@ -387,6 +387,21 @@ graindaemon-state.edn
 # We protect the community by protecting ourselves first
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# ICP (INTERNET COMPUTER PROTOCOL)
+# ═══════════════════════════════════════════════════════════════════════════════
+# ICP dfx state files and build artifacts
+
+# dfx generated state
+.dfx/
+**/.dfx/
+
+# ICP canister state
+**/replicated_state/
+**/checkpoints/
+**/states_metadata.pbuf
+**/system_metadata.pbuf
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # PERSONAL GRAINSTORES (managed as git submodules)
 # ═══════════════════════════════════════════════════════════════════════════════
 # Personal grainstores are separate git repos linked as submodules
