@@ -384,4 +384,5 @@ graindaemon-state.edn
 # 4. Consider using git-secrets or similar tools
 #
 # Grain Network Philosophy: Security through simplicity and transparency
-# We protect the community by protecting ourselves first
+# We protect the community by protecting ourselves first# Personal grainstore repos (separate git repos)
+grainstore/kae3g/teamkae3gtravel12/

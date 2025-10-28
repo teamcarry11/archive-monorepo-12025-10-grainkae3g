@@ -189,9 +189,9 @@
         <div class=\"card\">
             <h3>📧 Get in Touch</h3>
             <p>Ready to join the Grain Network? Have questions about personal sovereignty? Want to contribute to our mission?</p>
-            <p><strong>Email:</strong> kae3g@grain06pbc.org</p>
-            <p><strong>GitHub:</strong> github.com/grain06pbc</p>
-            <p><strong>Website:</strong> grain06pbc.com</p>
+            <p><strong>Email:</strong> kae3g@grain12pbc.org</p>
+            <p><strong>GitHub:</strong> github.com/grain12pbc</p>
+            <p><strong>Website:</strong> grain12pbc.com</p>
         </div>
         
         <div class=\"card\">

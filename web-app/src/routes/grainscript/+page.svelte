@@ -11,7 +11,7 @@
   <h1>grainscript</h1>
   <p class="tagline">A teaching card system for developers • 1,235,520 total</p>
   <p class="github-link">
-    <a href="https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grains" 
+    <a href="https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain12pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grains" 
        target="_blank" 
        rel="noopener noreferrer">
       📂 View on GitHub

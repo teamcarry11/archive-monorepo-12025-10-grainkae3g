@@ -142,7 +142,7 @@ These structures represent knowledge, files, and resources.
 
 ---
 
-### **grainframe** (Team 12 - teamflow12)
+### **grainframe** (Team 12 - teamtravel12)
 **What**: Typed data containers (like JSON Schema but functional)  
 **Data Structure**:
 ```steel
@@ -165,9 +165,9 @@ These structures represent knowledge, files, and resources.
 
 These are scripts and tools built on the data layer.
 
-### **grainsteel** (Team 12 - teamflow12)
+### **grainsteel** (Team 12 - teamtravel12)
 **What**: Steel scripting infrastructure  
-**Location**: `grain06pbc/teamflow12/grainsteel/` (template)  
+**Location**: `grain12pbc/teamtravel12/grainsteel/` (template)  
 **Personal**: `grainkae3g/grainkae3gsteel/` (your scripts)
 
 **What it contains**:
@@ -183,7 +183,7 @@ These are scripts and tools built on the data layer.
 
 ### **grainbarrel** (Team 01 - teambright01)
 **What**: Build automation and CLI commands  
-**Location**: `grain06pbc/teambright01/grainbarrel/` (template)  
+**Location**: `grain12pbc/teambright01/grainbarrel/` (template)  
 **Personal**: `grainkae3g/grainkae3gbarrel/` (your builds)
 
 **What it contains**:
@@ -199,7 +199,7 @@ These are scripts and tools built on the data layer.
 
 ### **grainstore** (Team 02 - teamtreasure02)
 **What**: Curated dependency registry  
-**Location**: `grain06pbc/teamtreasure02/grainstore/` (template specs)  
+**Location**: `grain12pbc/teamtreasure02/grainstore/` (template specs)  
 **Personal**: `grainkae3g/grainkae3gstore/` (your actual modules)
 
 **What it contains**:
@@ -229,13 +229,13 @@ These are complete systems built on everything below.
 ```
 
 **Depends on**: grain, grainmark, grainframe  
-**Location**: `grain06pbc/teamdance03/grainweb/`
+**Location**: `grain12pbc/teamdance03/grainweb/`
 
 ---
 
 ### **graindisplay** (Team 05 - teamshine05)
 **What**: Display configuration and color management  
-**Location**: `grain06pbc/teamshine05/graindisplay/` (template)  
+**Location**: `grain12pbc/teamshine05/graindisplay/` (template)  
 **Personal**: `grainkae3g/grainkae3gdisplay/` (your configs)
 
 **Data Structure**:
@@ -265,7 +265,7 @@ These are complete systems built on everything below.
 ```
 
 **Depends on**: graintime (for scheduling)  
-**Location**: `grain06pbc/teambright01/grain6/`
+**Location**: `grain12pbc/teambright01/grain6/`
 
 ---
 
@@ -276,12 +276,12 @@ How do we deliver all this to users?
 ### **grainpackage** (Team 04 - teamplay04)
 **What**: Universal package builder (APK, DEB, RPM, Nix)  
 **Depends on**: All modules (packages everything)  
-**Location**: `grain06pbc/teamplay04/grainpackage/`
+**Location**: `grain12pbc/teamplay04/grainpackage/`
 
 ### **grainclay** (Team 02 - teamtreasure02)
 **What**: Immutable rolling-release package manager  
 **Depends on**: grainpackage (installs packages)  
-**Location**: `grain06pbc/teamtreasure02/grainclay/`
+**Location**: `grain12pbc/teamtreasure02/grainclay/`
 
 ---
 
@@ -292,12 +292,12 @@ How do we teach all this?
 ### **grainbook** (Team 09 - teamquest09)
 **What**: Collection of grains as teaching curriculum  
 **Depends on**: grain (the cards themselves)  
-**Location**: `grain06pbc/teamquest09/grainbook/`
+**Location**: `grain12pbc/teamquest09/grainbook/`
 
 ### **graincard** (Team 10 - teamrebel10)
 **What**: Graincard format specification  
 **Depends on**: grainorder (for IDs), grain (format)  
-**Location**: `grain06pbc/teamrebel10/graincard-spec/`
+**Location**: `grain12pbc/teamrebel10/graincard-spec/`
 
 ---
 
@@ -317,11 +317,11 @@ Systems that organize other systems.
 ```
 
 **Depends on**: grain (applies to cards)  
-**Location**: `grain06pbc/teamillumine13/grainmode/`
+**Location**: `grain12pbc/teamillumine13/grainmode/`
 
 ### **grainpersona** (Team 10 - teamrebel10)
 **What**: AI persona specifications (Glow G2, Trish, etc.)  
-**Location**: `grain06pbc/teamrebel10/grainpersona/`
+**Location**: `grain12pbc/teamrebel10/grainpersona/`
 
 ---
 
@@ -385,7 +385,7 @@ META (Built on All)
 
 ### **Phase 1: Create Template Grainstore** ✅
 
-**Location**: `grainstore/grain06pbc/teamtreasure02/grainstore/`
+**Location**: `grainstore/grain12pbc/teamtreasure02/grainstore/`
 
 **What goes here**:
 - `README.md` - What is a grainstore? How does it work?
@@ -416,9 +416,9 @@ Current location: `grainstore/` (root level - messy!)
 
 Where they should go:
 
-#### **TEMPLATE SIDE** (grain06pbc):
+#### **TEMPLATE SIDE** (grain12pbc):
 ```
-grain06pbc/
+grain12pbc/
 ├── teambright01/
 │   ├── grain6/              (daemon specs)
 │   ├── grainbarrel/         (build specs)
@@ -459,7 +459,7 @@ grain06pbc/
 │   ├── grainsource/         (version control)
 │   ├── grainsite/           (static sites)
 │   └── grainsync/           (sync tools)
-├── teamflow12/
+├── teamtravel12/
 │   ├── grainsteel/          (Steel runtime)
 │   ├── graintime/           (shared with 10)
 │   └── grain-metatypes/     (type system)
@@ -536,7 +536,7 @@ grainkae3g/
 ## 🏗️ THE CHART COURSE - Step by Step
 
 ### **Step 1: Create grainmodules Meta-Module** 
-**Location**: `grain06pbc/teamtreasure02/grainmodules/`
+**Location**: `grain12pbc/teamtreasure02/grainmodules/`
 
 **What it is**: The registry of ALL modules, their dependencies, and data structures.
 
@@ -556,7 +556,7 @@ grainmodules/
 ```
 
 ### **Step 2: Create Template Grainstore**
-**Location**: `grain06pbc/teamtreasure02/grainstore/`
+**Location**: `grain12pbc/teamtreasure02/grainstore/`
 
 **Contents**:
 - Specs for how grainstores work
@@ -680,11 +680,11 @@ Each module gets:
 
 ### **1. Create grainmodules** (1 hour)
 - Write `STEEL-GRAINOS-WORLD-MAP.md` (this doc!) ✅
-- Create `grain06pbc/teamtreasure02/grainmodules/`
+- Create `grain12pbc/teamtreasure02/grainmodules/`
 - Write registry.scm with all module definitions
 
 ### **2. Create Template Grainstore** (1 hour)
-- Create `grain06pbc/teamtreasure02/grainstore/`
+- Create `grain12pbc/teamtreasure02/grainstore/`
 - Write README.md (Glow G2 voice)
 - Write grainstore.scm spec
 - Write loader/sync scripts in Steel
@@ -748,7 +748,7 @@ Each module gets:
 Every module follows the same structure:
 
 ```
-grain06pbc/teamXX/modulename/          ← TEMPLATE
+grain12pbc/teamXX/modulename/          ← TEMPLATE
 ├── README.md                         (What is this? How does it work?)
 ├── specs/
 │   ├── data-structures.scm           (What data does it use?)

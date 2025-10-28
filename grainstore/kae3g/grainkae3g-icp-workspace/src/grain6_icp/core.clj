@@ -94,7 +94,7 @@
     {:username username
      :platforms {:github "kae3g"
                  :codeberg "kae3g"
-                 :grain06pbc "kae3g"}
+                 :grain12pbc "kae3g"}
      :verified true
      :last-updated (.toString (java.time.Instant/now))}))
 

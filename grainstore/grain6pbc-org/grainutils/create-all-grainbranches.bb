@@ -20,7 +20,7 @@
     
     (try
       ;; Clone repository temporarily
-      (shell {:dir "/tmp"} "git" "clone" (str "https://github.com/grain06pbc/" repo-name) (str "temp-" repo-name))
+      (shell {:dir "/tmp"} "git" "clone" (str "https://github.com/grain12pbc/" repo-name) (str "temp-" repo-name))
       
       (let [temp-dir (str "/tmp/temp-" repo-name)]
         ;; Create grainbranch
@@ -54,19 +54,19 @@
         (shell {:dir temp-dir} "git" "push" "origin" grainbranch-name)
         
         ;; Set as default branch
-        (shell "gh" "api" (str "repos/grain06pbc/" repo-name) "--method" "PATCH" 
+        (shell "gh" "api" (str "repos/grain12pbc/" repo-name) "--method" "PATCH" 
                "--field" (str "default_branch=" grainbranch-name))
         
         ;; Update repository description
-        (let [grainbranch-url (str "https://github.com/grain06pbc/" repo-name "/tree/" grainbranch-name)]
-          (shell "gh" "api" (str "repos/grain06pbc/" repo-name) "--method" "PATCH"
+        (let [grainbranch-url (str "https://github.com/grain12pbc/" repo-name "/tree/" grainbranch-name)]
+          (shell "gh" "api" (str "repos/grain12pbc/" repo-name) "--method" "PATCH"
                  "--field" (str "description=" description " | Grainbranch: " grainbranch-url)))
         
         ;; Clean up
         (shell {:dir "/tmp"} "rm" "-rf" (str "temp-" repo-name))
         
         (println "✅ Created grainbranch:" grainbranch-name)
-        (println "📁 URL: https://github.com/grain06pbc/" repo-name "/tree/" grainbranch-name)
+        (println "📁 URL: https://github.com/grain12pbc/" repo-name "/tree/" grainbranch-name)
         
         {:repo repo-name :grainbranch grainbranch-name :success true})
       
@@ -75,12 +75,12 @@
         {:repo repo-name :error (.getMessage e) :success false}))))
 
 (defn create-all-grainbranches []
-  (println "🌾 Creating grainbranches for all grain06pbc repositories...")
+  (println "🌾 Creating grainbranches for all grain12pbc repositories...")
   
   (let [repos [
         {:name "grain6" :description "Complete Grain Network Monorepo Template"}
         {:name "grainbarrel" :description "Grain Network Build System"}
-        {:name "grain06pbc" :description "Public Benefit Corporation Framework"}
+        {:name "grain12pbc" :description "Public Benefit Corporation Framework"}
         {:name "grainzsh" :description "Grain Network Zsh Configuration"}
         {:name "grainenvvars" :description "Environment Variables Management"}
         {:name "humble-social-client" :description "Humble UI Social Client"}

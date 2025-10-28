@@ -31,7 +31,7 @@
                "**Description**: " description "\n"
                "**Created**: " (java.time.Instant/now) "\n"
                "**Graintime**: " graintime "\n\n"
-               "This grainbranch represents an immutable version of the grain06pbc/grainutils repository.\n"
+               "This grainbranch represents an immutable version of the grain12pbc/grainutils repository.\n"
                "It serves as a stable reference point for documentation, courses, and deployment.\n\n"
                "## Utilities Included\n\n"
                "- **Clelte**: Clojure to Svelte compiler\n"
@@ -59,16 +59,16 @@
     (shell "git" "push" "origin" grainbranch-name)
     
     ;; Set as default branch
-    (shell "gh" "api" "repos/grain06pbc/grain06pbc/grainutils" "--method" "PATCH" 
+    (shell "gh" "api" "repos/grain12pbc/grain12pbc/grainutils" "--method" "PATCH" 
            "--field" (str "default_branch=" grainbranch-name))
     
     ;; Update repository description
-    (let [grainbranch-url (str "https://github.com/grain06pbc/grain06pbc/grainutils/tree/" grainbranch-name)]
-      (shell "gh" "api" "repos/grain06pbc/grain06pbc/grainutils" "--method" "PATCH"
+    (let [grainbranch-url (str "https://github.com/grain12pbc/grain12pbc/grainutils/tree/" grainbranch-name)]
+      (shell "gh" "api" "repos/grain12pbc/grain12pbc/grainutils" "--method" "PATCH"
              "--field" (str "description=Grain6PBC Utilities: Clelte (Clojure→Svelte), Clotoko (Clojure→Motoko), Poshmark Scraper, GrainDaemon, GrainMode | Grainbranch: " grainbranch-url)))
     
     (println "✅ Created grainbranch:" grainbranch-name)
-    (println "📁 URL: https://github.com/grain06pbc/grain06pbc/grainutils/tree/" grainbranch-name)
+    (println "📁 URL: https://github.com/grain12pbc/grain12pbc/grainutils/tree/" grainbranch-name)
     (println "🌐 Set as default branch with updated description!")
     
     grainbranch-name))

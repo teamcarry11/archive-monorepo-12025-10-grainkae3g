@@ -8,7 +8,7 @@
 
 ## 🎯 THE BIG MISSION
 
-User posted in Urbit Groups chat: "announcing Grain 6 PBC https://github.com/grain06pbc"
+User posted in Urbit Groups chat: "announcing Grain 6 PBC https://github.com/grain12pbc"
 
 Response: "what is it though?"
 
@@ -26,11 +26,11 @@ Response: "what is it though?"
 
 ## ✅ COMPLETED SO FAR
 
-###  1. grain6pbc → grain06pbc Rename (MASSIVE!)
+###  1. grain12pbc → grain12pbc Rename (MASSIVE!)
 - **316 files** updated with find-and-replace
-- **Directory renamed**: `grainstore/grain6pbc` → `grainstore/grain06pbc`
+- **Directory renamed**: `grainstore/grain12pbc` → `grainstore/grain12pbc`
 - **Committed and pushed**: 1692 objects (4.24 MiB)
-- **Why**: Consistent numbering with teams (team01, team02, ..., grain06pbc)
+- **Why**: Consistent numbering with teams (team01, team02, ..., grain12pbc)
 
 ### 2. graintime → Team 05 (teamshine05)
 - **Moved**: `teamrebel10/graintime` → `teamshine05/graintime`
@@ -43,7 +43,7 @@ Response: "what is it though?"
 - **Future goal**: Steel-ICP canister for Vedic astrological time
 
 ### 4. grainmodules Meta-Registry
-- **Created**: `grain06pbc/teamtreasure02/grainmodules/`
+- **Created**: `grain12pbc/teamtreasure02/grainmodules/`
 - **Files**:
   - `registry.scm` - Complete module catalog with team assignments
   - `specs/dependencies.scm` - Dependency graph system
@@ -104,7 +104,7 @@ Response: "what is it though?"
 **BASECAMP** (✅ Complete):
 - Steel Migration (7/73 scripts - ongoing)
 - Team renames (teamdance03, teaminspire07, teamhelp11, teamquest09)
-- grain06pbc global rename
+- grain12pbc global rename
 
 **TRAILHEAD** (✅ Complete):
 - grainmodules meta-registry
@@ -130,7 +130,7 @@ Response: "what is it though?"
 
 ## 🎨 KEY THEMES
 
-1. **Consistency**: grain06pbc matches team numbering
+1. **Consistency**: grain12pbc matches team numbering
 2. **Thematic Alignment**: graintime with teamshine05 (Leo/Sun/Time)
 3. **Modularity**: grainmodules registry shows clear dependencies
 4. **Mountain Metaphor**: TODO system reflects the journey

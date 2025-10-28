@@ -5,7 +5,7 @@
 ;;
 ;; Version: 1.0.0
 ;; Author: kae3g (Graingalaxy)
-;; Organizations: Grain PBC, grain06pbc
+;; Organizations: Grain PBC, grain12pbc
 ;; License: MIT
 ;; Status: 🌱 ACTIVE DEVELOPMENT - Production Ready
 

@@ -33,7 +33,7 @@
     (str graintime "-" truncated-slug)))
 
 (defn get-repo-description [repo-name]
-  (let [result (shell {:out :string} "gh" "api" (str "repos/grain06pbc/" repo-name) "--jq" ".description")]
+  (let [result (shell {:out :string} "gh" "api" (str "repos/grain12pbc/" repo-name) "--jq" ".description")]
     (if (= 0 (:exit result))
       (str/trim (:out result))
       nil)))
@@ -41,13 +41,13 @@
 (defn update-repo-description [repo-name description]
   (let [graintime (get-current-graintime)
         grainbranch-name (get-grainbranch-name description graintime)
-        grainbranch-url (str "https://github.com/grain06pbc/" repo-name "/tree/" grainbranch-name)
+        grainbranch-url (str "https://github.com/grain12pbc/" repo-name "/tree/" grainbranch-name)
         new-description (str description " | Grainbranch: " grainbranch-url)]
     (println "🌾 Updating" repo-name "with grainbranch URL...")
     (println "📝 Description:" description)
     (println "🔗 Grainbranch URL:" grainbranch-url)
     
-    (let [result (shell {:out :string} "gh" "api" (str "repos/grain06pbc/" repo-name) 
+    (let [result (shell {:out :string} "gh" "api" (str "repos/grain12pbc/" repo-name) 
                         "--method" "PATCH" 
                         "--field" (str "description=" new-description))]
       (if (= 0 (:exit result))
@@ -60,10 +60,10 @@
           false)))))
 
 (defn sync-all-repos []
-  (println "🌾 Syncing grainbranch URLs for all grain06pbc repositories...")
+  (println "🌾 Syncing grainbranch URLs for all grain12pbc repositories...")
   
   ;; Get list of all repositories
-  (let [result (shell {:out :string} "gh" "api" "orgs/grain06pbc/repos" "--jq" ".[].name")]
+  (let [result (shell {:out :string} "gh" "api" "orgs/grain12pbc/repos" "--jq" ".[].name")]
     (if (= 0 (:exit result))
       (let [repo-names (str/split-lines (:out result))]
         (println "📊 Found" (count repo-names) "repositories")

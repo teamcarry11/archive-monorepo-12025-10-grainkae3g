@@ -24,7 +24,7 @@ Why does the Grainstore exist? What principles guide it? Let me walk you through
 
 **Pure Rust+Steel Stack** - We've moved from Babashka/Clojure to Steel (a Rust-embedded Scheme). Why? Rust gives us safety and speed. Steel gives us Lisp's elegance. Together, they're powerful and teachable.
 
-**Template/Personal Split** - Share defaults, preserve customization. Templates live in `grain06pbc`, personal implementations live in team grainstores.
+**Template/Personal Split** - Share defaults, preserve customization. Templates live in `grain12pbc`, personal implementations live in team grainstores.
 
 **Real Resources Matter** - Our crypto philosophy: value should be backed by real hardware, electricity, and human labor. Digital scarcity means nothing without physical grounding.
 

@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 
-const GRAINSCRIPT_DIR = join(process.cwd(), '../grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainscript');
+const GRAINSCRIPT_DIR = join(process.cwd(), '../grainstore/grain12pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainscript');
 
 // Grainorder sequence (first 100 cards)
 // This will eventually call the grainorder library

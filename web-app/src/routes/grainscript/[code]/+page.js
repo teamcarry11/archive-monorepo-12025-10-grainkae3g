@@ -31,7 +31,7 @@ export async function load({ params }) {
         Currently showing placeholder. Check GitHub for full content.</em>
       </p>
       <p>
-        <a href="https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-03h----teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-03h----teamdescend14/grains/${code}-*.md" 
+        <a href="https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-03h----teamdescend14/grainstore/grain12pbc/teamdescend14/gkd-prompt-execution--12025-10-27--0145-PDT--moon-p_ashadha----asc-leo023-sun-03h----teamdescend14/grains/${code}-*.md" 
            target="_blank">
           View on GitHub →
         </a>

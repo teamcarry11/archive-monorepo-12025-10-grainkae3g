@@ -1,4 +1,0 @@
-{:linters {:clojure-lsp/unused-public-var {:level :off}
-           :unresolved-symbol {:exclude #{clojure.test/deftest}}
-           :long-lines {:level :warning :max-line-length 80}}
- :config-paths ["."]}
