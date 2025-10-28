@@ -83,15 +83,15 @@ Earth teams focus on patient growth, careful attention, and solid structures.
 
 ---
 
-### 10. teamrebel10 - ♑ CAPRICORN (Earth Mountain)
+### 10. teamrebel10 - ♑ CAPRICORN / MAKARA (Earth Crocodile)
 
-**Element**: 🌍 Earth  
-**Superpower**: Planning, organizing, reaching goals step by step  
+**Element**: 🌍 Earth + 🌊 Water  
+**Superpower**: Planning with patience, organizing with ancient power  
 **Challenge**: Enjoying the journey, not just the destination  
 **Modules**: graincard-spec, grainbranch, grainpersona  
-**Mascot**: Mountain Goat 🐐
+**Mascot**: Crocodile 🐊 (Makara - patient, enduring!)
 
-**Vibe!** Like the friend who helps you break a huge project into manageable pieces. Team 10 builds solid structures that help everyone climb higher together.
+**Vibe!** Like an ancient crocodile waiting patiently then moving with unstoppable power! Team 10 builds solid structures that last. The rebel who creates systems that actually work.
 
 ---
 

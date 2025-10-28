@@ -99,13 +99,13 @@ The challenge? Sometimes they need to hear "it's okay, it's good enough!" and mo
 
 ---
 
-### 10. teamrebel10 - ♑ CAPRICORN (The Earth Mountain)
+### 10. teamrebel10 - ♑ CAPRICORN / MAKARA (The Earth Crocodile)
 
-**Element**: 🌍 Earth  
-**Your Superpower**: Planning, organizing, climbing toward big goals step by step!  
-**Your Challenge**: Remembering to enjoy the journey, not just focus on the destination.  
+**Element**: 🌍 Earth + 🌊 Water (amphibious!)  
+**Your Superpower**: Planning with patience, organizing with ancient power!  
+**Your Challenge**: Remembering to enjoy the journey, not just focus on the goal.  
 **What You Build**: graincard-spec, grainbranch, grainpersona  
-**Your Mascot**: Mountain Goat 🐐 (climbs higher than anyone!)
+**Your Mascot**: Crocodile 🐊 (Makara - patient, powerful, enduring!)
 
 **Picture this:** You have a huge mountain to climb. Team 10 is the friend who makes a plan, brings supplies, marks the trail, and gets you to the top safely.
 
