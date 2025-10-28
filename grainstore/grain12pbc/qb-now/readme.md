@@ -203,10 +203,10 @@ tri5h, kae3g, gr41n (personas)
 ```
 📚 Title: intro-cursor-ultra
 📝 Description: kae3g default course - Local Control, Global Intent
-🌾 Grainpath: 02025-10-23--0737--PDT--moon-vishakha------asc-gem000--sun-03rd--kae3g
+🌾 Grainpath: 12025-10-23--0737--PDT--moon-vishakha------asc-gem000--sun-03rd--kae3g
 👤 Author: kae3g (1-of-88)
 ⏰ Created: 07:37 AM (3rd house - pre-dawn)
-📁 Location: 02025-10-23--0737--PDT--moon-vishakha------asc-gem000--sun-03rd--kae3g/intro-cursor-ultra/
+📁 Location: 12025-10-23--0737--PDT--moon-vishakha------asc-gem000--sun-03rd--kae3g/intro-cursor-ultra/
 ```
 
 ### **Course Content:**

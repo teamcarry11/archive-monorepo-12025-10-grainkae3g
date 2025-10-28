@@ -177,7 +177,7 @@ Location: `~/.config/grain6/graintime-verify-queue.edn`
 
 💡 To check verification status: bb grain6:verify-queue
 
-Grainpath: 02025-10-23--0945--PDT--moon-vishakha--asc-gem000--sun-03rd--kae3g-OFFLINE
+Grainpath: 12025-10-23--0945--PDT--moon-vishakha--asc-gem000--sun-03rd--kae3g-OFFLINE
 ```
 
 Note the `-OFFLINE` suffix added to grainpath!
