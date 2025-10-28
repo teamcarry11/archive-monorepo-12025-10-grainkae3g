@@ -405,8 +405,9 @@ graindaemon-state.edn
 # PERSONAL GRAINSTORES (external git repos, symlinked)
 # ═══════════════════════════════════════════════════════════════════════════════
 # Personal grainstores live in ~/github/{user}/ as separate git repos
-# They are symlinked into grainstore/kae3g/ and ignored by this repo
+# They are symlinked into grainstore/kae3g/ for IDE access
+# Git doesn't follow symlinks, so these won't be committed to main repo
 # Template code stays in grainstore/grain12pbc/ (tracked)
-# Personal code stays external (ignored, symlinked)
-
-grainstore/kae3g/
+# Personal code stays external (separate git repos)
+#
+# Note: NOT gitignored! Symlinks are safe - git won't index their contents
