@@ -19,7 +19,7 @@ We use something called **elemental teams**. Let me show you what that means.
 
 Fire teams are all about **starting things**. Think of fire - it sparks, it ignites, it gets things moving! These teams have that same energy.
 
-### 01. teamfire01 - ♈ ARIES (The Fire Starter)
+### 01. teambright01 - ♈ ARIES (The Fire Starter)
 
 **Element**: 🔥 Fire  
 **Your Superpower**: You're amazing at starting new projects and being brave!  
@@ -49,7 +49,7 @@ Does that distinction make sense? It's about giving, not taking attention.
 
 ---
 
-### 09. teampassion09 - ♐ SAGITTARIUS (The Fire Arrow)
+### 09. teamquest09 - ♐ SAGITTARIUS (The Fire Arrow)
 
 **Element**: 🔥 Fire  
 **Your Superpower**: Teaching, exploring, finding truth wherever it leads!  
@@ -67,7 +67,7 @@ They're like wise travelers who've learned amazing things and can't wait to shar
 
 Earth teams are about **growing and building**. Slow, steady, patient, strong. Like a garden or a mountain - they're in it for the long haul.
 
-### 02. teamvault02 - ♉ TAURUS (The Earth Gardener)
+### 02. teamtreasure02 - ♉ TAURUS (The Earth Gardener)
 
 **Element**: 🌍 Earth  
 **Your Superpower**: Growing things patiently, building stuff that LASTS!  
@@ -83,7 +83,7 @@ Think of your best friend who's always there for you, never rushing, just reliab
 
 ---
 
-### 06. teamprecision06 - ♍ VIRGO (The Earth Healer)
+### 06. teamelegance06 - ♍ VIRGO (The Earth Healer)
 
 **Element**: 🌍 Earth  
 **Your Superpower**: Noticing details everyone else misses, fixing problems carefully!  
@@ -99,7 +99,7 @@ The challenge? Sometimes they need to hear "it's okay, it's good enough!" and mo
 
 ---
 
-### 10. teamstructure10 - ♑ CAPRICORN (The Earth Mountain)
+### 10. teamrebel10 - ♑ CAPRICORN (The Earth Mountain)
 
 **Element**: 🌍 Earth  
 **Your Superpower**: Planning, organizing, climbing toward big goals step by step!  
@@ -171,7 +171,7 @@ Their challenge is remembering that people might LIKE the old way. Innovation is
 
 Water teams are about **feeling, healing, and flowing**. Water adapts to any container, heals wounds, and transforms everything it touches.
 
-### 04. teamnurture04 - ♋ CANCER (The Water Protector)
+### 04. teamplay04 - ♋ CANCER (The Water Protector)
 
 **Element**: 🌊 Water  
 **Your Superpower**: Making people feel safe, protected, cared for!  
@@ -205,7 +205,7 @@ Their superpower is dedication. Their challenge is remembering that not everyone
 
 ---
 
-### 12. teamflow12 - ♓ PISCES (The Water Flow)
+### 12. teamtravel12 - ♓ PISCES (The Water Flow)
 
 **Element**: 🌊 Water  
 **Your Superpower**: Going with the flow, adapting to anything, seeing ALL perspectives!  
@@ -353,7 +353,7 @@ Does that explanation help you understand why we chose this system?
 
 ## A NOTE ABOUT TEAM NAMES
 
-You might notice: teamfire01, teamvault02, teamwinds03, etc.
+You might notice: teambright01, teamtreasure02, teamwinds03, etc.
 
 **Why the specific names?** Each name captures that team's ESSENCE:
 - "fire" = initiative energy

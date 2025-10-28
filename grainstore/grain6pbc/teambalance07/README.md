@@ -88,14 +88,14 @@ teambalance07/
 ## 🔗 **Cosmic Connections**
 
 **The Chariot Transports**:
-- → teamnetwork03 (Gemini/Empress) - ICP sites multiply abundantly
-- → teamwisdom09 (Sagittarius/Hermit) - Deploy courses to blockchain
+- → teamparty03 (Gemini/Empress) - ICP sites multiply abundantly
+- → teamquest09 (Sagittarius/Hermit) - Deploy courses to blockchain
 - → teamhelper11 (Aquarius/Force) - HumbleUI → Motoko UI
 
 **The Chariot Receives**:
-- ← teamfire01 (Aries/Magician) - Initial build becomes canister
-- ← teamstructure10 (Capricorn/Wheel) - Specs validate transpilation
-- ← teamnurture04 (Cancer/Emperor) - Daemon supervises replica
+- ← teambright01 (Aries/Magician) - Initial build becomes canister
+- ← teamrebel10 (Capricorn/Wheel) - Specs validate transpilation
+- ← teamplay04 (Cancer/Emperor) - Daemon supervises replica
 
 ---
 

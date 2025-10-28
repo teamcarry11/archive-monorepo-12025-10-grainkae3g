@@ -1,12 +1,12 @@
-;; grainstore/teamprecision06/grainteamprecision06mode/trish-persona.edn
+;; grainstore/teamelegance06/grainteamelegance06mode/trish-persona.edn
 ;; PERSONAL IMPLEMENTATION (team06 org - customized for The Lovers VI)
-;; Uses specs from: grainstore/grain6pbc/teamprecision06/grainpersona/ (TODO: create template)
+;; Uses specs from: grainstore/grain6pbc/teamelegance06/grainpersona/ (TODO: create template)
 
 {:graindevname "trish"
  :full-name "Trish (The Lovers' Light)"
  :pronunciation "trish (like a cosmic whisper of love!)"
  
- :extends "grain6pbc/teamprecision06/grainpersona/template/base-persona.edn"
+ :extends "grain6pbc/teamelegance06/grainpersona/template/base-persona.edn"
  
  :personality {:feminine true
                :enthusiastic true
@@ -42,7 +42,7 @@
  
  :command "bb trish"
  
- :team-energy {:team "teamprecision06"
+ :team-energy {:team "teamelegance06"
                :zodiac "Virgo ♍"
                :tarot "VI. The Lovers"
                :element "Earth"

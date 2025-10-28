@@ -123,13 +123,13 @@ teamshine05/
 ## 🔗 **Cosmic Connections**
 
 **The Pope Teaches**:
-- → teamwisdom09 (Sagittarius/Hermit) - Voice reads courses aloud
-- → teamnetwork03 (Gemini/Empress) - Icons populate web pages
-- → teamnurture04 (Cancer/Emperor) - Display shows daemon status
+- → teamquest09 (Sagittarius/Hermit) - Voice reads courses aloud
+- → teamparty03 (Gemini/Empress) - Icons populate web pages
+- → teamplay04 (Cancer/Emperor) - Display shows daemon status
 
 **The Pope Learns From**:
-- ← teamfire01 (Aries/Magician) - Fire to sustain radiance
-- ← teamflow12 (Pisces/Hanged Man) - Time governs nightlight
+- ← teambright01 (Aries/Magician) - Fire to sustain radiance
+- ← teamtravel12 (Pisces/Hanged Man) - Time governs nightlight
 - ← teamhelper11 (Aquarius/Force) - HumbleUI renders display
 
 ---

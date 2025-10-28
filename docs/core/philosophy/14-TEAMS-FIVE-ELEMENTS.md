@@ -19,7 +19,7 @@ Does that sound interesting? Let's walk through it together.
 
 Fire teams focus on starting things, inspiring action, and teaching truth.
 
-### 01. teamfire01 - ♈ ARIES (Fire Starter)
+### 01. teambright01 - ♈ ARIES (Fire Starter)
 
 **Element**: 🔥 Fire  
 **Superpower**: Starting new projects, taking initiative, being courageous  
@@ -43,7 +43,7 @@ Fire teams focus on starting things, inspiring action, and teaching truth.
 
 ---
 
-### 09. teampassion09 - ♐ SAGITTARIUS (Fire Arrow)
+### 09. teamquest09 - ♐ SAGITTARIUS (Fire Arrow)
 
 **Element**: 🔥 Fire  
 **Superpower**: Teaching, exploring, seeking truth wherever it leads  
@@ -59,7 +59,7 @@ Fire teams focus on starting things, inspiring action, and teaching truth.
 
 Earth teams focus on patient growth, careful attention, and solid structures.
 
-### 02. teamvault02 - ♉ TAURUS (Earth Garden)
+### 02. teamtreasure02 - ♉ TAURUS (Earth Garden)
 
 **Element**: 🌍 Earth  
 **Superpower**: Growing things patiently, building what lasts  
@@ -71,7 +71,7 @@ Earth teams focus on patient growth, careful attention, and solid structures.
 
 ---
 
-### 06. teamprecision06 - ♍ VIRGO (Earth Healer)
+### 06. teamelegance06 - ♍ VIRGO (Earth Healer)
 
 **Element**: 🌍 Earth  
 **Superpower**: Noticing details, fixing problems, making things better  
@@ -83,7 +83,7 @@ Earth teams focus on patient growth, careful attention, and solid structures.
 
 ---
 
-### 10. teamstructure10 - ♑ CAPRICORN (Earth Mountain)
+### 10. teamrebel10 - ♑ CAPRICORN (Earth Mountain)
 
 **Element**: 🌍 Earth  
 **Superpower**: Planning, organizing, reaching goals step by step  
@@ -139,7 +139,7 @@ Air teams focus on connection, balance, and spreading ideas like wind carrying s
 
 Water teams focus on healing, adapting, and transformation. Water flows around obstacles and takes any shape.
 
-### 04. teamnurture04 - ♋ CANCER (Water Protector)
+### 04. teamplay04 - ♋ CANCER (Water Protector)
 
 **Element**: 🌊 Water  
 **Superpower**: Creating safe spaces, nurturing growth, protecting others  
@@ -163,7 +163,7 @@ Water teams focus on healing, adapting, and transformation. Water flows around o
 
 ---
 
-### 12. teamflow12 - ♓ PISCES (Water Flow)
+### 12. teamtravel12 - ♓ PISCES (Water Flow)
 
 **Element**: 🌊 Water  
 **Superpower**: Adapting naturally, seeing all perspectives, flowing around obstacles  

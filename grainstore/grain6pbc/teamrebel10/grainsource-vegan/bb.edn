@@ -1,0 +1,133 @@
+{:tasks
+ {:requires ([clojure.string :as str]
+             [clojure.java.shell :refer [sh]])
+
+  ;; =========================================================================
+  ;; GRAINSOURCE-VEGAN TASKS
+  ;; =========================================================================
+  ;; teamrebel10 (Capricorn ♑ / X. The Wheel of Fortune)
+  ;; "Plant-based development with compassion and care"
+  ;; =========================================================================
+
+  audit
+  {:doc "Run comprehensive vegan code audit"
+   :task (shell "bb" "vegan-audit.bb" ".")}
+
+  audit-dir
+  {:doc "Audit a specific directory"
+   :task (let [dir (or (first *command-line-args*) ".")]
+           (shell "bb" "vegan-audit.bb" dir))}
+
+  check-violence
+  {:doc "Check for violent language in codebase"
+   :task (do
+           (println "🔍 Scanning for violent language...")
+           (let [result (sh "grep" "-r" "-i" 
+                           "-E" "kill|murder|slaughter|butcher|execute|destroy"
+                           "--include=*.clj" "--include=*.bb" "--include=*.md"
+                           "."
+                           :dir (System/getProperty "user.dir"))]
+             (if (str/blank? (:out result))
+               (println "✅ No violent language found!")
+               (do
+                 (println "⚠️  Violent language detected:")
+                 (println (:out result))))))}
+
+  check-oppression
+  {:doc "Check for oppressive terminology"
+   :task (do
+           (println "⚖️  Scanning for oppressive terms...")
+           (let [result (sh "grep" "-r" "-i"
+                           "-E" "master|slave|whitelist|blacklist"
+                           "--include=*.clj" "--include=*.bb" "--include=*.md"
+                           "."
+                           :dir (System/getProperty "user.dir"))]
+             (if (str/blank? (:out result))
+               (println "✅ No oppressive terms found!")
+               (do
+                 (println "⚠️  Oppressive terms detected:")
+                 (println (:out result))))))}
+
+  carbon-estimate
+  {:doc "Estimate carbon footprint of codebase"
+   :task (do
+           (println "♻️  Estimating carbon footprint...")
+           (println "")
+           (println "This is a rough estimate based on:")
+           (println "  - Lines of code")
+           (println "  - CPU cycles per character")
+           (println "  - Energy per cycle")
+           (println "  - CO2 per kWh")
+           (println "")
+           (shell "bb" "vegan-audit.bb" "."))}
+
+  toroidal-check
+  {:doc "Check toroidal economics practices"
+   :task (do
+           (println "🔄 Checking toroidal economics...")
+           (println "")
+           (let [checks {:readme (.exists (clojure.java.io/file "README.md"))
+                        :license (.exists (clojure.java.io/file "LICENSE"))
+                        :contributing (.exists (clojure.java.io/file "CONTRIBUTING.md"))
+                        :coc (.exists (clojure.java.io/file "CODE_OF_CONDUCT.md"))
+                        :changelog (.exists (clojure.java.io/file "CHANGELOG.md"))}]
+             (println "Documentation:")
+             (println (str "  README: " (if (:readme checks) "✅" "❌")))
+             (println (str "  LICENSE: " (if (:license checks) "✅" "❌")))
+             (println (str "  CONTRIBUTING: " (if (:contributing checks) "✅" "❌")))
+             (println (str "  CODE_OF_CONDUCT: " (if (:coc checks) "✅" "❌")))
+             (println (str "  CHANGELOG: " (if (:changelog checks) "✅" "❌")))
+             (println "")
+             (let [score (count (filter identity (vals checks)))]
+               (println (format "Score: %d/5" score))
+               (when (< score 5)
+                 (println "\n💡 Consider adding missing documentation")))))}
+
+  compassionate-review
+  {:doc "Full compassionate code review"
+   :task (do
+           (println "💚 COMPASSIONATE CODE REVIEW 💚")
+           (println "=" (apply str (repeat 78 "=")))
+           (println "")
+           
+           (println "1. Violent Language Check:")
+           (shell "bb" "check-violence")
+           (println "")
+           
+           (println "2. Oppressive Terms Check:")
+           (shell "bb" "check-oppression")
+           (println "")
+           
+           (println "3. Toroidal Economics:")
+           (shell "bb" "toroidal-check")
+           (println "")
+           
+           (println "4. Full Audit:")
+           (shell "bb" "audit"))}
+
+  guide
+  {:doc "Show compassionate code guide"
+   :task (do
+           (println "")
+           (println "💚 COMPASSIONATE CODE QUICK GUIDE 💚")
+           (println "=" (apply str (repeat 78 "=")))
+           (println "")
+           (println "🌱 Three Pillars:")
+           (println "  1. Compassionate Terminology (no violence)")
+           (println "  2. Sustainable Resources (minimal footprint)")
+           (println "  3. Toroidal Economics (give back more)")
+           (println "")
+           (println "🔧 Available Commands:")
+           (println "  bb audit              - Full vegan audit")
+           (println "  bb check-violence     - Scan for violent language")
+           (println "  bb check-oppression   - Scan for oppressive terms")
+           (println "  bb carbon-estimate    - Estimate carbon footprint")
+           (println "  bb toroidal-check     - Check giving-back practices")
+           (println "  bb compassionate-review - Complete review")
+           (println "")
+           (println "📚 Documentation:")
+           (println "  README.md               - Overview")
+           (println "  COMPASSIONATE-CODE.md   - Complete guide")
+           (println "")
+           (println "💚 Remember: Code that cares. Software that sustains.")
+           (println ""))}}}

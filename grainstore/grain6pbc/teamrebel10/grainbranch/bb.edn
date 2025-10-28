@@ -1,0 +1,94 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}}
+ 
+ :tasks
+ {:requires ([grainbranch.validator :as v]
+             [babashka.process :refer [shell]])
+  
+  ;; Validate current branch
+  validate-current
+  {:doc "Validate current git branch name (use in pre-commit hook)"
+   :task (v/validate-current-branch!)}
+  
+  ;; Validate any branch name
+  validate
+  {:doc "Validate a grainbranch name (usage: bb validate <branch-name>)"
+   :task (let [branch-name (first *command-line-args*)]
+           (if branch-name
+             (v/print-validation-errors (v/validate-grainbranch branch-name))
+             (println "Usage: bb validate <branch-name>")))}
+  
+  ;; Format new grainbranch name
+  format
+  {:doc "Format new grainbranch name with proper padding (interactive)"
+   :task (do
+           (println "🌾 Grainbranch Name Formatter")
+           (println)
+           (print "Prefix (3 chars, e.g., gkh): ")
+           (flush)
+           (let [prefix (read-line)]
+             (print "Title (e.g., chartcourse): ")
+             (flush)
+             (let [title (read-line)]
+               (print "Date (YYYY-MM-DD or 1YYYY-MM-DD): ")
+               (flush)
+               (let [date (read-line)]
+                 (print "Time (HHMM): ")
+                 (flush)
+                 (let [time (read-line)]
+                   (print "Timezone (PST/PDT/etc): ")
+                   (flush)
+                   (let [tz (read-line)]
+                     (print "Nakshatra (e.g., mula): ")
+                     (flush)
+                     (let [nakshatra (read-line)]
+                       (print "Asc sign (4 chars, e.g., gemi, erro): ")
+                       (flush)
+                       (let [asc-sign (read-line)]
+                         (print "Asc degree (00-29): ")
+                         (flush)
+                         (let [asc-deg (read-line)]
+                           (print "Sun house (01-12): ")
+                           (flush)
+                           (let [sun-house (read-line)]
+                             (print "Team (e.g., teamabsorb14): ")
+                             (flush)
+                             (let [team (read-line)
+                                   branch-name (v/format-grainbranch
+                                                {:prefix prefix
+                                                 :title title
+                                                 :date date
+                                                 :time time
+                                                 :timezone tz
+                                                 :nakshatra nakshatra
+                                                 :asc-sign asc-sign
+                                                 :asc-degree asc-deg
+                                                 :sun-house sun-house
+                                                 :team team})]
+                               (println)
+                               (println "✅ Formatted grainbranch name:")
+                               (println)
+                               (println branch-name)
+                               (println)
+                               (println "Create this branch:")
+                               (println (str "  git checkout -b " branch-name)))))))))))))}
+  
+  ;; Quick format with args
+  format-quick
+  {:doc "Quick format grainbranch (usage: bb format-quick gkh chartcourse 12025-10-26 1048 PST mula erro 00 03 teamabsorb14)"
+   :task (let [[prefix title date time tz nakshatra asc-sign asc-deg sun-house team] *command-line-args*]
+           (if (and prefix title date time tz nakshatra asc-sign asc-deg sun-house team)
+             (let [branch-name (v/format-grainbranch
+                                {:prefix prefix
+                                 :title title
+                                 :date date
+                                 :time time
+                                 :timezone tz
+                                 :nakshatra nakshatra
+                                 :asc-sign asc-sign
+                                 :asc-degree asc-deg
+                                 :sun-house sun-house
+                                 :team team})]
+               (println branch-name))
+             (println "Usage: bb format-quick <prefix> <title> <date> <time> <tz> <nakshatra> <asc-sign> <asc-deg> <sun-house> <team>")))}}}
+

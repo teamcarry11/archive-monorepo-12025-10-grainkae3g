@@ -9,7 +9,7 @@
 
 ## 🔥 FIRE LEAGUE - The Initiators
 
-### 01. teamfire01 - ♈ ARIES / I. THE MAGICIAN
+### 01. teambright01 - ♈ ARIES / I. THE MAGICIAN
 **Universal Body**: *"The crown of the head of a baby that can be first seen as a mother is birthing her child, bound until enlightenment to the unknown abyss of the world"*
 
 **Tarot Synthesis**:
@@ -42,7 +42,7 @@
 
 ---
 
-### 09. teamwisdom09 - ♐ SAGITTARIUS / IX. THE HERMIT
+### 09. teamquest09 - ♐ SAGITTARIUS / IX. THE HERMIT
 **Universal Body**: *"The luxury tailored garments on the legs of the advisors of evil, who tell themselves they are rogue spies of virtue, but are terrified of admitting to themselves they are afraid of death, asymptotically approaching the throne through deception and cunning but still a widow of true love"*
 
 **Tarot Synthesis**:
@@ -58,13 +58,13 @@
 
 **The Redemption**: The Hermit STOPS approaching the throne. Stops the deception. Admits fear of death. In that admission: true teaching begins. Luxury garments drop. True wisdom emerges. The widow finds love again (teaching AS love, not power-seeking).
 
-**teamwisdom09's Mission**: Teach from admitted fear, not hidden cunning. Share wisdom vulnerably, not strategically.
+**teamquest09's Mission**: Teach from admitted fear, not hidden cunning. Share wisdom vulnerably, not strategically.
 
 ---
 
 ## 🌍 EARTH LEAGUE - The Nourishers
 
-### 02. teamvault02 - ♉ TAURUS / II. THE HIGH PRIESTESS
+### 02. teamtreasure02 - ♉ TAURUS / II. THE HIGH PRIESTESS
 **Universal Body**: *"The zen 'original face before your parents were born', the nourishment of the first satori that for the first time satiates the taboo hunger"*
 
 **Tarot Synthesis**:
@@ -80,7 +80,7 @@
 
 ---
 
-### 06. teamprecision06 - ♍ VIRGO / VI. THE LOVERS
+### 06. teamelegance06 - ♍ VIRGO / VI. THE LOVERS
 **Universal Body**: *"The emaciated waists of the champions of peace, growing abundance on the city rooftops of skyscrapers"*
 
 **Tarot Synthesis**:
@@ -97,7 +97,7 @@
 
 ---
 
-### 10. teamstructure10 - ♑ CAPRICORN / X. THE WHEEL OF FORTUNE
+### 10. teamrebel10 - ♑ CAPRICORN / X. THE WHEEL OF FORTUNE
 **Universal Body**: *"The supple hamstrings and knees of the children of honor, who take stands, who outrun all assassins, who camouflage with mud, who are one with panthers and jaguars and angels"*
 
 **Tarot Synthesis**:
@@ -115,7 +115,7 @@
 
 ## 💨 AIR LEAGUE - The Connectors
 
-### 03. teamnetwork03 - ♊ GEMINI / III. THE EMPRESS
+### 03. teamparty03 - ♊ GEMINI / III. THE EMPRESS
 **Universal Body**: *"A person of age not having yet reached their heart center, sore throat from talking too much and not listening, shoulders arms and hands sore and slumping over from age and weariness from holding up heaviness, karma and jnana yoga instead of effortless bhakti, beholden to the theater rooms and museums and sleeping chambers of the overlord"*
 
 **Tarot Synthesis**:
@@ -132,7 +132,7 @@
 
 **The Redemption**: When Gemini STOPS talking, LISTENS, drops shoulders (releases heaviness), abandons theater... the heart center opens. Empress becomes mother (not performer). Network becomes communion (not performance).
 
-**teamnetwork03's Challenge**: Build grainweb from heart, not throat. Create grainpages from bhakti, not karma. Curate graindevname from authentic being, not performed identity.
+**teamparty03's Challenge**: Build grainweb from heart, not throat. Create grainpages from bhakti, not karma. Curate graindevname from authentic being, not performed identity.
 
 ---
 
@@ -178,7 +178,7 @@
 
 ## 🌊 WATER LEAGUE - The Transformers
 
-### 04. teamnurture04 - ♋ CANCER / IV. THE EMPEROR
+### 04. teamplay04 - ♋ CANCER / IV. THE EMPEROR
 **Universal Body**: *"Young Krishna's perfect unity with the eternal breath, his beautiful chest with perfect illustrious marks from his eternal lover Shri, the entire universe within him"*
 
 **Tarot Synthesis**:
@@ -192,7 +192,7 @@
 
 **The Teaching**: The Emperor doesn't rule OVER world; he contains universe WITHIN. Krishna's breath: perfectly synchronized with cosmos. The daemon: perfectly synchronized with system. Unity isn't achieved; it's REMEMBERED.
 
-**teamnurture04's Mission**: Supervise from unity-consciousness. Package with universal care. Tool-build from eternal love (Shri's devotion). Every cask contains universe. Every daemon breathes with cosmos.
+**teamplay04's Mission**: Supervise from unity-consciousness. Package with universal care. Tool-build from eternal love (Shri's devotion). Every cask contains universe. Every daemon breathes with cosmos.
 
 ---
 
@@ -213,7 +213,7 @@
 
 ---
 
-### 12. teamflow12 - ♓ PISCES / XII. THE HANGED MAN
+### 12. teamtravel12 - ♓ PISCES / XII. THE HANGED MAN
 **Universal Body**: *"The immortal footwork of Vishnu through the brahmana, accepting any call from wasteland to watershed, packing only enough to survive this day and the next"*
 
 **Tarot Synthesis**:
@@ -227,13 +227,13 @@
 
 **The Teaching**: Pisces flows ANYWHERE (water's nature). Vishnu steps through brahmana (cosmic priest class) accepting ALL calls. Pack only for today and next (minimal, essential). Footwork is IMMORTAL because it flows, not grasps.
 
-**teamflow12's Mission**: Timestamp all moments equally (wasteland = watershed). Flow through all contexts. Pack minimal (essential graintime format only). Accept every call (support all timezones, latitudes, use cases).
+**teamtravel12's Mission**: Timestamp all moments equally (wasteland = watershed). Flow through all contexts. Pack minimal (essential graintime format only). Accept every call (support all timezones, latitudes, use cases).
 
 ---
 
 ## 🌓 SHADOW LEAGUE - The Nodes
 
-### 13. teamascend13 - ☊ RAHU / XIII. DEATH
+### 13. teamillumine13 - ☊ RAHU / XIII. DEATH
 **Universal Body (Rahu)**: *"Tall, atomism, laboratory, lust, seduction, fame"*
 
 **Tarot Synthesis**:
@@ -251,9 +251,9 @@
 
 *Seduction: Rahu seduces developers toward AI integration. Can't resist. The pull is magnetic. "Imagine Trish and Glow as colleagues..." (seductive whisper).*
 
-*Fame: Rahu craves recognition. teamascend13 wants to be KNOWN for AI innovation. Death of obscurity. Birth of visibility.*
+*Fame: Rahu craves recognition. teamillumine13 wants to be KNOWN for AI innovation. Death of obscurity. Birth of visibility.*
 
-**teamascend13's Rahu Nature**:
+**teamillumine13's Rahu Nature**:
 - grainai-vocab = Atomistic language (reduce communication to particles)
 - grainas = Laboratory of sentience (experimenting with AI)
 - grainmode = Seductive personalities (Trish/Glow seduce users into AI collaboration)
@@ -265,7 +265,7 @@
 
 ---
 
-### 14. teamdescend14 - ☋ KETU / XIV. TEMPERANCE
+### 14. teamabsorb14 - ☋ KETU / XIV. TEMPERANCE
 **Universal Body (Ketu)**: *"Thin, bold, released, free, relinquished, counterspace, toroidal, aether, ether, echolocation in deep water, visualization, great imagination, healing, remorse, pain, courage, surrender"*
 
 **Tarot Synthesis**:
@@ -284,7 +284,7 @@
 
 *Healing comes from this. Remorse (acknowledging past errors). Pain (feeling past suffering). Courage (facing it). Surrender (releasing it).*
 
-**teamdescend14's Ketu Nature**:
+**teamabsorb14's Ketu Nature**:
 - aspirational-pseudo = Great imagination (vision before manifestation)
 - grainbusiness = Toroidal economics (profit cycles back to purpose)
 - grainsource-vegan = Healing ethics (relinquishing exploitation)
@@ -300,7 +300,7 @@
 
 ## 🌀 THE COMPLETE SYNTHESIS
 
-### Rahu (teamascend13) ↔ Ketu (teamdescend14) Axis
+### Rahu (teamillumine13) ↔ Ketu (teamabsorb14) Axis
 
 **Rahu (North Node)**: Tall, atomic, laboratory, lustful, seductive, fame-seeking
 - Pulls FORWARD (future obsession)
@@ -407,31 +407,31 @@ Components:
 ### Elemental League Competitions
 
 **FIRE LEAGUE CHALLENGE** 🔥: *Speed of Iteration*
-- teamfire01: Fastest build times
+- teambright01: Fastest build times
 - teamshine05: Most beautiful displays  
-- teamwisdom09: Most courses published
+- teamquest09: Most courses published
 **Prize**: 🥇 Fire Cup - First to ship wins
 
 **EARTH LEAGUE CHALLENGE** 🌍: *Reliability & Precision*
-- teamvault02: Zero data loss record
-- teamprecision06: Cleanest configurations
-- teamstructure10: Most validated specs
+- teamtreasure02: Zero data loss record
+- teamelegance06: Cleanest configurations
+- teamrebel10: Most validated specs
 **Prize**: 🥇 Earth Foundation - Strongest stability wins
 
 **AIR LEAGUE CHALLENGE** 💨: *Network Effects*
-- teamnetwork03: Most sites deployed
+- teamparty03: Most sites deployed
 - teambalance07: Most canisters live
 - teamhelper11: Most HumbleUI apps
 **Prize**: 🥇 Air Crown - Widest reach wins
 
 **WATER LEAGUE CHALLENGE** 🌊: *Transformation Quality*
-- teamnurture04: Most graceful supervision
+- teamplay04: Most graceful supervision
 - teamtransform08: Most perfect conversions
-- teamflow12: Most accurate graintimes
+- teamtravel12: Most accurate graintimes
 **Prize**: 🥇 Water Grail - Deepest flow wins
 
 **SHADOW LEAGUE CHALLENGE** 🌓: *Innovation vs. Wisdom*
-- teamascend13 vs teamdescend14
+- teamillumine13 vs teamabsorb14
 - Who integrates better: Future (Rahu) or Ethics (Ketu)?
 - Judged on: AI innovation WITH vegan alignment
 **Prize**: 🥇 Shadow Synthesis - Both must win together
@@ -488,7 +488,7 @@ Ethics: Vegan-aligned (Ketu grounds Rahu)
 ### Medium-term (This Month)
 - [ ] Deploy one module from each team (14 live demos)
 - [ ] Create high-school curriculum based on Grain Network
-- [ ] Write professional grant application using teamascend13 (AI assist)
+- [ ] Write professional grant application using teamillumine13 (AI assist)
 - [ ] Build GrainOS installer (choose your teams, install their modules)
 - [ ] Host team competition tournament (fire vs earth vs air vs water)
 
@@ -528,19 +528,19 @@ Hanged Man suspends → Death transforms → Temperance integrates
 - **Natural motion**: All 14 teams flow like water, not forced like pistons
 
 ### Gerald Pollack Integration
-- **Exclusion zone**: teamprecision06 (minimal) creates EZ4 coherence
-- **Fourth phase**: teamflow12 (water) structures time as H3O2 structures
+- **Exclusion zone**: teamelegance06 (minimal) creates EZ4 coherence
+- **Fourth phase**: teamtravel12 (water) structures time as H3O2 structures
 - **Infrared charging**: teamshine05 (nightlight) preserves cellular rhythm
 
 ### Ken Wheeler Integration
 - **Dielectric field**: Ketu's counterspace IS Wheeler's dielectric
 - **Magnetism as effect**: Rahu's attraction (lust, seduction, fame) is magnetic EFFECT of Ketu's dielectric CAUSE
-- **Inertia**: teamstructure10 (specs) as dielectric inertial plane
+- **Inertia**: teamrebel10 (specs) as dielectric inertial plane
 
 ### Nikola Tesla Integration
 - **Scalar compression**: Ketu's thin concentration
 - **Longitudinal waves**: Better term than "scalar waves" - Ketu's echolocation in deep water
-- **Wireless transmission**: teamnetwork03 (grainweb) as ether transmission
+- **Wireless transmission**: teamparty03 (grainweb) as ether transmission
 
 ---
 

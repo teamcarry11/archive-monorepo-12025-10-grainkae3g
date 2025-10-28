@@ -4,9 +4,9 @@ Listen, before we dive in, let me tell you what this grainbranch represents. Thi
 
 You might be wondering, what makes this moment special? Well, we captured the astronomical positions at this exact time. The Moon was in Mula nakshatra, the third pada. The ascendant, that's the sign rising on the eastern horizon, was Aries at 5 degrees and 3 minutes. And the Sun, using the diurnal house system we built, was in the 8th house. That makes sense because it was late afternoon, with the sun descending toward sunset but not there yet.
 
-Does that graintime string look intimidating? The one that says `12025-10-26--1700-PDT--moon-mula--asc-arie05-sun-08h--teamdescend14`? Don't worry. Think of it like a precise address in time. Just like you need a street address to find a physical location, this graintime helps us navigate through our work history with astronomical precision.
+Does that graintime string look intimidating? The one that says `12025-10-26--1700-PDT--moon-mula--asc-arie05-sun-08h--teamabsorb14`? Don't worry. Think of it like a precise address in time. Just like you need a street address to find a physical location, this graintime helps us navigate through our work history with astronomical precision.
 
-You can see this grainbranch folder on GitHub at: https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/grainstore/grain6pbc/teamdescend14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14
+You can see this grainbranch folder on GitHub at: https://github.com/kae3g/grainkae3g/tree/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamabsorb14/grainstore/grain6pbc/teamabsorb14/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamabsorb14
 
 And when GitHub Pages finishes deploying, the live site will be at: https://kae3g.github.io/grainkae3g/
 
@@ -133,16 +133,16 @@ Files organized in **xbc → xhk** sequence (no duplicate consonants):
 ## Live Deployments
 
 ### Main Grainbranch Site
-🌐 **https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/**
+🌐 **https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamabsorb14/**
 
 ### Individual File URLs
 
-- **xbc (Prompt Spec)**: [files/xbc-prompt-spec.html](https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/files/xbc-prompt-spec.html)
-- **xbd (graindualwifi)**: [files/xbd-graindualwifi-spec.html](https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/files/xbd-graindualwifi-spec.html)
-- **xbg (Graintime)**: [files/xbg-graintime-complete.html](https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/files/xbg-graintime-complete.html)
-- **xbh (Triple Redundancy)**: [files/xbh-triple-redundancy.html](https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/files/xbh-triple-redundancy.html)
-- **xbk (Session Complete)**: [files/xbk-session-complete.html](https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/files/xbk-session-complete.html)
-- **xdb (Directory)**: [files/xdb-directory.html](https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamdescend14/files/xdb-directory.html)
+- **xbc (Prompt Spec)**: [files/xbc-prompt-spec.html](https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamabsorb14/files/xbc-prompt-spec.html)
+- **xbd (graindualwifi)**: [files/xbd-graindualwifi-spec.html](https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamabsorb14/files/xbd-graindualwifi-spec.html)
+- **xbg (Graintime)**: [files/xbg-graintime-complete.html](https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamabsorb14/files/xbg-graintime-complete.html)
+- **xbh (Triple Redundancy)**: [files/xbh-triple-redundancy.html](https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamabsorb14/files/xbh-triple-redundancy.html)
+- **xbk (Session Complete)**: [files/xbk-session-complete.html](https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamabsorb14/files/xbk-session-complete.html)
+- **xdb (Directory)**: [files/xdb-directory.html](https://kae3g.github.io/grainkae3g/gkd-prompt-execution--12025-10-26--1700-PDT--moon-mula----------asc-arie05-sun-08h--teamabsorb14/files/xdb-directory.html)
 
 ---
 

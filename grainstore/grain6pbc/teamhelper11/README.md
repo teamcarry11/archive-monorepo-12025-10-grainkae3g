@@ -145,13 +145,13 @@ teamhelper11/
 
 **Force Empowers**:
 - → teamshine05 (Leo/Pope) - HumbleUI renders display
-- → teamnetwork03 (Gemini/Empress) - Desktop apps for web
+- → teamparty03 (Gemini/Empress) - Desktop apps for web
 - → teambalance07 (Libra/Chariot) - Humble Motoko UI possible
 
 **Force Draws From**:
-- ← teamprecision06 (Virgo/Hermit) - musl precision, minimal OS
-- ← teamstructure10 (Capricorn/Wheel) - Specs for UI data
-- ← teamnurture04 (Cancer/Emperor) - s6 supervision for apps
+- ← teamelegance06 (Virgo/Hermit) - musl precision, minimal OS
+- ← teamrebel10 (Capricorn/Wheel) - Specs for UI data
+- ← teamplay04 (Cancer/Emperor) - s6 supervision for apps
 
 ---
 

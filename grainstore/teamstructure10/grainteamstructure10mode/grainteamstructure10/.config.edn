@@ -1,11 +1,11 @@
 {:site
- {:title "teamstructure10 - The Wheel of Fortune"
+ {:title "teamrebel10 - The Wheel of Fortune"
   :subtitle "Capricorn ♑ / X. Eternal Rotation"
   :author "kae3g"
-  :copyright "12025 kae3g • teamstructure10"
+  :copyright "12025 kae3g • teamrebel10"
   :license "MIT"
   :graindevname "kae3g"
-  :team "teamstructure10"
+  :team "teamrebel10"
   :tarot-card "X - Wheel of Fortune"
   :zodiac "Capricorn ♑"
   :element "Earth (Cardinal)"
@@ -13,9 +13,9 @@
   :league "EARTH LEAGUE 🌍"}
  
  :urls
- {:github "https://teamstructure10.github.io/grainteamstructure10"
-  :repo "https://github.com/teamstructure10/grainteamstructure10"
-  :org "https://github.com/teamstructure10"}
+ {:github "https://teamrebel10.github.io/grainteamrebel10"
+  :repo "https://github.com/teamrebel10/grainteamrebel10"
+  :org "https://github.com/teamrebel10"}
  
  :theme
  {:primary-color "#8B4513"    ; Earth brown (Capricorn)
@@ -34,7 +34,7 @@
   {:name "Foundations Research" :path "/foundations-research"}]
  
  :footer
- {:text "teamstructure10 - The Wheel of Fortune ⚙️"
+ {:text "teamrebel10 - The Wheel of Fortune ⚙️"
   :signature "*maintains nagual stare* 🌑"
   :motto "now == next + 1 (but make it structural, G!)"}}
 
