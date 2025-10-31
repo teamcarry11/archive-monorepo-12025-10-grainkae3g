@@ -19,6 +19,7 @@
 | **learning curve** | steeper (new paradigm) | easier (linux-like) |
 | **security** | capability-based isolation | traditional unix permissions |
 | **filesystem** | url scheme system (`/scheme/`) | traditional unix paths |
+| **license** | MIT (permissive) | **GPLv3** (copyleft) |
 
 ---
 
@@ -161,9 +162,34 @@ make qemu
 
 ---
 
+## license implications
+
+### redox: MIT (permissive)
+- **can use**: yes, mix with any license
+- **can modify**: yes, keep changes private if needed
+- **can distribute**: yes, with or without source
+- **grain network fit**: ✅ compatible (we use MIT/Apache 2.0)
+
+### aero: GPLv3 (copyleft)
+- **can use**: yes, but derivative works must be GPLv3
+- **can modify**: yes, but must release source
+- **can distribute**: yes, but must include source
+- **grain network fit**: ⚠️ requires GPLv3 for derivative works
+
+**important**: if we modify aero code or create derivative works, we must release under GPLv3!
+
+**reference**: https://github.com/Andy-Python-Programmer/aero (GPL-3.0 license)
+
+---
+
 ## which for grain network?
 
 ### recommendation: explore both!
+
+**license consideration**: 
+- redox (MIT) is more compatible with our MIT/Apache 2.0 stack
+- aero (GPLv3) requires GPLv3 for derivative works
+- decision: use aero as-is, or accept GPLv3 for aero-based components
 
 **phase 1**: build and test both
 - build redox (we already did this!)

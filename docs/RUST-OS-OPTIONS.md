@@ -31,6 +31,7 @@
 - **design**: inspired by linux kernel, but written from scratch
 - **focus**: modern pc features, performance, linux compatibility
 - **advantage**: fewer syscalls (monolithic), familiar to linux developers
+- **license**: **GPLv3** (copyleft - derivative works must be GPLv3)
 
 ---
 
@@ -117,8 +118,10 @@ from https://github.com/Andy-Python-Programmer/aero:
 **cons**:
 - newer project (less mature?)
 - monolithic = single point of failure potential
+- **GPLv3 license** (copyleft - derivative works must be GPLv3)
 
-**best for**: linux developers, performance-critical applications
+**best for**: linux developers, performance-critical applications  
+**license note**: derivative works must be GPLv3 (important for grain network!)
 
 ---
 
