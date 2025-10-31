@@ -1,0 +1,9 @@
+[package]
+name = "redox-keygen-rs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ssh-key = { version = "1.1", features = ["ed25519", "std", "rand_core"] }
+anyhow = "1.0"
+
