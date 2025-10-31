@@ -1,0 +1,29 @@
+#!/bin/sh
+# s6 run script for grainmirror-transform08 daemon
+#
+# Why s6? s6 is the supervision system for Grain Network.
+# It handles: starting, stopping, restarting, logging, signal handling.
+# This script is what s6 calls to start the daemon.
+#
+# What does this script do?
+# 1. Set up environment
+# 2. Run the Steel daemon script
+# 3. s6 handles the rest (restart on crash, logging, etc)
+
+# Set environment variables
+# Why set these? Configuration without code changes.
+# We can change sync interval without editing Steel code.
+export GRAINMIRROR_INTERVAL="${GRAINMIRROR_INTERVAL:-300}"  # Default: 5 minutes
+export GRAINMIRROR_SOURCE_DIR="/home/xy/github/kae3g/teamkae3gtransform08"
+export GRAINMIRROR_TARGET_DIR="/home/xy/kae3g/grainkae3g/grainstore/kae3g/teamkae3gtransform08"
+
+# Change to script directory
+# Why change directory? Makes relative paths work correctly.
+# Scripts can reference files relative to their location.
+cd /home/xy/kae3g/grainkae3g
+
+# Run Steel daemon
+# Why exec? Replaces shell process with Steel process.
+# This makes signal handling cleaner (signals go directly to Steel).
+exec steel scripts/graindaemon-grainmirror-transform08.scm
+

@@ -1,0 +1,36 @@
+{:package/name "grainorchestrator"
+ :package/version "0.1.0"
+ :package/description "kubernetes replacement in steel - s6-inspired orchestration with arvo event sourcing and graindb queries"
+ :package/author "kae3g (kj3x39, @risc.love)"
+ :package/team "teamtransform08"
+ :package/license "apache-2.0"
+ 
+ :package/dependencies
+ {:graindb {:version "0.1.0"
+            :required true
+            :description "immutable database for orchestrator state"}}
+ 
+ :package/platforms
+ {:host {:description "traditional posix systems (ubuntu, linux, macos)"}
+  :redox {:description "redox os with url-based file system"}}
+ 
+ :package/commands
+ {:grainorchestrator {:script "api/cli-daemon.scm"
+                      :description "main entry point (cli or daemon mode)"}}
+ 
+ :package/services
+ {:grainorchestrator {:script "api/cli-daemon.scm"
+                      :args ["--daemon"]
+                      :description "orchestrator daemon service"}}
+ 
+ :package/installation
+ {:steps ["install graindb dependency"
+          "copy grainorchestrator to /usr/local/bin/grainorchestrator"
+          "create state directory: /var/lib/grainorchestrator"
+          "configure event log (kafka/file/icp)"]}
+ 
+ :package/usage
+ {:interactive "grainorchestrator (shows menu)"
+  :non-interactive "grainorchestrator <command> [args...]"
+  :daemon "grainorchestrator --daemon"}}
+

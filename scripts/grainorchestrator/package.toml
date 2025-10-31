@@ -1,0 +1,38 @@
+# grainorchestrator package manifest
+# grain network package manager specification
+
+[package]
+name = "grainorchestrator"
+version = "0.1.0"
+description = "kubernetes replacement in steel: s6-inspired supervision, arvo event sourcing, graindb queries"
+author = "kae3g (kj3x39, @risc.love)"
+license = "apache-2.0"
+repository = "https://github.com/grainpbc/grainorchestrator"
+
+[package.metadata]
+grainorder = "xzvsbg"
+team = "teamtransform08"
+status = "development"
+platforms = ["host", "redox"]
+
+[dependencies]
+graindb = ">=0.1.0"
+grainplatform = ">=0.1.0"
+
+[build]
+entry-point = "api/cli-daemon.scm"
+language = "steel"
+requires = ["steel >=0.1.0"]
+
+[install]
+service-name = "grainorchestrator"
+service-type = "s6"
+config-dir = "/etc/grainorchestrator"
+data-dir = "/var/lib/grainorchestrator"
+log-dir = "/var/log/grainorchestrator"
+
+[commands]
+daemon = "api/cli-daemon.scm --daemon"
+cli = "api/cli-daemon.scm"
+interactive = "api/cli-daemon.scm --interactive"
+
