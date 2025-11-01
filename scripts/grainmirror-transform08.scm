@@ -113,10 +113,21 @@
   ;; Filtering here keeps the sync focused.
   ;; Note: This uses shell commands as Steel may not have built-in file ops yet.
   ;; TODO: Replace with Steel file API when available.
-  (let ((cmd (string-append "find " dir " -maxdepth 1 -name '*.md' -type f 2>/dev/null")))
-    ;; For now, return empty list - actual implementation needs Steel command execution
-    ;; This is a placeholder until we determine Steel's command API
-    '()))
+  (let ((result (command (string-append "find " dir " -maxdepth 1 -name '*.md' -type f 2>/dev/null"))))
+    (if (= (command-exit-code result) 0)
+        ;; Parse output into list of filenames (basename only)
+        (let ((output (command-stdout result))
+              (files (string-split output "\n")))
+          (filter (lambda (file)
+                    ;; Extract basename from full path
+                    ;; Why filter empty strings? find might return empty lines
+                    (and (not (string=? file ""))
+                         (let ((parts (string-split file "/")))
+                           (if (null? parts)
+                               ""
+                               (car (reverse parts))))))
+                  files))
+        '())))
 
 ;; Sync logic
 ;; Why this structure? We separate concerns:

@@ -11,38 +11,30 @@
 ;; Strategy: Map Linux paths/syscalls to Redox equivalents
 ;; License: MIT/Apache 2.0 (our code, compatible with Redox MIT)
 
+(require "utils/specs.scm")
+(require "utils/macros.scm")
+(require "utils/utils.scm")
+
 ;; Linux Path Mapping
 ;; Why map paths? Linux uses /dev, /proc, /sys.
 ;; Redox uses /scheme/ (url-based).
 ;; This layer translates between them!
+;; Using define-path-mapper macro for cleaner code
 
-(define (linux-path->redox-path linux-path)
-  ;; Map Linux paths to Redox scheme paths
-  ;; Kid-Friendly: Like translating between languages!
-  (cond
-   ;; /dev/null -> /scheme/null
-   ((string=? linux-path "/dev/null")
-    "/scheme/null")
-   
-   ;; /dev/zero -> /scheme/zero
-   ((string=? linux-path "/dev/zero")
-    "/scheme/zero")
-   
-   ;; /proc/* -> redox equivalent
-   ((string-prefix? linux-path "/proc/")
-    (string-append "/scheme/proc" (substring linux-path 5)))
-   
-   ;; /sys/* -> redox equivalent
-   ((string-prefix? linux-path "/sys/")
-    (string-append "/scheme/sys" (substring linux-path 4)))
-   
-   ;; /dev/* -> redox device scheme
-   ((string-prefix? linux-path "/dev/")
-    (string-append "/scheme/device" (substring linux-path 4)))
-   
-   ;; Everything else passes through
-   (else
-    linux-path)))
+(define-path-mapper linux-path->redox-path
+  (("/dev/null" "/scheme/null")
+   ("/dev/zero" "/scheme/zero")
+   ("/proc/" (string-append "/scheme/proc" (substring path 5)))
+   ("/sys/" (string-append "/scheme/sys" (substring path 4)))
+   ("/dev/" (string-append "/scheme/device" (substring path 4)))))
+
+;; Validate input using spec
+(define (linux-path->redox-path-validated linux-path)
+  ;; Validate input path
+  (if (not (linux-path? linux-path))
+      (error (string-append "Invalid Linux path: " linux-path)))
+  ;; Map using utility function
+  (linux-path->redox-path linux-path))
 
 ;; Linux Syscall Mapping
 ;; Map Linux syscall numbers to Redox syscalls

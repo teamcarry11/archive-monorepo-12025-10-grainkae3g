@@ -1,18 +1,24 @@
 # grain-monolithic-compat - monolithic-like compatibility for redox
 
-**🌊 Airbender Mode**: Provide monolithic-like features using Redox + Steel  
-**Kid-Friendly**: Make Redox look like a monolithic kernel, but keep MIT license!
+**🌊 airbender mode**: provide monolithic-like features using redox + steel  
+**kid-friendly**: make redox look like a monolithic kernel, but keep mit license!
 
-**inspiration**: aero os (monolithic rust kernel) - https://github.com/Andy-Python-Programmer/aero  
-**note**: we study aero's design, but write our own implementation (MIT/Apache 2.0)
+**inspiration**: aero os (monolithic rust kernel) - 
+https://github.com/Andy-Python-Programmer/aero  
+**note**: we study aero's design, but write our own implementation 
+(mit/apache 2.0)
+
+**insight from redox community**: syscall count doesn't directly affect
+battery drain if performance is similar. power management (sleep states,
+timer coalescing) matters more than raw syscall overhead.
 
 ---
 
 ## purpose
 
-instead of using aero os directly (GPLv3), we:
-- use redox as base (MIT ✅)
-- write steel modules (MIT/Apache 2.0 ✅)
+instead of using aero os directly (gplv3), we:
+- use redox as base (mit ✅)
+- write steel modules (mit/apache 2.0 ✅)
 - provide monolithic-like features (our implementation ✅)
 - achieve linux compatibility (via steel layer ✅)
 
@@ -27,7 +33,7 @@ instead of using aero os directly (GPLv3), we:
 provides monolithic-like syscall interface:
 - batches microkernel syscalls (reduces overhead)
 - looks like monolithic kernel to applications
-- reduces IPC overhead
+- reduces ipc overhead
 
 ### linux-compat.scm
 provides linux compatibility:
@@ -35,13 +41,21 @@ provides linux compatibility:
 - maps linux syscalls to redox
 - easier to port linux applications
 
-### unified-services.scm (TODO)
+### benchmarks/
+microkernel vs monolithic performance benchmarks:
+- **⚠️  important**: benchmarks only meaningful when comparing
+  results from redox os (microkernel) vs linux (monolithic)
+- running on ubuntu/linux measures abstraction overhead,
+  not real ipc differences
+- see `benchmarks/readme.md` for details
+
+### unified-services.scm (todo)
 monolithic-like service management:
 - unified service interface
-- efficient IPC batching
+- efficient ipc batching
 - familiar unix-like interface
 
-### monolithic-features.scm (TODO)
+### monolithic-features.scm (todo)
 monolithic kernel feature parity:
 - modern pc features (redox already has!)
 - linux compatibility (via compat layer)
@@ -69,10 +83,10 @@ monolithic kernel feature parity:
 
 ## strategy
 
-**base**: redox (MIT)  
-**modules**: steel (MIT/Apache 2.0)  
+**base**: redox (mit)  
+**modules**: steel (mit/apache 2.0)  
 **goal**: monolithic-like features (inspired by aero os design)  
-**license**: everything stays MIT/Apache 2.0 ✅
+**license**: everything stays mit/apache 2.0 ✅
 
 **result**: best of both worlds!
 
@@ -82,10 +96,13 @@ monolithic kernel feature parity:
 
 **inspired by**: aero os (https://github.com/Andy-Python-Programmer/aero)  
 **design study**: we study aero's monolithic kernel design  
-**implementation**: our own code (MIT/Apache 2.0)  
+**implementation**: our own code (mit/apache 2.0)  
 **not affiliated**: grain network is not affiliated with aero os
+
+**redox community insights**: thanks to bjorn3 and the redox os/general
+matrix room for clarifying that syscall count vs battery drain is more
+nuanced than raw overhead. power management matters more!
 
 ---
 
 **airbender mode**: study aero design, build on redox, implement in steel! 🌊
-

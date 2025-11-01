@@ -53,11 +53,15 @@
 ;; Recording when helps us understand temporal patterns in git operations.
 (define (run-command cmd)
   ;; Execute command and return output
-  ;; Note: Steel command execution API may vary
-  ;; This is a placeholder showing temporal intent
+  ;; Why this implementation? Steel provides `command` function to execute shell commands.
+  ;; This works on both host (posix) and redox (via scheme system).
   (log-message (string-append "executing: " cmd))
-  ;; TODO: Implement actual command execution with graintime logging
-  "")
+  (let ((result (command cmd)))
+    (if (= (command-exit-code result) 0)
+        (command-stdout result)
+        (begin
+          (log-error (string-append "command failed: " cmd " - " (command-stderr result)))
+          ""))))
 
 ;; Get graintime for documentation
 ;; Why graintime instead of timestamp? Temporal transparency.
@@ -68,6 +72,27 @@
   ;; For now, return placeholder indicating temporal intent
   "graintime:now [placeholder - will use actual graintime library]")
 
+;; Helper: split string by delimiter
+;; Why this? Steel may not have string-split built-in.
+(define (string-split str delim)
+  (let loop ((remaining str)
+             (current "")
+             (result '()))
+    (if (string=? remaining "")
+        (reverse (if (string=? current "")
+                     result
+                     (cons current result)))
+        (let ((char (substring remaining 0 1)))
+          (if (string=? char delim)
+              (loop (substring remaining 1)
+                    ""
+                    (if (string=? current "")
+                        result
+                        (cons current result)))
+              (loop (substring remaining 1)
+                    (string-append current char)
+                    result))))))
+
 ;; List grainstore repositories (one-indexed, kid-friendly, airbender mode)
 ;; What are repositories? They're like folders that hold code and documents.
 ;; We count them starting from 1 (not 0) because that's easier for kids!
@@ -75,9 +100,21 @@
 (define (list-grainstore-repos)
   ;; List all repositories in grainstore
   ;; Returns a list of repository names
-  ;; TODO: Implement directory listing with Steel file API
-  ;; For now, return empty list as placeholder
-  '())
+  ;; Why use shell commands? Steel may not have built-in directory listing yet.
+  ;; We use `find` command which works on both posix and redox.
+  (let ((result (command (string-append "find " docs-dir " -maxdepth 1 -type d -not -path " docs-dir " 2>/dev/null"))))
+    (if (= (command-exit-code result) 0)
+        (let ((output (command-stdout result))
+              (dirs (string-split output "\n")))
+          (filter (lambda (dir)
+                    ;; Extract basename from full path
+                    (and (not (string=? dir ""))
+                         (let ((parts (string-split dir "/")))
+                           (if (null? parts)
+                               ""
+                               (car (reverse parts))))))
+                  dirs))
+        '())))
 
 ;; Pull repository (airbender flowing to get updates!)
 ;; What does "pull" mean? It means getting the latest updates from the internet.
@@ -88,9 +125,25 @@
   ;; The airbender flows to this repository and carries fresh updates
   (let ((repo-path (string-append docs-dir "/" repo-name)))
     (log-message (string-append "flowing to " repo-name " to get fresh updates! 🌊"))
-    ;; TODO: Implement git pull with Steel command execution
-    ;; Log result with friendly message
-    (log-success (string-append repo-name " is now up to date! ✨"))))
+    ;; Why check if directory exists? Fail fast if repository doesn't exist.
+    (if (directory-exists? repo-path)
+        (let ((result (command (string-append "cd " repo-path " && git pull 2>&1"))))
+          (if (= (command-exit-code result) 0)
+              (begin
+                (log-success (string-append repo-name " is now up to date! ✨"))
+                #t)
+              (begin
+                (log-error (string-append "failed to pull " repo-name ": " (command-stderr result)))
+                #f)))
+        (begin
+          (log-error (string-append "repository " repo-name " does not exist at " repo-path))
+          #f))))
+
+;; Helper: check if directory exists
+;; Why this function? We need to verify repositories exist before operating on them.
+(define (directory-exists? path)
+  (let ((result (command (string-append "test -d " path))))
+    (= (command-exit-code result) 0)))
 
 ;; Handle merge conflicts with temporal context
 ;; Why temporal context? Conflicts emerge at specific moments.
@@ -98,8 +151,38 @@
 (define (handle-merge-conflicts repo-name)
   (let ((repo-path (string-append docs-dir "/" repo-name)))
     (log-message (string-append "checking conflicts in " repo-name " [graintime:now]"))
-    ;; TODO: Implement conflict detection and resolution
-    (log-success (string-append "no conflicts in " repo-name " [graintime:now]"))))
+    ;; Why check git status? We need to detect if there are merge conflicts.
+    ;; Git status shows us if files are in conflicted state.
+    (let ((result (command (string-append "cd " repo-path " && git status --porcelain 2>&1"))))
+      (if (= (command-exit-code result) 0)
+          (let ((status-output (command-stdout result)))
+            ;; Check for conflict markers (UU, AA, DD in git status)
+            (if (or (string-contains? status-output "UU")
+                    (string-contains? status-output "AA")
+                    (string-contains? status-output "DD"))
+                (begin
+                  (log-error (string-append "conflicts detected in " repo-name " - manual resolution needed"))
+                  #f)
+                (begin
+                  (log-success (string-append "no conflicts in " repo-name " [graintime:now]"))
+                  #t)))
+          (begin
+            (log-error (string-append "failed to check status for " repo-name ": " (command-stderr result)))
+            #f)))))
+
+;; Helper: check if string contains substring
+;; Why this? Steel may not have string-contains? built-in.
+(define (string-contains? str substr)
+  (let ((str-len (string-length str))
+        (substr-len (string-length substr)))
+    (if (< str-len substr-len)
+        #f
+        (let loop ((idx 0))
+          (if (> (+ idx substr-len) str-len)
+              #f
+              (if (string=? (substring str idx (+ idx substr-len)) substr)
+                  #t
+                  (loop (+ idx 1))))))))
 
 ;; Pull all repositories (the airbender flows to all repositories!)
 ;; What does this do? It visits every repository and gets fresh updates.
@@ -135,16 +218,49 @@
   ;; Uses graintime instead of simple timestamp
   (let ((graintime (get-graintime)))
     (log-message (string-append "timestamping docs with graintime: " graintime))
-    ;; TODO: Implement file operations with Steel file API
-    (log-success "docs timestamped with graintime")))
+    ;; Why create target directory first? We need somewhere to move files.
+    ;; The mkdir -p command creates parent directories if needed.
+    (let ((mkdir-result (command (string-append "mkdir -p " target-dir))))
+      (if (= (command-exit-code mkdir-result) 0)
+          ;; Move files from source to target
+          ;; Why use mv? It preserves file metadata and moves efficiently.
+          (let ((mv-result (command (string-append "mv " source-dir "/* " target-dir "/ 2>&1"))))
+            (if (= (command-exit-code mv-result) 0)
+                (log-success "docs timestamped with graintime")
+                (log-error (string-append "failed to move docs: " (command-stderr mv-result)))))
+          (log-error (string-append "failed to create target directory: " (command-stderr mkdir-result)))))))
 
 ;; Organize documentation with temporal structure
 ;; Temporal structure: Organization happens at specific graintime moments.
 ;; The organization itself is a temporal event in the grain network.
 (define (organize-docs)
   (log-message "organizing documentation [graintime:now]")
-  ;; TODO: Implement directory creation and file organization
-  (log-success "documentation organized [graintime:now]"))
+  ;; Why organize by type? Makes documentation easier to find.
+  ;; We create directories for different document types (markdown, images, etc).
+  (let ((organize-dirs '("markdown" "images" "archives")))
+    (for-each (lambda (dir-name)
+                (let ((dir-path (string-append docs-dir "/" dir-name))
+                      (result (command (string-append "mkdir -p " dir-path))))
+                  (if (= (command-exit-code result) 0)
+                      (log-message (string-append "created directory: " dir-name))
+                      (log-error (string-append "failed to create directory " dir-name ": " (command-stderr result))))))
+              organize-dirs)
+    (log-success "documentation organized [graintime:now]")))
+
+;; Helper: format repository list for index
+;; Why this function? Makes the index readable with numbered list (one-indexed!).
+(define (format-repo-list repos)
+  (if (null? repos)
+      "no repositories found"
+      (let loop ((remaining repos)
+                 (count 1)
+                 (result ""))
+        (if (null? remaining)
+            result
+            (loop (cdr remaining)
+                  (+ count 1)
+                  (string-append result
+                                (number->string count) ". " (car remaining) "\n"))))))
 
 ;; Create grainstore index with graintime generation timestamp
 ;; Temporal metadata: Index generation is a temporal event.
@@ -152,17 +268,55 @@
 (define (create-grainstore-index)
   (let ((repos (list-grainstore-repos))
         (graintime (get-graintime))
+        (index-path (string-append grainstore-dir "/INDEX.md"))
         (index-content (string-append
                         "# grainstore repository index\n\n"
                         "**generated**: " graintime "\n"
                         "**total repositories**: " (number->string (length repos)) "\n\n"
                         "## repositories\n\n"
-                        ;; TODO: Format repository list
+                        (format-repo-list repos)
                         "\n\n## temporal context\n\n"
                         "this index was generated at graintime: " graintime "\n"
                         "all operations are temporally transparent.\n")))
-    ;; TODO: Write index file with Steel file API
-    (log-success (string-append "grainstore index created [graintime:" graintime "]"))))
+    ;; Why use shell command to write file? Steel may not have built-in file writing yet.
+    ;; We use printf with heredoc-style approach which handles newlines correctly.
+    ;; Escape single quotes in content for shell safety
+    (let ((escaped-content (string-replace index-content "'" "'\\''")))
+      (let ((result (command (string-append "printf '%s' '" escaped-content "' > " index-path))))
+        (if (= (command-exit-code result) 0)
+            (log-success (string-append "grainstore index created [graintime:" graintime "]"))
+            (log-error (string-append "failed to create index: " (command-stderr result)))))))
+
+;; Helper: replace all occurrences of substring
+;; Why this? We need to escape single quotes for shell safety.
+(define (string-replace str old new)
+  (let ((old-len (string-length old))
+        (new-len (string-length new)))
+    (let loop ((remaining str)
+               (result ""))
+      (if (string=? remaining "")
+          result
+          (let ((idx (string-find remaining old)))
+            (if idx
+                (loop (substring remaining (+ idx old-len))
+                      (string-append result
+                                    (substring remaining 0 idx)
+                                    new))
+                (string-append result remaining)))))))
+
+;; Helper: find substring index in string
+;; Why this? We need to find where to replace substrings.
+(define (string-find str substr)
+  (let ((str-len (string-length str))
+        (substr-len (string-length substr)))
+    (if (< str-len substr-len)
+        #f
+        (let loop ((idx 0))
+          (if (> (+ idx substr-len) str-len)
+              #f
+              (if (string=? (substring str idx (+ idx substr-len)) substr)
+                  idx
+                  (loop (+ idx 1)))))))))
 
 ;; Show help (kid-friendly, airbender mode)
 ;; Kid-friendly: Simple explanations that anyone can understand.
