@@ -460,14 +460,19 @@
                  
                  ;; generate new grainorders (smallest for newest)
                  [first-grainorder "xbdghj"]  ;; starting point
-                 [new-grainorders (let loop ([current first-grainorder]
+                 [new-grainorders (let loop ([current "xzvsnm"]  ;; start from large code
                                              [count (length sorted)]
                                              [result '()])
                                     (if (= count 0)
-                                        (reverse result)
-                                        (loop (next-grainorder current)
-                                              (- count 1)
-                                              (cons current result))))])
+                                        result  ;; already smallest-first (no reverse needed)
+                                        (let ([prev (prev-grainorder current)])
+                                          (if prev
+                                              (loop prev
+                                                    (- count 1)
+                                                    (cons current result))
+                                              (begin
+                                                (displayln (format "⚠️  warning: can't generate more grainorders, stopping at ~a" current))
+                                                (cons current result))))))])
             
             ;; show rebalancing plan
             (displayln "rebalancing plan (newest → oldest):\n")
@@ -640,5 +645,6 @@
 (displayln "║  GRAINMIRROR PHASE 1: LOADED! 🪞                                   ║")
 (displayln "║  reflect files across repos without symlinks                       ║")
 (displayln "║  try: steel grainmirror.scm list                                   ║")
-(displayln "╚════════════════════════════════════════════════════════════════════╝\n")
+(displayln "╚════════════════════════════════════════════════════════════════════╝")
+(displayln "")
 
